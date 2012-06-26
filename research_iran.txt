@@ -1,8 +1,8 @@
-Libyan Cival Wars, EU, Mustafa Abdul Jailil 
-researcher: Diane Lee
+Syrian Uprising, United Nations, Bashar al-Assad
+researcher: Daniel Moreno
 
 Person
-name: Mustafa Abdul Jailil
+name: Bashar al-Assad
 kind:
 location:
 images:
@@ -13,7 +13,7 @@ related crises:
 related orgs:
 
 Crisis
-name: Libyan Civil Wars
+name: 
 kind:
 location:
 date and time:
@@ -29,7 +29,7 @@ related orgs:
 related people:
 
 Organization
-name: European Union
+name: 
 kind:
 location:
 history:

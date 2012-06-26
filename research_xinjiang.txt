@@ -1,0 +1,45 @@
+Xinjiang riots, Rebiya Kadeer, WUC
+researcher: Wonjun Lee
+
+Person
+name: Rebiya Kadeer
+kind:
+location:
+images:
+videos:
+social networks:
+external links:
+related crises:
+related orgs:
+
+Crisis
+name:
+kind:
+location:
+date and time:
+human impact:
+economic impact:
+resources needed:
+ways to help:
+images:
+videos:
+social networks:
+external links:
+related orgs:
+related people:
+
+Organization
+name:
+kind:
+location:
+history:
+contact info
+-email:
+-phone number:
+-location:
+images:
+videos:
+social networks:
+external links:
+related crises:
+related people:
