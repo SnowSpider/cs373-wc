@@ -1,0 +1,45 @@
+Libyan Cival Wars, EU, Mustafa Abdul Jailil 
+researcher: Diane Lee
+
+Person
+name: Mustafa Abdul Jailil
+kind:
+location:
+images:
+videos:
+social networks:
+external links:
+related crises:
+related orgs:
+
+Crisis
+name: Libyan Civil Wars
+kind:
+location:
+date and time:
+human impact:
+economic impact:
+resources needed:
+ways to help:
+images:
+videos:
+social networks:
+external links:
+related orgs:
+related people:
+
+Organization
+name: European Union
+kind:
+location:
+history:
+contact info
+-email:
+-phone number:
+-location:
+images:
+videos:
+social networks:
+external links:
+related crises:
+related people:
