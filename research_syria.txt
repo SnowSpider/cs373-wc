@@ -1,9 +1,9 @@
-Syrian Uprising, United Nations, Bashar al-Assad
+Syrian Uprising, Amnesty International, Bashar al-Assad
 researcher: Daniel
 
 Person
 name: Bashar al-Assad
-kind:
+kind: Current President of Syria
 location: Damascus, Syria
 images: http://upload.wikimedia.org/wikipedia/commons/7/7d/Bashar_al-Assad_%28cropped%29.jpg
 videos:http://media.smh.com.au/selections/syria-cabinet-sworn-in-amid-violence-3407301.html , http://www.guardian.co.uk/world/video/2012/jun/03/syria-assad-denies-responsibility-houla-massacre-video/
@@ -13,8 +13,8 @@ related crises: Syria Uprising
 related orgs: is repremended by Amnesty International
 
 Crisis
-name: 
-kind:
+name: Syrian Uprising
+kind: 
 location:
 date and time:
 human impact:
@@ -29,8 +29,8 @@ related orgs:
 related people:
 
 Organization
-name: 
-kind:
+name: Amnesty International
+kind: 
 location:
 history:
 contact info
