@@ -7,17 +7,17 @@ kind: Current President of Syria
 location: Damascus, Syria
 images: http://upload.wikimedia.org/wikipedia/commons/7/7d/Bashar_al-Assad_%28cropped%29.jpg
 videos:http://media.smh.com.au/selections/syria-cabinet-sworn-in-amid-violence-3407301.html , http://www.guardian.co.uk/world/video/2012/jun/03/syria-assad-denies-responsibility-houla-massacre-video/
-social networks:
+social networks: only official thing found was website: http://sana.sy/eng/article/5.htm
 external links: http://sana.sy/eng/article/5.htm
 related crises: Syria Uprising
 related orgs: is repremended by Amnesty International
 
 Crisis
 name: Syrian Uprising
-kind: 
-location:
-date and time:
-human impact:
+kind: violent internal conflict in Syria
+location: Syria
+date and time: 2011–present
+human impact: 10,537-10,770 killed overall (government claim)*, 15,200\-16,360 killed overall (opposition claims)*, 35,000 wounded overall, 240,000 displaced (180,000 refugees)
 economic impact:
 resources needed:
 ways to help:
@@ -30,16 +30,16 @@ related people:
 
 Organization
 name: Amnesty International
-kind: 
-location:
-history:
+kind: non-governmental organisation focused on human rights
+location: Global, General secretariat in London
+history: July 1961 by Peter Benenson in Britain
 contact info
--email:
--phone number:
--location:
-images:
-videos:
-social networks:
-external links:
-related crises:
+-email: Various department emails available at www.amnesty.org.
+-phone number: +44-20-74135500
+-location: The International Secretariat is responsible for the majority of the organization's research and leads our campaigning work, based in London, UK.
+images: http://www.codoc.org/wp-content/uploads/2012/04/amnesty.jpeg , 
+videos: http://www.youtube.com/user/AmnestyInternational
+social networks: Twitter account: @Amnestyonline , http://www.youtube.com/user/AmnestyInternational
+external links: www.amnesty.org, http://www.amnesty.org/en/news/iran-must-avoid-excessive-force-against-green-movement-protests-2012-02-13
+related crises: Syrian uprising, Xinjiang Riots, Lybia Civil War(Amnesty International report brands Libya's militias 'out of control), coverage on green movement
 related people:
