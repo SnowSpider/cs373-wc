@@ -4,13 +4,13 @@ researcher: Daniel
 Person
 name: Bashar al-Assad
 kind:
-location:
-images:
-videos:
+location: Damascus, Syria
+images: http://upload.wikimedia.org/wikipedia/commons/7/7d/Bashar_al-Assad_%28cropped%29.jpg
+videos:http://media.smh.com.au/selections/syria-cabinet-sworn-in-amid-violence-3407301.html , http://www.guardian.co.uk/world/video/2012/jun/03/syria-assad-denies-responsibility-houla-massacre-video/
 social networks:
-external links:
-related crises:
-related orgs:
+external links: http://sana.sy/eng/article/5.htm
+related crises: Syria Uprising
+related orgs: is repremended by Amnesty International
 
 Crisis
 name: 
