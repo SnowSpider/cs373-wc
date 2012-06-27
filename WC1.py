@@ -4,9 +4,12 @@ from google.appengine.ext import webapp
 
 class MainHandler(webapp.RequestHandler):
   def get(self):
-    self.response.headers['Content-Type'] = 'text/plain'
+    self.response.headers['Content-Type'] = 'text/html'
 
-    outstr = "HELLO CAR RAMROD"
+    inFile = open("htmlgoodies/mockup.html", 'r')
+    outstr = inFile.read() #"HELLO CAR RAMROD"
+    inFile.close()
+    
     self.response.out.write(outstr)
 
 def main():
