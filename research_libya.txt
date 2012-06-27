@@ -5,6 +5,7 @@ Person
 name: Mustafa Abdul Jalil
 kind: Chairman of the National Transitional Council of Libya
 location: Libya
+history:
 images:
 http://1.bp.blogspot.com/-tHBHlck16yA/TqK7Lqeh2TI/AAAAAAAACd0/7OSD4-lQukw/s1600/head+bump.jpg, http://a.abcnews.go.com/images/International/42daef1774e44bd78ea83fd9878c269d.jpg
 videos: http://youtu.be/eNLc_OuPVxQ
@@ -23,6 +24,7 @@ human impact: Over 13,000 deaths, 50,000 refugees
 economic impact:
 resources needed: medicine, fuel, food
 ways to help: 
+history:
 images:
 http://www.socialistparty.net/images/stories/libyan%20revolt.jpg,
 http://fifp.files.wordpress.com/2011/04/2011_middle_east_revolutions_-_libyans_protesting_on_tank.jpg,
