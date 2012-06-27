@@ -10,22 +10,20 @@ td.unsquishable { min-width: 150px; }
 
 table.unsquishable { min-width: 900px; min-height: 800px; }
 
-tbody.big 
+li.big 
 {
 display:block;
 width:100%;
 font-weight:bold;
-font-size: 130%;
 color:#FFFFFF;
 text-align:left;
-//padding:4px;
 text-decoration:none;
 text-transform:uppercase; 
 }
 
 tbody.big:hover { background-color:#7A991A; }
 
-tbody.small 
+li.small 
 { 
 text-align: right;
 }
@@ -124,57 +122,59 @@ a.topmenu:hover,a.topmenu:active { background-color:#7A991A; }
 	</tr>
 	<tr height="650" style="max-height:650px;">
 		<td width="20%" height="650" valign="top" style="overflow-y:scroll; overflow-x:hidden; max-height:650px;">
-		<!-- <table style="height: 500px; overflow:scroll;"> -->
-		<table width="100%">
-			<tbody class="big">
-				<tr><td><a href="#" onclick="toggleItem('PeopleList')"><b>People:</b></a></td></tr>
-			</tbody>
-
-			<tbody id="PeopleList" class="small">
-				<tr><td><a href="#">Person 1</a></a></td></tr>
-				<tr><td><a href="#">Person 2</a></td></tr>
-				<tr><td><a href="#">Person 3</a></td></tr>
-				<tr><td><a href="#">Person 4</a></td></tr>
-			</tbody>
-			
-			<tbody class="big">
-				<tr><td><a href="#" onclick="toggleItem('CrisisList')"><b>Crises:</b></a></td></tr>
-			</tbody>
-
-			<tbody id="CrisisList" class="small">
-				<tr><td><a href="#">Crisis 1</a></td></tr>
-				<tr><td><a href="#">Crisis 2</a></td></tr>
-				<tr><td><a href="#">Crisis 3</a></td></tr>
-				<tr><td><a href="#">Crisis 4</a></td></tr>
-			</tbody>
-			
-			<tbody  class="big">
-				<tr><td><a href="#" onclick="toggleItem('OrganizationList')"><b>Organizations:</b></a></td></tr>
-			</tbody>
-
-			<tbody id="OrganizationList"  class="small">
-				<tr><td><a href="#">Organization 1</a></td></tr>
-				<tr><td><a href="#">Organization 2</a></td></tr>
-				<tr><td><a href="#">Organization 3</a></td></tr>
-				<tr><td><a href="#">Organization 4</a></td></tr>
-								<tr><td><a href="#">Organization 1</a></td></tr>
-				<tr><td><a href="#">Organization 2</a></td></tr>
-				<tr><td><a href="#">Organization 3</a></td></tr>
-				<tr><td><a href="#">Organization 4</a></td></tr>
-								<tr><td><a href="#">Organization 1</a></td></tr>
-				<tr><td><a href="#">Organization 2</a></td></tr>
-				<tr><td><a href="#">Organization 3</a></td></tr>
-				<tr><td><a href="#">Organization 4</a></td></tr>
-								<tr><td><a href="#">Organization 1</a></td></tr>
-				<tr><td><a href="#">Organization 2</a></td></tr>
-				<tr><td><a href="#">Organization 3</a></td></tr>
-				<tr><td><a href="#">Organization 4</a></td></tr>
-								<tr><td><a href="#">Organization 1</a></td></tr>
-				<tr><td><a href="#">Organization 2</a></td></tr>
-				<tr><td><a href="#">Organization 3</a></td></tr>
-				<tr><td><a href="#">Organization 4</a></td></tr>
-			</tbody>
-		</table>
+			<div style="overflow-y:scroll; overflow-x:hidden; max-height:650px; min-height: 650px;">
+				<ul>
+					<li><a href="#" onclick="toggleItem('PeopleList')"><b>People:</b></a></li>
+						<ul id="PeopleList">
+							<li>Person 1</li>
+							<li>Person 2</li>
+							<li>Person 3</li>
+							<li>Person 4</li>
+						</ul>
+					<li><a href="#" onclick="toggleItem('CrisisList')"><b>Crises:</b></a></li>
+						<ul id="CrisisList">
+							<li>Crisis 1</li>
+							<li>Crisis 2</li>
+							<li>Crisis 3</li>
+							<li>Crisis 4</li>
+						</ul>
+					<li><a href="#" onclick="toggleItem('OrganizationList')"><b>Organizations:</b></a></li>
+						<ul id="OrganizationList">
+							<li>Organization 1 has a really long name just to test overflow</li>
+							<li>Organization 2</li>
+							<li>Organization 3</li>
+							<li>Organization 4</li>
+							<li>Organization 5</li>
+							<li>Organization 6</li>
+							<li>Organization 7</li>
+							<li>Organization 8</li>
+							<li>Organization 1</li>
+							<li>Organization 2</li>
+							<li>Organization 3</li>
+							<li>Organization 4</li>
+							<li>Organization 5</li>
+							<li>Organization 6</li>
+							<li>Organization 7</li>
+							<li>Organization 8</li>
+							<li>Organization 1</li>
+							<li>Organization 2</li>
+							<li>Organization 3</li>
+							<li>Organization 4</li>
+							<li>Organization 5</li>
+							<li>Organization 6</li>
+							<li>Organization 7</li>
+							<li>Organization 8</li>
+							<li>Organization 1</li>
+							<li>Organization 2</li>
+							<li>Organization 3</li>
+							<li>Organization 4</li>
+							<li>Organization 5</li>
+							<li>Organization 6</li>
+							<li>Organization 7</li>
+							<li>Organization 8</li>
+						</ul>
+				</ul>
+			</div>
 		</td>
 		<td width="60%" height="650" style="max-height: 650px">
 			<iframe src="content.html" scrolling="yes" frameBorder="0"></iframe>
