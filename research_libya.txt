@@ -1,45 +1,63 @@
-Libyan Cival Wars, EU, Mustafa Abdul Jailil 
+Libyan Cival War, ICC, Mustafa Abdul Jalil 
 researcher: Diane Lee
 
 Person
-name: Mustafa Abdul Jailil
-kind:
-location:
+name: Mustafa Abdul Jalil
+kind: Chairman of the National Transitional Council of Libya
+location: Libya
 images:
-videos:
+http://1.bp.blogspot.com/-tHBHlck16yA/TqK7Lqeh2TI/AAAAAAAACd0/7OSD4-lQukw/s1600/head+bump.jpg, http://a.abcnews.go.com/images/International/42daef1774e44bd78ea83fd9878c269d.jpg
+videos: http://youtu.be/eNLc_OuPVxQ
 social networks:
-external links:
-related crises:
-related orgs:
+http://www.facebook.com/pages/%D9%85%D8%B5%D8%B7%D9%81%D9%89-%D8%B9%D8%A8%D8%AF-%D8%A7%D9%84%D8%AC%D9%84%D9%8A%D9%84/134535143287038?rf=135221043216666, http://twitter.com/#!/mustafaajalil
+external links: http://www.bbc.co.uk/news/world-africa-14613679
+related crises: Libyan Civil War
+related orgs: none
 
 Crisis
-name: Libyan Civil Wars
-kind:
-location:
-date and time:
-human impact:
+name: Libyan Civil War
+kind: Civil War
+location: Libya
+date and time: Feb 15 2011
+human impact: Over 13,000 deaths, 50,000 refugees
 economic impact:
-resources needed:
-ways to help:
+resources needed: medicine, fuel, food
+ways to help: 
 images:
-videos:
-social networks:
-external links:
-related orgs:
-related people:
+http://www.socialistparty.net/images/stories/libyan%20revolt.jpg,
+http://fifp.files.wordpress.com/2011/04/2011_middle_east_revolutions_-_libyans_protesting_on_tank.jpg,
+http://www.flixya.com/files-photo/r/i/m/rimawi-1965850.jpg, http://nimg.sulekha.com/others/original700/libya-2011-2-26-12-20-0.jpg
+videos: http://youtu.be/8OzwkCGJlAI
+social networks: http://www.facebook.com/Liibyan.Revolution,
+http://www.facebook.com/Libyan4Life, 
+external links: http://www.ntc.gov.ly/, 
+related orgs: International Criminal Court
+related people: Mustafa Abdul Jalil
 
 Organization
-name: European Union
-kind:
-location:
-history:
+name: International Criminal Court
+kind: International Tribunal
+location: The Hague, Netherlands
+history: 
+	 The International Criminal Court (ICC), governed by the Rome Statute, is the first permanent, treaty based, international criminal court established to help end impunity for the perpetrators of the most serious crimes of concern to the international community.
+The ICC is an independent international organisation, and is not part of the United Nations system. Its seat is at The Hague in the Netherlands. Although the Court’s expenses are funded primarily by States Parties, it also receives voluntary contributions from governments, international organisations, individuals, corporations and other entities.
+The international community has long aspired to the creation of a permanent international court, and, in the 20th century, it reached consensus on definitions of genocide, crimes against humanity and war crimes. The Nuremberg and Tokyo trials addressed war crimes, crimes against peace, and crimes against humanity committed during the Second World War. 
+
+In the 1990s after the end of the Cold War, tribunals like the International Criminal Tribunal for the former Yugoslavia and for Rwanda were the result of consensus that impunity is unacceptable. However, because they were established to try crimes committed only within a specific time-frame and during a specific conflict, there was general agreement that an independent, permanent criminal court was needed. 
+
+On 17 July 1998, the international community reached an historic milestone when 120 States adopted the Rome Statute, the legal basis for establishing the permanent International Criminal Court.
+The Rome Statute entered into force on 1 July 2002 after ratification by 60 countries.
 contact info
--email:
--phone number:
--location:
-images:
-videos:
+-email: visits@icc-cpi.int
+-phone number: + 31 (0)70 515 8515
+-location: 
+	   Po Box 19519
+           2500 CM, The Hague
+     	   The Netherlands
+images: http://archive2.globalsolutions.org/files/general/icc.jpg, http://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/International_Criminal_Court_logo.svg/673px-International_Criminal_Court_logo.svg.png
+videos: http://youtu.be/zfo7lMnR4O8
 social networks:
-external links:
-related crises:
-related people:
+http://www.facebook.com/pages/International-Criminal-Court/106219979409522, http://twitter.com/#!/IntlCrimCourt
+external links: http://www.icc-cpi.int/
+related crises: Libyan Civil War
+related people: none

@@ -1,8 +1,8 @@
-Syrian Uprising, United Nations, Bashar al-Assad
-researcher: Daniel Moreno
+Iranian Green Movement, Mir Hossein Mousavi, ICFHRIN
+researcher: Sophie
 
 Person
-name: Bashar al-Assad
+name: Mir Hossein Mousavi
 kind:
 location:
 images:
