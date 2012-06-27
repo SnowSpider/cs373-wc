@@ -18,15 +18,15 @@ kind: violent internal conflict in Syria
 location: Syria
 date and time: 2011–present
 human impact: 10,537-10,770 killed overall (government claim)*, 15,200\-16,360 killed overall (opposition claims)*, 35,000 wounded overall, 240,000 displaced (180,000 refugees)
-economic impact:
-resources needed:
-ways to help:
-images:
-videos:
-social networks:
-external links:
-related orgs:
-related people:
+economic impact: fuel shortages, currency problems & sanctions
+resources needed: recouses for refugees, human rights
+ways to help: http://www.wikihow.com/Help-the-Syrian-Revolution-from-Where-You-Are
+images: http://www.google.com/imgres?hl=en&sa=X&biw=1680&bih=941&tbm=isch&prmd=imvnsu&tbnid=6No5lmE413pmDM:&imgrefurl=http://www.supplychaindigital.com/global_logistics/syrian-uprising-deals-ocean-shipping-a-major-blow&docid=JIY78reYqD8B0M&imgurl=http://www.supplychaindigital.com/global_logistics/Syrian%252520Uprising%252520Protests.jpg&w=610&h=335&ei=llvrT9baCMqW2QXm-52wAQ&zoom=1&iact=hc&vpx=391&vpy=165&dur=163&hovh=166&hovw=303&tx=156&ty=87&sig=105712859579245472816&page=1&tbnh=103&tbnw=188&start=0&ndsp=35&ved=1t:429,r:1,s:0,i:79
+videos: http://www.aljazeera.com/news/middleeast/2012/06/2012627132722216959.html
+social networks: http://www.facebook.com/syrianuprising
+external links: http://www.focus-fen.net/index.php?id=n281597
+related orgs: Amnesty International
+related people: Bashar al-Assad
 
 Organization
 name: Amnesty International
@@ -37,9 +37,12 @@ contact info
 -email: Various department emails available at www.amnesty.org.
 -phone number: +44-20-74135500
 -location: The International Secretariat is responsible for the majority of the organization's research and leads our campaigning work, based in London, UK.
+1 Easton Street
+London
+WC1X 0DW, UK
 images: http://www.codoc.org/wp-content/uploads/2012/04/amnesty.jpeg , 
 videos: http://www.youtube.com/user/AmnestyInternational
 social networks: Twitter account: @Amnestyonline , http://www.youtube.com/user/AmnestyInternational
 external links: www.amnesty.org, http://www.amnesty.org/en/news/iran-must-avoid-excessive-force-against-green-movement-protests-2012-02-13
 related crises: Syrian uprising, Xinjiang Riots, Lybia Civil War(Amnesty International report brands Libya's militias 'out of control), coverage on green movement
-related people:
+related people: Rebiya Kadeer, Mustafa Abdul Jailil, Bashar al-Assad, Mir Hossein Mousavi
