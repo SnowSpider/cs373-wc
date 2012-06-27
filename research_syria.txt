@@ -1,8 +1,8 @@
-Iranian Green Movement, Mir Hossein Mousavi, ICFHRIN
-researcher: Sophie
+Syrian Uprising, United Nations, Bashar al-Assad
+researcher: Daniel
 
 Person
-name: Mir Hossein Mousavi
+name: Bashar al-Assad
 kind:
 location:
 images:
