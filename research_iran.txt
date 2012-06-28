@@ -15,7 +15,7 @@ related crises: International Campaign for Human Rights in Iran
 related orgs: The Human Rights of Iran Campaign 
 
 Crisis
-name: Iranian Green Movement    
+name: Iranian Green Movement
 kind: Uprising
 location: Iran 
 date and time: May 2009

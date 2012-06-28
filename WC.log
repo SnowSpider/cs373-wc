@@ -1,0 +1,208 @@
+commit 72ab80e85250e7935ce60989d7e0b0f68cb709ef
+Author: lordtony <LordTony@LordTony-PC.(none)>
+Date:   Thu Jun 28 12:50:12 2012 -0500
+
+    added links to nowhere.
+
+commit 313c19f56231e6a794ad737d347206cf1d39b8a0
+Merge: ec64e47 4e79d33
+Author: lordtony <LordTony@LordTony-PC.(none)>
+Date:   Thu Jun 28 11:38:30 2012 -0500
+
+    Merge branch 'master' of https://github.com/SnowSpider/cs373-wc
+
+commit ec64e47d644a5907882d6dbd0701269a68f6b573
+Author: lordtony <LordTony@LordTony-PC.(none)>
+Date:   Thu Jun 28 11:38:19 2012 -0500
+
+    made a handful of changes to the structure without changing the look.
+
+commit 4e79d338230a5abe3337613310c2fc2a9f5be804
+Author: sogol <sogol@utexas.edu>
+Date:   Wed Jun 27 22:19:45 2012 -0500
+
+    added iran's research
+
+commit 0523f1919a461c2c37eb04ba40286cf35a33574d
+Merge: 969ad6a b3bb516
+Author: wlee <tree03@paran.com>
+Date:   Wed Jun 27 16:03:49 2012 -0500
+
+    Merge branch 'master' of https://github.com/SnowSpider/cs373-wc
+    
+    merge conflict fixed
+
+commit 969ad6a608dc2191145df3da7617bce42e48d946
+Author: wlee <tree03@paran.com>
+Date:   Wed Jun 27 16:03:25 2012 -0500
+
+    history added to person_type and crisis_type
+
+commit b3bb5166456ef85a5b0772991dccf6423ebb08f0
+Merge: 39fffac ea9780c
+Author: Diane Lee <leed@utexas.edu>
+Date:   Wed Jun 27 16:01:49 2012 -0500
+
+    Resolved merge conflicts w Tony
+
+commit 39fffac004eb182e7e022bd6ab4d5afb5264aa67
+Author: Diane Lee <leed@utexas.edu>
+Date:   Wed Jun 27 15:56:35 2012 -0500
+
+    Added image files to be tracked for merge
+
+commit 5fa2224868ac4fa61f571dba085faa619f360546
+Author: Diane Lee <leed@utexas.edu>
+Date:   Wed Jun 27 15:54:12 2012 -0500
+
+    Moved images.html to /content
+
+commit ea9780c13953e0fedb7764fde22b523dc0d3796a
+Merge: e052020 bb852cd
+Author: lordtony <LordTony@LordTony-PC.(none)>
+Date:   Wed Jun 27 15:53:59 2012 -0500
+
+    Merge branch 'master' of https://github.com/SnowSpider/cs373-wc
+
+commit e05202055740c47ee55f78bb2a9f5f51f1ffeddf
+Author: lordtony <LordTony@LordTony-PC.(none)>
+Date:   Wed Jun 27 15:53:23 2012 -0500
+
+    breaking everything.
+
+commit 150e37cb766feec726a288e3bcfa7f7c93509f75
+Author: Diane Lee <leed@utexas.edu>
+Date:   Wed Jun 27 15:50:54 2012 -0500
+
+    WC1.py now displays static page
+
+commit c3a0207817998350cff5fc4e494509da0c960237
+Author: lordtony <LordTony@LordTony-PC.(none)>
+Date:   Wed Jun 27 15:02:36 2012 -0500
+
+    fixed IE error.
+
+commit bb852cd1e4bb2c0fb7bb6ee494de56454d459b65
+Merge: fb7dad1 d8e59f7
+Author: Diane Lee <leed@utexas.edu>
+Date:   Wed Jun 27 14:57:14 2012 -0500
+
+    Merge branch 'master' of https://github.com/SnowSpider/cs373-wc
+
+commit fb7dad1595df46258f732c5e5a7059fb68808d6e
+Author: Diane Lee <leed@utexas.edu>
+Date:   Wed Jun 27 14:56:54 2012 -0500
+
+    Added google app skeleton
+
+commit d8e59f7801e7ad8aa3cac73da0ed30a73f378b82
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Wed Jun 27 14:31:42 2012 -0500
+
+    Update Done
+
+commit b63aabf1e43a0ae0237f5033ae4575085933f66c
+Merge: 3df87f0 4e22195
+Author: wlee <tree03@paran.com>
+Date:   Wed Jun 27 13:50:23 2012 -0500
+
+    Merge branch 'master' of https://github.com/SnowSpider/cs373-wc
+    
+    merge confilct!!
+
+commit 3df87f072b3802172163f4992fed772d5cba9258
+Author: wlee <tree03@paran.com>
+Date:   Wed Jun 27 13:49:45 2012 -0500
+
+    xinjiang updated
+
+commit 4e22195ede2e8f7ef0b0e9e9248be3488b427b3f
+Author: lordtony <LordTony@LordTony-PC.(none)>
+Date:   Wed Jun 27 13:27:09 2012 -0500
+
+    removed the borders because it looks better in firefox.
+
+commit 6e5b11f696ad606ac5ce13a4607195eccb16ef59
+Author: lordtony <LordTony@LordTony-PC.(none)>
+Date:   Wed Jun 27 13:23:19 2012 -0500
+
+    reworked the max sizing stuff on the html mockup.
+
+commit 84fc954a0c7e239ec2424091b728bf74048f1780
+Merge: 1c51734 a40b22d
+Author: lordtony <LordTony@LordTony-PC.(none)>
+Date:   Wed Jun 27 13:22:28 2012 -0500
+
+    Merge branch 'master' of https://github.com/SnowSpider/cs373-wc
+
+commit a40b22d81d28095f7295f0f7bf29f0f1508ed6aa
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Wed Jun 27 08:27:41 2012 -0500
+
+    Partial Update3
+
+commit 1c51734eca5d4c38314033dba3bcf60c003d65bf
+Author: lordtony <LordTony@LordTony-PC.(none)>
+Date:   Wed Jun 27 04:47:03 2012 -0500
+
+    lots of strange html skeleton.
+
+commit 0bd51dc58428f671c7c45f86d7f67ea88e66a852
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Wed Jun 27 02:38:15 2012 -0500
+
+    Partial Update2
+
+commit 2564067bb0d88de2234c09fcebaa0611d8c6e81a
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Wed Jun 27 02:37:11 2012 -0500
+
+    Partial Update
+
+commit 8ba5d020f3ce9671a9c24caa458a036349d3248d
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Wed Jun 27 01:08:15 2012 -0500
+
+    Iran and Syria were switched in the files*
+
+commit f8528a80f782885fd87d472225923ec6dea9de05
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Wed Jun 27 01:04:24 2012 -0500
+
+    Update master
+
+commit 21a917fd62e0e21e333d13c03473ecd3a3b3b6d7
+Author: Diane Lee <yingxuan08@yahoo.com>
+Date:   Tue Jun 26 22:38:42 2012 -0500
+
+    Filled out research_libya.txt
+
+commit 06da3530480a3487005403ed62e1aabc33b90b20
+Author: Diane Lee <leed@utexas.edu>
+Date:   Tue Jun 26 16:25:33 2012 -0500
+
+    Added research templates
+
+commit 35d06377af0329706170cddac36d425667ecef86
+Author: Diane Lee <leed@utexas.edu>
+Date:   Tue Jun 26 16:15:46 2012 -0500
+
+    Added template for research research_template.txt
+
+commit f948ee81b8864e8e501bbba27b9a3efcec5b249c
+Author: wlee <tree03@paran.com>
+Date:   Tue Jun 26 15:14:33 2012 -0500
+
+    xml schema and instance validated
+
+commit 8b4817957ef5d3ec7c8d1e52a3b273f5b47a77e6
+Author: wlee <tree03@paran.com>
+Date:   Mon Jun 25 12:04:23 2012 -0500
+
+    first commit
+
+commit 74781f338040d5d9f761b14f5e5ed46043836546
+Author: SnowSpider <SnowSpider221@gmail.com>
+Date:   Mon Jun 25 09:41:41 2012 -0700
+
+    Initial commit

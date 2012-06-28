@@ -28,7 +28,8 @@ history:
 images:
 http://www.socialistparty.net/images/stories/libyan%20revolt.jpg,
 http://fifp.files.wordpress.com/2011/04/2011_middle_east_revolutions_-_libyans_protesting_on_tank.jpg,
-http://www.flixya.com/files-photo/r/i/m/rimawi-1965850.jpg, http://nimg.sulekha.com/others/original700/libya-2011-2-26-12-20-0.jpg
+http://www.flixya.com/files-photo/r/i/m/rimawi-1965850.jpg, 
+http://nimg.sulekha.com/others/original700/libya-2011-2-26-12-20-0.jpg
 videos: http://youtu.be/8OzwkCGJlAI
 social networks: http://www.facebook.com/Liibyan.Revolution,
 http://www.facebook.com/Libyan4Life, 
