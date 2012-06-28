@@ -5,6 +5,7 @@ Person
 name: Bashar al-Assad
 kind: Current President of Syria
 location: Damascus, Syria
+history:
 images: http://upload.wikimedia.org/wikipedia/commons/7/7d/Bashar_al-Assad_%28cropped%29.jpg
 videos:http://media.smh.com.au/selections/syria-cabinet-sworn-in-amid-violence-3407301.html , http://www.guardian.co.uk/world/video/2012/jun/03/syria-assad-denies-responsibility-houla-massacre-video/
 social networks: only official thing found was website: http://sana.sy/eng/article/5.htm
@@ -21,6 +22,7 @@ human impact: 10,537-10,770 killed overall (government claim)*, 15,200\-16,360 k
 economic impact: fuel shortages, currency problems & sanctions
 resources needed: recouses for refugees, human rights
 ways to help: http://www.wikihow.com/Help-the-Syrian-Revolution-from-Where-You-Are
+history:
 images: http://www.google.com/imgres?hl=en&sa=X&biw=1680&bih=941&tbm=isch&prmd=imvnsu&tbnid=6No5lmE413pmDM:&imgrefurl=http://www.supplychaindigital.com/global_logistics/syrian-uprising-deals-ocean-shipping-a-major-blow&docid=JIY78reYqD8B0M&imgurl=http://www.supplychaindigital.com/global_logistics/Syrian%252520Uprising%252520Protests.jpg&w=610&h=335&ei=llvrT9baCMqW2QXm-52wAQ&zoom=1&iact=hc&vpx=391&vpy=165&dur=163&hovh=166&hovw=303&tx=156&ty=87&sig=105712859579245472816&page=1&tbnh=103&tbnw=188&start=0&ndsp=35&ved=1t:429,r:1,s:0,i:79
 videos: http://www.aljazeera.com/news/middleeast/2012/06/2012627132722216959.html
 social networks: http://www.facebook.com/syrianuprising

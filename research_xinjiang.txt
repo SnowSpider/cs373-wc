@@ -8,6 +8,8 @@ kind:
     human rights activist, president of WUC
 location: 
     Virginia, USA
+history:
+    
 images: 
     http://upload.wikimedia.org/wikipedia/commons/1/15/Rebiya_Kadeer_(2).jpg
 videos: 
@@ -42,6 +44,8 @@ resources needed:
     ammunition
 ways to help: 
     supply the locals with weapons?
+history:
+    
 images: 
     http://www.farwestchina.com/wp-content/uploads/2011/07/Urumqi-Riots.jpg
     http://english.people.com.cn/mediafile/200907/07/P200907072014041872629287.jpg

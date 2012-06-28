@@ -74,6 +74,7 @@ elementFormDefault="qualified">
         <xs:element name="name" type="xs:string"/>
         <xs:element ref="kind" minOccurs="0"/>
         <xs:element ref="location" minOccurs="0"/>
+        <xs:element ref="history" minOccurs="0"/>
         <xs:element ref="image" minOccurs="0" maxOccurs="unbounded"/>
         <xs:element ref="video" minOccurs="0" maxOccurs="unbounded"/>
         <xs:element ref="social_networks" minOccurs="0"/>
@@ -93,6 +94,7 @@ elementFormDefault="qualified">
         <xs:element ref="economic_impact" minOccurs="0"/>
         <xs:element ref="resources_needed" minOccurs="0"/>
         <xs:element ref="ways_to_help" minOccurs="0"/>
+        <xs:element ref="history" minOccurs="0"/>
         <xs:element ref="image" minOccurs="0" maxOccurs="unbounded"/>
         <xs:element ref="video" minOccurs="0" maxOccurs="unbounded"/>
         <xs:element ref="social_networks" minOccurs="0"/>
