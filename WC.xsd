@@ -69,8 +69,6 @@ elementFormDefault="qualified">
     </xs:complexType>
 </xs:element>
 
-
-
 <xs:complexType name="person_type">
     <xs:sequence>
         <xs:element name="name" type="xs:string"/>
