@@ -72,8 +72,7 @@ def ImportXml(filename):
   people = root.find("people").findall("person")
   logging.debug(people)
   for person in people :
-    person_model = Person()
-    person_model.name = person.find("name")
+    person_model = Person(name=person.find("name").text)
 
 def main():
   
