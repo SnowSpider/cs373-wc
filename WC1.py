@@ -19,8 +19,8 @@ class Person(db.Model):
     videos = db.ListProperty(db.Link)
     social_networks = db.ListProperty(db.Link)
     external_links = db.ListProperty(db.Link)
-    related_crises = db.ListProperty(db.Key) # Crisis
-    related_orgs = db.ListProperty(db.Key) # Organization
+    related_crises = db.StringListProperty() # Crisis
+    related_orgs = db.StringListProperty() # Organization
     
 class Organization(db.Model):
     name = db.StringProperty(required=True)
@@ -32,8 +32,8 @@ class Organization(db.Model):
     videos = db.ListProperty(db.Link)
     social_networks = db.ListProperty(db.Link)
     external_links = db.ListProperty(db.Link)
-    related_crises = db.ListProperty(db.Key) # Crisis
-    related_people = db.ListProperty(db.Key) # Person
+    related_crises = db.StringListProperty() # Crisis
+    related_people = db.StringListProperty() # Person
     
 class Crisis(db.Model):
     name = db.StringProperty(required=True)
@@ -49,8 +49,8 @@ class Crisis(db.Model):
     videos = db.ListProperty(db.Link)
     social_networks = db.ListProperty(db.Link)
     external_links = db.ListProperty(db.Link)
-    related_orgs = db.ListProperty(db.Key) # Organization
-    related_people = db.ListProperty(db.Key) # Person
+    related_orgs = db.StringListProperty() # Organization
+    related_people = db.StringListProperty() # Person
 
 class MainHandler(webapp.RequestHandler):
   def get(self):
@@ -59,12 +59,14 @@ class MainHandler(webapp.RequestHandler):
     inFile = open("htmlgoodies/mockup.html", 'r')
     outstr = inFile.read() #"HELLO CAR RAMROD"
     inFile.close()
-    ImportXml("WC.xml")
+    imported = []
+    ImportXml("WC.xml", imported)
+    debug(imported)
     self.response.out.write(outstr)
 
 
 #Assumes valid xml instance
-def ImportXml(filename):
+def ImportXml(filename, imported):
   tree = ET.parse(filename)
   root = tree.getroot()
   debug(root)
@@ -73,10 +75,13 @@ def ImportXml(filename):
   debug(people)
   for person in people :
     person_model = Person(name=person.find("name").text)
+    debug(person_model)
+    debug(person_model.name)
     
     kind_ = person.find("kind")
     if kind_ is not None:
         person_model.kind_ = kind_.text
+        debug(person_model.kind_)
         
     location = person.find("location")
     if location is not None:
@@ -88,22 +93,31 @@ def ImportXml(filename):
         
     images = person.find("images")
     if images is not None:
-        images = map(lambda e: e.text, images.findall("image")) # we should make images required (in both xml and model) to avoid ambiguity. For now this code assumes that images is required.
+        person_model.images = map(lambda e: db.Link(e.text), images.findall("image"))
     
     videos = person.find("videos")
     if videos is not None:
-        videos = map(lambda e: e.text, videos.find("videos").findall("link"))
+        person_model.videos = map(lambda e: db.Link(e.text), videos.findall("link"))
     
     social_networks = person.find("social_networks")
     if social_networks is not None:
-        social_networks = map(lambda e: e.text, social_networks.find("social_networks").findall("link"))
+        person_model.social_networks = map(lambda e: db.Link(e.text), social_networks.findall("link"))
     
     external_links = person.find("external_links")
     if external_links is not None:
-    external_links = map(lambda e: e.text, social_networks.find("external_links").findall("link"))
+      person_model.external_links = map(lambda e: db.Link(e.text), external_links.findall("link"))  
+      debug(list(person_model.external_links))
+
+    related_crises = person.find("related_crises")
+    if related_crises is not None:
+        person_model.related_crises = map(lambda e: e.text, related_crises.findall("crisisRef"))
     
-    related_crises = 
-    related_orgs = 
+    related_orgs = person.find("related_orgs")
+    if related_orgs is not None:
+        person_model.related_orgs = map(lambda e: e.text, related_orgs.findall("orgRef"))
+
+    imported.append(person_model)
+    
     
     
 def debug(msg):
