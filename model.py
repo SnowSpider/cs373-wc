@@ -1,8 +1,9 @@
 from google.appengine.ext import db
-from google.appengine.ext.db import polymodel
-
+# from google.appengine.api import users
+# from google.appengine.ext.db import polymodel
+    
 class ContactInfo(db.Model):
-    phone_number = PhoneNumberProperty
+    phone_number = PhoneNumberProperty()
     email = EmailProperty()
     address = PostalAddressProperty()
 
@@ -15,8 +16,8 @@ class Person(db.Model):
     videos = db.ListProperty(db.Link)
     social_networks = db.ListProperty(db.Link)
     external_links = db.ListProperty(db.Link)
-    related_crises = db.ListProperty(str)
-    related_orgs = db.ListProperty(str)
+    related_crises = db.ListProperty(db.Key) # Crisis
+    related_orgs = db.ListProperty(db.Key) # Organization
     
 class Organization(db.Model):
     name = db.StringProperty(required=True)
@@ -28,14 +29,14 @@ class Organization(db.Model):
     videos = db.ListProperty(db.Link)
     social_networks = db.ListProperty(db.Link)
     external_links = db.ListProperty(db.Link)
-    related_crises = db.ListProperty(str)
-    related_people = db.ListProperty(str)
+    related_crises = db.ListProperty(db.Key) # Crisis
+    related_people = db.ListProperty(db.Key) # Person
     
 class Crisis(db.Model):
     name = db.StringProperty(required=True)
     kind = db.StringProperty()
     location = db.StringProperty()
-    date_and_time = db.StringProperty()
+    date_and_time = db.StringProperty() # db.DateProperty()
     human_impact = db.StringProperty()
     economic_impact = db.StringProperty()
     resources_needed = db.StringProperty()
@@ -45,8 +46,8 @@ class Crisis(db.Model):
     videos = db.ListProperty(db.Link)
     social_networks = db.ListProperty(db.Link)
     external_links = db.ListProperty(db.Link)
-    related_orgs = db.ListProperty(str)
-    related_people = db.ListProperty(str)
+    related_orgs = db.ListProperty(db.Key) # Organization
+    related_people = db.ListProperty(db.Key) # Person
 
 class Everything(db.Model):
     people = db.ListProperty(Person)
