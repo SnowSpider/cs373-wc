@@ -120,13 +120,13 @@ Police and the Basij (a paramilitary group) suppressed both peaceful demonstrati
                 <link>http://upload.wikimedia.org/wikipedia/commons/thumb/6/66/6th_Day_-_Mousavi_inside_the_Crowd.jpg/800px-6th_Day_-_Mousavi_inside_the_Crowd.jpg</link>
             </images>
             <videos>
-                <link>http://www.youtube.com/watch?v=quPXg_GoTOk&amp;feature=related</link>
+                <!-- <link>http://www.youtube.com/watch?v=quPXg_GoTOk&amp;feature=related</link> -->
             </videos>
             <social_networks>
                 <link>http://www.facebook.com/Persian.Green.Movement</link>
             </social_networks>
             <external_links>
-                <link>en.irangreenvoice.com/</link>
+                <link>http://en.irangreenvoice.com/</link>
             </external_links>
             <related_orgs>
                 <orgRef>International_Campaign_for_Human_Rights_in_Iran </orgRef>
@@ -334,7 +334,7 @@ WC1X 0DW, UK</location>
                 <link>http://twitter.com/#!/amnesty</link>
             </social_networks>
             <external_links>
-                <link>www.amnesty.org</link>
+                <link>http://www.amnesty.org</link>
                 <link>http://www.amnesty.org/en/news/iran-must-avoid-excessive-force-against-green-movement-protests-2012-02-13</link>
             </external_links>
             <related_crises>
