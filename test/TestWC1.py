@@ -35,5 +35,5 @@ class TestPFD (unittest.TestCase) :
     
     def test_ImportXml_1 (self) :
         imported = []
-        a = ImportXml("Test1.xml", imported)
+        a = ImportXml("test/Test1.xml", imported)
         self.assert_(imported == [])
