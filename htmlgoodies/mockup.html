@@ -8,7 +8,10 @@ html, body { height: 100%; }
 
 td.unsquishable { min-width: 150px; }
 
-table.unsquishable { min-width: 900px; }
+table.unsquishable 
+{ 
+min-width: 900px;
+}
 
 li.big 
 {
@@ -61,9 +64,15 @@ text-decoration:none;
 text-transform:uppercase;
 }
 
-a
+a:link,a
 {
 text-decoration:none;
+color: #FFFFFF;
+}
+
+a:hover
+{
+	text-decoration:underline;
 }
 
 a.topmenu:hover,a.topmenu:active { background-color:#7A991A; }
@@ -112,8 +121,8 @@ a.topmenu:hover,a.topmenu:active { background-color:#7A991A; }
 			<ul class="topmenu">
 				<li class="topmenu"><a class="topmenu" target="center_frame" href="content/home_content.html">Home</a></li>
 				<li class="topmenu"><a class="topmenu" href="#">Import</a></li>
-				<li class="topmenu"><a class="topmenu" href="#">Explore</a></li>
-				<li class="topmenu"><a class="topmenu" href="#">Search</a></li>
+				<li class="topmenu"><a class="topmenu" href="#">Export</a></li>
+				<li class="topmenu"><a class="topmenu" href="#">Test</a></li>
 				<li class="searchbar"> 
 				<input type="hidden" name="dff_view" value="grid">
 				<input type="submit" value="Find"> <input type="text" size="30" maxlength="50"></li>
@@ -122,23 +131,23 @@ a.topmenu:hover,a.topmenu:active { background-color:#7A991A; }
 	</tr>
 	<tr>
 		<td width="20%" height="650" valign="top" style="min-height: 650px;">
-			<div style="overflow-y:scroll; overflow-x:hidden; height: 650px; max-height:650px; min-height: 650px;">
+			<div style="overflow-y:scroll; overflow-x:hidden; height: 650px; max-height:650px; min-height: 650px; background-color:#004040;">
 				<ul>
-					<li><a href="#" onclick="toggleItem('PeopleList')"><b>People:</b></a></li>
+					<li><a href="#" onclick="toggleItem('PeopleList')"><font size="5"><b>People:</b></font></a></li>
 						<ul id="PeopleList">
 							<li><a target="center_frame" href="content/mir_hossein_mousavi.html">Mir Hossein Mousavi</a></li>
 							<li><a target="center_frame" href="content/mustafa_Abdul_jalil.html">Mustafa Abdul Jalil</a></li>
 							<li><a target="center_frame" href="content/bashar_al_assad.html">Bashar al-Assad</a></li>
 							<li><a target="center_frame" href="content/rebiya_kadeer.html">Rebiya Kadeer</a></li>
 						</ul>
-					<li><a href="#" onclick="toggleItem('CrisisList')"><b>Crises:</b></a></li>
+					<li><a href="#" onclick="toggleItem('CrisisList')"><font size="5"><b>Crises:</b></font></a></li>
 						<ul id="CrisisList">
 							<li><a target="center_frame" href="content/libyan_civil_war.html">Libyan Civil War</a></li>
 							<li><a target="center_frame" href="content/iranian_green_movement.html">Iranian Green Movement</a></li>
 							<li><a target="center_frame" href="content/xinjiang_riots.html">Xinjiang Riots</a></li>
 							<li><a target="center_frame" href="content/syrian_uprising.html">Syrian Uprising</a></li>
 						</ul>
-					<li><a href="#" onclick="toggleItem('OrganizationList')"><b>Organizations:</b></a></li>
+					<li><a href="#" onclick="toggleItem('OrganizationList')"><font size="5"><b>Organizations:</b></font></a></li>
 						<ul id="OrganizationList">
 							<li><a target="center_frame" href="content/international_campaign_for_human_rights.html">International Campaign for Human Rights in Iran</a></li>
 							<li><a target="center_frame" href="content/international_criminal_court.html">International Criminal Court</a></li>
