@@ -6,13 +6,13 @@ from google.appengine.ext import db
 from google.appengine.ext.db import polymodel
 
 class ContactInfo(db.Model):
-    phone_number = PhoneNumberProperty
-    email = EmailProperty()
-    address = PostalAddressProperty()
+    phone_number = db.PhoneNumberProperty()
+    email = db.EmailProperty()
+    address = db.PostalAddressProperty()
 
 class Person(db.Model):
     name = db.StringProperty(required=True)
-    kind = db.StringProperty()
+    kind_ = db.StringProperty()
     location = db.StringProperty()
     history = db.StringProperty()
     images = db.ListProperty(db.Link)
@@ -24,7 +24,7 @@ class Person(db.Model):
     
 class Organization(db.Model):
     name = db.StringProperty(required=True)
-    kind = db.StringProperty()
+    kind_ = db.StringProperty()
     location = db.StringProperty()
     history = db.StringProperty()
     contact_info = ContactInfo()
@@ -37,7 +37,7 @@ class Organization(db.Model):
     
 class Crisis(db.Model):
     name = db.StringProperty(required=True)
-    kind = db.StringProperty()
+    kind_ = db.StringProperty()
     location = db.StringProperty()
     date_and_time = db.StringProperty()
     human_impact = db.StringProperty()
@@ -51,11 +51,6 @@ class Crisis(db.Model):
     external_links = db.ListProperty(db.Link)
     related_orgs = db.ListProperty(str)
     related_people = db.ListProperty(str)
-
-class Everything(db.Model):
-    people = db.ListProperty(Person)
-    crises = db.ListProperty(Crisis)
-    organizations = db.ListProperty(Organization)
 
 class MainHandler(webapp.RequestHandler):
   def get(self):
