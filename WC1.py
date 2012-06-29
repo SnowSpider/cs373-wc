@@ -67,14 +67,16 @@ class MainHandler(webapp.RequestHandler):
 def ImportXml(filename):
   tree = ET.parse(filename)
   root = tree.getroot()
-  logging.debug(root)
-  logging.debug("HIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
+  debug(root)
+  debug("HIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
   people = root.find("people").findall("person")
-  logging.debug(people)
+  debug(people)
   for person in people :
     person_model = Person(name=person.find("name").text)
 
+def debug(msg):
+    logging.debug("\n\n" + str(msg) + "\n")
+
 def main():
-  
   application = webapp.WSGIApplication([('/', MainHandler)], debug=True)
   wsgiref.handlers.CGIHandler().run(application)
