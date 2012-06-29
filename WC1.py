@@ -8,7 +8,7 @@ from google.appengine.ext.db import polymodel
 class ContactInfo(db.Model):
     phone_number = db.StringProperty()
     email = db.EmailProperty()
-    address = db.StringProperty()
+    address = db.TextProperty()
 
 class Person(db.Model):
     name = db.StringProperty(required=True)
