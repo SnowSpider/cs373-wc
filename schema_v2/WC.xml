@@ -1,6 +1,6 @@
 <everything>
     <people>
-        <person id = "Mir_Hossein_Mousavi">
+        <person>
             <name>Mir Hossein Mousavi</name>
             <kind>Presidential Candidate of 2009 Iran's Elections</kind>
             <location>Tehran, Iran</location>
@@ -19,13 +19,13 @@
                 <link>http://news.bbc.co.uk/2/hi/middle_east/8103851.stm</link>
             </external_links>
             <related_crises>
-                <crisisRef>Iranian_Green_Movement</crisisRef>
+                <name>Iranian Green Movement</name>
             </related_crises>
             <related_orgs>
-                <orgRef>International_Campaign_for_Human_Rights_in_Iran</orgRef>
+                <name>International Campaign for Human Rights in Iran</name>
             </related_orgs>
         </person>
-        <person id = "Mustafa_Abdul_Jalil">
+        <person>
             <name>Mustafa Abdul Jalil</name>
             <kind>Chairman of the National Transitional Council of Libya</kind>
             <location>Libya</location>
@@ -45,11 +45,11 @@
                 <link>http://www.bbc.co.uk/news/world-africa-14613679</link>
             </external_links>
             <related_crises>
-                <crisisRef>Libyan_Civil_War</crisisRef>
+                <name>Libyan Civil War</name>
             </related_crises>
             <related_orgs></related_orgs>
         </person>
-        <person id = "Bashar_al-Assad">
+        <person>
             <name>Bashar al-Assad</name>
             <kind>Current President of Syria</kind>
             <location>Damascus, Syria</location>
@@ -68,13 +68,13 @@
                 <link>http://sana.sy/eng/article/5.htm</link>
             </external_links>
             <related_crises>
-                <crisisRef>Syrian_Uprising</crisisRef>
+                <name>Syria Uprising</name>
             </related_crises>
             <related_orgs>
-                <orgRef>Amnesty_International</orgRef>
+                <name>Amnesty International</name>
             </related_orgs>
         </person>
-        <person id = "Rebiya_Kadeer">
+        <person>
             <name>Rebiya Kadeer</name>
             <kind>human rights activist, president of WUC</kind>
             <location>Virginia, USA</location>
@@ -96,15 +96,15 @@
                 <link>http://news.bbc.co.uk/2/hi/asia-pacific/4357607.stm</link>
             </external_links>
             <related_crises>
-                <crisisRef>Xinjiang_Riots</crisisRef>
+                <name>Xinjiang riots</name>
             </related_crises>
             <related_orgs>
-                <orgRef>World_Uyghur_Congress</orgRef>
+                <name>World Uyghur Congress</name>
             </related_orgs>
         </person>
     </people>
     <crises>
-        <crisis id = "Iranian_Green_Movement">
+        <crisis>
             <name>Iranian Green Movement</name>
             <kind>Uprising</kind>
             <location>Iran</location>
@@ -129,13 +129,13 @@ Police and the Basij (a paramilitary group) suppressed both peaceful demonstrati
                 <link>en.irangreenvoice.com/</link>
             </external_links>
             <related_orgs>
-                <orgRef>International_Campaign_for_Human_Rights_in_Iran </orgRef>
+                <name>International Campaign for Human Rights in Iran </name>
             </related_orgs>
             <related_people>
-                <personRef>Mir_Hossein_Mousavi</personRef>
+                <name>Mir Hossein Mousavi</name>
             </related_people>
         </crisis>
-        <crisis id = "Libyan_Civil_War">
+        <crisis>
             <name>Libyan Civil War</name>
             <kind>Civil War</kind>
             <location>Libya</location>
@@ -162,13 +162,13 @@ Police and the Basij (a paramilitary group) suppressed both peaceful demonstrati
                 <link>http://www.ntc.gov.ly/</link>
             </external_links>
             <related_orgs>
-                <orgRef>International_Criminal_Court</orgRef>
+                <name>International Criminal Court</name>
             </related_orgs>
             <related_people>
-                <personRef>Mustafa_Abdul_Jalil</personRef>
+                <name>Mustafa Abdul Jalil</name>
             </related_people>
         </crisis>
-        <crisis id = "Syrian_Uprising">
+        <crisis>
             <name>Syrian Uprising</name>
             <kind>violent internal conflict in Syria</kind>
             <location>Syria</location>
@@ -191,14 +191,14 @@ Police and the Basij (a paramilitary group) suppressed both peaceful demonstrati
                 <link>http://www.focus-fen.net/index.php?id=n281597</link>
             </external_links>
             <related_orgs>
-                <orgRef>Amnesty_International</orgRef>
+                <name>Amnesty International</name>
             </related_orgs>
             <related_people>
-                <personRef>Bashar_al-Assad</personRef>
+                <name>Bashar al-Assad</name>
             </related_people>
         </crisis>
-        <crisis id = "Xinjiang_Riots">
-            <name>Xinjiang Riots</name>
+        <crisis>
+            <name>Xinjiang riots</name>
             <kind>anti-government/ethnic protest</kind>
             <location>Urumqi, Xinjiang Uyghur Autonomous Region, China</location>
             <date_and_time>5 July 2009</date_and_time>
@@ -236,15 +236,15 @@ Police and the Basij (a paramilitary group) suppressed both peaceful demonstrati
                 <link>http://www.telegraph.co.uk/news/worldnews/asia/china/5756766/China-riots-Twitter-and-YouTube-frustrate-censorship-attempts.html</link>
             </external_links>
             <related_orgs>
-                <orgRef>World_Uyghur_Congress</orgRef>
+                <name>World Uyghur Congress</name>
             </related_orgs>
             <related_people>
-                <personRef>Rebiya_Kadeer</personRef>
+                <name>Rebiya Kadeer</name>
             </related_people>
         </crisis>
     </crises>
     <orgs>
-        <org id = "International_Campaign_for_Human_Rights_in_Iran">
+        <org>
             <name>International Campaign for Human Rights in Iran</name>
             <kind>Campaign</kind>
             <location>Netherlands</location>
@@ -267,13 +267,13 @@ Police and the Basij (a paramilitary group) suppressed both peaceful demonstrati
                 <link>http://www.iranhumanrights.org/</link>
             </external_links>
             <related_crises>
-                <crisisRef>Iranian_Green_Movement</crisisRef>
+                <name>Iranian Green Movement</name>
             </related_crises>
             <related_people>
-                <personRef>Mir_Hossein_Mousavi</personRef>
+                <name>Mir Hossein Mousavi</name>
             </related_people>
         </org>
-        <org id = "International_Criminal_Court">
+        <org>
             <name>International Criminal Court</name>
             <kind>International Tribunal</kind>
             <location>Hague, Netherlands</location>
@@ -307,11 +307,11 @@ The Rome Statute entered into force on 1 July 2002 after ratification by 60 coun
                 <link>http://www.icc-cpi.int/</link>
             </external_links>
             <related_crises>
-                <crisisRef>Libyan_Civil_War</crisisRef>
+                <name>Libyan Civil War</name>
             </related_crises>
             <related_people></related_people>
         </org>
-        <org id = "Amnesty_International">
+        <org>
             <name>Amnesty International</name>
             <kind>non-governmental organisation focused on human rights</kind>
             <location>Global, General secretariat in London</location>
@@ -338,18 +338,18 @@ WC1X 0DW, UK</location>
                 <link>http://www.amnesty.org/en/news/iran-must-avoid-excessive-force-against-green-movement-protests-2012-02-13</link>
             </external_links>
             <related_crises>
-                <crisisRef>Syrian_Uprising</crisisRef>
-                <crisisRef>Xinjiang_Riots</crisisRef>
-                <crisisRef>Libyan_Civil_War</crisisRef>
+                <name>Syrian uprising</name>
+                <name>Xinjiang Riots</name>
+                <name>Lybia Civil War</name>
             </related_crises>
             <related_people>
-                <personRef>Rebiya_Kadeer</personRef>
-                <personRef>Mustafa_Abdul_Jalil</personRef>
-                <personRef>Bashar_al-Assad</personRef>
-                <personRef>Mir_Hossein_Mousavi</personRef>
+                <name>Rebiya Kadeer</name>
+                <name>Mustafa Abdul Jailil</name>
+                <name>Bashar al-Assad</name>
+                <name>Mir Hossein Mousavi</name>
             </related_people>
         </org>
-        <org id = "World_Uyghur_Congress">
+        <org>
             <name>World Uyghur Congress</name>
             <kind>international org. of exiled Uyghurs</kind>
             <location>80103 Munich, Germany</location>
@@ -388,10 +388,10 @@ Before Rebiya Kadeer was elected as the president of WUC, she founded the “Uyg
                 <link>http://tibettruth.com/2009/07/07/statement-by-the-world-uyghur-congress/</link>
             </external_links>
             <related_crises>
-                <crisisRef>Xinjiang_Riots</crisisRef>
+                <name>Xinjiang riots</name>
             </related_crises>
             <related_people>
-                <personRef>Rebiya_Kadeer</personRef>
+                <name>Rebiya Kadeer</name>
             </related_people>
         </org>
     </orgs>
