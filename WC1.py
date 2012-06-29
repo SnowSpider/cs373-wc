@@ -40,7 +40,7 @@ class Crisis(db.Model):
     kind_ = db.StringProperty()
     location = db.StringProperty()
     date_and_time = db.StringProperty()
-    human_impact = db.StringProperty()
+    human_impact = db.TextProperty()
     economic_impact = db.StringProperty()
     resources_needed = db.StringProperty()
     ways_to_help = db.StringProperty()
@@ -117,6 +117,129 @@ def ImportXml(filename, imported):
         person_model.related_orgs = map(lambda e: e.text, related_orgs.findall("orgRef"))
 
     imported.append(person_model)
+
+  orgs = root.find("orgs").findall("org")
+  for org in orgs :
+    org_model = Organization(name=org.find("name").text)
+    debug(org_model)
+    debug(org_model.name)
+    
+    kind_ = org.find("kind")
+    if kind_ is not None:
+        org_model.kind_ = kind_.text
+        debug(org_model.kind_)
+        
+    location = org.find("location")
+    if location is not None:
+        org_model.location = location.text
+        
+    history = org.find("history")
+    if history is not None:
+        org_model.history = history.text
+
+    contact_info = org.find("contact_info")
+    contact_info_model = ContactInfo()
+    email = contact_info.find("email")
+    phone_number = contact_info.find("phone_number")
+    address = contact_info.find("address")
+    if email is not None:
+        contact_info_model.email = email.text
+    if phone_number is not None:
+        contact_info_model.phone_number = phone_number.text
+    if address is not None:
+        contact_info_model.address = address.text
+        
+    images = org.find("images")
+    if images is not None:
+        org_model.images = map(lambda e: db.Link(e.text), images.findall("image"))
+    
+    videos = org.find("videos")
+    if videos is not None:
+        org_model.videos = map(lambda e: db.Link(e.text), videos.findall("link"))
+    
+    social_networks = org.find("social_networks")
+    if social_networks is not None:
+        org_model.social_networks = map(lambda e: db.Link(e.text), social_networks.findall("link"))
+    
+    external_links = org.find("external_links")
+    if external_links is not None:
+      org_model.external_links = map(lambda e: db.Link(e.text), external_links.findall("link"))  
+      debug(list(org_model.external_links))
+
+    related_crises = org.find("related_crises")
+    if related_crises is not None:
+        org_model.related_crises = map(lambda e: e.text, related_crises.findall("crisisRef"))
+    
+    related_people = org.find("related_people")
+    if related_orgs is not None:
+        org_model.related_people = map(lambda e: e.text, related_people.findall("personRef"))
+
+    imported.append(org_model)
+
+  
+  crises = root.find("crises").findall("crisis")
+  for crisis in crises:
+    crisis_model = Crisis(name = crisis.find("name").text)
+    kind_ = crisis.find("kind")
+    if kind_ is not None:
+        crisis_model.kind_ = kind_.text
+        debug(crisis_model.kind_)
+        
+    location = crisis.find("location")
+    if location is not None:
+        crisis_model.location = location.text
+
+    date_and_time = crisis.find("date_and_time")
+    if date_and_time is not None:
+        crisis_model.date_and_time = date_and_time.text
+
+    human_impact = crisis.find("human_impact")
+    if human_impact is not None:
+        crisis_model.human_impact = human_impact.text
+
+    economic_impact = crisis.find("economic_impact")
+    if economic_impact is not None:
+        crisis_model.economic_impact = economic_impact.text
+
+    resources_needed = crisis.find("resources_needed")
+    if resources_needed is not None:
+        crisis_model.resources_needed = resources_needed.text
+
+    ways_to_help = crisis.find("ways_to_help")
+    if ways_to_help is not None:
+        crisis_model.ways_to_help = ways_to_help.text
+        
+    history = crisis.find("history")
+    if history is not None:
+        crisis_model.history = history.text
+        
+    images = crisis.find("images")
+    if images is not None:
+        crisis_model.images = map(lambda e: db.Link(e.text), images.findall("image"))
+    
+    videos = crisis.find("videos")
+    if videos is not None:
+        crisis_model.videos = map(lambda e: db.Link(e.text), videos.findall("link"))
+    
+    social_networks = crisis.find("social_networks")
+    if social_networks is not None:
+        crisis_model.social_networks = map(lambda e: db.Link(e.text), social_networks.findall("link"))
+    
+    external_links = crisis.find("external_links")
+    if external_links is not None:
+      crisis_model.external_links = map(lambda e: db.Link(e.text), external_links.findall("link"))  
+      debug(list(crisis_model.external_links))
+
+    related_people = crisis.find("related_people")
+    if related_people is not None:
+        crisis_model.related_people = map(lambda e: e.text, related_people.findall("personRef"))
+    
+    related_orgs = crisis.find("related_orgs")
+    if related_orgs is not None:
+        crisis_model.related_orgs = map(lambda e: e.text, related_orgs.findall("orgRef"))
+
+    imported.append(crisis_model)
+  
     
     
     
