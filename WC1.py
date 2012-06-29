@@ -6,9 +6,9 @@ from google.appengine.ext import db
 from google.appengine.ext.db import polymodel
 
 class ContactInfo(db.Model):
-    phone_number = db.PhoneNumberProperty()
+    phone_number = db.StringProperty()
     email = db.EmailProperty()
-    address = db.PostalAddressProperty()
+    address = db.StringProperty()
 
 class Person(db.Model):
     name = db.StringProperty(required=True)
@@ -82,9 +82,12 @@ def ImportXml(filename):
     history = person.find("history")
     if history is not None:
         person_model.history = history.text
-        
-    images = map(lambda e: e.text, person.find("images").findall("link")) # we should make images required (in both xml and model) to avoid ambiguity. For now this code assumes that images is required.
-    videos = map(lambda e: e.text, person.find("videos").findall("link"))
+    images = person.find("images")
+    if images is not None:
+        images = map(lambda e: e.text, images.findall("image")) # we should make images required (in both xml and model) to avoid ambiguity. For now this code assumes that images is required.
+    videos = person.find("videos")
+    if videos is not None:
+        videos = map(lambda e: e.text, videos.find("videos").findall("link"))
         
 def debug(msg):
     logging.debug("\n\n" + str(msg) + "\n")

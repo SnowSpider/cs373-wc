@@ -3,9 +3,9 @@ from google.appengine.ext import db
 # from google.appengine.ext.db import polymodel
     
 class ContactInfo(db.Model):
-    phone_number = PhoneNumberProperty()
+    phone_number = StringProperty()
     email = EmailProperty()
-    address = PostalAddressProperty()
+    address = StringProperty()
 
 class Person(db.Model):
     name = db.StringProperty(required=True)
