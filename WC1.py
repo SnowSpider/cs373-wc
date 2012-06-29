@@ -73,22 +73,39 @@ def ImportXml(filename):
   debug(people)
   for person in people :
     person_model = Person(name=person.find("name").text)
+    
     kind_ = person.find("kind")
     if kind_ is not None:
         person_model.kind_ = kind_.text
+        
     location = person.find("location")
     if location is not None:
         person_model.location = location.text
+        
     history = person.find("history")
     if history is not None:
         person_model.history = history.text
+        
     images = person.find("images")
     if images is not None:
         images = map(lambda e: e.text, images.findall("image")) # we should make images required (in both xml and model) to avoid ambiguity. For now this code assumes that images is required.
+    
     videos = person.find("videos")
     if videos is not None:
         videos = map(lambda e: e.text, videos.find("videos").findall("link"))
-        
+    
+    social_networks = person.find("social_networks")
+    if social_networks is not None:
+        social_networks = map(lambda e: e.text, social_networks.find("social_networks").findall("link"))
+    
+    external_links = person.find("external_links")
+    if external_links is not None:
+    external_links = map(lambda e: e.text, social_networks.find("external_links").findall("link"))
+    
+    related_crises = 
+    related_orgs = 
+    
+    
 def debug(msg):
     logging.debug("\n\n" + str(msg) + "\n")
 
