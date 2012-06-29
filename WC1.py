@@ -19,8 +19,8 @@ class Person(db.Model):
     videos = db.ListProperty(db.Link)
     social_networks = db.ListProperty(db.Link)
     external_links = db.ListProperty(db.Link)
-    related_crises = db.ListProperty(str)
-    related_orgs = db.ListProperty(str)
+    related_crises = db.ListProperty(db.Key) # Crisis
+    related_orgs = db.ListProperty(db.Key) # Organization
     
 class Organization(db.Model):
     name = db.StringProperty(required=True)
@@ -32,8 +32,8 @@ class Organization(db.Model):
     videos = db.ListProperty(db.Link)
     social_networks = db.ListProperty(db.Link)
     external_links = db.ListProperty(db.Link)
-    related_crises = db.ListProperty(str)
-    related_people = db.ListProperty(str)
+    related_crises = db.ListProperty(db.Key) # Crisis
+    related_people = db.ListProperty(db.Key) # Person
     
 class Crisis(db.Model):
     name = db.StringProperty(required=True)
@@ -49,8 +49,8 @@ class Crisis(db.Model):
     videos = db.ListProperty(db.Link)
     social_networks = db.ListProperty(db.Link)
     external_links = db.ListProperty(db.Link)
-    related_orgs = db.ListProperty(str)
-    related_people = db.ListProperty(str)
+    related_orgs = db.ListProperty(db.Key) # Organization
+    related_people = db.ListProperty(db.Key) # Person
 
 class MainHandler(webapp.RequestHandler):
   def get(self):
