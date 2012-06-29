@@ -14,7 +14,7 @@ class Person(db.Model):
     name = db.StringProperty(required=True)
     kind_ = db.StringProperty()
     location = db.StringProperty()
-    history = db.StringProperty()
+    history = db.TextProperty() # To allow over 500 characters
     images = db.ListProperty(db.Link)
     videos = db.ListProperty(db.Link)
     social_networks = db.ListProperty(db.Link)
@@ -26,7 +26,7 @@ class Organization(db.Model):
     name = db.StringProperty(required=True)
     kind_ = db.StringProperty()
     location = db.StringProperty()
-    history = db.StringProperty()
+    history = db.TextProperty() # To allow over 500 characters
     contact_info = ContactInfo()
     images = db.ListProperty(db.Link)
     videos = db.ListProperty(db.Link)
@@ -44,7 +44,7 @@ class Crisis(db.Model):
     economic_impact = db.StringProperty()
     resources_needed = db.StringProperty()
     ways_to_help = db.StringProperty()
-    history = db.StringProperty()
+    history = db.TextProperty() # To allow over 500 characters
     images = db.ListProperty(db.Link)
     videos = db.ListProperty(db.Link)
     social_networks = db.ListProperty(db.Link)
@@ -73,7 +73,19 @@ def ImportXml(filename):
   debug(people)
   for person in people :
     person_model = Person(name=person.find("name").text)
-
+    kind_ = person.find("kind")
+    if kind_ is not None:
+        person_model.kind_ = kind_.text
+    location = person.find("location")
+    if location is not None:
+        person_model.location = location.text
+    history = person.find("history")
+    if history is not None:
+        person_model.history = history.text
+        
+    images = map(lambda e: e.text, person.find("images").findall("link")) # we should make images required (in both xml and model) to avoid ambiguity. For now this code assumes that images is required.
+    videos = map(lambda e: e.text, person.find("videos").findall("link"))
+        
 def debug(msg):
     logging.debug("\n\n" + str(msg) + "\n")
 
