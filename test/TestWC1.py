@@ -91,13 +91,8 @@ class TestWC1 (unittest.TestCase) :
         self.assert_(imported["orgs"]["International Campaign for Human Rights in Iran"].kind_ == "Campaign")
         self.assert_(imported["orgs"]["International Campaign for Human Rights in Iran"].location == "Netherlands")
         
-        # history
+        #self.assert_(imported["orgs"]["International Campaign for Human Rights in Iran"].history == "")
         # Non-ASCII character '\xe2' in file
-        """
-        debug(imported["orgs"]["International Campaign for Human Rights in Iran"].contact_info.email)
-        debug(imported["orgs"]["International Campaign for Human Rights in Iran"].contact_info.phone_number)
-        debug(imported["orgs"]["International Campaign for Human Rights in Iran"].contact_info.address)
-        """
         
         self.assert_(imported["orgs"]["International Campaign for Human Rights in Iran"].contact_info.email == db.Email("info@iranhumanrights.org"))
         self.assert_(imported["orgs"]["International Campaign for Human Rights in Iran"].contact_info.phone_number == db.PhoneNumber("0000000"))
@@ -111,9 +106,10 @@ class TestWC1 (unittest.TestCase) :
         self.assert_(imported["orgs"]["International Campaign for Human Rights in Iran"].related_people[0] == "Mir_Hossein_Mousavi")
     
     def test_ExportXml_1 (self) :
-        data = ImportXml("WC.xml")
-        ExportXml(data)
-        self.assert_(True)
-    
-    
+        data = ImportXml("test2.xml")
+        result = ExportXml(data)
+        self.assert_(result == "<everything>\n\t<people>\n\t\t<person>\n\t\t\t<name>Sogol</name>\n\t\t</person>\n\t</people>\n\t<crises>\n\t\t<crisis>\n\t\t\t<name>Migraine</name>\n\t\t</crisis>\n\t</crises>\n\t<orgs>\n\t\t<org>\n\t\t\t<name>UT</name>\n\t\t</org>\n\t</orgs>\n</everything>")
+        
+        
+        
         
