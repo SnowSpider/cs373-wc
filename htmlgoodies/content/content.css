@@ -2,8 +2,8 @@ img.mainimg
 {
 	float: right;
 	//padding: 5px;
-	margin-right: 10px;
-	margin-left: 5px;
+	margin-right: 13px;
+	margin-left: 10px;
 	margin-top: 5px;
 	//border-style:solid;
 	//border-width: 5px;
@@ -32,6 +32,11 @@ p
 text-indent:25px;
 margin-bottom: 0;
 margin-top: 0;
+}
+
+li.indented
+{
+	text-indent:50px; 
 }
 
 ul
