@@ -120,16 +120,16 @@ Police and the Basij (a paramilitary group) suppressed both peaceful demonstrati
                 <link>http://upload.wikimedia.org/wikipedia/commons/thumb/6/66/6th_Day_-_Mousavi_inside_the_Crowd.jpg/800px-6th_Day_-_Mousavi_inside_the_Crowd.jpg</link>
             </images>
             <videos>
-                <!-- <link>http://www.youtube.com/watch?v=quPXg_GoTOk&amp;feature=related</link> -->
+                <link>http://www.youtube.com/watch?v=quPXg_GoTOk&amp;feature=related</link>
             </videos>
             <social_networks>
                 <link>http://www.facebook.com/Persian.Green.Movement</link>
             </social_networks>
             <external_links>
-                <link>http://en.irangreenvoice.com/</link>
+                <link>http://en.irangreenvoice.com</link>
             </external_links>
             <related_orgs>
-                <orgRef>International_Campaign_for_Human_Rights_in_Iran </orgRef>
+                <orgRef>International_Campaign_for_Human_Rights_in_Iran</orgRef>
             </related_orgs>
             <related_people>
                 <personRef>Mir_Hossein_Mousavi</personRef>
@@ -264,7 +264,7 @@ Police and the Basij (a paramilitary group) suppressed both peaceful demonstrati
                 <link>http://www.facebook.com/pages/International-Campaign-for-Human-Rights-in-Iran/49929580840</link>
             </social_networks>
             <external_links>
-                <link>http://www.iranhumanrights.org/</link>
+                <link>http://www.iranhumanrights.org</link>
             </external_links>
             <related_crises>
                 <crisisRef>Iranian_Green_Movement</crisisRef>

@@ -1,3 +1,298 @@
+commit ed2a37610824f33f2ae01e935f315d5c0b457cb1
+Author: Diane Lee <leed@utexas.edu>
+Date:   Fri Jun 29 16:11:09 2012 -0500
+
+    Added django library to app.yaml
+
+commit 564c5101dec5d57e414883e5058f5ca596d5a627
+Merge: efc679f 0194498
+Author: wlee <tree03@paran.com>
+Date:   Fri Jun 29 16:06:54 2012 -0500
+
+    Merge branch 'master' of https://github.com/SnowSpider/cs373-wc
+    
+    merge conflic fixed
+
+commit 0194498daec252f93c4bad22b8d83529f6c962ff
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Fri Jun 29 16:06:48 2012 -0500
+
+    Image Added
+
+commit efc679fce532673ee5842aa024af876063b9c9a9
+Author: wlee <tree03@paran.com>
+Date:   Fri Jun 29 16:06:34 2012 -0500
+
+    removed gaeunit
+
+commit ad73141c56c4720132268f5e97f49457f0217dc0
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Fri Jun 29 16:03:25 2012 -0500
+
+    Images Added
+
+commit d0e7e8b500e057080266582c610847305cb5f1a5
+Author: wlee <tree03@paran.com>
+Date:   Fri Jun 29 16:02:59 2012 -0500
+
+    unit tests
+
+commit 32a762f4476c255e54d257928b40517a7962bf99
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Fri Jun 29 15:54:36 2012 -0500
+
+    Images Added
+
+commit 75a8695d5475a5b13617a6c2fcf73ee1ebcd342f
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Fri Jun 29 15:46:50 2012 -0500
+
+    Images Added
+
+commit a049a6c338f8ffc7a80c81f3add3465ef0b2aa79
+Merge: 95c6a53 b66707d
+Author: Diane Lee <leed@utexas.edu>
+Date:   Fri Jun 29 15:37:00 2012 -0500
+
+    Merge branch 'master' of https://github.com/SnowSpider/cs373-wc
+
+commit 95c6a53bb931bcb54d0d10d0905b14c445bd8a20
+Author: Diane Lee <leed@utexas.edu>
+Date:   Fri Jun 29 15:36:01 2012 -0500
+
+    fixed ContactInfo
+
+commit b66707d9ace8c9356880378ce397826b7229a7f5
+Author: lordtony <LordTony@LordTony-PC.(none)>
+Date:   Fri Jun 29 15:30:22 2012 -0500
+
+    small typo fixed.
+
+commit 1ef1954fcfc91b9de4d9bcc38116aa8696342fda
+Author: lordtony <LordTony@LordTony-PC.(none)>
+Date:   Fri Jun 29 15:27:30 2012 -0500
+
+    fixed a merge I think
+
+commit 66ea158aa3d92a744d7271f3fe14e07ac3fbd66e
+Merge: 5332507 00d6425
+Author: lordtony <LordTony@LordTony-PC.(none)>
+Date:   Fri Jun 29 15:23:16 2012 -0500
+
+    pushing again for testing
+
+commit 53325070de3abd8ec8b67854db1b5f966e5ba48d
+Author: lordtony <LordTony@LordTony-PC.(none)>
+Date:   Fri Jun 29 15:17:54 2012 -0500
+
+    changed some of the smaller pictures.
+
+commit 00d642579b2cba0e6a3cc93fd0a7bf4a39744f36
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Fri Jun 29 15:14:05 2012 -0500
+
+    Kill Kind, Add Images, Combine Impact
+
+commit f2b469220ad4b88ffb59fd24d2dc59f0d6fc0e08
+Merge: 7761999 ed24965
+Author: lordtony <LordTony@LordTony-PC.(none)>
+Date:   Fri Jun 29 15:10:06 2012 -0500
+
+    Merge branch 'master' of https://github.com/SnowSpider/cs373-wc
+
+commit 7761999dc44f536c822e06b41e7a8b2b107e0c9d
+Author: lordtony <LordTony@LordTony-PC.(none)>
+Date:   Fri Jun 29 15:09:59 2012 -0500
+
+    fixed spelling errors, added more images to html files.
+
+commit ed249653f99e64d40f00ed682d16a9227108333b
+Merge: 24a0834 14ec43a
+Author: Diane Lee <leed@utexas.edu>
+Date:   Fri Jun 29 15:09:05 2012 -0500
+
+    Merge branch 'master' of https://github.com/SnowSpider/cs373-wc
+
+commit 24a083470682a4b49aa1480ffda2a915545fe94b
+Author: Diane Lee <leed@utexas.edu>
+Date:   Fri Jun 29 15:08:57 2012 -0500
+
+    Finished import and fixed WC1.xml so urls validate
+
+commit 14ec43a12e3a0824cb6f6400e0f3000be6666f96
+Merge: 089f6aa a1172b2
+Author: wlee <tree03@paran.com>
+Date:   Fri Jun 29 15:01:33 2012 -0500
+
+    Merge branch 'master' of https://github.com/SnowSpider/cs373-wc
+    
+    merge conflict fixed
+
+commit 089f6aa073b5eb1eee490c64b3619d8340b86397
+Author: wlee <tree03@paran.com>
+Date:   Fri Jun 29 15:01:12 2012 -0500
+
+    schema fixed to accept address
+
+commit a1172b2b017f9bc8186192b6432be67360659459
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Fri Jun 29 14:56:07 2012 -0500
+
+    Kill Kind
+
+commit f0712bc08298226fd8305546732144379cfb3c8b
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Fri Jun 29 14:50:56 2012 -0500
+
+    Kill Kind
+
+commit 91ee290786e3922b60043a90b757276e0dbed7cd
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Fri Jun 29 14:48:47 2012 -0500
+
+    Kill Kind
+
+commit 07655dfea3fa3a7286f7adda2a84c4b144096eeb
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Fri Jun 29 14:47:15 2012 -0500
+
+    Kill Kind
+
+commit 4642ca31de32d3d06ea94078ab6d0ebacc61b1b9
+Merge: dae6c2c e95b612
+Author: lordtony <LordTony@LordTony-PC.(none)>
+Date:   Fri Jun 29 14:42:42 2012 -0500
+
+    Merge branch 'master' of https://github.com/SnowSpider/cs373-wc
+
+commit dae6c2c0de8b57fe41e7813282f3e3b1b84fb619
+Author: lordtony <LordTony@LordTony-PC.(none)>
+Date:   Fri Jun 29 14:42:28 2012 -0500
+
+    changed page width from 90% to 95% of browser.
+
+commit e95b612d216c33f3349296cf619e76161d5563a4
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Fri Jun 29 14:41:08 2012 -0500
+
+    Fix Paragraph
+
+commit 6ea6549f9811c4b90080761407796cd3260dc777
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Fri Jun 29 14:37:46 2012 -0500
+
+    Images Updated
+
+commit 7027693cadb8e7be3bb7f8428a1d220550ac160f
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Fri Jun 29 14:28:49 2012 -0500
+
+    Images Updated
+
+commit 82fde99686100f0e9274bbb9029bb0951b6cdbfd
+Author: Diane Lee <leed@utexas.edu>
+Date:   Fri Jun 29 14:26:15 2012 -0500
+
+    Implemented import for Person
+
+commit 2a43f75a1d48c139d39c3a0f9e9f1654ed2de37f
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Fri Jun 29 14:15:18 2012 -0500
+
+    Images Updated
+
+commit e7c3e976987fd5adedf6de3eff48d539bebff224
+Merge: 2d7806b 8f1177b
+Author: lordtony <LordTony@LordTony-PC.(none)>
+Date:   Fri Jun 29 14:11:56 2012 -0500
+
+    Merge branch 'master' of https://github.com/SnowSpider/cs373-wc
+
+commit 2d7806be2b08dfa07309e2721ffd25a04aadb459
+Author: lordtony <LordTony@LordTony-PC.(none)>
+Date:   Fri Jun 29 14:11:48 2012 -0500
+
+    made a few more changes to the site. Almost done now.
+
+commit 8f1177bd9e097b26d90c46de4dabc16e5ee231f9
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Fri Jun 29 13:58:53 2012 -0500
+
+    Added More Images
+
+commit 10b11ab158075493bb867c623e77df3f8f28de3c
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Fri Jun 29 13:45:01 2012 -0500
+
+    History Trimmed
+
+commit 6e05ba6429b2574a7e989480e3dabc9ab2fae071
+Merge: 045d29e 1680120
+Author: wlee <tree03@paran.com>
+Date:   Fri Jun 29 13:38:13 2012 -0500
+
+    Merge branch 'master' of https://github.com/SnowSpider/cs373-wc
+    
+    fixed merge conflict
+
+commit 045d29e260e6097d2532e55bc73477cb0b313a60
+Author: wlee <tree03@paran.com>
+Date:   Fri Jun 29 13:37:50 2012 -0500
+
+    WC1.py
+
+commit 16801201126a1039f21c41f795b35e88e9cc91eb
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Fri Jun 29 13:28:34 2012 -0500
+
+    Link Fixed
+
+commit 1be0e09fcf9ede214fc7f7be2a1a87e7b0156dc6
+Merge: 9af90c5 b51f3e4
+Author: wlee <tree03@paran.com>
+Date:   Fri Jun 29 13:28:11 2012 -0500
+
+    Merge branch 'master' of https://github.com/SnowSpider/cs373-wc
+    
+    merge conflict fixed
+
+commit 9af90c5ca96dc6a14c87777728b45f24de509774
+Author: wlee <tree03@paran.com>
+Date:   Fri Jun 29 13:27:52 2012 -0500
+
+    db.Key
+
+commit b51f3e474424f2d860d2ab633ecda9575f11477d
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Fri Jun 29 13:24:54 2012 -0500
+
+    Link Updated
+
+commit a77e15e95bac7db738a578ac700aaf4562c5194d
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Fri Jun 29 13:22:19 2012 -0500
+
+    Links Fixed
+
+commit 18fd3be9cc888d1782b31937ea19cd4fa69cbfe2
+Merge: d8e9534 57bbc70
+Author: lordtony <LordTony@LordTony-PC.(none)>
+Date:   Fri Jun 29 13:17:51 2012 -0500
+
+    Merge branch 'master' of https://github.com/SnowSpider/cs373-wc
+
+commit d8e9534687ed4cecb2cd6f973c23b6ef532438eb
+Author: lordtony <LordTony@LordTony-PC.(none)>
+Date:   Fri Jun 29 13:17:43 2012 -0500
+
+    more edits to website
+
+commit a18e79b1a038197e7594d45fb488246d3b8ab72a
+Author: wlee <tree03@paran.com>
+Date:   Fri Jun 29 13:16:21 2012 -0500
+
+    changes in model.py are implemented  in WC1.py
+
 commit 57bbc7005c1ebec750309f4088417dd8f5fa801b
 Merge: e944c8b e3462d4
 Author: wlee <tree03@paran.com>
