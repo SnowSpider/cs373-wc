@@ -59,8 +59,7 @@ class MainHandler(webapp.RequestHandler):
     inFile = open("htmlgoodies/mockup.html", 'r')
     outstr = inFile.read() #"HELLO CAR RAMROD"
     inFile.close()
-    imported = []
-    ImportXml("WC.xml", imported)
+    imported = ImportXml("WC.xml")
     debug(imported)
     self.response.out.write(outstr)
 
@@ -69,10 +68,10 @@ class MainHandler(webapp.RequestHandler):
 def ImportXml(filename):
   tree = ET.parse(filename)
   root = tree.getroot()
-  debug(root)
-  debug("HIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
+  #debug(root)
+  #debug("HIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
   imported = {"people": {}, "crises": {}, "orgs": {}}
-  debug(imported)
+  #debug(imported)
   people = root.find("people").findall("person")
   #debug(people)
   for person in people :
@@ -238,9 +237,21 @@ def ImportXml(filename):
 
     #imported.append(org_model)
     imported["orgs"][org_model.name] = org_model
-    debug(imported)
+    #debug(imported)
     return imported
-    
+
+def ExportXml(data):
+    #debug(data)
+    print "<everything>"
+    print "\t<people>"
+    print "\t</people>"
+    print "\t<crises>"
+    print "\t</crises>"
+    print "\t<orgs>"
+    print "\t</orgs>"
+    print "</everything>"
+
+
 def debug(msg):
     logging.debug("\n\n" + str(msg) + "\n")
 

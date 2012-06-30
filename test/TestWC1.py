@@ -27,7 +27,7 @@ import unittest
 import logging
 
 
-from WC1 import ImportXml, debug
+from WC1 import ImportXml, ExportXml, debug
 
 # -------
 # TestPFD
@@ -109,5 +109,11 @@ class TestWC1 (unittest.TestCase) :
         self.assert_(imported["orgs"]["International Campaign for Human Rights in Iran"].external_links[0] == db.Link("http://www.iranhumanrights.org"))
         self.assert_(imported["orgs"]["International Campaign for Human Rights in Iran"].related_crises[0] == "Iranian_Green_Movement")
         self.assert_(imported["orgs"]["International Campaign for Human Rights in Iran"].related_people[0] == "Mir_Hossein_Mousavi")
+    
+    def test_ExportXml_1 (self) :
+        data = ImportXml("WC.xml")
+        ExportXml(data)
+        self.assert_(True)
+    
     
         
