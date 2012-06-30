@@ -38,7 +38,7 @@ class TestWC1 (unittest.TestCase) :
     def test_ImportXml_1 (self) :
         imported = ImportXml("test1.xml")
         self.assert_(imported != {})
-        #self.assert_(imported == {"crises":{}, "orgs":{}, "people":{}})
+        self.assert_(imported == {"crises":{}, "orgs":{}, "people":{}})
         #self.assert_(True)
         
     def test_ImportXml_2 (self) :
