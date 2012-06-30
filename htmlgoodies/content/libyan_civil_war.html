@@ -2,60 +2,17 @@
 <html>
 <title>Crap Content</title>
 <head>
-<style type="text/css">
-
-img.mainimg
-{
-	float: right;
-	padding: 5px;
-}
-
-div.basicinfo
-{
-	float: left;
-}
-
-p 
-{ 
-text-indent:25px;
-margin-bottom: 0;
-margin-top: 0;
-}
-
-ul
-{
-list-style-type:none;
-margin:0;
-padding:0;
-overflow:hidden;
-}
-
-li
-{ 
-float: top; 
-padding: 2px;
-}
-
-li.indented
-{
-	text-indent:50px; 
-}
-
-.center
-{
-margin:auto;
-}
-
-body
-{
-margin: 0px;
-padding-top: 0px;
-padding-bottom: 0px;
-padding-right:5px;
-padding-left:5px;
-}
-
-</style>
+<script language="javascript" src="fancybox/lib/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="fancybox/source/jquery.fancybox.pack.js"></script>
+<link rel="stylesheet" href="fancybox/source/jquery.fancybox.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="fancybox/source/helpers/jquery.fancybox-buttons.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="content.css" type="text/css">
+<script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-buttons.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".fancybox").fancybox();
+	});
+</script>
 </head>
 <body>
 <!-- images -->
@@ -65,19 +22,27 @@ padding-left:5px;
 			<td>
 				<ul>
 					<li class="center">
-						<img width="220" src="http://www.socialistparty.net/images/stories/libyan%20revolt.jpg">
+						<a href="http://www.socialistparty.net/images/stories/libyan%20revolt.jpg" class="fancybox" rel="pix">
+							<img width="220" src="http://www.socialistparty.net/images/stories/libyan%20revolt.jpg">
+						</a>
 					</li>
 					<li class="center">
-						<img width="220" src="http://fifp.files.wordpress.com/2011/04/2011_middle_east_revolutions_-_libyans_protesting_on_tank.jpg">
+						<a href="http://fifp.files.wordpress.com/2011/04/2011_middle_east_revolutions_-_libyans_protesting_on_tank.jpg" class="fancybox" rel="pix">
+							<img width="220" src="http://fifp.files.wordpress.com/2011/04/2011_middle_east_revolutions_-_libyans_protesting_on_tank.jpg">
+						</a>
 					</li>
 					<li>
 						<iframe width="220" src="http://www.youtube.com/embed/Bm6UEGbqofM" frameborder="0" allowfullscreen></iframe>
 					</li>
 					<li class="center">
-						<img width="220" src="http://www.flixya.com/files-photo/r/i/m/rimawi-1965850.jpg">
+						<a href="http://www.flixya.com/files-photo/r/i/m/rimawi-1965850.jpg" class="fancybox" rel="pix">
+							<img width="220" src="http://www.flixya.com/files-photo/r/i/m/rimawi-1965850.jpg">
+						</a>
 					</li>
 					<li class="center">
-						<img width="220" src="http://nimg.sulekha.com/others/original700/libya-2011-2-26-12-20-0.jpg">
+						<a href="http://nimg.sulekha.com/others/original700/libya-2011-2-26-12-20-0.jpg" class="fancybox" rel="pix">
+							<img width="220" src="http://nimg.sulekha.com/others/original700/libya-2011-2-26-12-20-0.jpg">
+						</a>
 					</li>
 					<li>
 						<iframe width="220" src="http://www.youtube.com/embed/8OzwkCGJlAI" frameborder="0" allowfullscreen></iframe>
@@ -95,11 +60,9 @@ padding-left:5px;
 <p><font size="4">The Libyan civil war also referred to as the Libyan Revolution, was an armed conflict in the North African state of Libya, fought between forces loyal to Colonel Muammar Gaddafi and those seeking to oust his government. The war was preceded by protests in Benghazi beginning on Tuesday, 15 February 2011, which led to clashes with security forces that fired on the crowd. The protests escalated into a rebellion that spread across the country, with the forces opposing Gaddafi establishing an interim governing body, the National Transitional Council.
 <br><hr width="30%"/><br>
 	<ul>
-		<li><b>Event:</b>  Libyan Cicil War</li>
 		<li><b>Location:</b>  Libya</li>
-		<li><b>Date and Time:</b> Feb 15 2011</li>
+		<li><b>Date and Time:</b> Feb 15, 2011</li>
 		<li><b>Impact:</b> Over 13,000 deaths, 50,000 refugees. In need of Medicine, Fuel, Food</li>
-		
 	</ul>
 <br>
 <hr width="80%"/>

@@ -2,60 +2,17 @@
 <html>
 <title>Crap Content</title>
 <head>
-<style type="text/css">
-
-img.mainimg
-{
-	float: right;
-	padding: 5px;
-}
-
-div.basicinfo
-{
-	float: left;
-}
-
-p 
-{ 
-text-indent:25px;
-margin-bottom: 0;
-margin-top: 0;
-}
-
-ul
-{
-list-style-type:none;
-margin:0;
-padding:0;
-overflow:hidden;
-}
-
-li
-{ 
-float: top; 
-padding: 2px;
-}
-
-li.indented
-{
-	text-indent:50px; 
-}
-
-.center
-{
-margin:auto;
-}
-
-body
-{
-margin: 0px;
-padding-top: 0px;
-padding-bottom: 0px;
-padding-right:5px;
-padding-left:5px;
-}
-
-</style>
+<script language="javascript" src="fancybox/lib/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="fancybox/source/jquery.fancybox.pack.js"></script>
+<link rel="stylesheet" href="fancybox/source/jquery.fancybox.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="fancybox/source/helpers/jquery.fancybox-buttons.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="content.css" type="text/css">
+<script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-buttons.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".fancybox").fancybox();
+	});
+</script>
 </head>
 <body>
 <!-- images -->
@@ -65,19 +22,27 @@ padding-left:5px;
 			<td>
 				<ul>
 					<li class="center">
-						<img width="220" src="http://news.kuwaittimes.net/wp-content/uploads/2012/05/International1.jpg">
+						<a href="http://news.kuwaittimes.net/wp-content/uploads/2012/05/International1.jpg" class="fancybox" rel="pix">
+							<img width="220" src="http://news.kuwaittimes.net/wp-content/uploads/2012/05/International1.jpg">
+						</a>
 					</li>
 					<li class="center">
-						<img width="220" src="http://www.rafto.no/publish_files/ReiyaKadeerPortrettBrun614.jpg">
+						<a href="http://www.rafto.no/publish_files/ReiyaKadeerPortrettBrun614.jpg" class="fancybox" rel="pix">
+							<img width="220" src="http://www.rafto.no/publish_files/ReiyaKadeerPortrettBrun614.jpg">
+						</a>
 					</li>
 					<li>
-						<img width="220" src="http://docs.uyghuramerican.org/content_images/rabiye/bush-rebiya-400.jpg">
+						<a href="http://docs.uyghuramerican.org/content_images/rabiye/bush-rebiya-400.jpg" class="fancybox" rel="pix">
+							<img width="220" src="http://docs.uyghuramerican.org/content_images/rabiye/bush-rebiya-400.jpg">
+						</a>
 					</li>
 					<li>
 						<iframe width="220" src="http://www.youtube.com/embed/AXfxKFd67UI" frameborder="0" allowfullscreen></iframe>
 					</li>
 					<li>
-						<img width="220" src="http://b.vimeocdn.com/ts/177/934/177934410_640.jpg">
+						<a href="http://b.vimeocdn.com/ts/177/934/177934410_640.jpg" class="fancybox" rel="pix">
+							<img width="220" src="http://b.vimeocdn.com/ts/177/934/177934410_640.jpg">
+						</a>
 					</li>
 					<li>
 						<iframe width="220" src="http://www.youtube.com/embed/Mohvi4Ov6wY" frameborder="0" allowfullscreen></iframe>
@@ -89,9 +54,9 @@ padding-left:5px;
 </div>
 <!-- content -->
 <div style="overflow-x: hidden; overflow-y: scroll; height:650px; margin: 0px;">
-<img class="mainimg" width="300" src="http://images.theage.com.au/2009/07/26/649638/Rebiya%20Kadeer-420x0.jpg"/>
 <h1><center>Rebiya Kadeer</center></h1>
 <hr width="30%"/>
+<img class="mainimg" width="300" src="http://images.theage.com.au/2009/07/26/649638/Rebiya%20Kadeer-420x0.jpg"/>
 <p><font size="4"> Rebiya Kadeer is a Uyghur human rights activist with origins in Xinjiang, China. Kadeer is the symbolic leader of Uighur self-determination movement in her capacity as President of the World Uyghur Congress, a group that advocates for greater autonomy for Uyghurs in China and fights against what they consider to be oppressive policies of the Chinese government. She lives in the United States. It is worth noting that Kadeer was not always at odds with the government, and was once welcomed as an appointed delegate to the eighth session of the Chinese People's Political Consultative Conference, the National People's Congress and was a representative to the UN Fourth World Conference for Women in Beijing in 1995. Kadeer has also served as vice chairwoman of the Xinjiang Autonomous Region Federation of Industry and Commerce, and vice chairwoman of the Xinjiang Association of Women Entrepreneurs. She has been the president of the World Uyghur Congress since November 2006. Kadeer has been active in defending the rights of the largely Muslim Uyghur minority, who have been subject to oppression at the hands of the Chinese government.
 <br><hr width="30%"/><br>
 	<ul>
