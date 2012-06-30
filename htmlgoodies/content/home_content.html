@@ -1,59 +1,18 @@
 <!DOCTYPE html>
 <html>
-<title>Crap Content</title>
+<title>Car Ramrod Homepage</title>
 <head>
-<style type="text/css">
-
-img.mainimg
-{
-	float: right;
-	padding: 5px;
-}
-
-div.basicinfo
-{
-	float: left;
-}
-
-li
-{ 
-float: top; 
-padding: 2px;
-}
-
-p 
-{ 
-text-indent:25px;
-margin-bottom: 0;
-margin-top: 0;
-}
-
-ul
-{
-list-style-type:none;
-margin:0;
-padding:0;
-overflow:hidden;
-}
-
-li
-{ 
-float: top; 
-padding: 2px;
-}
-
-.center
-{
-margin:auto;
-}
-
-body
-{
-margin: 0px;
-padding: 0px;
-}
-
-</style>
+<script language="javascript" src="fancybox/lib/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="fancybox/source/jquery.fancybox.pack.js"></script>
+<link rel="stylesheet" href="fancybox/source/jquery.fancybox.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="fancybox/source/helpers/jquery.fancybox-buttons.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="content.css" type="text/css">
+<script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-buttons.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".fancybox").fancybox();
+	});
+</script>
 </head>
 <body>
 <!-- images -->
@@ -62,6 +21,11 @@ padding: 0px;
 		<tr>
 			<td>
 				<ul>
+					<li class="center">
+						<a href="images/team_picture.jpg" class="fancybox" group="pix" onclick="windows.location.href='url';">
+							<img width="220" src="images/team_picture.jpg">
+						</a>
+					</li>
 					<li class="center"><img src="images/defaultimage.png"></li>
 					<li class="center"><img src="images/defaultimage2.png"></li>
 					<li class="center"><img src="images/defaultimage3.png"></li>
@@ -77,14 +41,14 @@ padding: 0px;
 </div>
 <!-- content -->
 <div style="overflow-x: hidden; overflow-y: scroll; height:650px; margin: 0px;">
-<img class="mainimg" src="images/carramrodlogo.png"/>
+<img width="450" class="mainimg" src="images/carramrodlogo.png"/>
 <h1><center>Splash Page!</center></h1>
 <hr width="30%"/>
 <p><font size="4">Car Ramrod is a team dripping with professionalism. From our company picnic to the bring your child to work day, we manage to blend professional web design and hard work with good ol' fashioned family values. With more than 3000 years combined experience in the field, Car Ramrod is sure to get the job done. Whether it's front-end, turn-key solutions or mainframe server satellite data-basing, our time tested and home grown technologies are more than enough to see that at the end of a day we are bringing a brighter tomorrow. No refunds.
 <br><hr width="30%"/><br>
 <h2>The Crew:</h2>
 	<ul>
-		<li>Sogol Imoshtaghi</li>
+		<li>Sogol Moshtaghi</li>
 		<li>Diane Lee</li>
 		<li>Wonjun Lee</li>
 		<li>Daniel Moreno</li>
