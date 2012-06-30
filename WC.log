@@ -1,3 +1,177 @@
+commit 57bbc7005c1ebec750309f4088417dd8f5fa801b
+Merge: e944c8b e3462d4
+Author: wlee <tree03@paran.com>
+Date:   Fri Jun 29 13:12:58 2012 -0500
+
+    erge branch 'master' of https://github.com/SnowSpider/cs373-wc
+    
+    merge conflic fixed
+
+commit e3462d408e24c020ae04cec6cbc64600e8e2ff2a
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Fri Jun 29 13:12:27 2012 -0500
+
+    Content Updated
+
+commit e944c8bea9a6dc74f6e74806cb525c6bece8c81a
+Author: wlee <tree03@paran.com>
+Date:   Fri Jun 29 13:12:21 2012 -0500
+
+    data model in python
+
+commit 84e3ac6b39e8dd303782318d6be57d962b4870ec
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Fri Jun 29 13:03:33 2012 -0500
+
+    Image Updated
+
+commit 6fba7e08cb6837c688175dfcad5b1bbd77d2917c
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Fri Jun 29 13:00:38 2012 -0500
+
+    Content Updated
+
+commit 4543dac2954ecae23c6cab9001e3cadd130c4c46
+Merge: a5802e1 f260b58
+Author: lordtony <LordTony@LordTony-PC.(none)>
+Date:   Fri Jun 29 12:41:04 2012 -0500
+
+    Merge branch 'master' of https://github.com/SnowSpider/cs373-wc
+
+commit a5802e178096b22b9003886ca20dc52ccef0dd18
+Author: lordtony <LordTony@LordTony-PC.(none)>
+Date:   Fri Jun 29 12:40:51 2012 -0500
+
+    It makes me commit before I can pull.
+
+commit f260b589271b03367c484632cdf223d4096e509d
+Author: Diane Lee <yingxuan08@yahoo.com>
+Date:   Fri Jun 29 03:02:16 2012 -0500
+
+    Partially implemented import for Person
+
+commit 76e0d9348b396244fed48cd3da53c4a733198e14
+Author: Diane Lee <yingxuan08@yahoo.com>
+Date:   Fri Jun 29 01:53:51 2012 -0500
+
+    Made debug messages easier to see
+
+commit e68d8d147b6e014e08b756deb7ef3a95a7f2e1b6
+Author: Diane Lee <yingxuan08@yahoo.com>
+Date:   Fri Jun 29 01:30:59 2012 -0500
+
+    WC1.py works again
+
+commit c58ad7a5ce0763774ecf30cc57e137d1c4e82c47
+Author: Diane Lee <yingxuan08@yahoo.com>
+Date:   Fri Jun 29 01:19:14 2012 -0500
+
+    Fixed models so that WC1.py compiles
+
+commit 8f4256e836b1b234c01841277a2ff4a62094bbc1
+Merge: 7fc3abb 6465f81
+Author: sogol <sogol@utexas.edu>
+Date:   Thu Jun 28 18:30:27 2012 -0500
+
+    Merge branch 'master' of https://github.com/SnowSpider/cs373-wc
+
+commit 7fc3abbb16789e824a9f50392084739a2438d6bb
+Author: sogol <sogol@utexas.edu>
+Date:   Thu Jun 28 18:30:03 2012 -0500
+
+    improved import's skeleton
+
+commit 6465f81851f4d17ec52167a7230123aa9b85d93a
+Author: wlee <tree03@paran.com>
+Date:   Thu Jun 28 18:23:00 2012 -0500
+
+    idref implemented on the schema
+
+commit 321c0d3ea51c2f0b46f4cb8b7c98bacf08e0bbb2
+Author: wlee <tree03@paran.com>
+Date:   Thu Jun 28 18:15:52 2012 -0500
+
+    model.py added
+
+commit faac8f7981a157461c81fb5e184ba6317909e285
+Author: sogol <sogol@utexas.edu>
+Date:   Thu Jun 28 17:19:31 2012 -0500
+
+    added import skeleton
+
+commit 7ab366817d5c4af4ccc17d9cc3b8ef000dd63be2
+Author: wlee <tree03@paran.com>
+Date:   Thu Jun 28 16:45:38 2012 -0500
+
+    schema v2 validated
+
+commit 2a2dc12b69f431686431afc96fc9ef8fbf6c62e2
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Thu Jun 28 16:22:27 2012 -0500
+
+    Image Fix(again)
+
+commit 427656ed1b5dc05f9d717240063df1ec7a2e2416
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Thu Jun 28 16:18:40 2012 -0500
+
+    Content Updated
+
+commit 30f8f1050e7fa07812ba3e5717609a004af2d63c
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Thu Jun 28 16:01:03 2012 -0500
+
+    Content Updated
+
+commit 5bf652caa731cbbca6da43783764bd9da83609fa
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Thu Jun 28 15:51:50 2012 -0500
+
+    Fixed Image Link
+
+commit c594a45b3143aef3ef2461f624836a7476266240
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Thu Jun 28 15:48:09 2012 -0500
+
+    Content Updated
+
+commit 056430687f8d8f2a3feedcb75d627301c0bef0a3
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Thu Jun 28 15:28:42 2012 -0500
+
+    Content Updated
+
+commit 1421c5293a06faac35158733fbf5932e5b314843
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Thu Jun 28 15:07:24 2012 -0500
+
+    Updated Data
+
+commit 3b7309001013226777bbb0067378df921a408d4a
+Author: lordtony <LordTony@LordTony-PC.(none)>
+Date:   Thu Jun 28 14:58:05 2012 -0500
+
+    added a handful of pages to the html
+
+commit 002593de42b9940f1997708008a54c238e8255b5
+Merge: fee2953 0c54ebd
+Author: lordtony <LordTony@LordTony-PC.(none)>
+Date:   Thu Jun 28 14:18:40 2012 -0500
+
+    Merge branch 'master' of https://github.com/SnowSpider/cs373-wc
+
+commit fee2953903a290f010e99c8657857982ba4eb562
+Author: lordtony <LordTony@LordTony-PC.(none)>
+Date:   Thu Jun 28 14:18:28 2012 -0500
+
+    made a few changes added 1 person page.
+
+commit 0c54ebd67e16f4c985cc109c6daf62ec3ca1183e
+Author: DanielMoreno <longhorndrm@gmail.com>
+Date:   Thu Jun 28 14:06:18 2012 -0500
+
+    Changed History*
+
 commit 72ab80e85250e7935ce60989d7e0b0f68cb709ef
 Author: lordtony <LordTony@LordTony-PC.(none)>
 Date:   Thu Jun 28 12:50:12 2012 -0500

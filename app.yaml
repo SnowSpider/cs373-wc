@@ -6,6 +6,9 @@ threadsafe: false
 
 handlers:
 
+- url: /test.*
+  script: gaeunit.py
+
 - url: /content
   static_dir: htmlgoodies/content
 
@@ -14,4 +17,9 @@ handlers:
 
 - url: /.*
   script: WC1.py
+
+libraries:
+
+- name: django
+  version: "1.2"
 

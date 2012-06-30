@@ -8,7 +8,7 @@ from google.appengine.ext.db import polymodel
 class ContactInfo(db.Model):
     phone_number = db.StringProperty()
     email = db.EmailProperty()
-    address = db.StringProperty()
+    address = db.TextProperty()
 
 class Person(db.Model):
     name = db.StringProperty(required=True)
@@ -75,13 +75,10 @@ def ImportXml(filename, imported):
   debug(people)
   for person in people :
     person_model = Person(name=person.find("name").text)
-    debug(person_model)
-    debug(person_model.name)
     
     kind_ = person.find("kind")
     if kind_ is not None:
         person_model.kind_ = kind_.text
-        debug(person_model.kind_)
         
     location = person.find("location")
     if location is not None:
@@ -105,8 +102,7 @@ def ImportXml(filename, imported):
     
     external_links = person.find("external_links")
     if external_links is not None:
-      person_model.external_links = map(lambda e: db.Link(e.text), external_links.findall("link"))  
-      debug(list(person_model.external_links))
+      person_model.external_links = map(lambda e: db.Link(e.text), external_links.findall("link"))
 
     related_crises = person.find("related_crises")
     if related_crises is not None:
@@ -121,13 +117,10 @@ def ImportXml(filename, imported):
   orgs = root.find("orgs").findall("org")
   for org in orgs :
     org_model = Organization(name=org.find("name").text)
-    debug(org_model)
-    debug(org_model.name)
     
     kind_ = org.find("kind")
     if kind_ is not None:
         org_model.kind_ = kind_.text
-        debug(org_model.kind_)
         
     location = org.find("location")
     if location is not None:
@@ -164,7 +157,6 @@ def ImportXml(filename, imported):
     external_links = org.find("external_links")
     if external_links is not None:
       org_model.external_links = map(lambda e: db.Link(e.text), external_links.findall("link"))  
-      debug(list(org_model.external_links))
 
     related_crises = org.find("related_crises")
     if related_crises is not None:
@@ -183,7 +175,6 @@ def ImportXml(filename, imported):
     kind_ = crisis.find("kind")
     if kind_ is not None:
         crisis_model.kind_ = kind_.text
-        debug(crisis_model.kind_)
         
     location = crisis.find("location")
     if location is not None:
@@ -227,8 +218,7 @@ def ImportXml(filename, imported):
     
     external_links = crisis.find("external_links")
     if external_links is not None:
-      crisis_model.external_links = map(lambda e: db.Link(e.text), external_links.findall("link"))  
-      debug(list(crisis_model.external_links))
+      crisis_model.external_links = map(lambda e: db.Link(e.text), external_links.findall("link"))
 
     related_people = crisis.find("related_people")
     if related_people is not None:

@@ -60,10 +60,35 @@ elementFormDefault="qualified">
     </xs:complexType>
 </xs:element>
 
+
+<xs:element name="personRef">	
+    <xs:complexType>
+        <xs:simpleContent>
+            <xs:extension base="xs:IDREF"/>
+        </xs:simpleContent>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name="crisisRef">	
+    <xs:complexType>
+        <xs:simpleContent>
+            <xs:extension base="xs:IDREF"/>
+        </xs:simpleContent>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name="orgRef">	
+    <xs:complexType>
+        <xs:simpleContent>
+            <xs:extension base="xs:IDREF"/>
+        </xs:simpleContent>
+    </xs:complexType>
+</xs:element>
+
 <xs:element name="related_people">
     <xs:complexType>
         <xs:sequence>
-            <xs:element ref="name" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="personRef" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 </xs:element>
@@ -71,7 +96,7 @@ elementFormDefault="qualified">
 <xs:element name="related_orgs">
     <xs:complexType>
         <xs:sequence>
-            <xs:element ref="name" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="orgRef" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 </xs:element>
@@ -79,7 +104,7 @@ elementFormDefault="qualified">
 <xs:element name="related_crises">
     <xs:complexType>
         <xs:sequence>
-            <xs:element ref="name" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="crisisRef" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 </xs:element>
@@ -97,6 +122,7 @@ elementFormDefault="qualified">
         <xs:element ref="related_crises" minOccurs="0"/>
         <xs:element ref="related_orgs" minOccurs="0"/>
     </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required"/>
 </xs:complexType>
 
 <xs:complexType name="crisis_type">
@@ -117,6 +143,7 @@ elementFormDefault="qualified">
         <xs:element ref="related_orgs" minOccurs="0"/>
         <xs:element ref="related_people" minOccurs="0"/>
     </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required"/>
 </xs:complexType>
 
 <xs:complexType name="org_type">
@@ -133,6 +160,7 @@ elementFormDefault="qualified">
         <xs:element ref="related_crises"  minOccurs="0"/>
         <xs:element ref="related_people" minOccurs="0"/>
     </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required"/>
 </xs:complexType>
 
 <xs:element name="people">
