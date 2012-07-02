@@ -80,23 +80,23 @@ class ExportHandler(webapp.RequestHandler):
 class ImportFormHandler(webapp.RequestHandler):
     def get(self):
         upload_url = blobstore.create_upload_url('/import_upload')
-        self.response.out.write('<html><body>')
-        self.response.out.write('<form action="%s" method="POST" enctype="multipart/form-data">' % upload_url)
+        self.response.out.write('<html><body><table align="center" width="100%" height="100%"><tr height="200"><td></td></tr>')
+        self.response.out.write('<tr><td><form action="%s" method="POST" enctype="multipart/form-data">' % upload_url)
         self.response.out.write('''Upload File: <input type="file" name="file"><br> <input type="submit"
-            name="submit" value="Submit"> </form></body></html>''')
+            name="submit" value="Submit"> </form></td></tr><tr height="200"><td></td></tr></table></body></html>''')
 
 
 class ImportUploadHandler(blobstore_handlers.BlobstoreUploadHandler):
     def post(self):
-#        try:
+        try:
             global data_models
             xml_file = self.get_uploads('file')[0].open()
             debug("XML_FILE: "+ str(xml_file))
             data_models = import_file(xml_file)
             debug("DATA_MODELS: " + str(data_models))
             self.response.out.write("Data was successfully imported")
-#        except:
-#            self.redirect('/')
+        except:
+            self.response.out.write("Please provide a valid XML file")
 
 #Assumes valid xml instance
 def ImportXml(filename):
