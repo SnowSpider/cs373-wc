@@ -1,9 +1,13 @@
 import wsgiref.handlers
 import xml.etree.cElementTree as ET
 from google.appengine.ext import webapp
-import logging
+from google.appengine.ext.webapp import blobstore_handlers
+from google.appengine.ext import blobstore
 from google.appengine.ext import db
 from google.appengine.ext.db import polymodel
+import logging
+
+data_models = {"people":[], "crises":[], "orgs":[]}
 
 class ContactInfo(db.Model):
     phone_number = db.PhoneNumberProperty()
@@ -68,14 +72,31 @@ class MainHandler(webapp.RequestHandler):
         debug("IMPORTED: " + str(imported))
         self.response.out.write(outstr)
 
-"""
-class UploadHandler(blobstore_handlers.BlobstoreUploadHandler):
-  def post(self):
-    try:
-      inFile = self.getuploads('import_file')[0].open()
-"""
-      
+class ExportHandler(webapp.RequestHandler):
+    def get(self):
+        self.response.headers['Content-Type'] = 'text/xml'
+        self.response.out.write(ExportXml(data_models))
 
+class ImportFormHandler(webapp.RequestHandler):
+    def get(self):
+        upload_url = blobstore.create_upload_url('/import_upload')
+        self.response.out.write('<html><body>')
+        self.response.out.write('<form action="%s" method="POST" enctype="multipart/form-data">' % upload_url)
+        self.response.out.write('''Upload File: <input type="file" name="file"><br> <input type="submit"
+            name="submit" value="Submit"> </form></body></html>''')
+
+
+class ImportUploadHandler(blobstore_handlers.BlobstoreUploadHandler):
+    def post(self):
+#        try:
+            global data_models
+            xml_file = self.get_uploads('file')[0].open()
+            debug("XML_FILE: "+ str(xml_file))
+            data_models = import_file(xml_file)
+            debug("DATA_MODELS: " + str(data_models))
+            self.redirect('/test')
+#        except:
+#            self.redirect('/')
 
 #Assumes valid xml instance
 def ImportXml(filename):
@@ -439,5 +460,9 @@ def debug(msg):
     logging.debug("\n\n" + str(msg) + "\n")
 
 def main():
-    application = webapp.WSGIApplication([('/', MainHandler)], debug=True)
+    application = webapp.WSGIApplication([  ('/', MainHandler), 
+                                            ('/import', ImportFormHandler), 
+                                            ('/import_upload', ImportUploadHandler),
+                                            ('/export', ExportHandler)
+                                         ], debug=True)
     wsgiref.handlers.CGIHandler().run(application)
