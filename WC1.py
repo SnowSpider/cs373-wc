@@ -65,8 +65,16 @@ class MainHandler(webapp.RequestHandler):
         outstr = inFile.read() #"HELLO CAR RAMROD"
         inFile.close()
         imported = ImportXml("WC.xml")
-        #debug(imported)
+        debug("IMPORTED: " + str(imported))
         self.response.out.write(outstr)
+
+"""
+class UploadHandler(blobstore_handlers.BlobstoreUploadHandler):
+  def post(self):
+    try:
+      inFile = self.getuploads('import_file')[0].open()
+"""
+      
 
 
 #Assumes valid xml instance
@@ -76,7 +84,10 @@ def ImportXml(filename):
     filename the name of the .xml file
     return the desired data in multi-dimensional dictionary
     """
-    tree = ET.parse(filename)
+    return import_file(open(filename, "r"))
+
+def import_file(xml_file):
+    tree = ET.ElementTree(file = xml_file)
     root = tree.getroot()
     #debug(root)
     #debug("HIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
