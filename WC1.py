@@ -76,15 +76,22 @@ class UploadHandler(blobstore_handlers.BlobstoreUploadHandler):
 """
       
 
+# ---------
+# ImportXml
+# ---------
 
-#Assumes valid xml instance
 def ImportXml(filename):
     """
     Imports data from an xml instance and saves it in heap
+    Assumes valid xml instance
     filename the name of the .xml file
     return the desired data in multi-dimensional dictionary
     """
     return import_file(open(filename, "r"))
+
+# -----------
+# import_file
+# -----------
 
 def import_file(xml_file):
     tree = ET.ElementTree(file = xml_file)
@@ -257,6 +264,10 @@ def import_file(xml_file):
     
     return imported
 
+# ------
+# fixAmp
+# ------
+
 def fixAmp(line):
     """
     Replaces every occurrence of an ampersand(&) with "&amp;" in a given string
@@ -270,6 +281,10 @@ def fixAmp(line):
         else:
             result += c
     return result
+
+# ---------
+# ExportXml
+# ---------
 
 def ExportXml(data):
     """
