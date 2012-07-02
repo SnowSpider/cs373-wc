@@ -54,20 +54,40 @@ class Crisis(db.Model):
     related_people = db.StringListProperty() # Person
 
 class MainHandler(webapp.RequestHandler):
-  def get(self):
-    self.response.headers['Content-Type'] = 'text/html'
+    def get(self):
+        """
+        This method is called by the GAE when a user navigates to the root page.
+        It draws the page.
+        """
+        self.response.headers['Content-Type'] = 'text/html'
 
-    inFile = open("htmlgoodies/mockup.html", 'r')
-    outstr = inFile.read() #"HELLO CAR RAMROD"
-    inFile.close()
-    imported = ImportXml("WC.xml")
-    debug(imported)
-    self.response.out.write(outstr)
+        inFile = open("htmlgoodies/mockup.html", 'r')
+        outstr = inFile.read() #"HELLO CAR RAMROD"
+        inFile.close()
+        imported = ImportXml("WC.xml")
+        debug("IMPORTED: " + str(imported))
+        self.response.out.write(outstr)
+
+"""
+class UploadHandler(blobstore_handlers.BlobstoreUploadHandler):
+  def post(self):
+    try:
+      inFile = self.getuploads('import_file')[0].open()
+"""
+      
 
 
 #Assumes valid xml instance
 def ImportXml(filename):
-    tree = ET.parse(filename)
+    """
+    Imports data from an xml instance and saves it in heap
+    filename the name of the .xml file
+    return the desired data in multi-dimensional dictionary
+    """
+    return import_file(open(filename, "r"))
+
+def import_file(xml_file):
+    tree = ET.ElementTree(file = xml_file)
     root = tree.getroot()
     #debug(root)
     #debug("HIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
@@ -238,6 +258,11 @@ def ImportXml(filename):
     return imported
 
 def fixAmp(line):
+    """
+    Replaces every occurrence of an ampersand(&) with "&amp;" in a given string
+    line the original string
+    return the modified string
+    """
     result = ""
     for c in line:
         if c == '&':
@@ -247,6 +272,11 @@ def fixAmp(line):
     return result
 
 def ExportXml(data):
+    """
+    Exports the data to the screen in xml format
+    data is the data
+    return a string in xml format
+    """
     #debug(data)
     myString = "<everything>\n"
     
