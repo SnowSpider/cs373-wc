@@ -271,7 +271,7 @@ def import_file(xml_file):
             org_model.related_crises = map(lambda e: e.text, related_crises.findall("crisisRef"))
     
         related_people = org.find("related_people")
-        if related_orgs is not None:
+        if related_people is not None:
             org_model.related_people = map(lambda e: e.text, related_people.findall("personRef"))
         imported["orgs"][org_model.name] = org_model
     #debug(imported)
@@ -314,22 +314,22 @@ def ExportXml(data):
         if data["people"][person].images:
             myString += "\t\t\t<images>\n"
             for link in data["people"][person].images:
-                myString += "\t\t\t\t<link>" + fixAmp(str(link)) + "</link>\n"
+                myString += "\t\t\t\t<link>" + str(link) + "</link>\n"
             myString += "\t\t\t</images>\n"
         if data["people"][person].videos:
             myString += "\t\t\t<videos>\n"
             for link in data["people"][person].videos:
-                myString += "\t\t\t\t<link>" + fixAmp(str(link)) + "</link>\n"
+                myString += "\t\t\t\t<link>" + str(link) + "</link>\n"
             myString += "\t\t\t</videos>\n" 
         if data["people"][person].social_networks:
             myString += "\t\t\t<social_networks>\n"
             for link in data["people"][person].social_networks:
-                myString += "\t\t\t\t<link>" + fixAmp(str(link)) + "</link>\n"
+                myString += "\t\t\t\t<link>" + str(link) + "</link>\n"
             myString += "\t\t\t</social_networks>\n"
         if data["people"][person].social_networks:
             myString += "\t\t\t<external_links>\n"
             for link in data["people"][person].external_links:
-                myString += "\t\t\t\t<link>" + fixAmp(str(link)) + "</link>\n"
+                myString += "\t\t\t\t<link>" + str(link) + "</link>\n"
             myString += "\t\t\t</external_links>\n"
         if data["people"][person].related_crises:
             myString += "\t\t\t<related_crises>\n"
@@ -367,22 +367,22 @@ def ExportXml(data):
         if data["crises"][crisis].images:
             myString += "\t\t\t<images>\n"
             for link in data["crises"][crisis].images:
-                myString += "\t\t\t\t<link>" + fixAmp(str(link)) + "</link>\n"
+                myString += "\t\t\t\t<link>" + str(link) + "</link>\n"
             myString += "\t\t\t</images>\n"
         if data["crises"][crisis].videos:
             myString += "\t\t\t<videos>\n"
             for link in data["crises"][crisis].videos:
-                myString += "\t\t\t\t<link>" + fixAmp(str(link)) + "</link>\n"
+                myString += "\t\t\t\t<link>" + str(link) + "</link>\n"
             myString += "\t\t\t</videos>\n" 
         if data["crises"][crisis].social_networks:
             myString += "\t\t\t<social_networks>\n"
             for link in data["crises"][crisis].social_networks:
-                myString += "\t\t\t\t<link>" + fixAmp(str(link)) + "</link>\n"
+                myString += "\t\t\t\t<link>" + str(link) + "</link>\n"
             myString += "\t\t\t</social_networks>\n"
         if data["crises"][crisis].external_links:
             myString += "\t\t\t<external_links>\n"
             for link in data["crises"][crisis].external_links:
-                myString += "\t\t\t\t<link>" + fixAmp(str(link)) + "</link>\n"
+                myString += "\t\t\t\t<link>" + str(link) + "</link>\n"
             myString += "\t\t\t</external_links>\n"
         if data["crises"][crisis].related_orgs:
             myString += "\t\t\t<related_orgs>\n"
@@ -392,7 +392,7 @@ def ExportXml(data):
         if data["crises"][crisis].related_people:
             myString += "\t\t\t<related_people>\n"
             for person in data["crises"][crisis].related_people:
-                myString += "\t\t\t\t<crisisRef>" + str(person) + "</crisisRef>\n"
+                myString += "\t\t\t\t<personRef>" + str(person) + "</personRef>\n"
             myString += "\t\t\t</related_people>\n"      
         myString += "\t\t</crisis>\n"
     myString += "\t</crises>\n"
@@ -405,10 +405,10 @@ def ExportXml(data):
             myString += "\t\t\t<kind>" + data["orgs"][org].kind_ + "</kind>\n"
         if data["orgs"][org].location is not None:
             myString += "\t\t\t<location>" + data["orgs"][org].location + "</location>\n"
-        """
+        
         if data["orgs"][org].history is not None:
             myString += "\t\t\t<history>" + data["orgs"][org].history + "</history>\n"
-        """
+        
         if data["orgs"][org].contact_info is not None:
             myString += "\t\t\t<contact_info>\n"
             if data["orgs"][org].contact_info.email is not None:
@@ -421,22 +421,22 @@ def ExportXml(data):
         if data["orgs"][org].images:
             myString += "\t\t\t<images>\n"
             for link in data["orgs"][org].images:
-                myString += "\t\t\t\t<link>" + fixAmp(str(link)) + "</link>\n"
+                myString += "\t\t\t\t<link>" + str(link) + "</link>\n"
             myString += "\t\t\t</images>\n"
         if data["orgs"][org].videos:
             myString += "\t\t\t<videos>\n"
             for link in data["orgs"][org].videos:
-                myString += "\t\t\t\t<link>" + fixAmp(str(link)) + "</link>\n"
+                myString += "\t\t\t\t<link>" + str(link) + "</link>\n"
             myString += "\t\t\t</videos>\n" 
         if data["orgs"][org].social_networks:
             myString += "\t\t\t<social_networks>\n"
             for link in data["orgs"][org].social_networks:
-                myString += "\t\t\t\t<link>" + fixAmp(str(link)) + "</link>\n"
+                myString += "\t\t\t\t<link>" + str(link) + "</link>\n"
             myString += "\t\t\t</social_networks>\n"
         if data["orgs"][org].social_networks:
             myString += "\t\t\t<external_links>\n"
             for link in data["orgs"][org].external_links:
-                myString += "\t\t\t\t<link>" + fixAmp(str(link)) + "</link>\n"
+                myString += "\t\t\t\t<link>" + str(link) + "</link>\n"
             myString += "\t\t\t</external_links>\n"
         if data["orgs"][org].related_crises:
             myString += "\t\t\t<related_crises>\n"
@@ -446,14 +446,16 @@ def ExportXml(data):
         if data["orgs"][org].related_people:
             myString += "\t\t\t<related_people>\n"
             for person in data["orgs"][org].related_people:
-                myString += "\t\t\t\t<orgRef>" + str(person) + "</orgRef>\n"
+                myString += "\t\t\t\t<personRef>" + str(person) + "</personRef>\n"
             myString += "\t\t\t</related_people>\n"
         myString += "\t\t</org>\n"
     myString += "\t</orgs>\n"
     
     myString += "</everything>"
     
-    #debug(myString)
+    myString = fixAmp(myString)
+    
+    debug(myString)
     return myString
 
 def debug(msg):
