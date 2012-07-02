@@ -15,12 +15,34 @@ Google App Engine URL:  <cs username>-cs373-wc.appspot.com
 
 <repeat for each group member>
 
-Group Member First Name:
-Group Member Last Name:
-Group Member EID:
-Group Member E-mail:
+Group Member First Name: Daniel
+Group Member Last Name:  Moreno
+Group Member EID:        
+Group Member E-mail:     longhorndrm@gmail.com
 Group Member Rating:           <from the list below>
 Group Member Point Adjustment: <only if you're leader>
+
+Group Member First Name: Sogol
+Group Member Last Name:  Moshtaghi
+Group Member EID:        sm38384
+Group Member E-mail:     sogol@utexas.com
+Group Member Rating:           <from the list below>
+Group Member Point Adjustment: <only if you're leader>
+
+Group Member First Name: Tony
+Group Member Last Name:  Santi
+Group Member EID:        ags693
+Group Member E-mail:     platypustony@live.com
+Group Member Rating:           <from the list below>
+Group Member Point Adjustment: <only if you're leader>
+
+Group Member First Name: Diane
+Group Member Last Name:  Lee
+Group Member EID:        dyl228
+Group Member E-mail:     dlee198@gmail.com
+Group Member Rating:           <from the list below>
+Group Member Point Adjustment: <only if you're leader>
+
 
 Comments:
 
