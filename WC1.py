@@ -68,7 +68,7 @@ class MainHandler(webapp.RequestHandler):
         inFile = open("htmlgoodies/mockup.html", 'r')
         outstr = inFile.read() #"HELLO CAR RAMROD"
         inFile.close()
-        imported = ImportXml("WC.xml")
+        imported = ImportXml("WC1.xml")
         debug("IMPORTED: " + str(imported))
         self.response.out.write(outstr)
 
