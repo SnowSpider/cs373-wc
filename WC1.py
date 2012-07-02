@@ -94,7 +94,7 @@ class ImportUploadHandler(blobstore_handlers.BlobstoreUploadHandler):
             debug("XML_FILE: "+ str(xml_file))
             data_models = import_file(xml_file)
             debug("DATA_MODELS: " + str(data_models))
-            self.redirect('/test')
+            self.response.out.write("Data was successfully imported")
 #        except:
 #            self.redirect('/')
 
