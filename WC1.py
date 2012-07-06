@@ -1,3 +1,5 @@
+import sys
+
 import wsgiref.handlers
 import xml.etree.cElementTree as ET
 from google.appengine.ext import webapp
@@ -473,7 +475,15 @@ def ExportXml(data):
     debug(myString)
     return myString
 
+# -----
+# Debug
+# -----
+
 def debug(msg):
+    """
+    prints the debug message
+    msg the string you want to put on the debug screen
+    """
     logging.debug("\n\n" + str(msg) + "\n")
 
 def main():

@@ -1,0 +1,3 @@
+PYTHONPATH="/u/wlee/CS373/google_appengine/":"${PYTHONPATH}"
+export PYTHONPATH
+pydoc -w WC1
