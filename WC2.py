@@ -202,9 +202,9 @@ def import_file(xml_file):
         current_crisis.info.impact.human.missing = human.find("missing").text
         current_crisis.info.impact.human.misc = human.find("misc").text
         economic = impact.find("economic")
-        current_crisis.info.impact.human.amount = human.find("amount").text
-        current_crisis.info.impact.human.currency = human.find("currency").text
-        current_crisis.info.impact.human.misc = human.find("misc").text
+        current_crisis.info.impact.economic.amount = economic.find("amount").text
+        current_crisis.info.impact.economic.currency = economic.find("currency").text
+        current_crisis.info.impact.economic.misc = economic.find("misc").text
         ref = crisis.find("ref")
         primaryImage = ref.find("primaryImage")
         current_crisis.ref.primaryImage.site = primaryImage.find("site")
