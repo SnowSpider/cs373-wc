@@ -17,15 +17,15 @@
       <resources>medicine, fuel, food</resources>
       <type>Civil War</type>
       <time>
-        <time></time>
+        <time>Not Specified</time>
         <day>15</day>
         <month>2</month>
         <year>2011</year>
         <misc></misc>
       </time>
       <loc>
-        <city></city>
-        <region></region>
+        <city>Not Specified</city>
+        <region>Not Specified</region>
         <country>Libya</country>
       </loc>
       <impact>
