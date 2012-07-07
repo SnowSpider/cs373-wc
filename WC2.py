@@ -205,9 +205,9 @@ def import_file(xml_file):
         current_crisis.info.impact.human.missing = human.find("missing").text
         current_crisis.info.impact.human.misc = human.find("misc").text
         economic = impact.find("economic")
-        current_crisis.info.impact.human.amount = human.find("amount").text
-        current_crisis.info.impact.human.currency = human.find("currency").text
-        current_crisis.info.impact.human.misc = human.find("misc").text
+        current_crisis.info.impact.economic.amount = economic.find("amount").text
+        current_crisis.info.impact.economic.currency = economic.find("currency").text
+        current_crisis.info.impact.economic.misc = economic.find("misc").text
         ref = crisis.find("ref")
         primaryImage = ref.find("primaryImage")
         current_crisis.ref.append(Link(site = primaryImage.find("site"), title = primaryImage.find("title"), url = primaryImage.find("url"), description = primaryImage.find("description")))
@@ -219,6 +219,35 @@ def import_file(xml_file):
             current_crisis.ref.append(Link(site = video.find("site"), title = video.find("title"), url = video.find("url"), description = video.find("description")))
         current_crisis.ref.links.
         
+
+    people = root.findall("person")
+    for person in people: 
+        current_person = Person(name = person.find("name").text)
+        info = person.find("info")
+        current_person.info._type = info.find("type").text
+        current_person.info.nationality = info.find("nationality").text
+        current_person.info.biography = info.find("biography").text
+        birthdate = info.find("birthdate").text
+        current_person.info.time = birthdate.find("time").text
+        current_person.info.day = birthdate.find("day").text
+        current_person.info.month = birthdate.find("month").text
+        current_person.info.year = bithdate.find("year").text
+        current_person.info.misc = bithdate.find("misc").text
+        ref = person.find("ref")
+        primaryImage = ref.find("primaryImage")
+        current_person.ref.append(Link(site = primaryImage.find("site"), title = primaryImage.find("title"), url = primaryImage.find("url"), description = primaryImage.find("description")))
+        images = ref.findall("image")
+        for image in images:
+            current_person.ref.append(Link(site = image.find("site"), title = image.find("title"), url = image.find("url"), description = image.find("description")))
+        videos = ref.findall("video")
+        for video in videos:
+            current_person.ref.append(Link(site = video.find("site"), title = video.find("title"), url = video.find("url"), description = video.find("description")))
+        social = ref.find("social") 
+        current_person.ref.append(Link(site = social.find("site"), title = primaryImage.find("title"), url = primaryImage.find("url"), description = primaryImage.find("description")))
+        exts = ref.findall("ext")
+        for ext in exts:
+        	current_person.ref.append(Link(site = ext.find("site"), title = image.find("title"), url = image.find("url"), description = image.find("description")))
+        misc = person.find("misc")
         
     
     return imported
