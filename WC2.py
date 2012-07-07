@@ -174,7 +174,7 @@ def import_file(xml_file):
     tree = ET.ElementTree(file = xml_file)
     root = tree.getroot()
     
-    imported = {"people": {}, "crises": {}, "orgs": {}}
+    data = {"people": {}, "crises": {}, "orgs": {}}
     
     crises = root.findall("crisis")
     for crisis in crises: 
@@ -230,9 +230,17 @@ def import_file(xml_file):
         relatedPeople = crisis.findall("person")
         for relatedPerson in relatedPeople:
             current_crisis.relatedPeople.append(relatedPerson)
+        data["crises"][currentCrisis.name] = currentCrisis;
         
+    orgs = root.findall("org")
+    for org in orgs: 
+        data["orgs"][currentOrg.name] = currentOrg;
+    
+    people = root.findall("person")
+    for person in people: 
+        data["people"][currentPerson.name] = currentPerson;
         
-    return imported
+    return data
 
 # ------
 # fixAmp
@@ -251,4 +259,53 @@ def fixAmp(line):
             result += c
     return result
 
+# ---------
+# ExportXml
+# ---------
+
+def ExportXml(data):
+    """
+    Exports the data to the screen in xml format
+    data is the data
+    return a string in xml format
+    """
+    
+    myString = "<worldCrises>\n"
+    
+    for crisis in data["crises"]:
+        myString += "\t<crisis>\n"
+        
+        myString += "\t<\crisis>\n"
+        
+    for org in data["orgs"]:
+        myString += "\t<org>\n"
+        
+        myString += "\t<\org>\n"
+        
+    for person in data["people"]:
+        myString += "\t<person>\n"
+        
+        myString += "\t<\person>\n"
+    
+    myString += "</worldCrises>"
+    return myString
+
+# -----
+# Debug
+# -----
+
+def debug(msg):
+    """
+    prints the debug message
+    msg the string you want to put on the debug screen
+    """
+    logging.debug("\n\n" + str(msg) + "\n")
+
+def main():
+    application = webapp.WSGIApplication([  ('/', MainHandler), 
+                                            ('/import', ImportFormHandler), 
+                                            ('/import_upload', ImportUploadHandler),
+                                            ('/export', ExportHandler)
+                                         ], debug=True)
+    wsgiref.handlers.CGIHandler().run(application)
 
