@@ -242,11 +242,12 @@ def import_file(xml_file):
         videos = ref.findall("video")
         for video in videos:
             current_person.ref.append(Link(site = video.find("site"), title = video.find("title"), url = video.find("url"), description = video.find("description")))
-        social = ref.find("social") 
-        current_person.ref.append(Link(site = social.find("site"), title = primaryImage.find("title"), url = primaryImage.find("url"), description = primaryImage.find("description")))
+        socials = ref.find("social") 
+        for social in socials:
+        	current_person.ref.append(Link(site = social.find("site"), title = social.find("title"), url = social.find("url"), description = social.find("description")))
         exts = ref.findall("ext")
         for ext in exts:
-        	current_person.ref.append(Link(site = ext.find("site"), title = image.find("title"), url = image.find("url"), description = image.find("description")))
+        	current_person.ref.append(Link(site = ext.find("site"), title = ext.find("title"), url = ext.find("url"), description = ext.find("description")))
         misc = person.find("misc")
         
     
