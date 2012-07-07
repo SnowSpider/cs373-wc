@@ -21,24 +21,24 @@ class Crisis(db.Model):
     info = PersonInfo()
     ref = db.ListProperty(Link)
     misc = db.StringProperty()
-    related_orgs = db.ListProperty(Reference)
-    related_people = db.ListProperty(Reference)
+    relatedOrgs = db.ListProperty(db.ReferenceProperty(Organization))
+    relatedPeople = db.ListProperty(db.ReferenceProperty(Person))
 
 class Organization(db.Model):
     name = db.StringProperty(required=True)
     info = OrgInfo()
     ref = db.ListProperty(Link)
     misc = db.StringProperty()
-    related_crises = db.ListProperty(Reference)
-    related_people = db.ListProperty(Reference)
+    relatedCrises = db.ListProperty(db.ReferenceProperty(Crisis))
+    relatedPeople = db.ListProperty(db.ReferenceProperty(Person))
 
 class Person(db.Model):
     name = db.StringProperty(required=True)
     info = PersonInfo()
     ref = db.ListProperty(Link)
     misc = db.StringProperty()
-    related_crises = db.ListProperty(Reference)
-    related_orgs = db.ListProperty(Reference)
+    relatedCrises = db.ListProperty(db.ReferenceProperty(Crisis))
+    relatedOrgs = db.ListProperty(db.ReferenceProperty(Organization))
     
 class Location(db.Model):
     city = db.StringProperty()
@@ -98,17 +98,14 @@ class Reference(db.Model):
     primaryImage = Link()
     images = db.ListProperty(Link)
     videos = db.ListProperty(Link)
-    social = db.ListProperty(Link)
-    ext = db.ListProperty(Link)
+    socials = db.ListProperty(Link)
+    exts = db.ListProperty(Link)
 
 class Link(db.Model):
     site = db.StringProperty()
     title = db.StringProperty()
     url = db.LinkProperty()
     description = db.TextProperty()
-
-class Reference():
-    # ???
 
 class FullAddress():
     address = db.StringProperty()
@@ -210,17 +207,31 @@ def import_file(xml_file):
         current_crisis.info.impact.human.misc = human.find("misc").text
         ref = crisis.find("ref")
         primaryImage = ref.find("primaryImage")
-        current_crisis.ref.append(Link(site = primaryImage.find("site"), title = primaryImage.find("title"), url = primaryImage.find("url"), description = primaryImage.find("description")))
+        current_crisis.ref.primaryImage.site = primaryImage.find("site")
+        current_crisis.ref.primaryImage.title = primaryImage.find("title")
+        current_crisis.ref.primaryImage.url = primaryImage.find("url")
+        current_crisis.ref.primaryImage.description = primaryImage.find("description")))
         images = ref.findall("image")
         for image in images:
-            current_crisis.ref.append(Link(site = image.find("site"), title = image.find("title"), url = image.find("url"), description = image.find("description")))
+            current_crisis.ref.images.append(Link(site = image.find("site"), title = image.find("title"), url = image.find("url"), description = image.find("description")))
         videos = ref.findall("video")
         for video in videos:
-            current_crisis.ref.append(Link(site = video.find("site"), title = video.find("title"), url = video.find("url"), description = video.find("description")))
-        current_crisis.ref.links.
+            current_crisis.ref.videos.append(Link(site = video.find("site"), title = video.find("title"), url = video.find("url"), description = video.find("description")))
+        socials = ref.findall("social")
+        for social in socials:
+            current_crisis.ref.socials.append(Link(site = social.find("site"), title = social.find("title"), url = social.find("url"), description = social.find("description")))
+        exts = ref.findall("ext")
+        for ext in exts:
+            current_crisis.ref.socials.append(Link(site = ext.find("site"), title = ext.find("title"), url = ext.find("url"), description = ext.find("description")))
+        current_crisis.misc = crisis.find("misc").text
+        relatedOrgs = crisis.findall("org")
+        for relatedOrg in relatedOrgs:
+            current_crisis.relatedOrgs.append(relatedOrg)
+        relatedPeople = crisis.findall("person")
+        for relatedPerson in relatedPeople:
+            current_crisis.relatedPeople.append(relatedPerson)
         
         
-    
     return imported
 
 # ------
