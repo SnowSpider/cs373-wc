@@ -193,11 +193,11 @@ def import_file(xml_file):
         current_crisis.info.month = time.find("month").text
         current_crisis.info.year = time.find("year").text
         current_crisis.info.misc = time.find("misc").text
-        loc = crisis.find("loc")
+        loc = info.find("loc")
         current_crisis.info.loc.city = loc.find("city").text
         current_crisis.info.loc.region = loc.find("region").text
         current_crisis.info.loc.country = loc.find("country").text
-        impact = crisis.find("impact")
+        impact = info.find("impact")
         human = impact.find("human")
         current_crisis.info.impact.human.deaths = human.find("deaths").text
         current_crisis.info.impact.human.displaced = human.find("displaced").text
@@ -217,8 +217,18 @@ def import_file(xml_file):
         videos = ref.findall("video")
         for video in videos:
             current_crisis.ref.append(Link(site = video.find("site"), title = video.find("title"), url = video.find("url"), description = video.find("description")))
-        current_crisis.ref.links.
+         socials = ref.findall("social") 
+        for social in socials:
+        	current_crisis.ref.append(Link(site = social.find("site"), title = social.find("title"), url = social.find("url"), description = social.find("description")))
+        exts = ref.findall("ext")
+        for ext in exts:
+        	current_crisis.ref.append(Link(site = ext.find("site"), title = ext.find("title"), url = ext.find("url"), description = ext.find("description")))
+       current_crisis. misc = crisis.find("misc").text
+        #current_crisis.org = crisis.find("org").text 
+        #current_crisis.person = crisis.find("person").text
+        imported["crises"][current_crisis.name] = current_crisis
         
+    
 
     people = root.findall("person")
     for person in people: 
@@ -248,8 +258,48 @@ def import_file(xml_file):
         exts = ref.findall("ext")
         for ext in exts:
         	current_person.ref.append(Link(site = ext.find("site"), title = ext.find("title"), url = ext.find("url"), description = ext.find("description")))
-        misc = person.find("misc")
+        misc = person.find("misc").text
+       #current_person.crisis = person.find("crisis").text
+       #current_person.org = person.find("org").text
+       imported["people"][current_person.name] = current_person
+       
         
+      
+    orgs = root.findall("org")
+    for org in orgs: 
+        current_org = Organization(name = org.find("name").text)
+        info = org.find("info")
+        current_org.info._type = info.find("type").text
+        current_org.info.history = info.find("history").text
+        contact = info.find("contact")
+        current_org.info.phone = contact.find("phone").text
+        current_org.info.email = contact.find("email").text
+        mail = contact.find("mail")
+        current_org.info.addr = mail.find("address").text
+        current_org.info.city = mail.find("city").text
+        current_org.info.state = mail.find("state").text
+        current_org.info.country = mail.find("country").text
+        current_org.info.zip = mail.find("zip").text
+        ref = org.find("ref")
+        primaryImage = ref.find("primaryImage")
+        current_org.ref.append(Link(site = primaryImage.find("site"), title = primaryImage.find("title"), url = primaryImage.find("url"), description = primaryImage.find("description")))
+        images = ref.findall("image")
+        for image in images:
+            current_org.ref.append(Link(site = image.find("site"), title = image.find("title"), url = image.find("url"), description = image.find("description")))
+        videos = ref.findall("video")
+        for video in videos:
+            current_org.ref.append(Link(site = video.find("site"), title = video.find("title"), url = video.find("url"), description = video.find("description")))
+        socials = ref.find("social") 
+        for social in socials:
+        	current_org.ref.append(Link(site = social.find("site"), title = social.find("title"), url = social.find("url"), description = social.find("description")))
+        exts = ref.findall("ext")
+        for ext in exts:
+        	current_org.ref.append(Link(site = ext.find("site"), title = ext.find("title"), url = ext.find("url"), description = ext.find("description")))
+        current_org.misc = org.find("misc").text
+       # current_org.crisis= org.find("crisis").text
+        #current_org.person = org.find("person").text
+        imported["orgs"][current_org.name] = current_org
+
     
     return imported
 
