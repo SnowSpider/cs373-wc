@@ -1,3 +1,8 @@
 PYTHONPATH="/u/wlee/CS373/google_appengine/":"${PYTHONPATH}"
 export PYTHONPATH
 pydoc -w WC1
+
+
+http://localhost:8080/
+
+google_appengine/dev_appserver.py cs373-wc/

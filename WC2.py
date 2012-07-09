@@ -11,47 +11,52 @@ import logging
 
 data_models = {"people":[], "crises":[], "orgs":[]}
 
-class WorldCrises(db.Model):
-    crises = db.ListProperty(Crisis);
-    orgs = db.ListProperty(Organization);
-    people = db.ListProperty(Person);
+class Link(db.Model):
+    site = db.StringProperty()
+    title = db.StringProperty()
+    url = db.LinkProperty()
+    description = db.TextProperty()
     
-class Crisis(db.Model):
-    name = db.StringProperty(required=True)
-    info = PersonInfo()
-    ref = db.ListProperty(Link)
+class FullAddress(db.Model):
+    address = db.StringProperty()
+    city = db.StringProperty()
+    state = db.StringProperty()
+    country = db.StringProperty()
+    _zip = db.StringProperty()
+    
+class ContactInfo(db.Model):
+    phone = db.PhoneNumberProperty()
+    email = db.EmailProperty()
+    mail = FullAddress()
+    
+class HumanImpact(db.Model):
+    deaths = db.IntegerProperty()
+    displaced = db.IntegerProperty()
+    injured = db.IntegerProperty()
+    missing = db.IntegerProperty()
     misc = db.StringProperty()
-    related_orgs = db.ListProperty(Reference)
-    related_people = db.ListProperty(Reference)
 
-class Organization(db.Model):
-    name = db.StringProperty(required=True)
-    info = OrgInfo()
-    ref = db.ListProperty(Link)
+class EconomicImpact(db.Model):
+    amount = db.StringProperty()
+    currency = db.IntegerProperty()
     misc = db.StringProperty()
-    related_crises = db.ListProperty(Reference)
-    related_people = db.ListProperty(Reference)
-
-class Person(db.Model):
-    name = db.StringProperty(required=True)
-    info = PersonInfo()
-    ref = db.ListProperty(Link)
-    misc = db.StringProperty()
-    related_crises = db.ListProperty(Reference)
-    related_orgs = db.ListProperty(Reference)
+    
+class Impact(db.Model):
+    human = HumanImpact()
+    economic = EconomicImpact()
     
 class Location(db.Model):
     city = db.StringProperty()
     region = db.StringProperty()
     country = db.StringProperty()
-    
+
 class Date(db.Model):
     time = db.StringProperty()
     day = db.IntegerProperty()
     month = db.IntegerProperty()
     year = db.IntegerProperty()
     misc = db.StringProperty()
-
+    
 class CrisisInfo(db.Model):
     history = db.TextProperty()
     help = db.StringProperty()
@@ -72,50 +77,42 @@ class PersonInfo(db.Model):
     birthDate = Date()
     nationality = db.StringProperty()
     biography = db.TextProperty()
-
-class ContactInfo(db.Model):
-    phone = db.PhoneNumberProperty()
-    email = db.EmailProperty()
-    mail = FullAddress()
-
-class Impact(db.Model):
-    human = HumanImpact()
-    economic = EconomicImpact()
-
-class HumanImpact(db.Model):
-    deaths = db.IntegerProperty()
-    displaced = db.IntegerProperty()
-    injured = db.IntegerProperty()
-    missing = db.IntegerProperty()
-    misc = db.StringProperty()
-
-class EconomicImpact(db.Model):
-    amount = db.StringProperty()
-    currency = db.IntegerProperty()
-    misc = db.StringProperty()
-
+    
 class Reference(db.Model):
     primaryImage = Link()
     images = db.ListProperty(Link)
     videos = db.ListProperty(Link)
-    social = db.ListProperty(Link)
-    ext = db.ListProperty(Link)
+    socials = db.ListProperty(Link)
+    exts = db.ListProperty(Link)
+    
+class Crisis(db.Model):
+    name = db.StringProperty(required=True)
+    info = PersonInfo()
+    ref = Reference()
+    misc = db.StringProperty()
+    relatedOrgs = db.ListProperty(db.ReferenceProperty(Organization))
+    relatedPeople = db.ListProperty(db.ReferenceProperty(Person))
 
-class Link(db.Model):
-    site = db.StringProperty()
-    title = db.StringProperty()
-    url = db.LinkProperty()
-    description = db.TextProperty()
+class WorldCrises(db.Model):
+    crises = db.ListProperty(Crisis);
+    orgs = db.ListProperty(Organization);
+    people = db.ListProperty(Person);
 
-class Reference():
-    # ???
+class Organization(db.Model):
+    name = db.StringProperty(required=True)
+    info = OrgInfo()
+    ref = Reference()
+    misc = db.StringProperty()
+    relatedCrises = db.ListProperty(db.ReferenceProperty(Crisis))
+    relatedPeople = db.ListProperty(db.ReferenceProperty(Person))
 
-class FullAddress():
-    address = db.StringProperty()
-    city = db.StringProperty()
-    state = db.StringProperty()
-    country = db.StringProperty()
-    _zip = db.StringProperty()
+class Person(db.Model):
+    name = db.StringProperty(required=True)
+    info = PersonInfo()
+    ref = Reference()
+    misc = db.StringProperty()
+    relatedCrises = db.ListProperty(db.ReferenceProperty(Crisis))
+    relatedOrgs = db.ListProperty(db.ReferenceProperty(Organization))
     
 class MainHandler(webapp.RequestHandler):
     def get(self):
@@ -158,6 +155,7 @@ class ImportUploadHandler(blobstore_handlers.BlobstoreUploadHandler):
         except:
             self.response.out.write("Please provide a valid XML file")
             
+            
 # ---------
 # ImportXml
 # ---------
@@ -181,127 +179,140 @@ def import_file(xml_file):
     
     crises = root.findall("crisis")
     for crisis in crises: 
-        current_crisis = Crisis(name = crisis.find("name").text)
+        currentCrisis = Crisis(name = crisis.find("name").text)
         info = crisis.find("info")
-        current_crisis.info.history = info.find("history").text
-        current_crisis.info.help = info.find("help").text
-        current_crisis.info.resources = info.find("resources").text
-        current_crisis.info._type = info.find("type").text
+        currentCrisis.info.history = info.find("history").text
+        currentCrisis.info.help = info.find("help").text
+        currentCrisis.info.resources = info.find("resources").text
+        currentCrisis.info._type = info.find("type").text
         time = info.find("time")
-        current_crisis.info.time = time.find("time").text
-        current_crisis.info.day = time.find("day").text
-        current_crisis.info.month = time.find("month").text
-        current_crisis.info.year = time.find("year").text
-        current_crisis.info.misc = time.find("misc").text
+        currentCrisis.info.time = time.find("time").text
+        currentCrisis.info.day = time.find("day").text
+        currentCrisis.info.month = time.find("month").text
+        currentCrisis.info.year = time.find("year").text
+        currentCrisis.info.misc = time.find("misc").text
         loc = info.find("loc")
-        current_crisis.info.loc.city = loc.find("city").text
-        current_crisis.info.loc.region = loc.find("region").text
-        current_crisis.info.loc.country = loc.find("country").text
+        currentCrisis.info.loc.city = loc.find("city").text
+        currentCrisis.info.loc.region = loc.find("region").text
+        currentCrisis.info.loc.country = loc.find("country").text
         impact = info.find("impact")
         human = impact.find("human")
-        current_crisis.info.impact.human.deaths = human.find("deaths").text
-        current_crisis.info.impact.human.displaced = human.find("displaced").text
-        current_crisis.info.impact.human.injured = human.find("injured").text
-        current_crisis.info.impact.human.missing = human.find("missing").text
-        current_crisis.info.impact.human.misc = human.find("misc").text
+        currentCrisis.info.impact.human.deaths = human.find("deaths").text
+        currentCrisis.info.impact.human.displaced = human.find("displaced").text
+        currentCrisis.info.impact.human.injured = human.find("injured").text
+        currentCrisis.info.impact.human.missing = human.find("missing").text
+        currentCrisis.info.impact.human.misc = human.find("misc").text
         economic = impact.find("economic")
-        current_crisis.info.impact.economic.amount = economic.find("amount").text
-        current_crisis.info.impact.economic.currency = economic.find("currency").text
-        current_crisis.info.impact.economic.misc = economic.find("misc").text
+        currentCrisis.info.impact.economic.amount = economic.find("amount").text
+        currentCrisis.info.impact.economic.currency = economic.find("currency").text
+        currentCrisis.info.impact.economic.misc = economic.find("misc").text
         ref = crisis.find("ref")
         primaryImage = ref.find("primaryImage")
-        current_crisis.ref.append(Link(site = primaryImage.find("site"), title = primaryImage.find("title"), url = primaryImage.find("url"), description = primaryImage.find("description")))
+        currentCrisis.ref.append(Link(site = primaryImage.find("site"), title = primaryImage.find("title"), url = primaryImage.find("url"), description = primaryImage.find("description")))
         images = ref.findall("image")
         for image in images:
-            current_crisis.ref.append(Link(site = image.find("site"), title = image.find("title"), url = image.find("url"), description = image.find("description")))
+            currentCrisis.ref.append(Link(site = image.find("site"), title = image.find("title"), url = image.find("url"), description = image.find("description")))
         videos = ref.findall("video")
         for video in videos:
-            current_crisis.ref.append(Link(site = video.find("site"), title = video.find("title"), url = video.find("url"), description = video.find("description")))
-         socials = ref.findall("social") 
+            currentCrisis.ref.append(Link(site = video.find("site"), title = video.find("title"), url = video.find("url"), description = video.find("description")))
+        socials = ref.findall("social") 
         for social in socials:
-        	current_crisis.ref.append(Link(site = social.find("site"), title = social.find("title"), url = social.find("url"), description = social.find("description")))
+        	currentCrisis.ref.append(Link(site = social.find("site"), title = social.find("title"), url = social.find("url"), description = social.find("description")))
         exts = ref.findall("ext")
         for ext in exts:
-        	current_crisis.ref.append(Link(site = ext.find("site"), title = ext.find("title"), url = ext.find("url"), description = ext.find("description")))
-       current_crisis. misc = crisis.find("misc").text
-        #current_crisis.org = crisis.find("org").text 
-        #current_crisis.person = crisis.find("person").text
-        imported["crises"][current_crisis.name] = current_crisis
-        
+        	currentCrisis.ref.append(Link(site = ext.find("site"), title = ext.find("title"), url = ext.find("url"), description = ext.find("description")))
+        currentCrisis. misc = crisis.find("misc").text
+        relatedOrgs = crisis.findall("org")
+        for relatedOrg in relatedOrgs:
+            currentCrisis.relatedOrgs.append(relatedOrg)
+        relatedPeople = crisis.findall("person")
+        for relatedPerson in relatedPeople:
+            currentCrisis.relatedPeople.append(relatedPerson)
+        data["crises"][currentCrisis.name] = currentCrisis;
     
-
     people = root.findall("person")
     for person in people: 
-        current_person = Person(name = person.find("name").text)
+        currentPerson = Person(name = person.find("name").text)
         info = person.find("info")
-        current_person.info._type = info.find("type").text
-        current_person.info.nationality = info.find("nationality").text
-        current_person.info.biography = info.find("biography").text
+        currentPerson.info._type = info.find("type").text
         birthdate = info.find("birthdate").text
-        current_person.info.time = birthdate.find("time").text
-        current_person.info.day = birthdate.find("day").text
-        current_person.info.month = birthdate.find("month").text
-        current_person.info.year = bithdate.find("year").text
-        current_person.info.misc = bithdate.find("misc").text
+        currentPerson.info.time = birthdate.find("time").text
+        currentPerson.info.day = birthdate.find("day").text
+        currentPerson.info.month = birthdate.find("month").text
+        currentPerson.info.year = bithdate.find("year").text
+        currentPerson.info.misc = bithdate.find("misc").text
+        currentPerson.info.nationality = info.find("nationality").text
+        currentPerson.info.biography = info.find("biography").text
         ref = person.find("ref")
         primaryImage = ref.find("primaryImage")
-        current_person.ref.append(Link(site = primaryImage.find("site"), title = primaryImage.find("title"), url = primaryImage.find("url"), description = primaryImage.find("description")))
+        currentPerson.ref.append(Link(site = primaryImage.find("site"), title = primaryImage.find("title"), url = primaryImage.find("url"), description = primaryImage.find("description")))
         images = ref.findall("image")
         for image in images:
-            current_person.ref.append(Link(site = image.find("site"), title = image.find("title"), url = image.find("url"), description = image.find("description")))
+            currentPerson.ref.append(Link(site = image.find("site"), title = image.find("title"), url = image.find("url"), description = image.find("description")))
         videos = ref.findall("video")
         for video in videos:
-            current_person.ref.append(Link(site = video.find("site"), title = video.find("title"), url = video.find("url"), description = video.find("description")))
+            currentPerson.ref.append(Link(site = video.find("site"), title = video.find("title"), url = video.find("url"), description = video.find("description")))
         socials = ref.find("social") 
         for social in socials:
-        	current_person.ref.append(Link(site = social.find("site"), title = social.find("title"), url = social.find("url"), description = social.find("description")))
+        	currentPerson.ref.append(Link(site = social.find("site"), title = social.find("title"), url = social.find("url"), description = social.find("description")))
         exts = ref.findall("ext")
         for ext in exts:
-        	current_person.ref.append(Link(site = ext.find("site"), title = ext.find("title"), url = ext.find("url"), description = ext.find("description")))
+        	currentPerson.ref.append(Link(site = ext.find("site"), title = ext.find("title"), url = ext.find("url"), description = ext.find("description")))
         misc = person.find("misc").text
-       #current_person.crisis = person.find("crisis").text
-       #current_person.org = person.find("org").text
-       imported["people"][current_person.name] = current_person
-       
+        relatedCrises = person.findall("crisis")
+        for relatedCrisis in relatedCrises:
+            currentPerson.relatedCrises.append(relatedCrisis)
+        relatedOrgs = person.findall("org")
+        for relatedOrg in relatedOrgs:
+            currentPerson.relatedOrgs.append(relatedOrg)
+        data["people"][currentPerson.name] = currentPerson
         
-      
     orgs = root.findall("org")
     for org in orgs: 
-        current_org = Organization(name = org.find("name").text)
+        currentOrg = Organization(name = org.find("name").text)
         info = org.find("info")
-        current_org.info._type = info.find("type").text
-        current_org.info.history = info.find("history").text
+        currentOrg.info._type = info.find("type").text
+        currentOrg.info.history = info.find("history").text
         contact = info.find("contact")
-        current_org.info.phone = contact.find("phone").text
-        current_org.info.email = contact.find("email").text
+        currentOrg.info.phone = contact.find("phone").text
+        currentOrg.info.email = contact.find("email").text
         mail = contact.find("mail")
-        current_org.info.addr = mail.find("address").text
-        current_org.info.city = mail.find("city").text
-        current_org.info.state = mail.find("state").text
-        current_org.info.country = mail.find("country").text
-        current_org.info.zip = mail.find("zip").text
+        currentOrg.info.addr = mail.find("address").text
+        currentOrg.info.city = mail.find("city").text
+        currentOrg.info.state = mail.find("state").text
+        currentOrg.info.country = mail.find("country").text
+        currentOrg.info.zip = mail.find("zip").text
+        loc = info.find("loc")
+        currentCrisis.info.loc.city = loc.find("city").text
+        currentCrisis.info.loc.region = loc.find("region").text
+        currentCrisis.info.loc.country = loc.find("country").text
         ref = org.find("ref")
         primaryImage = ref.find("primaryImage")
-        current_org.ref.append(Link(site = primaryImage.find("site"), title = primaryImage.find("title"), url = primaryImage.find("url"), description = primaryImage.find("description")))
+        #currentOrg.ref.primaryImage = something
+        #currentOrg.ref.images.append(...)
+        currentOrg.ref.append(Link(site = primaryImage.find("site"), title = primaryImage.find("title"), url = primaryImage.find("url"), description = primaryImage.find("description")))
         images = ref.findall("image")
         for image in images:
-            current_org.ref.append(Link(site = image.find("site"), title = image.find("title"), url = image.find("url"), description = image.find("description")))
+            currentOrg.ref.append(Link(site = image.find("site"), title = image.find("title"), url = image.find("url"), description = image.find("description")))
         videos = ref.findall("video")
         for video in videos:
-            current_org.ref.append(Link(site = video.find("site"), title = video.find("title"), url = video.find("url"), description = video.find("description")))
+            currentOrg.ref.append(Link(site = video.find("site"), title = video.find("title"), url = video.find("url"), description = video.find("description")))
         socials = ref.find("social") 
         for social in socials:
-        	current_org.ref.append(Link(site = social.find("site"), title = social.find("title"), url = social.find("url"), description = social.find("description")))
+        	currentOrg.ref.append(Link(site = social.find("site"), title = social.find("title"), url = social.find("url"), description = social.find("description")))
         exts = ref.findall("ext")
         for ext in exts:
-        	current_org.ref.append(Link(site = ext.find("site"), title = ext.find("title"), url = ext.find("url"), description = ext.find("description")))
-        current_org.misc = org.find("misc").text
-       # current_org.crisis= org.find("crisis").text
-        #current_org.person = org.find("person").text
-        imported["orgs"][current_org.name] = current_org
-
-    
-    return imported
+        	currentOrg.ref.append(Link(site = ext.find("site"), title = ext.find("title"), url = ext.find("url"), description = ext.find("description")))
+        currentOrg.misc = org.find("misc").text
+        relatedCrises = org.findall("crisis")
+        for relatedCrisis in relatedCrises:
+            currentOrg.relatedCrises.append(relatedCrisis)
+        relatedPeople = org.findall("person")
+        for relatedPerson in relatedPeople:
+            currentOrg.relatedPeople.append(relatedPerson)
+        data["crises"][currentOrg.name] = currentOrg;
+        
+    return data
 
 # ------
 # fixAmp
@@ -320,4 +331,53 @@ def fixAmp(line):
             result += c
     return result
 
+# ---------
+# ExportXml
+# ---------
+
+def ExportXml(data):
+    """
+    Exports the data to the screen in xml format
+    data is the data
+    return a string in xml format
+    """
+    
+    myString = "<worldCrises>\n"
+    
+    for crisis in data["crises"]:
+        myString += "\t<crisis>\n"
+        
+        myString += "\t<\crisis>\n"
+        
+    for org in data["orgs"]:
+        myString += "\t<org>\n"
+        
+        myString += "\t<\org>\n"
+        
+    for person in data["people"]:
+        myString += "\t<person>\n"
+        
+        myString += "\t<\person>\n"
+    
+    myString += "</worldCrises>"
+    return myString
+
+# -----
+# Debug
+# -----
+
+def debug(msg):
+    """
+    prints the debug message
+    msg the string you want to put on the debug screen
+    """
+    logging.debug("\n\n" + str(msg) + "\n")
+
+def main():
+    application = webapp.WSGIApplication([  ('/', MainHandler), 
+                                            ('/import', ImportFormHandler), 
+                                            ('/import_upload', ImportUploadHandler),
+                                            ('/export', ExportHandler)
+                                         ], debug=True)
+    wsgiref.handlers.CGIHandler().run(application)
 
