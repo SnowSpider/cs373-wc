@@ -342,10 +342,86 @@ def ExportXml(data):
     return a string in xml format
     """
     
-    myString = "<worldCrises>\n"
+    myString = ["<worldCrises>\n"]
     
     for crisis in data["crises"]:
-        myString += "\t<crisis>\n"
+        myString.append("\t<crisis>\n")
+        myString.append("\t\t<name>" + data["crises"][crisis].name + "</name>\n")
+        myString.append("\t\t<info>\n")
+        mystring.append("\t\t\t<history>" + data["crises"][crisis].info.history + "</history>\n")
+        mystring.append("\t\t\t<help>" + data["crises"][crisis].info.help + "</help>\n")
+        mystring.append("\t\t\t<resources>" + data["crises"][crisis].info.resources + "</resources>\n")
+        mystring.append("\t\t\t<type>" + data["crises"][crisis].info.type + "</type>\n")
+        mystring.append("\t\t\t<history>" + data["crises"][crisis].info.history + "</history>\n")
+        myString.append("\t\t\t<time>\n")
+        mystring.append("\t\t\t\t<time>" + data["crises"][crisis].info.time.time + "</time>\n")
+        mystring.append("\t\t\t\t<day>" + data["crises"][crisis].info.time.day + "</day>\n")
+        mystring.append("\t\t\t\t<month>" + data["crises"][crisis].info.time.month + "</month>\n")
+        mystring.append("\t\t\t\t<year>" + data["crises"][crisis].info.time.year + "</year>\n")
+        mystring.append("\t\t\t\t<misc>" + data["crises"][crisis].info.time.misc + "</misc>\n")
+        myString.append("\t\t\t</time>\n")
+        myString.append("\t\t\t<loc>\n")
+        mystring.append("\t\t\t\t<city>" + data["crises"][crisis].info.loc.city + "</city>\n")
+        mystring.append("\t\t\t\t<region>" + data["crises"][crisis].info.loc.region + "</region>\n")
+        mystring.append("\t\t\t\t<country>" + data["crises"][crisis].info.loc.country + "</country>\n")
+        myString.append("\t\t\t</loc>\n")
+        myString.append("\t\t\t<impact>\n")
+        myString.append("\t\t\t\t<human>\n")
+        mystring.append("\t\t\t\t\t<deaths>" + data["crises"][crisis].info.impact.human.deaths + "</deaths>\n")
+        mystring.append("\t\t\t\t\t<displaced>" + data["crises"][crisis].info.impact.human.displaced + "</displaced>\n")
+        mystring.append("\t\t\t\t\t<injured>" + data["crises"][crisis].info.impact.human.injured + "</injured>\n")
+        mystring.append("\t\t\t\t\t<missing>" + data["crises"][crisis].info.impact.human.missing + "</missing>\n")
+        mystring.append("\t\t\t\t\t<misc>" + data["crises"][crisis].info.impact.human.misc + "</misc>\n")
+        myString.append("\t\t\t\t</human>\n")
+        myString.append("\t\t\t\t<economic>\n")
+        mystring.append("\t\t\t\t\t<amount>" + data["crises"][crisis].info.impact.economic.amount + "</amount>\n")
+        mystring.append("\t\t\t\t\t<currency>" + data["crises"][crisis].info.impact.economic.currency + "</currency>\n")
+        mystring.append("\t\t\t\t\t<misc>" + data["crises"][crisis].info.impact.economic.misc + "</misc>\n")
+        myString.append("\t\t\t\t</economic>\n")
+        myString.append("\t\t\t</impact>\n")
+        myString.append("\t\t</info>\n")
+        myString.append("\t\t<ref>\n")
+        myString.append("\t\t\t<primaryImage>\n")
+        mystring.append("\t\t\t\t<site>" + data["crises"][crisis].ref.primaryImage.site + "</site>\n")
+        mystring.append("\t\t\t\t<title>" + data["crises"][crisis].ref.primaryImage.title + "</title>\n")
+        mystring.append("\t\t\t\t<url>" + data["crises"][crisis].ref.primaryImage.url + "</url>\n")
+        mystring.append("\t\t\t\t<description>" + data["crises"][crisis].ref.primaryImage.description + "</description>\n")
+        myString.append("\t\t\t</primaryImage>\n")
+        for image in data["crises"][crisis].ref.images
+        	myString.append("\t\t\t<image>\n")
+        	mystring.append("\t\t\t\t<site>" + data["crises"][crisis].ref.image.site + "</site>\n")
+        	mystring.append("\t\t\t\t<title>" + data["crises"][crisis].ref.image.title + "</title>\n")
+        	mystring.append("\t\t\t\t<url>" + data["crises"][crisis].ref.image.url + "</url>\n")
+        	mystring.append("\t\t\t\t<description>" + data["crises"][crisis].ref.image.description + "</description>\n")
+        	myString.append("\t\t\t</image>\n")
+        for video in data["crises"][crisis].ref.videos
+        	myString.append("\t\t\t<video>\n")
+        	mystring.append("\t\t\t\t<site>" + data["crises"][crisis].ref.video.site + "</site>\n")
+        	mystring.append("\t\t\t\t<title>" + data["crises"][crisis].ref.video.title + "</title>\n")
+        	mystring.append("\t\t\t\t<url>" + data["crises"][crisis].ref.video.url + "</url>\n")
+        	mystring.append("\t\t\t\t<description>" + data["crises"][crisis].ref.video.description + "</description>\n")
+        	myString.append("\t\t\t</video>\n")
+        for social in data["crises"][crisis].ref.socials
+        	myString.append("\t\t\t<social>\n")
+        	mystring.append("\t\t\t\t<site>" + data["crises"][crisis].ref.social.site + "</site>\n")
+        	mystring.append("\t\t\t\t<title>" + data["crises"][crisis].ref.social.title + "</title>\n")
+        	mystring.append("\t\t\t\t<url>" + data["crises"][crisis].ref.social.url + "</url>\n")
+        	mystring.append("\t\t\t\t<description>" + data["crises"][crisis].ref.social.description + "</description>\n")
+        	myString.append("\t\t\t</social>\n")
+        for ext in data["crises"][crisis].ref.exts
+        	myString.append("\t\t\t<ext>\n")
+        	mystring.append("\t\t\t\t<site>" + data["crises"][crisis].ref.ext.site + "</site>\n")
+        	mystring.append("\t\t\t\t<title>" + data["crises"][crisis].ref.ext.title + "</title>\n")
+        	mystring.append("\t\t\t\t<url>" + data["crises"][crisis].ref.ext.url + "</url>\n")
+        	mystring.append("\t\t\t\t<description>" + data["crises"][crisis].ext.social.description + "</description>\n")
+        	myString.append("\t\t\t</ext>\n")
+        myString.append("\t\t</ref>\n")
+        mystring.append("\t\t<misc>" + data["crises"][crisis].misc + "</misc>\n")
+        for orgs in data["crises"][crisis].org
+        	myString.append("\t\t<org " #...
+        	#..
+        for person in data["crises"][crisis]
+        	myString.append(...)
         
         myString += "\t<\crisis>\n"
         
