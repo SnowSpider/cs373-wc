@@ -129,7 +129,8 @@ class MainHandler(webapp.RequestHandler):
         #orgs = Organization.all().fetch(50)
         #people = Person.all().fetch(50)    
    
-
+        crises = []
+        orgs = []
         people = []    
 
         template_values = {
@@ -140,13 +141,20 @@ class MainHandler(webapp.RequestHandler):
 
         self.response.headers['Content-Type'] = 'text/html'
 
-        if 
-        inFile = open("htmlgoodies/mockup.html", 'r')
-        outstr = inFile.read() #"HELLO CAR RAMROD"
-        inFile.close()
-        imported = ImportXml("WC1.xml")
-        debug("IMPORTED: " + str(imported))
-        self.response.out.write(outstr)
+        if path.startswith("/crises/") :
+            self.response.out.write("crisis page yet to be implemented")
+        elif path.startswith("/orgs/") :
+            self.response.out.write("org page yet to be implemented")
+        elif path.startswith("/people/"):
+            self.response.out.write("person page yet to be implemented")
+        else:
+
+            inFile = open("htmlgoodies/mockup.html", 'r')
+            outstr = inFile.read() #"HELLO CAR RAMROD"
+            inFile.close()
+            imported = ImportXml("WC1.xml")
+            debug("IMPORTED: " + str(imported))
+            self.response.out.write(outstr)
 
 class ExportHandler(webapp.RequestHandler):
     def get(self):
@@ -660,10 +668,11 @@ def ExportXml(data):
         myString.append("\t\t</ref>\n")
         myString.append("\t\t<misc>" + data["people"][person].misc + "</misc>\n")
         #some stuff about the idrefs of related crisis and person
-        myString += "\t<\person>\n"
+        myString.append("\t<\person>\n")
     
-    myString += "</worldCrises>"
-    return myString
+    myString.append("</worldCrises>")
+    test = "".join(myString)
+    return test
 
 # -----
 # Debug
@@ -680,7 +689,8 @@ def main():
     application = webapp.WSGIApplication([  ('/', MainHandler), 
                                             ('/import', ImportFormHandler), 
                                             ('/import_upload', ImportUploadHandler),
-                                            ('/export', ExportHandler)
+                                            ('/export', ExportHandler),
+                                            ('/.*', MainHandler)
                                          ], debug=True)
     wsgiref.handlers.CGIHandler().run(application)
 
