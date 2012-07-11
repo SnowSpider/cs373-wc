@@ -9,7 +9,7 @@ from google.appengine.ext import db
 from google.appengine.ext.db import polymodel
 import logging
 
-data_models = {"people":[], "crises":[], "orgs":[]}
+data_models = {"people":{}, "crises":{}, "orgs":{}}
 
 class Link(db.Model):
     site = db.StringProperty()
@@ -86,6 +86,7 @@ class Reference(db.Model):
     exts = []#db.ListProperty(Link)
     
 class Crisis(db.Model):
+    idref = db.StringProperty(required=True)
     name = db.StringProperty(required=True)
     info = CrisisInfo()
     ref = Reference()
@@ -94,6 +95,7 @@ class Crisis(db.Model):
     relatedPeople = []#db.ListProperty(db.ReferenceProperty(Person))
 
 class Organization(db.Model):
+    idref = db.StringProperty(required=True)
     name = db.StringProperty(required=True)
     info = OrgInfo()
     ref = Reference()
@@ -102,6 +104,7 @@ class Organization(db.Model):
     relatedPeople = []#db.ListProperty(db.ReferenceProperty(Person))
 
 class Person(db.Model):
+    idref = db.StringProperty(required=True)
     name = db.StringProperty(required=True)
     info = PersonInfo()
     ref = Reference()
@@ -195,7 +198,7 @@ def import_file(xml_file):
     
     crises = root.findall("crisis")
     for crisis in crises: 
-        currentCrisis = Crisis(name = crisis.find("name").text)
+        currentCrisis = Crisis(idref = crisis.attrib["id"], name = crisis.find("name").text)
         info = crisis.find("info")
         currentCrisis.info.history = info.find("history").text
         currentCrisis.info.help = info.find("help").text
@@ -273,15 +276,15 @@ def import_file(xml_file):
         currentCrisis. misc = crisis.find("misc").text
         relatedOrgs = crisis.findall("org")
         for relatedOrg in relatedOrgs:
-            currentCrisis.relatedOrgs.append(relatedOrg)
+            currentCrisis.relatedOrgs.append(relatedOrg.attrib["idref"])
         relatedPeople = crisis.findall("person")
         for relatedPerson in relatedPeople:
-            currentCrisis.relatedPeople.append(relatedPerson)
-        data["crises"][currentCrisis.name] = currentCrisis
+            currentCrisis.relatedPeople.append(relatedPerson.attrib["idref"])
+        data["crises"][currentCrisis.idref] = currentCrisis
     
     people = root.findall("person")
     for person in people: 
-        currentPerson = Person(name = person.find("name").text)
+        currentPerson = Person(idref = person.attrib["id"], name = person.find("name").text)
         info = person.find("info")
         currentPerson.info.type_ = info.find("type").text
         birthdate = info.find("birthdate")
@@ -345,15 +348,15 @@ def import_file(xml_file):
         misc = person.find("misc").text
         relatedCrises = person.findall("crisis")
         for relatedCrisis in relatedCrises:
-            currentPerson.relatedCrises.append(relatedCrisis)
+            currentPerson.relatedCrises.append(relatedCrisis.attrib["idref"])
         relatedOrgs = person.findall("org")
         for relatedOrg in relatedOrgs:
-            currentPerson.relatedOrgs.append(relatedOrg)
-        data["people"][currentPerson.name] = currentPerson
+            currentPerson.relatedOrgs.append(relatedOrg.attrib["idref"])
+        data["people"][currentPerson.idref] = currentPerson
         
     orgs = root.findall("org")
     for org in orgs: 
-        currentOrg = Organization(name = org.find("name").text)
+        currentOrg = Organization(idref = org.attrib["id"], name = org.find("name").text)
         info = org.find("info")
         currentOrg.info.type_ = info.find("type").text
         currentOrg.info.history = info.find("history").text
@@ -421,11 +424,11 @@ def import_file(xml_file):
         currentOrg.misc = org.find("misc").text
         relatedCrises = org.findall("crisis")
         for relatedCrisis in relatedCrises:
-            currentOrg.relatedCrises.append(relatedCrisis)
+            currentOrg.relatedCrises.append(relatedCrisis.attrib["idref"])
         relatedPeople = org.findall("person")
         for relatedPerson in relatedPeople:
-            currentOrg.relatedPeople.append(relatedPerson)
-        data["crises"][currentOrg.name] = currentOrg
+            currentOrg.relatedPeople.append(relatedPerson.attrib["idref"])
+        data["crises"][currentOrg.idref] = currentOrg
         
     return data
 
@@ -528,7 +531,7 @@ def ExportXml(data):
         	myString.append("\t\t\t\t<site>" + data["crises"][crisis].ref.ext.site + "</site>\n")
         	myString.append("\t\t\t\t<title>" + data["crises"][crisis].ref.ext.title + "</title>\n")
         	myString.append("\t\t\t\t<url>" + data["crises"][crisis].ref.ext.url + "</url>\n")
-        	myString.append("\t\t\t\t<description>" + data["crises"][crisis].ext.social.description + "</description>\n")
+        	myString.append("\t\t\t\t<description>" + data["crises"][crisis].ref.ext.description + "</description>\n")
         	myString.append("\t\t\t</ext>\n")
         myString.append("\t\t</ref>\n")
         myString.append("\t\t<misc>" + data["crises"][crisis].misc + "</misc>\n")
@@ -543,13 +546,120 @@ def ExportXml(data):
         myString += "\t<\crisis>\n"
         
     for org in data["orgs"]:
-        myString += "\t<org>\n"
-        
-        myString += "\t<\org>\n"
+        #myString.append("\t<organization>" + data["orgs"][org].id + ">\n")
+        myString.append("\t\t<name>" + data["orgs"][org].name + "</name>\n")
+        myString.append("\t\t<info>\n")
+        myString.append("\t\t\t<type>" + data["orgs"][org].info.type_ + "</type>\n")
+        myString.append("\t\t\t<history>" + data["orgs"][org].info.history + "</history>\n")
+        myString.append("\t\t\t<contact>\n")
+        myString.append("\t\t\t\t<phone>" + data["orgs"][org].info.contact.phone + "</phone>\n")
+        myString.append("\t\t\t\t<email>" + data["orgs"][org].info.contact.email + "</email>\n")
+        myString.append("\t\t\t\t<mail>\n")
+        myString.append("\t\t\t\t\t<address>" + data["orgs"][org].info.contact.mail.address + "</address>\n")
+        myString.append("\t\t\t\t\t<city>" + data["orgs"][org].info.contact.mail.city + "</city>\n")
+        myString.append("\t\t\t\t\t<state>" + data["orgs"][org].info.contact.mail.state + "</state>\n")
+        myString.append("\t\t\t\t\t<country>" + data["orgs"][org].info.contact.mail.country + "</country>\n")
+        myString.append("\t\t\t\t\t<zip>" + data["orgs"][org].info.contact.mail.zip + "</zip>\n")
+        myString.append("\t\t\t\t</mail>\n")
+        myString.append("\t\t\t</contact>\n")
+        myString.append("\t\t\t<loc>\n")
+        myString.append("\t\t\t\t<city>" + data["orgs"][org].info.loc.city + "</city>\n")
+        myString.append("\t\t\t\t<region>" + data["orgs"][org].info.loc.region + "</region>\n")
+        myString.append("\t\t\t\t<country>" + data["orgs"][org].info.loc.country + "</country>\n")
+        myString.append("\t\t\t</loc>\n")
+        myString.append("\t\t</info>\n")
+        myString.append("\t\t<ref>\n")
+        myString.append("\t\t\t<primaryImage>\n")
+        myString.append("\t\t\t\t<site>" + data["orgs"][org].ref.primaryImage.site + "</site>\n")
+        myString.append("\t\t\t\t<title>" + data["orgs"][org].ref.primaryImage.title + "</title>\n")
+        myString.append("\t\t\t\t<url>" + data["orgs"][org].ref.primaryImage.url + "</url>\n")
+        myString.append("\t\t\t\t<description>" + data["orgs"][org].ref.primaryImage.description + "</description>\n")
+        myString.append("\t\t\t</primaryImage>\n")
+        for image in data["orgs"][org].ref.images:
+        	myString.append("\t\t\t<image>\n")
+        	myString.append("\t\t\t\t<site>" + data["orgs"][org].ref.image.site + "</site>\n")
+        	myString.append("\t\t\t\t<title>" + data["orgs"][org].ref.image.title + "</title>\n")
+        	myString.append("\t\t\t\t<url>" + data["orgs"][org].ref.image.url + "</url>\n")
+        	myString.append("\t\t\t\t<description>" + data["orgs"][org].ref.image.description + "</description>\n")
+        	myString.append("\t\t\t</image>\n")
+        for video in data["orgs"][org].ref.videos:
+        	myString.append("\t\t\t<video>\n")
+        	myString.append("\t\t\t\t<site>" + data["orgs"][org].ref.video.site + "</site>\n")
+        	myString.append("\t\t\t\t<title>" + data["orgs"][org].ref.video.title + "</title>\n")
+        	myString.append("\t\t\t\t<url>" + data["orgs"][org].ref.video.url + "</url>\n")
+        	myString.append("\t\t\t\t<description>" + data["orgs"][org].ref.video.description + "</description>\n")
+        	myString.append("\t\t\t</video>\n")
+        for social in data["orgs"][org].ref.socials:
+        	myString.append("\t\t\t<social>\n")
+        	myString.append("\t\t\t\t<site>" + data["orgs"][org].ref.social.site + "</site>\n")
+        	myString.append("\t\t\t\t<title>" + data["orgs"][org].ref.social.title + "</title>\n")
+        	myString.append("\t\t\t\t<url>" + data["orgs"][org].ref.social.url + "</url>\n")
+        	myString.append("\t\t\t\t<description>" + data["orgs"][org].ref.social.description + "</description>\n")
+        	myString.append("\t\t\t</social>\n")
+        for ext in data["orgs"][org].ref.exts:
+        	myString.append("\t\t\t<ext>\n")
+        	myString.append("\t\t\t\t<site>" + data["orgs"][org].ref.ext.site + "</site>\n")
+        	myString.append("\t\t\t\t<title>" + data["orgs"][org].ref.ext.title + "</title>\n")
+        	myString.append("\t\t\t\t<url>" + data["orgs"][org].ref.ext.url + "</url>\n")
+        	myString.append("\t\t\t\t<description>" + data["orgs"][org].ref.ext.description + "</description>\n")
+        	myString.append("\t\t\t</ext>\n")
+        myString.append("\t\t</ref>\n")
+        myString.append("\t\t<misc>" + data["orgs"][org].misc + "</misc>\n")
+        #some stuff about the idrefs of related crisis and person
+        myString += "\t<\organization>\n"
         
     for person in data["people"]:
-        myString += "\t<person>\n"
-        
+        #myString.append("\t<person>" + data["people"][person].id + ">\n")
+        myString.append("\t\t<name>" + data["people"][person].name + "</name>\n")
+        myString.append("\t\t<info>\n")
+        myString.append("\t\t\t<type>" + data["people"][person].info.type_ + "</type>\n")
+        myString.append("\t\t\t<birthdate>\n")
+        myString.append("\t\t\t\t<time>" + data["people"][person].info.birthdate.time + "</time>\n")
+        myString.append("\t\t\t\t<day>" + data["people"][person].info.birthdate.day + "</day>\n")
+        myString.append("\t\t\t\t<year>" + data["people"][person].info.birthdate.year + "</year>\n")
+        myString.append("\t\t\t\t<misc>" + data["people"][person].info.birthdate.misc + "</misc>\n")
+        myString.append("\t\t\t</birthdate>\n")
+        myString.append("\t\t\t<nationality>" + data["people"][person].info.nationality + "</nationality>\n")
+        myString.append("\t\t\t<biography>" + data["people"][person].info.biography + "</biography>\n")
+        myString.append("\t\t</info>\n")
+        myString.append("\t\t<ref>\n")
+        myString.append("\t\t\t<primaryImage>\n")
+        myString.append("\t\t\t\t<site>" + data["people"][person].ref.primaryImage.site + "</site>\n")
+        myString.append("\t\t\t\t<title>" + data["people"][person].ref.primaryImage.title + "</title>\n")
+        myString.append("\t\t\t\t<url>" + data["people"][person].ref.primaryImage.url + "</url>\n")
+        myString.append("\t\t\t\t<description>" + data["people"][person].ref.primaryImage.description + "</description>\n")
+        myString.append("\t\t\t</primaryImage>\n")
+        for image in data["people"][org].ref.images:
+        	myString.append("\t\t\t<image>\n")
+        	myString.append("\t\t\t\t<site>" + data["people"][person].ref.image.site + "</site>\n")
+        	myString.append("\t\t\t\t<title>" + data["people"][person].ref.image.title + "</title>\n")
+        	myString.append("\t\t\t\t<url>" + data["people"][person].ref.image.url + "</url>\n")
+        	myString.append("\t\t\t\t<description>" + data["people"][person].ref.image.description + "</description>\n")
+        	myString.append("\t\t\t</image>\n")
+        for video in data["people"][person].ref.videos:
+        	myString.append("\t\t\t<video>\n")
+        	myString.append("\t\t\t\t<site>" + data["people"][person].ref.video.site + "</site>\n")
+        	myString.append("\t\t\t\t<title>" + data["people"][person].ref.video.title + "</title>\n")
+        	myString.append("\t\t\t\t<url>" + data["people"][person].ref.video.url + "</url>\n")
+        	myString.append("\t\t\t\t<description>" + data["people"][person].ref.video.description + "</description>\n")
+        	myString.append("\t\t\t</video>\n")
+        for social in data["people"][person].ref.socials:
+        	myString.append("\t\t\t<social>\n")
+        	myString.append("\t\t\t\t<site>" + data["people"][person].ref.social.site + "</site>\n")
+        	myString.append("\t\t\t\t<title>" + data["people"][person].ref.social.title + "</title>\n")
+        	myString.append("\t\t\t\t<url>" + data["people"][person].ref.social.url + "</url>\n")
+        	myString.append("\t\t\t\t<description>" + data["people"][person].ref.social.description + "</description>\n")
+        	myString.append("\t\t\t</social>\n")
+        for ext in data["people"][person].ref.exts:
+        	myString.append("\t\t\t<ext>\n")
+        	myString.append("\t\t\t\t<site>" + data["people"][person].ref.ext.site + "</site>\n")
+        	myString.append("\t\t\t\t<title>" + data["people"][person].ref.ext.title + "</title>\n")
+        	myString.append("\t\t\t\t<url>" + data["people"][person].ref.ext.url + "</url>\n")
+        	myString.append("\t\t\t\t<description>" + data["people"][person].ref.ext.description + "</description>\n")
+        	myString.append("\t\t\t</ext>\n")
+        myString.append("\t\t</ref>\n")
+        myString.append("\t\t<misc>" + data["people"][person].misc + "</misc>\n")
+        #some stuff about the idrefs of related crisis and person
         myString += "\t<\person>\n"
     
     myString += "</worldCrises>"
