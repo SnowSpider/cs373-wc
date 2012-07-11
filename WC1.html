@@ -1,0 +1,1959 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module WC1</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>WC1</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/v/filer4b/v38q001/wlee/CS373/cs373-wc/WC1.py">/v/filer4b/v38q001/wlee/CS373/cs373-wc/WC1.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="xml.etree.cElementTree.html">xml.etree.cElementTree</a><br>
+<a href="google.appengine.ext.blobstore.html">google.appengine.ext.blobstore</a><br>
+<a href="google.appengine.ext.webapp.blobstore_handlers.html">google.appengine.ext.webapp.blobstore_handlers</a><br>
+</td><td width="25%" valign=top><a href="google.appengine.ext.db.html">google.appengine.ext.db</a><br>
+<a href="logging.html">logging</a><br>
+<a href="google.appengine.ext.db.polymodel.html">google.appengine.ext.db.polymodel</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+<a href="google.appengine.ext.webapp.html">google.appengine.ext.webapp</a><br>
+<a href="wsgiref.html">wsgiref</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a>(<a href="__builtin__.html#object">__builtin__.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="WC1.html#ContactInfo">ContactInfo</a>
+</font></dt><dt><font face="helvetica, arial"><a href="WC1.html#Crisis">Crisis</a>
+</font></dt><dt><font face="helvetica, arial"><a href="WC1.html#Organization">Organization</a>
+</font></dt><dt><font face="helvetica, arial"><a href="WC1.html#Person">Person</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="google.appengine.ext.webapp._webapp25.html#RequestHandler">google.appengine.ext.webapp._webapp25.RequestHandler</a>(<a href="__builtin__.html#object">__builtin__.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="WC1.html#ExportHandler">ExportHandler</a>
+</font></dt><dt><font face="helvetica, arial"><a href="WC1.html#ImportFormHandler">ImportFormHandler</a>
+</font></dt><dt><font face="helvetica, arial"><a href="WC1.html#MainHandler">MainHandler</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="google.appengine.ext.webapp.blobstore_handlers.html#BlobstoreUploadHandler">google.appengine.ext.webapp.blobstore_handlers.BlobstoreUploadHandler</a>(<a href="google.appengine.ext.webapp._webapp25.html#RequestHandler">google.appengine.ext.webapp._webapp25.RequestHandler</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="WC1.html#ImportUploadHandler">ImportUploadHandler</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ContactInfo">class <strong>ContactInfo</strong></a>(<a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="WC1.html#ContactInfo">ContactInfo</a></dd>
+<dd><a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>address</strong></dt>
+<dd><tt>A&nbsp;string&nbsp;that&nbsp;can&nbsp;be&nbsp;longer&nbsp;than&nbsp;500&nbsp;bytes.</tt></dd>
+</dl>
+<dl><dt><strong>email</strong></dt>
+<dd><tt>A&nbsp;property&nbsp;whose&nbsp;values&nbsp;are&nbsp;Email&nbsp;instances.</tt></dd>
+</dl>
+<dl><dt><strong>phone_number</strong></dt>
+<dd><tt>A&nbsp;property&nbsp;whose&nbsp;values&nbsp;are&nbsp;PhoneNumber&nbsp;instances.</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a>:<br>
+<dl><dt><a name="ContactInfo-__init__"><strong>__init__</strong></a>(self, parent<font color="#909090">=None</font>, key_name<font color="#909090">=None</font>, _app<font color="#909090">=None</font>, _from_entity<font color="#909090">=False</font>, **kwds)</dt><dd><tt>Creates&nbsp;a&nbsp;new&nbsp;instance&nbsp;of&nbsp;this&nbsp;model.<br>
+&nbsp;<br>
+To&nbsp;create&nbsp;a&nbsp;new&nbsp;entity,&nbsp;you&nbsp;instantiate&nbsp;a&nbsp;model&nbsp;and&nbsp;then&nbsp;call&nbsp;<a href="#ContactInfo-put">put</a>(),<br>
+which&nbsp;saves&nbsp;the&nbsp;entity&nbsp;to&nbsp;the&nbsp;datastore:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;person&nbsp;=&nbsp;<a href="#Person">Person</a>()<br>
+&nbsp;&nbsp;&nbsp;person.name&nbsp;=&nbsp;'Bret'<br>
+&nbsp;&nbsp;&nbsp;person.<a href="#ContactInfo-put">put</a>()<br>
+&nbsp;<br>
+You&nbsp;can&nbsp;initialize&nbsp;properties&nbsp;in&nbsp;the&nbsp;model&nbsp;in&nbsp;the&nbsp;constructor&nbsp;with&nbsp;keyword<br>
+arguments:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;person&nbsp;=&nbsp;<a href="#Person">Person</a>(name='Bret')<br>
+&nbsp;<br>
+We&nbsp;initialize&nbsp;all&nbsp;other&nbsp;properties&nbsp;to&nbsp;the&nbsp;default&nbsp;value&nbsp;(as&nbsp;defined&nbsp;by&nbsp;the<br>
+properties&nbsp;in&nbsp;the&nbsp;model&nbsp;definition)&nbsp;if&nbsp;they&nbsp;are&nbsp;not&nbsp;provided&nbsp;in&nbsp;the<br>
+constructor.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;parent:&nbsp;Parent&nbsp;instance&nbsp;for&nbsp;this&nbsp;instance&nbsp;or&nbsp;None,&nbsp;indicating&nbsp;a&nbsp;top-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;level&nbsp;instance.<br>
+&nbsp;&nbsp;key_name:&nbsp;Name&nbsp;for&nbsp;new&nbsp;model&nbsp;instance.<br>
+&nbsp;&nbsp;_from_entity:&nbsp;Intentionally&nbsp;undocumented.<br>
+&nbsp;&nbsp;kwds:&nbsp;Keyword&nbsp;arguments&nbsp;mapping&nbsp;to&nbsp;properties&nbsp;of&nbsp;model.&nbsp;&nbsp;Also:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;key:&nbsp;Key&nbsp;instance&nbsp;for&nbsp;this&nbsp;instance,&nbsp;if&nbsp;provided&nbsp;makes&nbsp;parent&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key_name&nbsp;redundant&nbsp;(they&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;set&nbsp;but&nbsp;if&nbsp;they&nbsp;are<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;they&nbsp;must&nbsp;match&nbsp;the&nbsp;key).</tt></dd></dl>
+
+<dl><dt><a name="ContactInfo-delete"><strong>delete</strong></a>(self, **kwargs)</dt><dd><tt>Deletes&nbsp;this&nbsp;entity&nbsp;from&nbsp;the&nbsp;datastore.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;config:&nbsp;datastore_rpc.Configuration&nbsp;to&nbsp;use&nbsp;for&nbsp;this&nbsp;request.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;TransactionFailedError&nbsp;if&nbsp;the&nbsp;data&nbsp;could&nbsp;not&nbsp;be&nbsp;committed.</tt></dd></dl>
+
+<dl><dt><a name="ContactInfo-dynamic_properties"><strong>dynamic_properties</strong></a>(self)</dt><dd><tt>Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;dynamic&nbsp;properties&nbsp;defined&nbsp;for&nbsp;instance.</tt></dd></dl>
+
+<dl><dt><a name="ContactInfo-has_key"><strong>has_key</strong></a>(self)</dt><dd><tt>Determine&nbsp;if&nbsp;this&nbsp;model&nbsp;instance&nbsp;has&nbsp;a&nbsp;complete&nbsp;key.<br>
+&nbsp;<br>
+When&nbsp;not&nbsp;using&nbsp;a&nbsp;fully&nbsp;self-assigned&nbsp;Key,&nbsp;ids&nbsp;are&nbsp;not&nbsp;assigned&nbsp;until&nbsp;the<br>
+data&nbsp;is&nbsp;saved&nbsp;to&nbsp;the&nbsp;Datastore,&nbsp;but&nbsp;instances&nbsp;with&nbsp;a&nbsp;key&nbsp;name&nbsp;always&nbsp;have<br>
+a&nbsp;full&nbsp;key.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;True&nbsp;if&nbsp;the&nbsp;object&nbsp;has&nbsp;been&nbsp;persisted&nbsp;to&nbsp;the&nbsp;datastore&nbsp;or&nbsp;has&nbsp;a&nbsp;key<br>
+&nbsp;&nbsp;or&nbsp;has&nbsp;a&nbsp;key_name,&nbsp;otherwise&nbsp;False.</tt></dd></dl>
+
+<dl><dt><a name="ContactInfo-instance_properties"><strong>instance_properties</strong></a>(self)</dt><dd><tt>Alias&nbsp;for&nbsp;dyanmic_properties.</tt></dd></dl>
+
+<dl><dt><a name="ContactInfo-is_saved"><strong>is_saved</strong></a>(self)</dt><dd><tt>Determine&nbsp;if&nbsp;entity&nbsp;is&nbsp;persisted&nbsp;in&nbsp;the&nbsp;datastore.<br>
+&nbsp;<br>
+New&nbsp;instances&nbsp;of&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;do&nbsp;not&nbsp;start&nbsp;out&nbsp;saved&nbsp;in&nbsp;the&nbsp;data.&nbsp;&nbsp;Objects&nbsp;which<br>
+are&nbsp;saved&nbsp;to&nbsp;or&nbsp;loaded&nbsp;from&nbsp;the&nbsp;Datastore&nbsp;will&nbsp;have&nbsp;a&nbsp;True&nbsp;saved&nbsp;state.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;True&nbsp;if&nbsp;object&nbsp;has&nbsp;been&nbsp;persisted&nbsp;to&nbsp;the&nbsp;datastore,&nbsp;otherwise&nbsp;False.</tt></dd></dl>
+
+<dl><dt><a name="ContactInfo-key"><strong>key</strong></a>(self)</dt><dd><tt>Unique&nbsp;key&nbsp;for&nbsp;this&nbsp;entity.<br>
+&nbsp;<br>
+This&nbsp;property&nbsp;is&nbsp;only&nbsp;available&nbsp;if&nbsp;this&nbsp;entity&nbsp;is&nbsp;already&nbsp;stored&nbsp;in&nbsp;the<br>
+datastore&nbsp;or&nbsp;if&nbsp;it&nbsp;has&nbsp;a&nbsp;full&nbsp;key,&nbsp;so&nbsp;it&nbsp;is&nbsp;available&nbsp;if&nbsp;this&nbsp;entity&nbsp;was<br>
+fetched&nbsp;returned&nbsp;from&nbsp;a&nbsp;query,&nbsp;or&nbsp;after&nbsp;<a href="#ContactInfo-put">put</a>()&nbsp;is&nbsp;called&nbsp;the&nbsp;first&nbsp;time<br>
+for&nbsp;new&nbsp;entities,&nbsp;or&nbsp;if&nbsp;a&nbsp;complete&nbsp;key&nbsp;was&nbsp;given&nbsp;when&nbsp;constructed.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;Datastore&nbsp;key&nbsp;of&nbsp;persisted&nbsp;entity.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;NotSavedError&nbsp;when&nbsp;entity&nbsp;is&nbsp;not&nbsp;persistent.</tt></dd></dl>
+
+<dl><dt><a name="ContactInfo-parent"><strong>parent</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;parent&nbsp;of&nbsp;the&nbsp;model&nbsp;instance.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;Parent&nbsp;of&nbsp;contained&nbsp;entity&nbsp;or&nbsp;parent&nbsp;provided&nbsp;in&nbsp;constructor,&nbsp;None&nbsp;if<br>
+&nbsp;&nbsp;instance&nbsp;has&nbsp;no&nbsp;parent.</tt></dd></dl>
+
+<dl><dt><a name="ContactInfo-parent_key"><strong>parent_key</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;parent's&nbsp;key.<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;is&nbsp;useful&nbsp;for&nbsp;avoiding&nbsp;a&nbsp;potential&nbsp;fetch&nbsp;from&nbsp;the&nbsp;datastore<br>
+but&nbsp;still&nbsp;get&nbsp;information&nbsp;about&nbsp;the&nbsp;instances&nbsp;parent.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;Parent&nbsp;key&nbsp;of&nbsp;entity,&nbsp;None&nbsp;if&nbsp;there&nbsp;is&nbsp;no&nbsp;parent.</tt></dd></dl>
+
+<dl><dt><a name="ContactInfo-put"><strong>put</strong></a>(self, **kwargs)</dt><dd><tt>Writes&nbsp;this&nbsp;model&nbsp;instance&nbsp;to&nbsp;the&nbsp;datastore.<br>
+&nbsp;<br>
+If&nbsp;this&nbsp;instance&nbsp;is&nbsp;new,&nbsp;we&nbsp;add&nbsp;an&nbsp;entity&nbsp;to&nbsp;the&nbsp;datastore.<br>
+Otherwise,&nbsp;we&nbsp;update&nbsp;this&nbsp;instance,&nbsp;and&nbsp;the&nbsp;key&nbsp;will&nbsp;remain&nbsp;the<br>
+same.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;config:&nbsp;datastore_rpc.Configuration&nbsp;to&nbsp;use&nbsp;for&nbsp;this&nbsp;request.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;The&nbsp;key&nbsp;of&nbsp;the&nbsp;instance&nbsp;(either&nbsp;the&nbsp;existing&nbsp;key&nbsp;or&nbsp;a&nbsp;new&nbsp;key).<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;TransactionFailedError&nbsp;if&nbsp;the&nbsp;data&nbsp;could&nbsp;not&nbsp;be&nbsp;committed.</tt></dd></dl>
+
+<dl><dt><a name="ContactInfo-save"><strong>save</strong></a> = put(self, **kwargs)</dt><dd><tt>Writes&nbsp;this&nbsp;model&nbsp;instance&nbsp;to&nbsp;the&nbsp;datastore.<br>
+&nbsp;<br>
+If&nbsp;this&nbsp;instance&nbsp;is&nbsp;new,&nbsp;we&nbsp;add&nbsp;an&nbsp;entity&nbsp;to&nbsp;the&nbsp;datastore.<br>
+Otherwise,&nbsp;we&nbsp;update&nbsp;this&nbsp;instance,&nbsp;and&nbsp;the&nbsp;key&nbsp;will&nbsp;remain&nbsp;the<br>
+same.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;config:&nbsp;datastore_rpc.Configuration&nbsp;to&nbsp;use&nbsp;for&nbsp;this&nbsp;request.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;The&nbsp;key&nbsp;of&nbsp;the&nbsp;instance&nbsp;(either&nbsp;the&nbsp;existing&nbsp;key&nbsp;or&nbsp;a&nbsp;new&nbsp;key).<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;TransactionFailedError&nbsp;if&nbsp;the&nbsp;data&nbsp;could&nbsp;not&nbsp;be&nbsp;committed.</tt></dd></dl>
+
+<dl><dt><a name="ContactInfo-to_xml"><strong>to_xml</strong></a>(self, _entity_class<font color="#909090">=&lt;class 'google.appengine.api.datastore.Entity'&gt;</font>)</dt><dd><tt>Generate&nbsp;an&nbsp;XML&nbsp;representation&nbsp;of&nbsp;this&nbsp;model&nbsp;instance.<br>
+&nbsp;<br>
+atom&nbsp;and&nbsp;gd:namespace&nbsp;properties&nbsp;are&nbsp;converted&nbsp;to&nbsp;XML&nbsp;according&nbsp;to&nbsp;their<br>
+respective&nbsp;schemas.&nbsp;For&nbsp;more&nbsp;information,&nbsp;see:<br>
+&nbsp;<br>
+&nbsp;&nbsp;<a href="http://www.atomenabled.org/developers/syndication/">http://www.atomenabled.org/developers/syndication/</a><br>
+&nbsp;&nbsp;<a href="http://code.google.com/apis/gdata/common-elements.html">http://code.google.com/apis/gdata/common-elements.html</a></tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a>:<br>
+<dl><dt><a name="ContactInfo-all"><strong>all</strong></a>(cls, **kwds)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Returns&nbsp;a&nbsp;query&nbsp;over&nbsp;all&nbsp;instances&nbsp;of&nbsp;this&nbsp;model&nbsp;from&nbsp;the&nbsp;datastore.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;Query&nbsp;that&nbsp;will&nbsp;retrieve&nbsp;all&nbsp;instances&nbsp;from&nbsp;entity&nbsp;collection.</tt></dd></dl>
+
+<dl><dt><a name="ContactInfo-entity_type"><strong>entity_type</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Soon&nbsp;to&nbsp;be&nbsp;removed&nbsp;alias&nbsp;for&nbsp;kind.</tt></dd></dl>
+
+<dl><dt><a name="ContactInfo-fields"><strong>fields</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Soon&nbsp;to&nbsp;be&nbsp;removed&nbsp;alias&nbsp;for&nbsp;properties.</tt></dd></dl>
+
+<dl><dt><a name="ContactInfo-from_entity"><strong>from_entity</strong></a>(cls, entity)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Converts&nbsp;the&nbsp;entity&nbsp;representation&nbsp;of&nbsp;this&nbsp;model&nbsp;to&nbsp;an&nbsp;instance.<br>
+&nbsp;<br>
+Converts&nbsp;datastore.Entity&nbsp;instance&nbsp;to&nbsp;an&nbsp;instance&nbsp;of&nbsp;cls.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;entity:&nbsp;Entity&nbsp;loaded&nbsp;directly&nbsp;from&nbsp;datastore.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;KindError&nbsp;when&nbsp;cls&nbsp;is&nbsp;incorrect&nbsp;model&nbsp;for&nbsp;entity.</tt></dd></dl>
+
+<dl><dt><a name="ContactInfo-get"><strong>get</strong></a>(cls, keys, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Fetch&nbsp;instance&nbsp;from&nbsp;the&nbsp;datastore&nbsp;of&nbsp;a&nbsp;specific&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;type&nbsp;using&nbsp;key.<br>
+&nbsp;<br>
+We&nbsp;support&nbsp;Key&nbsp;objects&nbsp;and&nbsp;string&nbsp;keys&nbsp;(we&nbsp;convert&nbsp;them&nbsp;to&nbsp;Key&nbsp;objects<br>
+automatically).<br>
+&nbsp;<br>
+Useful&nbsp;for&nbsp;ensuring&nbsp;that&nbsp;specific&nbsp;instance&nbsp;types&nbsp;are&nbsp;retrieved&nbsp;from&nbsp;the<br>
+datastore.&nbsp;&nbsp;It&nbsp;also&nbsp;helps&nbsp;that&nbsp;the&nbsp;source&nbsp;code&nbsp;clearly&nbsp;indicates&nbsp;what<br>
+kind&nbsp;of&nbsp;object&nbsp;is&nbsp;being&nbsp;retreived.&nbsp;&nbsp;Example:<br>
+&nbsp;<br>
+&nbsp;&nbsp;story&nbsp;=&nbsp;Story.<a href="#ContactInfo-get">get</a>(story_key)<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;keys:&nbsp;Key&nbsp;within&nbsp;datastore&nbsp;entity&nbsp;collection&nbsp;to&nbsp;find;&nbsp;or&nbsp;string&nbsp;key;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;list&nbsp;of&nbsp;Keys&nbsp;or&nbsp;string&nbsp;keys.<br>
+&nbsp;&nbsp;config:&nbsp;datastore_rpc.Configuration&nbsp;to&nbsp;use&nbsp;for&nbsp;this&nbsp;request.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;If&nbsp;a&nbsp;single&nbsp;key&nbsp;was&nbsp;given:&nbsp;a&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;instance&nbsp;associated&nbsp;with&nbsp;key<br>
+&nbsp;&nbsp;for&nbsp;provided&nbsp;class&nbsp;if&nbsp;it&nbsp;exists&nbsp;in&nbsp;the&nbsp;datastore,&nbsp;otherwise<br>
+&nbsp;&nbsp;None;&nbsp;if&nbsp;a&nbsp;list&nbsp;of&nbsp;keys&nbsp;was&nbsp;given:&nbsp;a&nbsp;list&nbsp;whose&nbsp;items&nbsp;are&nbsp;either<br>
+&nbsp;&nbsp;a&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;instance&nbsp;or&nbsp;None.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;KindError&nbsp;if&nbsp;any&nbsp;of&nbsp;the&nbsp;retreived&nbsp;objects&nbsp;are&nbsp;not&nbsp;instances&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;type&nbsp;associated&nbsp;with&nbsp;call&nbsp;to&nbsp;'get'.</tt></dd></dl>
+
+<dl><dt><a name="ContactInfo-get_by_id"><strong>get_by_id</strong></a>(cls, ids, parent<font color="#909090">=None</font>, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Get&nbsp;instance&nbsp;of&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;class&nbsp;by&nbsp;id.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;key_names:&nbsp;A&nbsp;single&nbsp;id&nbsp;or&nbsp;a&nbsp;list&nbsp;of&nbsp;ids.<br>
+&nbsp;&nbsp;parent:&nbsp;Parent&nbsp;of&nbsp;instances&nbsp;to&nbsp;get.&nbsp;&nbsp;Can&nbsp;be&nbsp;a&nbsp;model&nbsp;or&nbsp;key.<br>
+&nbsp;&nbsp;config:&nbsp;datastore_rpc.Configuration&nbsp;to&nbsp;use&nbsp;for&nbsp;this&nbsp;request.</tt></dd></dl>
+
+<dl><dt><a name="ContactInfo-get_by_key_name"><strong>get_by_key_name</strong></a>(cls, key_names, parent<font color="#909090">=None</font>, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Get&nbsp;instance&nbsp;of&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;class&nbsp;by&nbsp;its&nbsp;key's&nbsp;name.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;key_names:&nbsp;A&nbsp;single&nbsp;key-name&nbsp;or&nbsp;a&nbsp;list&nbsp;of&nbsp;key-names.<br>
+&nbsp;&nbsp;parent:&nbsp;Parent&nbsp;of&nbsp;instances&nbsp;to&nbsp;get.&nbsp;&nbsp;Can&nbsp;be&nbsp;a&nbsp;model&nbsp;or&nbsp;key.<br>
+&nbsp;&nbsp;config:&nbsp;datastore_rpc.Configuration&nbsp;to&nbsp;use&nbsp;for&nbsp;this&nbsp;request.</tt></dd></dl>
+
+<dl><dt><a name="ContactInfo-get_or_insert"><strong>get_or_insert</strong></a>(cls, key_name, **kwds)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Transactionally&nbsp;retrieve&nbsp;or&nbsp;create&nbsp;an&nbsp;instance&nbsp;of&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;class.<br>
+&nbsp;<br>
+This&nbsp;acts&nbsp;much&nbsp;like&nbsp;the&nbsp;Python&nbsp;dictionary&nbsp;setdefault()&nbsp;method,&nbsp;where&nbsp;we<br>
+first&nbsp;try&nbsp;to&nbsp;retrieve&nbsp;a&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;instance&nbsp;with&nbsp;the&nbsp;given&nbsp;key&nbsp;name&nbsp;and&nbsp;parent.<br>
+If&nbsp;it's&nbsp;not&nbsp;present,&nbsp;then&nbsp;we&nbsp;create&nbsp;a&nbsp;new&nbsp;instance&nbsp;(using&nbsp;the&nbsp;*kwds<br>
+supplied)&nbsp;and&nbsp;insert&nbsp;that&nbsp;with&nbsp;the&nbsp;supplied&nbsp;key&nbsp;name.<br>
+&nbsp;<br>
+Subsequent&nbsp;calls&nbsp;to&nbsp;this&nbsp;method&nbsp;with&nbsp;the&nbsp;same&nbsp;key_name&nbsp;and&nbsp;parent&nbsp;will<br>
+always&nbsp;yield&nbsp;the&nbsp;same&nbsp;entity&nbsp;(though&nbsp;not&nbsp;the&nbsp;same&nbsp;actual&nbsp;object&nbsp;instance),<br>
+regardless&nbsp;of&nbsp;the&nbsp;*kwds&nbsp;supplied.&nbsp;If&nbsp;the&nbsp;specified&nbsp;entity&nbsp;has&nbsp;somehow<br>
+been&nbsp;deleted&nbsp;separately,&nbsp;then&nbsp;the&nbsp;next&nbsp;call&nbsp;will&nbsp;create&nbsp;a&nbsp;new&nbsp;entity&nbsp;and<br>
+return&nbsp;it.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;'parent'&nbsp;keyword&nbsp;argument&nbsp;is&nbsp;supplied,&nbsp;it&nbsp;must&nbsp;be&nbsp;a&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;instance.<br>
+It&nbsp;will&nbsp;be&nbsp;used&nbsp;as&nbsp;the&nbsp;parent&nbsp;of&nbsp;the&nbsp;new&nbsp;instance&nbsp;of&nbsp;this&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;class&nbsp;if<br>
+one&nbsp;is&nbsp;created.<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;is&nbsp;especially&nbsp;useful&nbsp;for&nbsp;having&nbsp;just&nbsp;one&nbsp;unique&nbsp;entity&nbsp;for<br>
+a&nbsp;specific&nbsp;identifier.&nbsp;Insertion/retrieval&nbsp;is&nbsp;done&nbsp;transactionally,&nbsp;which<br>
+guarantees&nbsp;uniqueness.<br>
+&nbsp;<br>
+Example&nbsp;usage:<br>
+&nbsp;<br>
+&nbsp;&nbsp;class&nbsp;WikiTopic(db.<a href="google.appengine.ext.db.html#Model">Model</a>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;creation_date&nbsp;=&nbsp;db.DatetimeProperty(auto_now_add=True)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;body&nbsp;=&nbsp;db.TextProperty(required=True)<br>
+&nbsp;<br>
+&nbsp;&nbsp;#&nbsp;The&nbsp;first&nbsp;time&nbsp;through&nbsp;we'll&nbsp;create&nbsp;the&nbsp;new&nbsp;topic.<br>
+&nbsp;&nbsp;wiki_word&nbsp;=&nbsp;'CommonIdioms'<br>
+&nbsp;&nbsp;topic&nbsp;=&nbsp;WikiTopic.<a href="#ContactInfo-get_or_insert">get_or_insert</a>(wiki_word,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body='This&nbsp;topic&nbsp;is&nbsp;totally&nbsp;new!')<br>
+&nbsp;&nbsp;assert&nbsp;topic.<a href="#ContactInfo-key">key</a>().name()&nbsp;==&nbsp;'CommonIdioms'<br>
+&nbsp;&nbsp;assert&nbsp;topic.body&nbsp;==&nbsp;'This&nbsp;topic&nbsp;is&nbsp;totally&nbsp;new!'<br>
+&nbsp;<br>
+&nbsp;&nbsp;#&nbsp;The&nbsp;second&nbsp;time&nbsp;through&nbsp;will&nbsp;just&nbsp;retrieve&nbsp;the&nbsp;entity.<br>
+&nbsp;&nbsp;overwrite_topic&nbsp;=&nbsp;WikiTopic.<a href="#ContactInfo-get_or_insert">get_or_insert</a>(wiki_word,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body='A&nbsp;totally&nbsp;different&nbsp;message!')<br>
+&nbsp;&nbsp;assert&nbsp;topic.<a href="#ContactInfo-key">key</a>().name()&nbsp;==&nbsp;'CommonIdioms'<br>
+&nbsp;&nbsp;assert&nbsp;topic.body&nbsp;==&nbsp;'This&nbsp;topic&nbsp;is&nbsp;totally&nbsp;new!'<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;key_name:&nbsp;Key&nbsp;name&nbsp;to&nbsp;retrieve&nbsp;or&nbsp;create.<br>
+&nbsp;&nbsp;**kwds:&nbsp;Keyword&nbsp;arguments&nbsp;to&nbsp;pass&nbsp;to&nbsp;the&nbsp;constructor&nbsp;of&nbsp;the&nbsp;model&nbsp;class<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;an&nbsp;instance&nbsp;for&nbsp;the&nbsp;specified&nbsp;key&nbsp;name&nbsp;does&nbsp;not&nbsp;already&nbsp;exist.&nbsp;If<br>
+&nbsp;&nbsp;&nbsp;&nbsp;an&nbsp;instance&nbsp;with&nbsp;the&nbsp;supplied&nbsp;key_name&nbsp;and&nbsp;parent&nbsp;already&nbsp;exists,&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;rest&nbsp;of&nbsp;these&nbsp;arguments&nbsp;will&nbsp;be&nbsp;discarded.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;Existing&nbsp;instance&nbsp;of&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;class&nbsp;with&nbsp;the&nbsp;specified&nbsp;key_name&nbsp;and&nbsp;parent<br>
+&nbsp;&nbsp;or&nbsp;a&nbsp;new&nbsp;one&nbsp;that&nbsp;has&nbsp;just&nbsp;been&nbsp;created.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;TransactionFailedError&nbsp;if&nbsp;the&nbsp;specified&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;instance&nbsp;could&nbsp;not&nbsp;be<br>
+&nbsp;&nbsp;retrieved&nbsp;or&nbsp;created&nbsp;transactionally&nbsp;(due&nbsp;to&nbsp;high&nbsp;contention,&nbsp;etc).</tt></dd></dl>
+
+<dl><dt><a name="ContactInfo-gql"><strong>gql</strong></a>(cls, query_string, *args, **kwds)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Returns&nbsp;a&nbsp;query&nbsp;using&nbsp;GQL&nbsp;query&nbsp;string.<br>
+&nbsp;<br>
+See&nbsp;appengine/ext/gql&nbsp;for&nbsp;more&nbsp;information&nbsp;about&nbsp;GQL.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;query_string:&nbsp;properly&nbsp;formatted&nbsp;GQL&nbsp;query&nbsp;string&nbsp;with&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'SELECT&nbsp;*&nbsp;FROM&nbsp;&lt;entity&gt;'&nbsp;part&nbsp;omitted<br>
+&nbsp;&nbsp;*args:&nbsp;rest&nbsp;of&nbsp;the&nbsp;positional&nbsp;arguments&nbsp;used&nbsp;to&nbsp;bind&nbsp;numeric&nbsp;references<br>
+&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;the&nbsp;query.<br>
+&nbsp;&nbsp;**kwds:&nbsp;dictionary-based&nbsp;arguments&nbsp;(for&nbsp;named&nbsp;parameters).</tt></dd></dl>
+
+<dl><dt><a name="ContactInfo-kind"><strong>kind</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Returns&nbsp;the&nbsp;datastore&nbsp;kind&nbsp;we&nbsp;use&nbsp;for&nbsp;this&nbsp;model.<br>
+&nbsp;<br>
+We&nbsp;just&nbsp;use&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;model&nbsp;for&nbsp;now,&nbsp;ignoring&nbsp;potential&nbsp;collisions.</tt></dd></dl>
+
+<dl><dt><a name="ContactInfo-properties"><strong>properties</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Returns&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;all&nbsp;the&nbsp;properties&nbsp;defined&nbsp;for&nbsp;this&nbsp;model.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a>:<br>
+<dl><dt><a name="ContactInfo-__new__"><strong>__new__</strong></a>(*args, **unused_kwds)</dt><dd><tt>Allow&nbsp;subclasses&nbsp;to&nbsp;call&nbsp;<a href="#ContactInfo-__new__">__new__</a>()&nbsp;with&nbsp;arguments.<br>
+&nbsp;<br>
+Do&nbsp;NOT&nbsp;list&nbsp;'cls'&nbsp;as&nbsp;the&nbsp;first&nbsp;argument,&nbsp;or&nbsp;in&nbsp;the&nbsp;case&nbsp;when<br>
+the&nbsp;'unused_kwds'&nbsp;dictionary&nbsp;contains&nbsp;the&nbsp;key&nbsp;'cls',&nbsp;the&nbsp;function<br>
+will&nbsp;complain&nbsp;about&nbsp;multiple&nbsp;argument&nbsp;values&nbsp;for&nbsp;'cls'.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;TypeError&nbsp;if&nbsp;there&nbsp;are&nbsp;no&nbsp;positional&nbsp;arguments.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a>:<br>
+<dl><dt><strong>__metaclass__</strong> = &lt;class 'google.appengine.ext.db.PropertiedClass'&gt;<dd><tt>Meta-class&nbsp;for&nbsp;initializing&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;classes&nbsp;properties.<br>
+&nbsp;<br>
+Used&nbsp;for&nbsp;initializing&nbsp;Properties&nbsp;defined&nbsp;in&nbsp;the&nbsp;context&nbsp;of&nbsp;a&nbsp;model.<br>
+By&nbsp;using&nbsp;a&nbsp;meta-class&nbsp;much&nbsp;of&nbsp;the&nbsp;configuration&nbsp;of&nbsp;a&nbsp;Property<br>
+descriptor&nbsp;becomes&nbsp;implicit.&nbsp;&nbsp;By&nbsp;using&nbsp;this&nbsp;meta-class,&nbsp;descriptors<br>
+that&nbsp;are&nbsp;of&nbsp;class&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;are&nbsp;notified&nbsp;about&nbsp;which&nbsp;class&nbsp;they<br>
+belong&nbsp;to&nbsp;and&nbsp;what&nbsp;attribute&nbsp;they&nbsp;are&nbsp;associated&nbsp;with&nbsp;and&nbsp;can<br>
+do&nbsp;appropriate&nbsp;initialization&nbsp;via&nbsp;__property_config__.<br>
+&nbsp;<br>
+Duplicate&nbsp;properties&nbsp;are&nbsp;not&nbsp;permitted.</tt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Crisis">class <strong>Crisis</strong></a>(<a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="WC1.html#Crisis">Crisis</a></dd>
+<dd><a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>date_and_time</strong></dt>
+<dd><tt>A&nbsp;textual&nbsp;property,&nbsp;which&nbsp;can&nbsp;be&nbsp;multi-&nbsp;or&nbsp;single-line.</tt></dd>
+</dl>
+<dl><dt><strong>economic_impact</strong></dt>
+<dd><tt>A&nbsp;textual&nbsp;property,&nbsp;which&nbsp;can&nbsp;be&nbsp;multi-&nbsp;or&nbsp;single-line.</tt></dd>
+</dl>
+<dl><dt><strong>external_links</strong></dt>
+<dd><tt>A&nbsp;property&nbsp;that&nbsp;stores&nbsp;a&nbsp;list&nbsp;of&nbsp;things.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;a&nbsp;parameterized&nbsp;property;&nbsp;the&nbsp;parameter&nbsp;must&nbsp;be&nbsp;a&nbsp;valid<br>
+non-list&nbsp;data&nbsp;type,&nbsp;and&nbsp;all&nbsp;items&nbsp;must&nbsp;conform&nbsp;to&nbsp;this&nbsp;type.</tt></dd>
+</dl>
+<dl><dt><strong>history</strong></dt>
+<dd><tt>A&nbsp;string&nbsp;that&nbsp;can&nbsp;be&nbsp;longer&nbsp;than&nbsp;500&nbsp;bytes.</tt></dd>
+</dl>
+<dl><dt><strong>human_impact</strong></dt>
+<dd><tt>A&nbsp;string&nbsp;that&nbsp;can&nbsp;be&nbsp;longer&nbsp;than&nbsp;500&nbsp;bytes.</tt></dd>
+</dl>
+<dl><dt><strong>images</strong></dt>
+<dd><tt>A&nbsp;property&nbsp;that&nbsp;stores&nbsp;a&nbsp;list&nbsp;of&nbsp;things.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;a&nbsp;parameterized&nbsp;property;&nbsp;the&nbsp;parameter&nbsp;must&nbsp;be&nbsp;a&nbsp;valid<br>
+non-list&nbsp;data&nbsp;type,&nbsp;and&nbsp;all&nbsp;items&nbsp;must&nbsp;conform&nbsp;to&nbsp;this&nbsp;type.</tt></dd>
+</dl>
+<dl><dt><strong>kind_</strong></dt>
+<dd><tt>A&nbsp;textual&nbsp;property,&nbsp;which&nbsp;can&nbsp;be&nbsp;multi-&nbsp;or&nbsp;single-line.</tt></dd>
+</dl>
+<dl><dt><strong>location</strong></dt>
+<dd><tt>A&nbsp;textual&nbsp;property,&nbsp;which&nbsp;can&nbsp;be&nbsp;multi-&nbsp;or&nbsp;single-line.</tt></dd>
+</dl>
+<dl><dt><strong>name</strong></dt>
+<dd><tt>A&nbsp;textual&nbsp;property,&nbsp;which&nbsp;can&nbsp;be&nbsp;multi-&nbsp;or&nbsp;single-line.</tt></dd>
+</dl>
+<dl><dt><strong>related_orgs</strong></dt>
+<dd><tt>A&nbsp;property&nbsp;that&nbsp;stores&nbsp;a&nbsp;list&nbsp;of&nbsp;strings.<br>
+&nbsp;<br>
+A&nbsp;shorthand&nbsp;for&nbsp;the&nbsp;most&nbsp;common&nbsp;type&nbsp;of&nbsp;ListProperty.</tt></dd>
+</dl>
+<dl><dt><strong>related_people</strong></dt>
+<dd><tt>A&nbsp;property&nbsp;that&nbsp;stores&nbsp;a&nbsp;list&nbsp;of&nbsp;strings.<br>
+&nbsp;<br>
+A&nbsp;shorthand&nbsp;for&nbsp;the&nbsp;most&nbsp;common&nbsp;type&nbsp;of&nbsp;ListProperty.</tt></dd>
+</dl>
+<dl><dt><strong>resources_needed</strong></dt>
+<dd><tt>A&nbsp;textual&nbsp;property,&nbsp;which&nbsp;can&nbsp;be&nbsp;multi-&nbsp;or&nbsp;single-line.</tt></dd>
+</dl>
+<dl><dt><strong>social_networks</strong></dt>
+<dd><tt>A&nbsp;property&nbsp;that&nbsp;stores&nbsp;a&nbsp;list&nbsp;of&nbsp;things.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;a&nbsp;parameterized&nbsp;property;&nbsp;the&nbsp;parameter&nbsp;must&nbsp;be&nbsp;a&nbsp;valid<br>
+non-list&nbsp;data&nbsp;type,&nbsp;and&nbsp;all&nbsp;items&nbsp;must&nbsp;conform&nbsp;to&nbsp;this&nbsp;type.</tt></dd>
+</dl>
+<dl><dt><strong>videos</strong></dt>
+<dd><tt>A&nbsp;property&nbsp;that&nbsp;stores&nbsp;a&nbsp;list&nbsp;of&nbsp;things.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;a&nbsp;parameterized&nbsp;property;&nbsp;the&nbsp;parameter&nbsp;must&nbsp;be&nbsp;a&nbsp;valid<br>
+non-list&nbsp;data&nbsp;type,&nbsp;and&nbsp;all&nbsp;items&nbsp;must&nbsp;conform&nbsp;to&nbsp;this&nbsp;type.</tt></dd>
+</dl>
+<dl><dt><strong>ways_to_help</strong></dt>
+<dd><tt>A&nbsp;textual&nbsp;property,&nbsp;which&nbsp;can&nbsp;be&nbsp;multi-&nbsp;or&nbsp;single-line.</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a>:<br>
+<dl><dt><a name="Crisis-__init__"><strong>__init__</strong></a>(self, parent<font color="#909090">=None</font>, key_name<font color="#909090">=None</font>, _app<font color="#909090">=None</font>, _from_entity<font color="#909090">=False</font>, **kwds)</dt><dd><tt>Creates&nbsp;a&nbsp;new&nbsp;instance&nbsp;of&nbsp;this&nbsp;model.<br>
+&nbsp;<br>
+To&nbsp;create&nbsp;a&nbsp;new&nbsp;entity,&nbsp;you&nbsp;instantiate&nbsp;a&nbsp;model&nbsp;and&nbsp;then&nbsp;call&nbsp;<a href="#Crisis-put">put</a>(),<br>
+which&nbsp;saves&nbsp;the&nbsp;entity&nbsp;to&nbsp;the&nbsp;datastore:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;person&nbsp;=&nbsp;<a href="#Person">Person</a>()<br>
+&nbsp;&nbsp;&nbsp;person.name&nbsp;=&nbsp;'Bret'<br>
+&nbsp;&nbsp;&nbsp;person.<a href="#Crisis-put">put</a>()<br>
+&nbsp;<br>
+You&nbsp;can&nbsp;initialize&nbsp;properties&nbsp;in&nbsp;the&nbsp;model&nbsp;in&nbsp;the&nbsp;constructor&nbsp;with&nbsp;keyword<br>
+arguments:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;person&nbsp;=&nbsp;<a href="#Person">Person</a>(name='Bret')<br>
+&nbsp;<br>
+We&nbsp;initialize&nbsp;all&nbsp;other&nbsp;properties&nbsp;to&nbsp;the&nbsp;default&nbsp;value&nbsp;(as&nbsp;defined&nbsp;by&nbsp;the<br>
+properties&nbsp;in&nbsp;the&nbsp;model&nbsp;definition)&nbsp;if&nbsp;they&nbsp;are&nbsp;not&nbsp;provided&nbsp;in&nbsp;the<br>
+constructor.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;parent:&nbsp;Parent&nbsp;instance&nbsp;for&nbsp;this&nbsp;instance&nbsp;or&nbsp;None,&nbsp;indicating&nbsp;a&nbsp;top-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;level&nbsp;instance.<br>
+&nbsp;&nbsp;key_name:&nbsp;Name&nbsp;for&nbsp;new&nbsp;model&nbsp;instance.<br>
+&nbsp;&nbsp;_from_entity:&nbsp;Intentionally&nbsp;undocumented.<br>
+&nbsp;&nbsp;kwds:&nbsp;Keyword&nbsp;arguments&nbsp;mapping&nbsp;to&nbsp;properties&nbsp;of&nbsp;model.&nbsp;&nbsp;Also:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;key:&nbsp;Key&nbsp;instance&nbsp;for&nbsp;this&nbsp;instance,&nbsp;if&nbsp;provided&nbsp;makes&nbsp;parent&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key_name&nbsp;redundant&nbsp;(they&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;set&nbsp;but&nbsp;if&nbsp;they&nbsp;are<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;they&nbsp;must&nbsp;match&nbsp;the&nbsp;key).</tt></dd></dl>
+
+<dl><dt><a name="Crisis-delete"><strong>delete</strong></a>(self, **kwargs)</dt><dd><tt>Deletes&nbsp;this&nbsp;entity&nbsp;from&nbsp;the&nbsp;datastore.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;config:&nbsp;datastore_rpc.Configuration&nbsp;to&nbsp;use&nbsp;for&nbsp;this&nbsp;request.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;TransactionFailedError&nbsp;if&nbsp;the&nbsp;data&nbsp;could&nbsp;not&nbsp;be&nbsp;committed.</tt></dd></dl>
+
+<dl><dt><a name="Crisis-dynamic_properties"><strong>dynamic_properties</strong></a>(self)</dt><dd><tt>Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;dynamic&nbsp;properties&nbsp;defined&nbsp;for&nbsp;instance.</tt></dd></dl>
+
+<dl><dt><a name="Crisis-has_key"><strong>has_key</strong></a>(self)</dt><dd><tt>Determine&nbsp;if&nbsp;this&nbsp;model&nbsp;instance&nbsp;has&nbsp;a&nbsp;complete&nbsp;key.<br>
+&nbsp;<br>
+When&nbsp;not&nbsp;using&nbsp;a&nbsp;fully&nbsp;self-assigned&nbsp;Key,&nbsp;ids&nbsp;are&nbsp;not&nbsp;assigned&nbsp;until&nbsp;the<br>
+data&nbsp;is&nbsp;saved&nbsp;to&nbsp;the&nbsp;Datastore,&nbsp;but&nbsp;instances&nbsp;with&nbsp;a&nbsp;key&nbsp;name&nbsp;always&nbsp;have<br>
+a&nbsp;full&nbsp;key.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;True&nbsp;if&nbsp;the&nbsp;object&nbsp;has&nbsp;been&nbsp;persisted&nbsp;to&nbsp;the&nbsp;datastore&nbsp;or&nbsp;has&nbsp;a&nbsp;key<br>
+&nbsp;&nbsp;or&nbsp;has&nbsp;a&nbsp;key_name,&nbsp;otherwise&nbsp;False.</tt></dd></dl>
+
+<dl><dt><a name="Crisis-instance_properties"><strong>instance_properties</strong></a>(self)</dt><dd><tt>Alias&nbsp;for&nbsp;dyanmic_properties.</tt></dd></dl>
+
+<dl><dt><a name="Crisis-is_saved"><strong>is_saved</strong></a>(self)</dt><dd><tt>Determine&nbsp;if&nbsp;entity&nbsp;is&nbsp;persisted&nbsp;in&nbsp;the&nbsp;datastore.<br>
+&nbsp;<br>
+New&nbsp;instances&nbsp;of&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;do&nbsp;not&nbsp;start&nbsp;out&nbsp;saved&nbsp;in&nbsp;the&nbsp;data.&nbsp;&nbsp;Objects&nbsp;which<br>
+are&nbsp;saved&nbsp;to&nbsp;or&nbsp;loaded&nbsp;from&nbsp;the&nbsp;Datastore&nbsp;will&nbsp;have&nbsp;a&nbsp;True&nbsp;saved&nbsp;state.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;True&nbsp;if&nbsp;object&nbsp;has&nbsp;been&nbsp;persisted&nbsp;to&nbsp;the&nbsp;datastore,&nbsp;otherwise&nbsp;False.</tt></dd></dl>
+
+<dl><dt><a name="Crisis-key"><strong>key</strong></a>(self)</dt><dd><tt>Unique&nbsp;key&nbsp;for&nbsp;this&nbsp;entity.<br>
+&nbsp;<br>
+This&nbsp;property&nbsp;is&nbsp;only&nbsp;available&nbsp;if&nbsp;this&nbsp;entity&nbsp;is&nbsp;already&nbsp;stored&nbsp;in&nbsp;the<br>
+datastore&nbsp;or&nbsp;if&nbsp;it&nbsp;has&nbsp;a&nbsp;full&nbsp;key,&nbsp;so&nbsp;it&nbsp;is&nbsp;available&nbsp;if&nbsp;this&nbsp;entity&nbsp;was<br>
+fetched&nbsp;returned&nbsp;from&nbsp;a&nbsp;query,&nbsp;or&nbsp;after&nbsp;<a href="#Crisis-put">put</a>()&nbsp;is&nbsp;called&nbsp;the&nbsp;first&nbsp;time<br>
+for&nbsp;new&nbsp;entities,&nbsp;or&nbsp;if&nbsp;a&nbsp;complete&nbsp;key&nbsp;was&nbsp;given&nbsp;when&nbsp;constructed.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;Datastore&nbsp;key&nbsp;of&nbsp;persisted&nbsp;entity.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;NotSavedError&nbsp;when&nbsp;entity&nbsp;is&nbsp;not&nbsp;persistent.</tt></dd></dl>
+
+<dl><dt><a name="Crisis-parent"><strong>parent</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;parent&nbsp;of&nbsp;the&nbsp;model&nbsp;instance.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;Parent&nbsp;of&nbsp;contained&nbsp;entity&nbsp;or&nbsp;parent&nbsp;provided&nbsp;in&nbsp;constructor,&nbsp;None&nbsp;if<br>
+&nbsp;&nbsp;instance&nbsp;has&nbsp;no&nbsp;parent.</tt></dd></dl>
+
+<dl><dt><a name="Crisis-parent_key"><strong>parent_key</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;parent's&nbsp;key.<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;is&nbsp;useful&nbsp;for&nbsp;avoiding&nbsp;a&nbsp;potential&nbsp;fetch&nbsp;from&nbsp;the&nbsp;datastore<br>
+but&nbsp;still&nbsp;get&nbsp;information&nbsp;about&nbsp;the&nbsp;instances&nbsp;parent.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;Parent&nbsp;key&nbsp;of&nbsp;entity,&nbsp;None&nbsp;if&nbsp;there&nbsp;is&nbsp;no&nbsp;parent.</tt></dd></dl>
+
+<dl><dt><a name="Crisis-put"><strong>put</strong></a>(self, **kwargs)</dt><dd><tt>Writes&nbsp;this&nbsp;model&nbsp;instance&nbsp;to&nbsp;the&nbsp;datastore.<br>
+&nbsp;<br>
+If&nbsp;this&nbsp;instance&nbsp;is&nbsp;new,&nbsp;we&nbsp;add&nbsp;an&nbsp;entity&nbsp;to&nbsp;the&nbsp;datastore.<br>
+Otherwise,&nbsp;we&nbsp;update&nbsp;this&nbsp;instance,&nbsp;and&nbsp;the&nbsp;key&nbsp;will&nbsp;remain&nbsp;the<br>
+same.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;config:&nbsp;datastore_rpc.Configuration&nbsp;to&nbsp;use&nbsp;for&nbsp;this&nbsp;request.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;The&nbsp;key&nbsp;of&nbsp;the&nbsp;instance&nbsp;(either&nbsp;the&nbsp;existing&nbsp;key&nbsp;or&nbsp;a&nbsp;new&nbsp;key).<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;TransactionFailedError&nbsp;if&nbsp;the&nbsp;data&nbsp;could&nbsp;not&nbsp;be&nbsp;committed.</tt></dd></dl>
+
+<dl><dt><a name="Crisis-save"><strong>save</strong></a> = put(self, **kwargs)</dt><dd><tt>Writes&nbsp;this&nbsp;model&nbsp;instance&nbsp;to&nbsp;the&nbsp;datastore.<br>
+&nbsp;<br>
+If&nbsp;this&nbsp;instance&nbsp;is&nbsp;new,&nbsp;we&nbsp;add&nbsp;an&nbsp;entity&nbsp;to&nbsp;the&nbsp;datastore.<br>
+Otherwise,&nbsp;we&nbsp;update&nbsp;this&nbsp;instance,&nbsp;and&nbsp;the&nbsp;key&nbsp;will&nbsp;remain&nbsp;the<br>
+same.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;config:&nbsp;datastore_rpc.Configuration&nbsp;to&nbsp;use&nbsp;for&nbsp;this&nbsp;request.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;The&nbsp;key&nbsp;of&nbsp;the&nbsp;instance&nbsp;(either&nbsp;the&nbsp;existing&nbsp;key&nbsp;or&nbsp;a&nbsp;new&nbsp;key).<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;TransactionFailedError&nbsp;if&nbsp;the&nbsp;data&nbsp;could&nbsp;not&nbsp;be&nbsp;committed.</tt></dd></dl>
+
+<dl><dt><a name="Crisis-to_xml"><strong>to_xml</strong></a>(self, _entity_class<font color="#909090">=&lt;class 'google.appengine.api.datastore.Entity'&gt;</font>)</dt><dd><tt>Generate&nbsp;an&nbsp;XML&nbsp;representation&nbsp;of&nbsp;this&nbsp;model&nbsp;instance.<br>
+&nbsp;<br>
+atom&nbsp;and&nbsp;gd:namespace&nbsp;properties&nbsp;are&nbsp;converted&nbsp;to&nbsp;XML&nbsp;according&nbsp;to&nbsp;their<br>
+respective&nbsp;schemas.&nbsp;For&nbsp;more&nbsp;information,&nbsp;see:<br>
+&nbsp;<br>
+&nbsp;&nbsp;<a href="http://www.atomenabled.org/developers/syndication/">http://www.atomenabled.org/developers/syndication/</a><br>
+&nbsp;&nbsp;<a href="http://code.google.com/apis/gdata/common-elements.html">http://code.google.com/apis/gdata/common-elements.html</a></tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a>:<br>
+<dl><dt><a name="Crisis-all"><strong>all</strong></a>(cls, **kwds)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Returns&nbsp;a&nbsp;query&nbsp;over&nbsp;all&nbsp;instances&nbsp;of&nbsp;this&nbsp;model&nbsp;from&nbsp;the&nbsp;datastore.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;Query&nbsp;that&nbsp;will&nbsp;retrieve&nbsp;all&nbsp;instances&nbsp;from&nbsp;entity&nbsp;collection.</tt></dd></dl>
+
+<dl><dt><a name="Crisis-entity_type"><strong>entity_type</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Soon&nbsp;to&nbsp;be&nbsp;removed&nbsp;alias&nbsp;for&nbsp;kind.</tt></dd></dl>
+
+<dl><dt><a name="Crisis-fields"><strong>fields</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Soon&nbsp;to&nbsp;be&nbsp;removed&nbsp;alias&nbsp;for&nbsp;properties.</tt></dd></dl>
+
+<dl><dt><a name="Crisis-from_entity"><strong>from_entity</strong></a>(cls, entity)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Converts&nbsp;the&nbsp;entity&nbsp;representation&nbsp;of&nbsp;this&nbsp;model&nbsp;to&nbsp;an&nbsp;instance.<br>
+&nbsp;<br>
+Converts&nbsp;datastore.Entity&nbsp;instance&nbsp;to&nbsp;an&nbsp;instance&nbsp;of&nbsp;cls.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;entity:&nbsp;Entity&nbsp;loaded&nbsp;directly&nbsp;from&nbsp;datastore.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;KindError&nbsp;when&nbsp;cls&nbsp;is&nbsp;incorrect&nbsp;model&nbsp;for&nbsp;entity.</tt></dd></dl>
+
+<dl><dt><a name="Crisis-get"><strong>get</strong></a>(cls, keys, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Fetch&nbsp;instance&nbsp;from&nbsp;the&nbsp;datastore&nbsp;of&nbsp;a&nbsp;specific&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;type&nbsp;using&nbsp;key.<br>
+&nbsp;<br>
+We&nbsp;support&nbsp;Key&nbsp;objects&nbsp;and&nbsp;string&nbsp;keys&nbsp;(we&nbsp;convert&nbsp;them&nbsp;to&nbsp;Key&nbsp;objects<br>
+automatically).<br>
+&nbsp;<br>
+Useful&nbsp;for&nbsp;ensuring&nbsp;that&nbsp;specific&nbsp;instance&nbsp;types&nbsp;are&nbsp;retrieved&nbsp;from&nbsp;the<br>
+datastore.&nbsp;&nbsp;It&nbsp;also&nbsp;helps&nbsp;that&nbsp;the&nbsp;source&nbsp;code&nbsp;clearly&nbsp;indicates&nbsp;what<br>
+kind&nbsp;of&nbsp;object&nbsp;is&nbsp;being&nbsp;retreived.&nbsp;&nbsp;Example:<br>
+&nbsp;<br>
+&nbsp;&nbsp;story&nbsp;=&nbsp;Story.<a href="#Crisis-get">get</a>(story_key)<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;keys:&nbsp;Key&nbsp;within&nbsp;datastore&nbsp;entity&nbsp;collection&nbsp;to&nbsp;find;&nbsp;or&nbsp;string&nbsp;key;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;list&nbsp;of&nbsp;Keys&nbsp;or&nbsp;string&nbsp;keys.<br>
+&nbsp;&nbsp;config:&nbsp;datastore_rpc.Configuration&nbsp;to&nbsp;use&nbsp;for&nbsp;this&nbsp;request.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;If&nbsp;a&nbsp;single&nbsp;key&nbsp;was&nbsp;given:&nbsp;a&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;instance&nbsp;associated&nbsp;with&nbsp;key<br>
+&nbsp;&nbsp;for&nbsp;provided&nbsp;class&nbsp;if&nbsp;it&nbsp;exists&nbsp;in&nbsp;the&nbsp;datastore,&nbsp;otherwise<br>
+&nbsp;&nbsp;None;&nbsp;if&nbsp;a&nbsp;list&nbsp;of&nbsp;keys&nbsp;was&nbsp;given:&nbsp;a&nbsp;list&nbsp;whose&nbsp;items&nbsp;are&nbsp;either<br>
+&nbsp;&nbsp;a&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;instance&nbsp;or&nbsp;None.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;KindError&nbsp;if&nbsp;any&nbsp;of&nbsp;the&nbsp;retreived&nbsp;objects&nbsp;are&nbsp;not&nbsp;instances&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;type&nbsp;associated&nbsp;with&nbsp;call&nbsp;to&nbsp;'get'.</tt></dd></dl>
+
+<dl><dt><a name="Crisis-get_by_id"><strong>get_by_id</strong></a>(cls, ids, parent<font color="#909090">=None</font>, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Get&nbsp;instance&nbsp;of&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;class&nbsp;by&nbsp;id.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;key_names:&nbsp;A&nbsp;single&nbsp;id&nbsp;or&nbsp;a&nbsp;list&nbsp;of&nbsp;ids.<br>
+&nbsp;&nbsp;parent:&nbsp;Parent&nbsp;of&nbsp;instances&nbsp;to&nbsp;get.&nbsp;&nbsp;Can&nbsp;be&nbsp;a&nbsp;model&nbsp;or&nbsp;key.<br>
+&nbsp;&nbsp;config:&nbsp;datastore_rpc.Configuration&nbsp;to&nbsp;use&nbsp;for&nbsp;this&nbsp;request.</tt></dd></dl>
+
+<dl><dt><a name="Crisis-get_by_key_name"><strong>get_by_key_name</strong></a>(cls, key_names, parent<font color="#909090">=None</font>, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Get&nbsp;instance&nbsp;of&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;class&nbsp;by&nbsp;its&nbsp;key's&nbsp;name.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;key_names:&nbsp;A&nbsp;single&nbsp;key-name&nbsp;or&nbsp;a&nbsp;list&nbsp;of&nbsp;key-names.<br>
+&nbsp;&nbsp;parent:&nbsp;Parent&nbsp;of&nbsp;instances&nbsp;to&nbsp;get.&nbsp;&nbsp;Can&nbsp;be&nbsp;a&nbsp;model&nbsp;or&nbsp;key.<br>
+&nbsp;&nbsp;config:&nbsp;datastore_rpc.Configuration&nbsp;to&nbsp;use&nbsp;for&nbsp;this&nbsp;request.</tt></dd></dl>
+
+<dl><dt><a name="Crisis-get_or_insert"><strong>get_or_insert</strong></a>(cls, key_name, **kwds)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Transactionally&nbsp;retrieve&nbsp;or&nbsp;create&nbsp;an&nbsp;instance&nbsp;of&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;class.<br>
+&nbsp;<br>
+This&nbsp;acts&nbsp;much&nbsp;like&nbsp;the&nbsp;Python&nbsp;dictionary&nbsp;setdefault()&nbsp;method,&nbsp;where&nbsp;we<br>
+first&nbsp;try&nbsp;to&nbsp;retrieve&nbsp;a&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;instance&nbsp;with&nbsp;the&nbsp;given&nbsp;key&nbsp;name&nbsp;and&nbsp;parent.<br>
+If&nbsp;it's&nbsp;not&nbsp;present,&nbsp;then&nbsp;we&nbsp;create&nbsp;a&nbsp;new&nbsp;instance&nbsp;(using&nbsp;the&nbsp;*kwds<br>
+supplied)&nbsp;and&nbsp;insert&nbsp;that&nbsp;with&nbsp;the&nbsp;supplied&nbsp;key&nbsp;name.<br>
+&nbsp;<br>
+Subsequent&nbsp;calls&nbsp;to&nbsp;this&nbsp;method&nbsp;with&nbsp;the&nbsp;same&nbsp;key_name&nbsp;and&nbsp;parent&nbsp;will<br>
+always&nbsp;yield&nbsp;the&nbsp;same&nbsp;entity&nbsp;(though&nbsp;not&nbsp;the&nbsp;same&nbsp;actual&nbsp;object&nbsp;instance),<br>
+regardless&nbsp;of&nbsp;the&nbsp;*kwds&nbsp;supplied.&nbsp;If&nbsp;the&nbsp;specified&nbsp;entity&nbsp;has&nbsp;somehow<br>
+been&nbsp;deleted&nbsp;separately,&nbsp;then&nbsp;the&nbsp;next&nbsp;call&nbsp;will&nbsp;create&nbsp;a&nbsp;new&nbsp;entity&nbsp;and<br>
+return&nbsp;it.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;'parent'&nbsp;keyword&nbsp;argument&nbsp;is&nbsp;supplied,&nbsp;it&nbsp;must&nbsp;be&nbsp;a&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;instance.<br>
+It&nbsp;will&nbsp;be&nbsp;used&nbsp;as&nbsp;the&nbsp;parent&nbsp;of&nbsp;the&nbsp;new&nbsp;instance&nbsp;of&nbsp;this&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;class&nbsp;if<br>
+one&nbsp;is&nbsp;created.<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;is&nbsp;especially&nbsp;useful&nbsp;for&nbsp;having&nbsp;just&nbsp;one&nbsp;unique&nbsp;entity&nbsp;for<br>
+a&nbsp;specific&nbsp;identifier.&nbsp;Insertion/retrieval&nbsp;is&nbsp;done&nbsp;transactionally,&nbsp;which<br>
+guarantees&nbsp;uniqueness.<br>
+&nbsp;<br>
+Example&nbsp;usage:<br>
+&nbsp;<br>
+&nbsp;&nbsp;class&nbsp;WikiTopic(db.<a href="google.appengine.ext.db.html#Model">Model</a>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;creation_date&nbsp;=&nbsp;db.DatetimeProperty(auto_now_add=True)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;body&nbsp;=&nbsp;db.TextProperty(required=True)<br>
+&nbsp;<br>
+&nbsp;&nbsp;#&nbsp;The&nbsp;first&nbsp;time&nbsp;through&nbsp;we'll&nbsp;create&nbsp;the&nbsp;new&nbsp;topic.<br>
+&nbsp;&nbsp;wiki_word&nbsp;=&nbsp;'CommonIdioms'<br>
+&nbsp;&nbsp;topic&nbsp;=&nbsp;WikiTopic.<a href="#Crisis-get_or_insert">get_or_insert</a>(wiki_word,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body='This&nbsp;topic&nbsp;is&nbsp;totally&nbsp;new!')<br>
+&nbsp;&nbsp;assert&nbsp;topic.<a href="#Crisis-key">key</a>().<a href="#Crisis-name">name</a>()&nbsp;==&nbsp;'CommonIdioms'<br>
+&nbsp;&nbsp;assert&nbsp;topic.body&nbsp;==&nbsp;'This&nbsp;topic&nbsp;is&nbsp;totally&nbsp;new!'<br>
+&nbsp;<br>
+&nbsp;&nbsp;#&nbsp;The&nbsp;second&nbsp;time&nbsp;through&nbsp;will&nbsp;just&nbsp;retrieve&nbsp;the&nbsp;entity.<br>
+&nbsp;&nbsp;overwrite_topic&nbsp;=&nbsp;WikiTopic.<a href="#Crisis-get_or_insert">get_or_insert</a>(wiki_word,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body='A&nbsp;totally&nbsp;different&nbsp;message!')<br>
+&nbsp;&nbsp;assert&nbsp;topic.<a href="#Crisis-key">key</a>().<a href="#Crisis-name">name</a>()&nbsp;==&nbsp;'CommonIdioms'<br>
+&nbsp;&nbsp;assert&nbsp;topic.body&nbsp;==&nbsp;'This&nbsp;topic&nbsp;is&nbsp;totally&nbsp;new!'<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;key_name:&nbsp;Key&nbsp;name&nbsp;to&nbsp;retrieve&nbsp;or&nbsp;create.<br>
+&nbsp;&nbsp;**kwds:&nbsp;Keyword&nbsp;arguments&nbsp;to&nbsp;pass&nbsp;to&nbsp;the&nbsp;constructor&nbsp;of&nbsp;the&nbsp;model&nbsp;class<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;an&nbsp;instance&nbsp;for&nbsp;the&nbsp;specified&nbsp;key&nbsp;name&nbsp;does&nbsp;not&nbsp;already&nbsp;exist.&nbsp;If<br>
+&nbsp;&nbsp;&nbsp;&nbsp;an&nbsp;instance&nbsp;with&nbsp;the&nbsp;supplied&nbsp;key_name&nbsp;and&nbsp;parent&nbsp;already&nbsp;exists,&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;rest&nbsp;of&nbsp;these&nbsp;arguments&nbsp;will&nbsp;be&nbsp;discarded.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;Existing&nbsp;instance&nbsp;of&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;class&nbsp;with&nbsp;the&nbsp;specified&nbsp;key_name&nbsp;and&nbsp;parent<br>
+&nbsp;&nbsp;or&nbsp;a&nbsp;new&nbsp;one&nbsp;that&nbsp;has&nbsp;just&nbsp;been&nbsp;created.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;TransactionFailedError&nbsp;if&nbsp;the&nbsp;specified&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;instance&nbsp;could&nbsp;not&nbsp;be<br>
+&nbsp;&nbsp;retrieved&nbsp;or&nbsp;created&nbsp;transactionally&nbsp;(due&nbsp;to&nbsp;high&nbsp;contention,&nbsp;etc).</tt></dd></dl>
+
+<dl><dt><a name="Crisis-gql"><strong>gql</strong></a>(cls, query_string, *args, **kwds)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Returns&nbsp;a&nbsp;query&nbsp;using&nbsp;GQL&nbsp;query&nbsp;string.<br>
+&nbsp;<br>
+See&nbsp;appengine/ext/gql&nbsp;for&nbsp;more&nbsp;information&nbsp;about&nbsp;GQL.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;query_string:&nbsp;properly&nbsp;formatted&nbsp;GQL&nbsp;query&nbsp;string&nbsp;with&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'SELECT&nbsp;*&nbsp;FROM&nbsp;&lt;entity&gt;'&nbsp;part&nbsp;omitted<br>
+&nbsp;&nbsp;*args:&nbsp;rest&nbsp;of&nbsp;the&nbsp;positional&nbsp;arguments&nbsp;used&nbsp;to&nbsp;bind&nbsp;numeric&nbsp;references<br>
+&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;the&nbsp;query.<br>
+&nbsp;&nbsp;**kwds:&nbsp;dictionary-based&nbsp;arguments&nbsp;(for&nbsp;named&nbsp;parameters).</tt></dd></dl>
+
+<dl><dt><a name="Crisis-kind"><strong>kind</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Returns&nbsp;the&nbsp;datastore&nbsp;kind&nbsp;we&nbsp;use&nbsp;for&nbsp;this&nbsp;model.<br>
+&nbsp;<br>
+We&nbsp;just&nbsp;use&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;model&nbsp;for&nbsp;now,&nbsp;ignoring&nbsp;potential&nbsp;collisions.</tt></dd></dl>
+
+<dl><dt><a name="Crisis-properties"><strong>properties</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Returns&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;all&nbsp;the&nbsp;properties&nbsp;defined&nbsp;for&nbsp;this&nbsp;model.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a>:<br>
+<dl><dt><a name="Crisis-__new__"><strong>__new__</strong></a>(*args, **unused_kwds)</dt><dd><tt>Allow&nbsp;subclasses&nbsp;to&nbsp;call&nbsp;<a href="#Crisis-__new__">__new__</a>()&nbsp;with&nbsp;arguments.<br>
+&nbsp;<br>
+Do&nbsp;NOT&nbsp;list&nbsp;'cls'&nbsp;as&nbsp;the&nbsp;first&nbsp;argument,&nbsp;or&nbsp;in&nbsp;the&nbsp;case&nbsp;when<br>
+the&nbsp;'unused_kwds'&nbsp;dictionary&nbsp;contains&nbsp;the&nbsp;key&nbsp;'cls',&nbsp;the&nbsp;function<br>
+will&nbsp;complain&nbsp;about&nbsp;multiple&nbsp;argument&nbsp;values&nbsp;for&nbsp;'cls'.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;TypeError&nbsp;if&nbsp;there&nbsp;are&nbsp;no&nbsp;positional&nbsp;arguments.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a>:<br>
+<dl><dt><strong>__metaclass__</strong> = &lt;class 'google.appengine.ext.db.PropertiedClass'&gt;<dd><tt>Meta-class&nbsp;for&nbsp;initializing&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;classes&nbsp;properties.<br>
+&nbsp;<br>
+Used&nbsp;for&nbsp;initializing&nbsp;Properties&nbsp;defined&nbsp;in&nbsp;the&nbsp;context&nbsp;of&nbsp;a&nbsp;model.<br>
+By&nbsp;using&nbsp;a&nbsp;meta-class&nbsp;much&nbsp;of&nbsp;the&nbsp;configuration&nbsp;of&nbsp;a&nbsp;Property<br>
+descriptor&nbsp;becomes&nbsp;implicit.&nbsp;&nbsp;By&nbsp;using&nbsp;this&nbsp;meta-class,&nbsp;descriptors<br>
+that&nbsp;are&nbsp;of&nbsp;class&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;are&nbsp;notified&nbsp;about&nbsp;which&nbsp;class&nbsp;they<br>
+belong&nbsp;to&nbsp;and&nbsp;what&nbsp;attribute&nbsp;they&nbsp;are&nbsp;associated&nbsp;with&nbsp;and&nbsp;can<br>
+do&nbsp;appropriate&nbsp;initialization&nbsp;via&nbsp;__property_config__.<br>
+&nbsp;<br>
+Duplicate&nbsp;properties&nbsp;are&nbsp;not&nbsp;permitted.</tt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ExportHandler">class <strong>ExportHandler</strong></a>(<a href="google.appengine.ext.webapp._webapp25.html#RequestHandler">google.appengine.ext.webapp._webapp25.RequestHandler</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="WC1.html#ExportHandler">ExportHandler</a></dd>
+<dd><a href="google.appengine.ext.webapp._webapp25.html#RequestHandler">google.appengine.ext.webapp._webapp25.RequestHandler</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="ExportHandler-get"><strong>get</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="google.appengine.ext.webapp._webapp25.html#RequestHandler">google.appengine.ext.webapp._webapp25.RequestHandler</a>:<br>
+<dl><dt><a name="ExportHandler-delete"><strong>delete</strong></a>(self, *args)</dt><dd><tt>Handler&nbsp;method&nbsp;for&nbsp;DELETE&nbsp;requests.</tt></dd></dl>
+
+<dl><dt><a name="ExportHandler-error"><strong>error</strong></a>(self, code)</dt><dd><tt>Clears&nbsp;the&nbsp;response&nbsp;output&nbsp;stream&nbsp;and&nbsp;sets&nbsp;the&nbsp;given&nbsp;HTTP&nbsp;error&nbsp;code.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;code:&nbsp;the&nbsp;HTTP&nbsp;status&nbsp;error&nbsp;code&nbsp;(e.g.,&nbsp;501)</tt></dd></dl>
+
+<dl><dt><a name="ExportHandler-handle_exception"><strong>handle_exception</strong></a>(self, exception, debug_mode)</dt><dd><tt>Called&nbsp;if&nbsp;this&nbsp;handler&nbsp;throws&nbsp;an&nbsp;exception&nbsp;during&nbsp;execution.<br>
+&nbsp;<br>
+The&nbsp;default&nbsp;behavior&nbsp;is&nbsp;to&nbsp;call&nbsp;<a href="#ExportHandler-error">error</a>(500)&nbsp;and&nbsp;print&nbsp;a&nbsp;stack&nbsp;trace<br>
+if&nbsp;debug_mode&nbsp;is&nbsp;True.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;exception:&nbsp;the&nbsp;exception&nbsp;that&nbsp;was&nbsp;thrown<br>
+&nbsp;&nbsp;debug_mode:&nbsp;True&nbsp;if&nbsp;the&nbsp;web&nbsp;application&nbsp;is&nbsp;running&nbsp;in&nbsp;debug&nbsp;mode</tt></dd></dl>
+
+<dl><dt><a name="ExportHandler-head"><strong>head</strong></a>(self, *args)</dt><dd><tt>Handler&nbsp;method&nbsp;for&nbsp;HEAD&nbsp;requests.</tt></dd></dl>
+
+<dl><dt><a name="ExportHandler-initialize"><strong>initialize</strong></a>(self, request, response)</dt><dd><tt>Initializes&nbsp;this&nbsp;request&nbsp;handler&nbsp;with&nbsp;the&nbsp;given&nbsp;Request&nbsp;and&nbsp;Response.</tt></dd></dl>
+
+<dl><dt><a name="ExportHandler-options"><strong>options</strong></a>(self, *args)</dt><dd><tt>Handler&nbsp;method&nbsp;for&nbsp;OPTIONS&nbsp;requests.</tt></dd></dl>
+
+<dl><dt><a name="ExportHandler-post"><strong>post</strong></a>(self, *args)</dt><dd><tt>Handler&nbsp;method&nbsp;for&nbsp;POST&nbsp;requests.</tt></dd></dl>
+
+<dl><dt><a name="ExportHandler-put"><strong>put</strong></a>(self, *args)</dt><dd><tt>Handler&nbsp;method&nbsp;for&nbsp;PUT&nbsp;requests.</tt></dd></dl>
+
+<dl><dt><a name="ExportHandler-redirect"><strong>redirect</strong></a>(self, uri, permanent<font color="#909090">=False</font>)</dt><dd><tt>Issues&nbsp;an&nbsp;HTTP&nbsp;redirect&nbsp;to&nbsp;the&nbsp;given&nbsp;relative&nbsp;URL.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;uri:&nbsp;a&nbsp;relative&nbsp;or&nbsp;absolute&nbsp;URI&nbsp;(e.g.,&nbsp;'../flowers.html')<br>
+&nbsp;&nbsp;permanent:&nbsp;if&nbsp;true,&nbsp;we&nbsp;use&nbsp;a&nbsp;301&nbsp;redirect&nbsp;instead&nbsp;of&nbsp;a&nbsp;302&nbsp;redirect</tt></dd></dl>
+
+<dl><dt><a name="ExportHandler-trace"><strong>trace</strong></a>(self, *args)</dt><dd><tt>Handler&nbsp;method&nbsp;for&nbsp;TRACE&nbsp;requests.</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="google.appengine.ext.webapp._webapp25.html#RequestHandler">google.appengine.ext.webapp._webapp25.RequestHandler</a>:<br>
+<dl><dt><a name="ExportHandler-get_url"><strong>get_url</strong></a>(cls, *args, **kargs)<font color="#909090"><font face="helvetica, arial"> from <a href="__builtin__.html#type">__builtin__.type</a></font></font></dt><dd><tt>Returns&nbsp;the&nbsp;url&nbsp;for&nbsp;the&nbsp;given&nbsp;handler.<br>
+&nbsp;<br>
+The&nbsp;default&nbsp;implementation&nbsp;uses&nbsp;the&nbsp;patterns&nbsp;passed&nbsp;to&nbsp;the&nbsp;active<br>
+WSGIApplication&nbsp;to&nbsp;create&nbsp;a&nbsp;url.&nbsp;However,&nbsp;it&nbsp;is&nbsp;different&nbsp;from&nbsp;Django's<br>
+urlresolvers.reverse()&nbsp;in&nbsp;the&nbsp;following&nbsp;ways:<br>
+&nbsp;&nbsp;-&nbsp;It&nbsp;does&nbsp;not&nbsp;try&nbsp;to&nbsp;resolve&nbsp;handlers&nbsp;via&nbsp;module&nbsp;loading<br>
+&nbsp;&nbsp;-&nbsp;It&nbsp;does&nbsp;not&nbsp;support&nbsp;named&nbsp;arguments<br>
+&nbsp;&nbsp;-&nbsp;It&nbsp;performs&nbsp;some&nbsp;post-prosessing&nbsp;on&nbsp;the&nbsp;url&nbsp;to&nbsp;remove&nbsp;some&nbsp;regex<br>
+&nbsp;&nbsp;&nbsp;&nbsp;operators.<br>
+&nbsp;&nbsp;-&nbsp;It&nbsp;will&nbsp;try&nbsp;to&nbsp;fill&nbsp;in&nbsp;the&nbsp;left-most&nbsp;missing&nbsp;arguments&nbsp;with&nbsp;the&nbsp;args<br>
+&nbsp;&nbsp;&nbsp;&nbsp;used&nbsp;in&nbsp;the&nbsp;active&nbsp;request.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;args:&nbsp;Parameters&nbsp;for&nbsp;the&nbsp;url&nbsp;pattern's&nbsp;groups.<br>
+&nbsp;&nbsp;kwargs:&nbsp;Optionally&nbsp;contains&nbsp;'implicit_args'&nbsp;that&nbsp;can&nbsp;either&nbsp;be&nbsp;a&nbsp;boolean<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;a&nbsp;tuple.&nbsp;When&nbsp;it&nbsp;is&nbsp;True,&nbsp;it&nbsp;will&nbsp;use&nbsp;the&nbsp;arguments&nbsp;to&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;active&nbsp;request&nbsp;as&nbsp;implicit&nbsp;arguments.&nbsp;When&nbsp;it&nbsp;is&nbsp;False&nbsp;(default),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it&nbsp;will&nbsp;not&nbsp;use&nbsp;any&nbsp;implicit&nbsp;arguments.&nbsp;When&nbsp;it&nbsp;is&nbsp;a&nbsp;tuple,&nbsp;it<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;use&nbsp;the&nbsp;tuple&nbsp;as&nbsp;the&nbsp;implicit&nbsp;arguments.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;left-most&nbsp;args&nbsp;if&nbsp;some&nbsp;are&nbsp;missing&nbsp;from&nbsp;args.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;The&nbsp;url&nbsp;for&nbsp;this&nbsp;handler/args&nbsp;combination.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;NoUrlFoundError:&nbsp;No&nbsp;url&nbsp;pattern&nbsp;for&nbsp;this&nbsp;handler&nbsp;has&nbsp;the&nbsp;same<br>
+&nbsp;&nbsp;&nbsp;&nbsp;number&nbsp;of&nbsp;args&nbsp;that&nbsp;were&nbsp;passed&nbsp;in.</tt></dd></dl>
+
+<dl><dt><a name="ExportHandler-new_factory"><strong>new_factory</strong></a>(cls, *args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="__builtin__.html#type">__builtin__.type</a></font></font></dt><dd><tt>Create&nbsp;new&nbsp;request&nbsp;handler&nbsp;factory.<br>
+&nbsp;<br>
+Use&nbsp;factory&nbsp;method&nbsp;to&nbsp;create&nbsp;reusable&nbsp;request&nbsp;handlers&nbsp;that&nbsp;just<br>
+require&nbsp;a&nbsp;few&nbsp;configuration&nbsp;parameters&nbsp;to&nbsp;construct.&nbsp;&nbsp;Also&nbsp;useful<br>
+for&nbsp;injecting&nbsp;shared&nbsp;state&nbsp;between&nbsp;multiple&nbsp;request&nbsp;handler<br>
+instances&nbsp;without&nbsp;relying&nbsp;on&nbsp;global&nbsp;variables.&nbsp;&nbsp;For&nbsp;example,&nbsp;to<br>
+create&nbsp;a&nbsp;set&nbsp;of&nbsp;post&nbsp;handlers&nbsp;that&nbsp;will&nbsp;do&nbsp;simple&nbsp;text&nbsp;transformations<br>
+you&nbsp;can&nbsp;write:<br>
+&nbsp;<br>
+&nbsp;&nbsp;class&nbsp;ChangeTextHandler(webapp.<a href="google.appengine.ext.webapp._webapp25.html#RequestHandler">RequestHandler</a>):<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;<a href="#ExportHandler-__init__">__init__</a>(self,&nbsp;transform):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.<strong>transform</strong>&nbsp;=&nbsp;transform<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;<a href="#ExportHandler-post">post</a>(self):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response_text&nbsp;=&nbsp;transform(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.<strong>request</strong>.request.body_file.getvalue())<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.<strong>response</strong>.out.write(response_text)<br>
+&nbsp;<br>
+&nbsp;&nbsp;application&nbsp;=&nbsp;webapp.WSGIApplication(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[('/to_lower',&nbsp;ChangeTextHandler.<a href="#ExportHandler-new_factory">new_factory</a>(str.lower)),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;('/to_upper',&nbsp;ChangeTextHandler.<a href="#ExportHandler-new_factory">new_factory</a>(str.upper)),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;debug=True)<br>
+&nbsp;<br>
+Text&nbsp;POSTed&nbsp;to&nbsp;/to_lower&nbsp;will&nbsp;be&nbsp;lower&nbsp;cased.<br>
+Text&nbsp;POSTed&nbsp;to&nbsp;/to_upper&nbsp;will&nbsp;be&nbsp;upper&nbsp;cased.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="google.appengine.ext.webapp._webapp25.html#RequestHandler">google.appengine.ext.webapp._webapp25.RequestHandler</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ImportFormHandler">class <strong>ImportFormHandler</strong></a>(<a href="google.appengine.ext.webapp._webapp25.html#RequestHandler">google.appengine.ext.webapp._webapp25.RequestHandler</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="WC1.html#ImportFormHandler">ImportFormHandler</a></dd>
+<dd><a href="google.appengine.ext.webapp._webapp25.html#RequestHandler">google.appengine.ext.webapp._webapp25.RequestHandler</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="ImportFormHandler-get"><strong>get</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="google.appengine.ext.webapp._webapp25.html#RequestHandler">google.appengine.ext.webapp._webapp25.RequestHandler</a>:<br>
+<dl><dt><a name="ImportFormHandler-delete"><strong>delete</strong></a>(self, *args)</dt><dd><tt>Handler&nbsp;method&nbsp;for&nbsp;DELETE&nbsp;requests.</tt></dd></dl>
+
+<dl><dt><a name="ImportFormHandler-error"><strong>error</strong></a>(self, code)</dt><dd><tt>Clears&nbsp;the&nbsp;response&nbsp;output&nbsp;stream&nbsp;and&nbsp;sets&nbsp;the&nbsp;given&nbsp;HTTP&nbsp;error&nbsp;code.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;code:&nbsp;the&nbsp;HTTP&nbsp;status&nbsp;error&nbsp;code&nbsp;(e.g.,&nbsp;501)</tt></dd></dl>
+
+<dl><dt><a name="ImportFormHandler-handle_exception"><strong>handle_exception</strong></a>(self, exception, debug_mode)</dt><dd><tt>Called&nbsp;if&nbsp;this&nbsp;handler&nbsp;throws&nbsp;an&nbsp;exception&nbsp;during&nbsp;execution.<br>
+&nbsp;<br>
+The&nbsp;default&nbsp;behavior&nbsp;is&nbsp;to&nbsp;call&nbsp;<a href="#ImportFormHandler-error">error</a>(500)&nbsp;and&nbsp;print&nbsp;a&nbsp;stack&nbsp;trace<br>
+if&nbsp;debug_mode&nbsp;is&nbsp;True.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;exception:&nbsp;the&nbsp;exception&nbsp;that&nbsp;was&nbsp;thrown<br>
+&nbsp;&nbsp;debug_mode:&nbsp;True&nbsp;if&nbsp;the&nbsp;web&nbsp;application&nbsp;is&nbsp;running&nbsp;in&nbsp;debug&nbsp;mode</tt></dd></dl>
+
+<dl><dt><a name="ImportFormHandler-head"><strong>head</strong></a>(self, *args)</dt><dd><tt>Handler&nbsp;method&nbsp;for&nbsp;HEAD&nbsp;requests.</tt></dd></dl>
+
+<dl><dt><a name="ImportFormHandler-initialize"><strong>initialize</strong></a>(self, request, response)</dt><dd><tt>Initializes&nbsp;this&nbsp;request&nbsp;handler&nbsp;with&nbsp;the&nbsp;given&nbsp;Request&nbsp;and&nbsp;Response.</tt></dd></dl>
+
+<dl><dt><a name="ImportFormHandler-options"><strong>options</strong></a>(self, *args)</dt><dd><tt>Handler&nbsp;method&nbsp;for&nbsp;OPTIONS&nbsp;requests.</tt></dd></dl>
+
+<dl><dt><a name="ImportFormHandler-post"><strong>post</strong></a>(self, *args)</dt><dd><tt>Handler&nbsp;method&nbsp;for&nbsp;POST&nbsp;requests.</tt></dd></dl>
+
+<dl><dt><a name="ImportFormHandler-put"><strong>put</strong></a>(self, *args)</dt><dd><tt>Handler&nbsp;method&nbsp;for&nbsp;PUT&nbsp;requests.</tt></dd></dl>
+
+<dl><dt><a name="ImportFormHandler-redirect"><strong>redirect</strong></a>(self, uri, permanent<font color="#909090">=False</font>)</dt><dd><tt>Issues&nbsp;an&nbsp;HTTP&nbsp;redirect&nbsp;to&nbsp;the&nbsp;given&nbsp;relative&nbsp;URL.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;uri:&nbsp;a&nbsp;relative&nbsp;or&nbsp;absolute&nbsp;URI&nbsp;(e.g.,&nbsp;'../flowers.html')<br>
+&nbsp;&nbsp;permanent:&nbsp;if&nbsp;true,&nbsp;we&nbsp;use&nbsp;a&nbsp;301&nbsp;redirect&nbsp;instead&nbsp;of&nbsp;a&nbsp;302&nbsp;redirect</tt></dd></dl>
+
+<dl><dt><a name="ImportFormHandler-trace"><strong>trace</strong></a>(self, *args)</dt><dd><tt>Handler&nbsp;method&nbsp;for&nbsp;TRACE&nbsp;requests.</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="google.appengine.ext.webapp._webapp25.html#RequestHandler">google.appengine.ext.webapp._webapp25.RequestHandler</a>:<br>
+<dl><dt><a name="ImportFormHandler-get_url"><strong>get_url</strong></a>(cls, *args, **kargs)<font color="#909090"><font face="helvetica, arial"> from <a href="__builtin__.html#type">__builtin__.type</a></font></font></dt><dd><tt>Returns&nbsp;the&nbsp;url&nbsp;for&nbsp;the&nbsp;given&nbsp;handler.<br>
+&nbsp;<br>
+The&nbsp;default&nbsp;implementation&nbsp;uses&nbsp;the&nbsp;patterns&nbsp;passed&nbsp;to&nbsp;the&nbsp;active<br>
+WSGIApplication&nbsp;to&nbsp;create&nbsp;a&nbsp;url.&nbsp;However,&nbsp;it&nbsp;is&nbsp;different&nbsp;from&nbsp;Django's<br>
+urlresolvers.reverse()&nbsp;in&nbsp;the&nbsp;following&nbsp;ways:<br>
+&nbsp;&nbsp;-&nbsp;It&nbsp;does&nbsp;not&nbsp;try&nbsp;to&nbsp;resolve&nbsp;handlers&nbsp;via&nbsp;module&nbsp;loading<br>
+&nbsp;&nbsp;-&nbsp;It&nbsp;does&nbsp;not&nbsp;support&nbsp;named&nbsp;arguments<br>
+&nbsp;&nbsp;-&nbsp;It&nbsp;performs&nbsp;some&nbsp;post-prosessing&nbsp;on&nbsp;the&nbsp;url&nbsp;to&nbsp;remove&nbsp;some&nbsp;regex<br>
+&nbsp;&nbsp;&nbsp;&nbsp;operators.<br>
+&nbsp;&nbsp;-&nbsp;It&nbsp;will&nbsp;try&nbsp;to&nbsp;fill&nbsp;in&nbsp;the&nbsp;left-most&nbsp;missing&nbsp;arguments&nbsp;with&nbsp;the&nbsp;args<br>
+&nbsp;&nbsp;&nbsp;&nbsp;used&nbsp;in&nbsp;the&nbsp;active&nbsp;request.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;args:&nbsp;Parameters&nbsp;for&nbsp;the&nbsp;url&nbsp;pattern's&nbsp;groups.<br>
+&nbsp;&nbsp;kwargs:&nbsp;Optionally&nbsp;contains&nbsp;'implicit_args'&nbsp;that&nbsp;can&nbsp;either&nbsp;be&nbsp;a&nbsp;boolean<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;a&nbsp;tuple.&nbsp;When&nbsp;it&nbsp;is&nbsp;True,&nbsp;it&nbsp;will&nbsp;use&nbsp;the&nbsp;arguments&nbsp;to&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;active&nbsp;request&nbsp;as&nbsp;implicit&nbsp;arguments.&nbsp;When&nbsp;it&nbsp;is&nbsp;False&nbsp;(default),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it&nbsp;will&nbsp;not&nbsp;use&nbsp;any&nbsp;implicit&nbsp;arguments.&nbsp;When&nbsp;it&nbsp;is&nbsp;a&nbsp;tuple,&nbsp;it<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;use&nbsp;the&nbsp;tuple&nbsp;as&nbsp;the&nbsp;implicit&nbsp;arguments.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;left-most&nbsp;args&nbsp;if&nbsp;some&nbsp;are&nbsp;missing&nbsp;from&nbsp;args.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;The&nbsp;url&nbsp;for&nbsp;this&nbsp;handler/args&nbsp;combination.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;NoUrlFoundError:&nbsp;No&nbsp;url&nbsp;pattern&nbsp;for&nbsp;this&nbsp;handler&nbsp;has&nbsp;the&nbsp;same<br>
+&nbsp;&nbsp;&nbsp;&nbsp;number&nbsp;of&nbsp;args&nbsp;that&nbsp;were&nbsp;passed&nbsp;in.</tt></dd></dl>
+
+<dl><dt><a name="ImportFormHandler-new_factory"><strong>new_factory</strong></a>(cls, *args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="__builtin__.html#type">__builtin__.type</a></font></font></dt><dd><tt>Create&nbsp;new&nbsp;request&nbsp;handler&nbsp;factory.<br>
+&nbsp;<br>
+Use&nbsp;factory&nbsp;method&nbsp;to&nbsp;create&nbsp;reusable&nbsp;request&nbsp;handlers&nbsp;that&nbsp;just<br>
+require&nbsp;a&nbsp;few&nbsp;configuration&nbsp;parameters&nbsp;to&nbsp;construct.&nbsp;&nbsp;Also&nbsp;useful<br>
+for&nbsp;injecting&nbsp;shared&nbsp;state&nbsp;between&nbsp;multiple&nbsp;request&nbsp;handler<br>
+instances&nbsp;without&nbsp;relying&nbsp;on&nbsp;global&nbsp;variables.&nbsp;&nbsp;For&nbsp;example,&nbsp;to<br>
+create&nbsp;a&nbsp;set&nbsp;of&nbsp;post&nbsp;handlers&nbsp;that&nbsp;will&nbsp;do&nbsp;simple&nbsp;text&nbsp;transformations<br>
+you&nbsp;can&nbsp;write:<br>
+&nbsp;<br>
+&nbsp;&nbsp;class&nbsp;ChangeTextHandler(webapp.<a href="google.appengine.ext.webapp._webapp25.html#RequestHandler">RequestHandler</a>):<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;<a href="#ImportFormHandler-__init__">__init__</a>(self,&nbsp;transform):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.<strong>transform</strong>&nbsp;=&nbsp;transform<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;<a href="#ImportFormHandler-post">post</a>(self):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response_text&nbsp;=&nbsp;transform(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.<strong>request</strong>.request.body_file.getvalue())<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.<strong>response</strong>.out.write(response_text)<br>
+&nbsp;<br>
+&nbsp;&nbsp;application&nbsp;=&nbsp;webapp.WSGIApplication(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[('/to_lower',&nbsp;ChangeTextHandler.<a href="#ImportFormHandler-new_factory">new_factory</a>(str.lower)),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;('/to_upper',&nbsp;ChangeTextHandler.<a href="#ImportFormHandler-new_factory">new_factory</a>(str.upper)),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;debug=True)<br>
+&nbsp;<br>
+Text&nbsp;POSTed&nbsp;to&nbsp;/to_lower&nbsp;will&nbsp;be&nbsp;lower&nbsp;cased.<br>
+Text&nbsp;POSTed&nbsp;to&nbsp;/to_upper&nbsp;will&nbsp;be&nbsp;upper&nbsp;cased.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="google.appengine.ext.webapp._webapp25.html#RequestHandler">google.appengine.ext.webapp._webapp25.RequestHandler</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ImportUploadHandler">class <strong>ImportUploadHandler</strong></a>(<a href="google.appengine.ext.webapp.blobstore_handlers.html#BlobstoreUploadHandler">google.appengine.ext.webapp.blobstore_handlers.BlobstoreUploadHandler</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="WC1.html#ImportUploadHandler">ImportUploadHandler</a></dd>
+<dd><a href="google.appengine.ext.webapp.blobstore_handlers.html#BlobstoreUploadHandler">google.appengine.ext.webapp.blobstore_handlers.BlobstoreUploadHandler</a></dd>
+<dd><a href="google.appengine.ext.webapp._webapp25.html#RequestHandler">google.appengine.ext.webapp._webapp25.RequestHandler</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="ImportUploadHandler-post"><strong>post</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="google.appengine.ext.webapp.blobstore_handlers.html#BlobstoreUploadHandler">google.appengine.ext.webapp.blobstore_handlers.BlobstoreUploadHandler</a>:<br>
+<dl><dt><a name="ImportUploadHandler-__init__"><strong>__init__</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="ImportUploadHandler-get_uploads"><strong>get_uploads</strong></a>(self, field_name<font color="#909090">=None</font>)</dt><dd><tt>Get&nbsp;uploads&nbsp;sent&nbsp;to&nbsp;this&nbsp;handler.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;field_name:&nbsp;Only&nbsp;select&nbsp;uploads&nbsp;that&nbsp;were&nbsp;sent&nbsp;as&nbsp;a&nbsp;specific&nbsp;field.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;A&nbsp;list&nbsp;of&nbsp;BlobInfo&nbsp;records&nbsp;corresponding&nbsp;to&nbsp;each&nbsp;upload.<br>
+&nbsp;&nbsp;Empty&nbsp;list&nbsp;if&nbsp;there&nbsp;are&nbsp;no&nbsp;blob-info&nbsp;records&nbsp;for&nbsp;field_name.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="google.appengine.ext.webapp._webapp25.html#RequestHandler">google.appengine.ext.webapp._webapp25.RequestHandler</a>:<br>
+<dl><dt><a name="ImportUploadHandler-delete"><strong>delete</strong></a>(self, *args)</dt><dd><tt>Handler&nbsp;method&nbsp;for&nbsp;DELETE&nbsp;requests.</tt></dd></dl>
+
+<dl><dt><a name="ImportUploadHandler-error"><strong>error</strong></a>(self, code)</dt><dd><tt>Clears&nbsp;the&nbsp;response&nbsp;output&nbsp;stream&nbsp;and&nbsp;sets&nbsp;the&nbsp;given&nbsp;HTTP&nbsp;error&nbsp;code.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;code:&nbsp;the&nbsp;HTTP&nbsp;status&nbsp;error&nbsp;code&nbsp;(e.g.,&nbsp;501)</tt></dd></dl>
+
+<dl><dt><a name="ImportUploadHandler-get"><strong>get</strong></a>(self, *args)</dt><dd><tt>Handler&nbsp;method&nbsp;for&nbsp;GET&nbsp;requests.</tt></dd></dl>
+
+<dl><dt><a name="ImportUploadHandler-handle_exception"><strong>handle_exception</strong></a>(self, exception, debug_mode)</dt><dd><tt>Called&nbsp;if&nbsp;this&nbsp;handler&nbsp;throws&nbsp;an&nbsp;exception&nbsp;during&nbsp;execution.<br>
+&nbsp;<br>
+The&nbsp;default&nbsp;behavior&nbsp;is&nbsp;to&nbsp;call&nbsp;<a href="#ImportUploadHandler-error">error</a>(500)&nbsp;and&nbsp;print&nbsp;a&nbsp;stack&nbsp;trace<br>
+if&nbsp;debug_mode&nbsp;is&nbsp;True.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;exception:&nbsp;the&nbsp;exception&nbsp;that&nbsp;was&nbsp;thrown<br>
+&nbsp;&nbsp;debug_mode:&nbsp;True&nbsp;if&nbsp;the&nbsp;web&nbsp;application&nbsp;is&nbsp;running&nbsp;in&nbsp;debug&nbsp;mode</tt></dd></dl>
+
+<dl><dt><a name="ImportUploadHandler-head"><strong>head</strong></a>(self, *args)</dt><dd><tt>Handler&nbsp;method&nbsp;for&nbsp;HEAD&nbsp;requests.</tt></dd></dl>
+
+<dl><dt><a name="ImportUploadHandler-initialize"><strong>initialize</strong></a>(self, request, response)</dt><dd><tt>Initializes&nbsp;this&nbsp;request&nbsp;handler&nbsp;with&nbsp;the&nbsp;given&nbsp;Request&nbsp;and&nbsp;Response.</tt></dd></dl>
+
+<dl><dt><a name="ImportUploadHandler-options"><strong>options</strong></a>(self, *args)</dt><dd><tt>Handler&nbsp;method&nbsp;for&nbsp;OPTIONS&nbsp;requests.</tt></dd></dl>
+
+<dl><dt><a name="ImportUploadHandler-put"><strong>put</strong></a>(self, *args)</dt><dd><tt>Handler&nbsp;method&nbsp;for&nbsp;PUT&nbsp;requests.</tt></dd></dl>
+
+<dl><dt><a name="ImportUploadHandler-redirect"><strong>redirect</strong></a>(self, uri, permanent<font color="#909090">=False</font>)</dt><dd><tt>Issues&nbsp;an&nbsp;HTTP&nbsp;redirect&nbsp;to&nbsp;the&nbsp;given&nbsp;relative&nbsp;URL.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;uri:&nbsp;a&nbsp;relative&nbsp;or&nbsp;absolute&nbsp;URI&nbsp;(e.g.,&nbsp;'../flowers.html')<br>
+&nbsp;&nbsp;permanent:&nbsp;if&nbsp;true,&nbsp;we&nbsp;use&nbsp;a&nbsp;301&nbsp;redirect&nbsp;instead&nbsp;of&nbsp;a&nbsp;302&nbsp;redirect</tt></dd></dl>
+
+<dl><dt><a name="ImportUploadHandler-trace"><strong>trace</strong></a>(self, *args)</dt><dd><tt>Handler&nbsp;method&nbsp;for&nbsp;TRACE&nbsp;requests.</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="google.appengine.ext.webapp._webapp25.html#RequestHandler">google.appengine.ext.webapp._webapp25.RequestHandler</a>:<br>
+<dl><dt><a name="ImportUploadHandler-get_url"><strong>get_url</strong></a>(cls, *args, **kargs)<font color="#909090"><font face="helvetica, arial"> from <a href="__builtin__.html#type">__builtin__.type</a></font></font></dt><dd><tt>Returns&nbsp;the&nbsp;url&nbsp;for&nbsp;the&nbsp;given&nbsp;handler.<br>
+&nbsp;<br>
+The&nbsp;default&nbsp;implementation&nbsp;uses&nbsp;the&nbsp;patterns&nbsp;passed&nbsp;to&nbsp;the&nbsp;active<br>
+WSGIApplication&nbsp;to&nbsp;create&nbsp;a&nbsp;url.&nbsp;However,&nbsp;it&nbsp;is&nbsp;different&nbsp;from&nbsp;Django's<br>
+urlresolvers.reverse()&nbsp;in&nbsp;the&nbsp;following&nbsp;ways:<br>
+&nbsp;&nbsp;-&nbsp;It&nbsp;does&nbsp;not&nbsp;try&nbsp;to&nbsp;resolve&nbsp;handlers&nbsp;via&nbsp;module&nbsp;loading<br>
+&nbsp;&nbsp;-&nbsp;It&nbsp;does&nbsp;not&nbsp;support&nbsp;named&nbsp;arguments<br>
+&nbsp;&nbsp;-&nbsp;It&nbsp;performs&nbsp;some&nbsp;post-prosessing&nbsp;on&nbsp;the&nbsp;url&nbsp;to&nbsp;remove&nbsp;some&nbsp;regex<br>
+&nbsp;&nbsp;&nbsp;&nbsp;operators.<br>
+&nbsp;&nbsp;-&nbsp;It&nbsp;will&nbsp;try&nbsp;to&nbsp;fill&nbsp;in&nbsp;the&nbsp;left-most&nbsp;missing&nbsp;arguments&nbsp;with&nbsp;the&nbsp;args<br>
+&nbsp;&nbsp;&nbsp;&nbsp;used&nbsp;in&nbsp;the&nbsp;active&nbsp;request.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;args:&nbsp;Parameters&nbsp;for&nbsp;the&nbsp;url&nbsp;pattern's&nbsp;groups.<br>
+&nbsp;&nbsp;kwargs:&nbsp;Optionally&nbsp;contains&nbsp;'implicit_args'&nbsp;that&nbsp;can&nbsp;either&nbsp;be&nbsp;a&nbsp;boolean<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;a&nbsp;tuple.&nbsp;When&nbsp;it&nbsp;is&nbsp;True,&nbsp;it&nbsp;will&nbsp;use&nbsp;the&nbsp;arguments&nbsp;to&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;active&nbsp;request&nbsp;as&nbsp;implicit&nbsp;arguments.&nbsp;When&nbsp;it&nbsp;is&nbsp;False&nbsp;(default),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it&nbsp;will&nbsp;not&nbsp;use&nbsp;any&nbsp;implicit&nbsp;arguments.&nbsp;When&nbsp;it&nbsp;is&nbsp;a&nbsp;tuple,&nbsp;it<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;use&nbsp;the&nbsp;tuple&nbsp;as&nbsp;the&nbsp;implicit&nbsp;arguments.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;left-most&nbsp;args&nbsp;if&nbsp;some&nbsp;are&nbsp;missing&nbsp;from&nbsp;args.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;The&nbsp;url&nbsp;for&nbsp;this&nbsp;handler/args&nbsp;combination.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;NoUrlFoundError:&nbsp;No&nbsp;url&nbsp;pattern&nbsp;for&nbsp;this&nbsp;handler&nbsp;has&nbsp;the&nbsp;same<br>
+&nbsp;&nbsp;&nbsp;&nbsp;number&nbsp;of&nbsp;args&nbsp;that&nbsp;were&nbsp;passed&nbsp;in.</tt></dd></dl>
+
+<dl><dt><a name="ImportUploadHandler-new_factory"><strong>new_factory</strong></a>(cls, *args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="__builtin__.html#type">__builtin__.type</a></font></font></dt><dd><tt>Create&nbsp;new&nbsp;request&nbsp;handler&nbsp;factory.<br>
+&nbsp;<br>
+Use&nbsp;factory&nbsp;method&nbsp;to&nbsp;create&nbsp;reusable&nbsp;request&nbsp;handlers&nbsp;that&nbsp;just<br>
+require&nbsp;a&nbsp;few&nbsp;configuration&nbsp;parameters&nbsp;to&nbsp;construct.&nbsp;&nbsp;Also&nbsp;useful<br>
+for&nbsp;injecting&nbsp;shared&nbsp;state&nbsp;between&nbsp;multiple&nbsp;request&nbsp;handler<br>
+instances&nbsp;without&nbsp;relying&nbsp;on&nbsp;global&nbsp;variables.&nbsp;&nbsp;For&nbsp;example,&nbsp;to<br>
+create&nbsp;a&nbsp;set&nbsp;of&nbsp;post&nbsp;handlers&nbsp;that&nbsp;will&nbsp;do&nbsp;simple&nbsp;text&nbsp;transformations<br>
+you&nbsp;can&nbsp;write:<br>
+&nbsp;<br>
+&nbsp;&nbsp;class&nbsp;ChangeTextHandler(webapp.<a href="google.appengine.ext.webapp._webapp25.html#RequestHandler">RequestHandler</a>):<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;<a href="#ImportUploadHandler-__init__">__init__</a>(self,&nbsp;transform):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.<strong>transform</strong>&nbsp;=&nbsp;transform<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;<a href="#ImportUploadHandler-post">post</a>(self):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response_text&nbsp;=&nbsp;transform(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.<strong>request</strong>.request.body_file.getvalue())<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.<strong>response</strong>.out.write(response_text)<br>
+&nbsp;<br>
+&nbsp;&nbsp;application&nbsp;=&nbsp;webapp.WSGIApplication(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[('/to_lower',&nbsp;ChangeTextHandler.<a href="#ImportUploadHandler-new_factory">new_factory</a>(str.lower)),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;('/to_upper',&nbsp;ChangeTextHandler.<a href="#ImportUploadHandler-new_factory">new_factory</a>(str.upper)),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;debug=True)<br>
+&nbsp;<br>
+Text&nbsp;POSTed&nbsp;to&nbsp;/to_lower&nbsp;will&nbsp;be&nbsp;lower&nbsp;cased.<br>
+Text&nbsp;POSTed&nbsp;to&nbsp;/to_upper&nbsp;will&nbsp;be&nbsp;upper&nbsp;cased.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="google.appengine.ext.webapp._webapp25.html#RequestHandler">google.appengine.ext.webapp._webapp25.RequestHandler</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MainHandler">class <strong>MainHandler</strong></a>(<a href="google.appengine.ext.webapp._webapp25.html#RequestHandler">google.appengine.ext.webapp._webapp25.RequestHandler</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="WC1.html#MainHandler">MainHandler</a></dd>
+<dd><a href="google.appengine.ext.webapp._webapp25.html#RequestHandler">google.appengine.ext.webapp._webapp25.RequestHandler</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="MainHandler-get"><strong>get</strong></a>(self)</dt><dd><tt>This&nbsp;method&nbsp;is&nbsp;called&nbsp;by&nbsp;the&nbsp;GAE&nbsp;when&nbsp;a&nbsp;user&nbsp;navigates&nbsp;to&nbsp;the&nbsp;root&nbsp;page.<br>
+It&nbsp;draws&nbsp;the&nbsp;page.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="google.appengine.ext.webapp._webapp25.html#RequestHandler">google.appengine.ext.webapp._webapp25.RequestHandler</a>:<br>
+<dl><dt><a name="MainHandler-delete"><strong>delete</strong></a>(self, *args)</dt><dd><tt>Handler&nbsp;method&nbsp;for&nbsp;DELETE&nbsp;requests.</tt></dd></dl>
+
+<dl><dt><a name="MainHandler-error"><strong>error</strong></a>(self, code)</dt><dd><tt>Clears&nbsp;the&nbsp;response&nbsp;output&nbsp;stream&nbsp;and&nbsp;sets&nbsp;the&nbsp;given&nbsp;HTTP&nbsp;error&nbsp;code.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;code:&nbsp;the&nbsp;HTTP&nbsp;status&nbsp;error&nbsp;code&nbsp;(e.g.,&nbsp;501)</tt></dd></dl>
+
+<dl><dt><a name="MainHandler-handle_exception"><strong>handle_exception</strong></a>(self, exception, debug_mode)</dt><dd><tt>Called&nbsp;if&nbsp;this&nbsp;handler&nbsp;throws&nbsp;an&nbsp;exception&nbsp;during&nbsp;execution.<br>
+&nbsp;<br>
+The&nbsp;default&nbsp;behavior&nbsp;is&nbsp;to&nbsp;call&nbsp;<a href="#MainHandler-error">error</a>(500)&nbsp;and&nbsp;print&nbsp;a&nbsp;stack&nbsp;trace<br>
+if&nbsp;debug_mode&nbsp;is&nbsp;True.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;exception:&nbsp;the&nbsp;exception&nbsp;that&nbsp;was&nbsp;thrown<br>
+&nbsp;&nbsp;debug_mode:&nbsp;True&nbsp;if&nbsp;the&nbsp;web&nbsp;application&nbsp;is&nbsp;running&nbsp;in&nbsp;debug&nbsp;mode</tt></dd></dl>
+
+<dl><dt><a name="MainHandler-head"><strong>head</strong></a>(self, *args)</dt><dd><tt>Handler&nbsp;method&nbsp;for&nbsp;HEAD&nbsp;requests.</tt></dd></dl>
+
+<dl><dt><a name="MainHandler-initialize"><strong>initialize</strong></a>(self, request, response)</dt><dd><tt>Initializes&nbsp;this&nbsp;request&nbsp;handler&nbsp;with&nbsp;the&nbsp;given&nbsp;Request&nbsp;and&nbsp;Response.</tt></dd></dl>
+
+<dl><dt><a name="MainHandler-options"><strong>options</strong></a>(self, *args)</dt><dd><tt>Handler&nbsp;method&nbsp;for&nbsp;OPTIONS&nbsp;requests.</tt></dd></dl>
+
+<dl><dt><a name="MainHandler-post"><strong>post</strong></a>(self, *args)</dt><dd><tt>Handler&nbsp;method&nbsp;for&nbsp;POST&nbsp;requests.</tt></dd></dl>
+
+<dl><dt><a name="MainHandler-put"><strong>put</strong></a>(self, *args)</dt><dd><tt>Handler&nbsp;method&nbsp;for&nbsp;PUT&nbsp;requests.</tt></dd></dl>
+
+<dl><dt><a name="MainHandler-redirect"><strong>redirect</strong></a>(self, uri, permanent<font color="#909090">=False</font>)</dt><dd><tt>Issues&nbsp;an&nbsp;HTTP&nbsp;redirect&nbsp;to&nbsp;the&nbsp;given&nbsp;relative&nbsp;URL.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;uri:&nbsp;a&nbsp;relative&nbsp;or&nbsp;absolute&nbsp;URI&nbsp;(e.g.,&nbsp;'../flowers.html')<br>
+&nbsp;&nbsp;permanent:&nbsp;if&nbsp;true,&nbsp;we&nbsp;use&nbsp;a&nbsp;301&nbsp;redirect&nbsp;instead&nbsp;of&nbsp;a&nbsp;302&nbsp;redirect</tt></dd></dl>
+
+<dl><dt><a name="MainHandler-trace"><strong>trace</strong></a>(self, *args)</dt><dd><tt>Handler&nbsp;method&nbsp;for&nbsp;TRACE&nbsp;requests.</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="google.appengine.ext.webapp._webapp25.html#RequestHandler">google.appengine.ext.webapp._webapp25.RequestHandler</a>:<br>
+<dl><dt><a name="MainHandler-get_url"><strong>get_url</strong></a>(cls, *args, **kargs)<font color="#909090"><font face="helvetica, arial"> from <a href="__builtin__.html#type">__builtin__.type</a></font></font></dt><dd><tt>Returns&nbsp;the&nbsp;url&nbsp;for&nbsp;the&nbsp;given&nbsp;handler.<br>
+&nbsp;<br>
+The&nbsp;default&nbsp;implementation&nbsp;uses&nbsp;the&nbsp;patterns&nbsp;passed&nbsp;to&nbsp;the&nbsp;active<br>
+WSGIApplication&nbsp;to&nbsp;create&nbsp;a&nbsp;url.&nbsp;However,&nbsp;it&nbsp;is&nbsp;different&nbsp;from&nbsp;Django's<br>
+urlresolvers.reverse()&nbsp;in&nbsp;the&nbsp;following&nbsp;ways:<br>
+&nbsp;&nbsp;-&nbsp;It&nbsp;does&nbsp;not&nbsp;try&nbsp;to&nbsp;resolve&nbsp;handlers&nbsp;via&nbsp;module&nbsp;loading<br>
+&nbsp;&nbsp;-&nbsp;It&nbsp;does&nbsp;not&nbsp;support&nbsp;named&nbsp;arguments<br>
+&nbsp;&nbsp;-&nbsp;It&nbsp;performs&nbsp;some&nbsp;post-prosessing&nbsp;on&nbsp;the&nbsp;url&nbsp;to&nbsp;remove&nbsp;some&nbsp;regex<br>
+&nbsp;&nbsp;&nbsp;&nbsp;operators.<br>
+&nbsp;&nbsp;-&nbsp;It&nbsp;will&nbsp;try&nbsp;to&nbsp;fill&nbsp;in&nbsp;the&nbsp;left-most&nbsp;missing&nbsp;arguments&nbsp;with&nbsp;the&nbsp;args<br>
+&nbsp;&nbsp;&nbsp;&nbsp;used&nbsp;in&nbsp;the&nbsp;active&nbsp;request.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;args:&nbsp;Parameters&nbsp;for&nbsp;the&nbsp;url&nbsp;pattern's&nbsp;groups.<br>
+&nbsp;&nbsp;kwargs:&nbsp;Optionally&nbsp;contains&nbsp;'implicit_args'&nbsp;that&nbsp;can&nbsp;either&nbsp;be&nbsp;a&nbsp;boolean<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;a&nbsp;tuple.&nbsp;When&nbsp;it&nbsp;is&nbsp;True,&nbsp;it&nbsp;will&nbsp;use&nbsp;the&nbsp;arguments&nbsp;to&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;active&nbsp;request&nbsp;as&nbsp;implicit&nbsp;arguments.&nbsp;When&nbsp;it&nbsp;is&nbsp;False&nbsp;(default),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it&nbsp;will&nbsp;not&nbsp;use&nbsp;any&nbsp;implicit&nbsp;arguments.&nbsp;When&nbsp;it&nbsp;is&nbsp;a&nbsp;tuple,&nbsp;it<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;use&nbsp;the&nbsp;tuple&nbsp;as&nbsp;the&nbsp;implicit&nbsp;arguments.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;left-most&nbsp;args&nbsp;if&nbsp;some&nbsp;are&nbsp;missing&nbsp;from&nbsp;args.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;The&nbsp;url&nbsp;for&nbsp;this&nbsp;handler/args&nbsp;combination.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;NoUrlFoundError:&nbsp;No&nbsp;url&nbsp;pattern&nbsp;for&nbsp;this&nbsp;handler&nbsp;has&nbsp;the&nbsp;same<br>
+&nbsp;&nbsp;&nbsp;&nbsp;number&nbsp;of&nbsp;args&nbsp;that&nbsp;were&nbsp;passed&nbsp;in.</tt></dd></dl>
+
+<dl><dt><a name="MainHandler-new_factory"><strong>new_factory</strong></a>(cls, *args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="__builtin__.html#type">__builtin__.type</a></font></font></dt><dd><tt>Create&nbsp;new&nbsp;request&nbsp;handler&nbsp;factory.<br>
+&nbsp;<br>
+Use&nbsp;factory&nbsp;method&nbsp;to&nbsp;create&nbsp;reusable&nbsp;request&nbsp;handlers&nbsp;that&nbsp;just<br>
+require&nbsp;a&nbsp;few&nbsp;configuration&nbsp;parameters&nbsp;to&nbsp;construct.&nbsp;&nbsp;Also&nbsp;useful<br>
+for&nbsp;injecting&nbsp;shared&nbsp;state&nbsp;between&nbsp;multiple&nbsp;request&nbsp;handler<br>
+instances&nbsp;without&nbsp;relying&nbsp;on&nbsp;global&nbsp;variables.&nbsp;&nbsp;For&nbsp;example,&nbsp;to<br>
+create&nbsp;a&nbsp;set&nbsp;of&nbsp;post&nbsp;handlers&nbsp;that&nbsp;will&nbsp;do&nbsp;simple&nbsp;text&nbsp;transformations<br>
+you&nbsp;can&nbsp;write:<br>
+&nbsp;<br>
+&nbsp;&nbsp;class&nbsp;ChangeTextHandler(webapp.<a href="google.appengine.ext.webapp._webapp25.html#RequestHandler">RequestHandler</a>):<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;<a href="#MainHandler-__init__">__init__</a>(self,&nbsp;transform):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.<strong>transform</strong>&nbsp;=&nbsp;transform<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;<a href="#MainHandler-post">post</a>(self):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response_text&nbsp;=&nbsp;transform(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.<strong>request</strong>.request.body_file.getvalue())<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.<strong>response</strong>.out.write(response_text)<br>
+&nbsp;<br>
+&nbsp;&nbsp;application&nbsp;=&nbsp;webapp.WSGIApplication(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[('/to_lower',&nbsp;ChangeTextHandler.<a href="#MainHandler-new_factory">new_factory</a>(str.lower)),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;('/to_upper',&nbsp;ChangeTextHandler.<a href="#MainHandler-new_factory">new_factory</a>(str.upper)),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;debug=True)<br>
+&nbsp;<br>
+Text&nbsp;POSTed&nbsp;to&nbsp;/to_lower&nbsp;will&nbsp;be&nbsp;lower&nbsp;cased.<br>
+Text&nbsp;POSTed&nbsp;to&nbsp;/to_upper&nbsp;will&nbsp;be&nbsp;upper&nbsp;cased.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="google.appengine.ext.webapp._webapp25.html#RequestHandler">google.appengine.ext.webapp._webapp25.RequestHandler</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Organization">class <strong>Organization</strong></a>(<a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="WC1.html#Organization">Organization</a></dd>
+<dd><a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>external_links</strong></dt>
+<dd><tt>A&nbsp;property&nbsp;that&nbsp;stores&nbsp;a&nbsp;list&nbsp;of&nbsp;things.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;a&nbsp;parameterized&nbsp;property;&nbsp;the&nbsp;parameter&nbsp;must&nbsp;be&nbsp;a&nbsp;valid<br>
+non-list&nbsp;data&nbsp;type,&nbsp;and&nbsp;all&nbsp;items&nbsp;must&nbsp;conform&nbsp;to&nbsp;this&nbsp;type.</tt></dd>
+</dl>
+<dl><dt><strong>history</strong></dt>
+<dd><tt>A&nbsp;string&nbsp;that&nbsp;can&nbsp;be&nbsp;longer&nbsp;than&nbsp;500&nbsp;bytes.</tt></dd>
+</dl>
+<dl><dt><strong>images</strong></dt>
+<dd><tt>A&nbsp;property&nbsp;that&nbsp;stores&nbsp;a&nbsp;list&nbsp;of&nbsp;things.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;a&nbsp;parameterized&nbsp;property;&nbsp;the&nbsp;parameter&nbsp;must&nbsp;be&nbsp;a&nbsp;valid<br>
+non-list&nbsp;data&nbsp;type,&nbsp;and&nbsp;all&nbsp;items&nbsp;must&nbsp;conform&nbsp;to&nbsp;this&nbsp;type.</tt></dd>
+</dl>
+<dl><dt><strong>kind_</strong></dt>
+<dd><tt>A&nbsp;textual&nbsp;property,&nbsp;which&nbsp;can&nbsp;be&nbsp;multi-&nbsp;or&nbsp;single-line.</tt></dd>
+</dl>
+<dl><dt><strong>location</strong></dt>
+<dd><tt>A&nbsp;textual&nbsp;property,&nbsp;which&nbsp;can&nbsp;be&nbsp;multi-&nbsp;or&nbsp;single-line.</tt></dd>
+</dl>
+<dl><dt><strong>name</strong></dt>
+<dd><tt>A&nbsp;textual&nbsp;property,&nbsp;which&nbsp;can&nbsp;be&nbsp;multi-&nbsp;or&nbsp;single-line.</tt></dd>
+</dl>
+<dl><dt><strong>related_crises</strong></dt>
+<dd><tt>A&nbsp;property&nbsp;that&nbsp;stores&nbsp;a&nbsp;list&nbsp;of&nbsp;strings.<br>
+&nbsp;<br>
+A&nbsp;shorthand&nbsp;for&nbsp;the&nbsp;most&nbsp;common&nbsp;type&nbsp;of&nbsp;ListProperty.</tt></dd>
+</dl>
+<dl><dt><strong>related_people</strong></dt>
+<dd><tt>A&nbsp;property&nbsp;that&nbsp;stores&nbsp;a&nbsp;list&nbsp;of&nbsp;strings.<br>
+&nbsp;<br>
+A&nbsp;shorthand&nbsp;for&nbsp;the&nbsp;most&nbsp;common&nbsp;type&nbsp;of&nbsp;ListProperty.</tt></dd>
+</dl>
+<dl><dt><strong>social_networks</strong></dt>
+<dd><tt>A&nbsp;property&nbsp;that&nbsp;stores&nbsp;a&nbsp;list&nbsp;of&nbsp;things.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;a&nbsp;parameterized&nbsp;property;&nbsp;the&nbsp;parameter&nbsp;must&nbsp;be&nbsp;a&nbsp;valid<br>
+non-list&nbsp;data&nbsp;type,&nbsp;and&nbsp;all&nbsp;items&nbsp;must&nbsp;conform&nbsp;to&nbsp;this&nbsp;type.</tt></dd>
+</dl>
+<dl><dt><strong>videos</strong></dt>
+<dd><tt>A&nbsp;property&nbsp;that&nbsp;stores&nbsp;a&nbsp;list&nbsp;of&nbsp;things.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;a&nbsp;parameterized&nbsp;property;&nbsp;the&nbsp;parameter&nbsp;must&nbsp;be&nbsp;a&nbsp;valid<br>
+non-list&nbsp;data&nbsp;type,&nbsp;and&nbsp;all&nbsp;items&nbsp;must&nbsp;conform&nbsp;to&nbsp;this&nbsp;type.</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>contact_info</strong> = None</dl>
+
+<hr>
+Methods inherited from <a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a>:<br>
+<dl><dt><a name="Organization-__init__"><strong>__init__</strong></a>(self, parent<font color="#909090">=None</font>, key_name<font color="#909090">=None</font>, _app<font color="#909090">=None</font>, _from_entity<font color="#909090">=False</font>, **kwds)</dt><dd><tt>Creates&nbsp;a&nbsp;new&nbsp;instance&nbsp;of&nbsp;this&nbsp;model.<br>
+&nbsp;<br>
+To&nbsp;create&nbsp;a&nbsp;new&nbsp;entity,&nbsp;you&nbsp;instantiate&nbsp;a&nbsp;model&nbsp;and&nbsp;then&nbsp;call&nbsp;<a href="#Organization-put">put</a>(),<br>
+which&nbsp;saves&nbsp;the&nbsp;entity&nbsp;to&nbsp;the&nbsp;datastore:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;person&nbsp;=&nbsp;<a href="#Person">Person</a>()<br>
+&nbsp;&nbsp;&nbsp;person.name&nbsp;=&nbsp;'Bret'<br>
+&nbsp;&nbsp;&nbsp;person.<a href="#Organization-put">put</a>()<br>
+&nbsp;<br>
+You&nbsp;can&nbsp;initialize&nbsp;properties&nbsp;in&nbsp;the&nbsp;model&nbsp;in&nbsp;the&nbsp;constructor&nbsp;with&nbsp;keyword<br>
+arguments:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;person&nbsp;=&nbsp;<a href="#Person">Person</a>(name='Bret')<br>
+&nbsp;<br>
+We&nbsp;initialize&nbsp;all&nbsp;other&nbsp;properties&nbsp;to&nbsp;the&nbsp;default&nbsp;value&nbsp;(as&nbsp;defined&nbsp;by&nbsp;the<br>
+properties&nbsp;in&nbsp;the&nbsp;model&nbsp;definition)&nbsp;if&nbsp;they&nbsp;are&nbsp;not&nbsp;provided&nbsp;in&nbsp;the<br>
+constructor.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;parent:&nbsp;Parent&nbsp;instance&nbsp;for&nbsp;this&nbsp;instance&nbsp;or&nbsp;None,&nbsp;indicating&nbsp;a&nbsp;top-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;level&nbsp;instance.<br>
+&nbsp;&nbsp;key_name:&nbsp;Name&nbsp;for&nbsp;new&nbsp;model&nbsp;instance.<br>
+&nbsp;&nbsp;_from_entity:&nbsp;Intentionally&nbsp;undocumented.<br>
+&nbsp;&nbsp;kwds:&nbsp;Keyword&nbsp;arguments&nbsp;mapping&nbsp;to&nbsp;properties&nbsp;of&nbsp;model.&nbsp;&nbsp;Also:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;key:&nbsp;Key&nbsp;instance&nbsp;for&nbsp;this&nbsp;instance,&nbsp;if&nbsp;provided&nbsp;makes&nbsp;parent&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key_name&nbsp;redundant&nbsp;(they&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;set&nbsp;but&nbsp;if&nbsp;they&nbsp;are<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;they&nbsp;must&nbsp;match&nbsp;the&nbsp;key).</tt></dd></dl>
+
+<dl><dt><a name="Organization-delete"><strong>delete</strong></a>(self, **kwargs)</dt><dd><tt>Deletes&nbsp;this&nbsp;entity&nbsp;from&nbsp;the&nbsp;datastore.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;config:&nbsp;datastore_rpc.Configuration&nbsp;to&nbsp;use&nbsp;for&nbsp;this&nbsp;request.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;TransactionFailedError&nbsp;if&nbsp;the&nbsp;data&nbsp;could&nbsp;not&nbsp;be&nbsp;committed.</tt></dd></dl>
+
+<dl><dt><a name="Organization-dynamic_properties"><strong>dynamic_properties</strong></a>(self)</dt><dd><tt>Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;dynamic&nbsp;properties&nbsp;defined&nbsp;for&nbsp;instance.</tt></dd></dl>
+
+<dl><dt><a name="Organization-has_key"><strong>has_key</strong></a>(self)</dt><dd><tt>Determine&nbsp;if&nbsp;this&nbsp;model&nbsp;instance&nbsp;has&nbsp;a&nbsp;complete&nbsp;key.<br>
+&nbsp;<br>
+When&nbsp;not&nbsp;using&nbsp;a&nbsp;fully&nbsp;self-assigned&nbsp;Key,&nbsp;ids&nbsp;are&nbsp;not&nbsp;assigned&nbsp;until&nbsp;the<br>
+data&nbsp;is&nbsp;saved&nbsp;to&nbsp;the&nbsp;Datastore,&nbsp;but&nbsp;instances&nbsp;with&nbsp;a&nbsp;key&nbsp;name&nbsp;always&nbsp;have<br>
+a&nbsp;full&nbsp;key.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;True&nbsp;if&nbsp;the&nbsp;object&nbsp;has&nbsp;been&nbsp;persisted&nbsp;to&nbsp;the&nbsp;datastore&nbsp;or&nbsp;has&nbsp;a&nbsp;key<br>
+&nbsp;&nbsp;or&nbsp;has&nbsp;a&nbsp;key_name,&nbsp;otherwise&nbsp;False.</tt></dd></dl>
+
+<dl><dt><a name="Organization-instance_properties"><strong>instance_properties</strong></a>(self)</dt><dd><tt>Alias&nbsp;for&nbsp;dyanmic_properties.</tt></dd></dl>
+
+<dl><dt><a name="Organization-is_saved"><strong>is_saved</strong></a>(self)</dt><dd><tt>Determine&nbsp;if&nbsp;entity&nbsp;is&nbsp;persisted&nbsp;in&nbsp;the&nbsp;datastore.<br>
+&nbsp;<br>
+New&nbsp;instances&nbsp;of&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;do&nbsp;not&nbsp;start&nbsp;out&nbsp;saved&nbsp;in&nbsp;the&nbsp;data.&nbsp;&nbsp;Objects&nbsp;which<br>
+are&nbsp;saved&nbsp;to&nbsp;or&nbsp;loaded&nbsp;from&nbsp;the&nbsp;Datastore&nbsp;will&nbsp;have&nbsp;a&nbsp;True&nbsp;saved&nbsp;state.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;True&nbsp;if&nbsp;object&nbsp;has&nbsp;been&nbsp;persisted&nbsp;to&nbsp;the&nbsp;datastore,&nbsp;otherwise&nbsp;False.</tt></dd></dl>
+
+<dl><dt><a name="Organization-key"><strong>key</strong></a>(self)</dt><dd><tt>Unique&nbsp;key&nbsp;for&nbsp;this&nbsp;entity.<br>
+&nbsp;<br>
+This&nbsp;property&nbsp;is&nbsp;only&nbsp;available&nbsp;if&nbsp;this&nbsp;entity&nbsp;is&nbsp;already&nbsp;stored&nbsp;in&nbsp;the<br>
+datastore&nbsp;or&nbsp;if&nbsp;it&nbsp;has&nbsp;a&nbsp;full&nbsp;key,&nbsp;so&nbsp;it&nbsp;is&nbsp;available&nbsp;if&nbsp;this&nbsp;entity&nbsp;was<br>
+fetched&nbsp;returned&nbsp;from&nbsp;a&nbsp;query,&nbsp;or&nbsp;after&nbsp;<a href="#Organization-put">put</a>()&nbsp;is&nbsp;called&nbsp;the&nbsp;first&nbsp;time<br>
+for&nbsp;new&nbsp;entities,&nbsp;or&nbsp;if&nbsp;a&nbsp;complete&nbsp;key&nbsp;was&nbsp;given&nbsp;when&nbsp;constructed.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;Datastore&nbsp;key&nbsp;of&nbsp;persisted&nbsp;entity.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;NotSavedError&nbsp;when&nbsp;entity&nbsp;is&nbsp;not&nbsp;persistent.</tt></dd></dl>
+
+<dl><dt><a name="Organization-parent"><strong>parent</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;parent&nbsp;of&nbsp;the&nbsp;model&nbsp;instance.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;Parent&nbsp;of&nbsp;contained&nbsp;entity&nbsp;or&nbsp;parent&nbsp;provided&nbsp;in&nbsp;constructor,&nbsp;None&nbsp;if<br>
+&nbsp;&nbsp;instance&nbsp;has&nbsp;no&nbsp;parent.</tt></dd></dl>
+
+<dl><dt><a name="Organization-parent_key"><strong>parent_key</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;parent's&nbsp;key.<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;is&nbsp;useful&nbsp;for&nbsp;avoiding&nbsp;a&nbsp;potential&nbsp;fetch&nbsp;from&nbsp;the&nbsp;datastore<br>
+but&nbsp;still&nbsp;get&nbsp;information&nbsp;about&nbsp;the&nbsp;instances&nbsp;parent.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;Parent&nbsp;key&nbsp;of&nbsp;entity,&nbsp;None&nbsp;if&nbsp;there&nbsp;is&nbsp;no&nbsp;parent.</tt></dd></dl>
+
+<dl><dt><a name="Organization-put"><strong>put</strong></a>(self, **kwargs)</dt><dd><tt>Writes&nbsp;this&nbsp;model&nbsp;instance&nbsp;to&nbsp;the&nbsp;datastore.<br>
+&nbsp;<br>
+If&nbsp;this&nbsp;instance&nbsp;is&nbsp;new,&nbsp;we&nbsp;add&nbsp;an&nbsp;entity&nbsp;to&nbsp;the&nbsp;datastore.<br>
+Otherwise,&nbsp;we&nbsp;update&nbsp;this&nbsp;instance,&nbsp;and&nbsp;the&nbsp;key&nbsp;will&nbsp;remain&nbsp;the<br>
+same.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;config:&nbsp;datastore_rpc.Configuration&nbsp;to&nbsp;use&nbsp;for&nbsp;this&nbsp;request.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;The&nbsp;key&nbsp;of&nbsp;the&nbsp;instance&nbsp;(either&nbsp;the&nbsp;existing&nbsp;key&nbsp;or&nbsp;a&nbsp;new&nbsp;key).<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;TransactionFailedError&nbsp;if&nbsp;the&nbsp;data&nbsp;could&nbsp;not&nbsp;be&nbsp;committed.</tt></dd></dl>
+
+<dl><dt><a name="Organization-save"><strong>save</strong></a> = put(self, **kwargs)</dt><dd><tt>Writes&nbsp;this&nbsp;model&nbsp;instance&nbsp;to&nbsp;the&nbsp;datastore.<br>
+&nbsp;<br>
+If&nbsp;this&nbsp;instance&nbsp;is&nbsp;new,&nbsp;we&nbsp;add&nbsp;an&nbsp;entity&nbsp;to&nbsp;the&nbsp;datastore.<br>
+Otherwise,&nbsp;we&nbsp;update&nbsp;this&nbsp;instance,&nbsp;and&nbsp;the&nbsp;key&nbsp;will&nbsp;remain&nbsp;the<br>
+same.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;config:&nbsp;datastore_rpc.Configuration&nbsp;to&nbsp;use&nbsp;for&nbsp;this&nbsp;request.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;The&nbsp;key&nbsp;of&nbsp;the&nbsp;instance&nbsp;(either&nbsp;the&nbsp;existing&nbsp;key&nbsp;or&nbsp;a&nbsp;new&nbsp;key).<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;TransactionFailedError&nbsp;if&nbsp;the&nbsp;data&nbsp;could&nbsp;not&nbsp;be&nbsp;committed.</tt></dd></dl>
+
+<dl><dt><a name="Organization-to_xml"><strong>to_xml</strong></a>(self, _entity_class<font color="#909090">=&lt;class 'google.appengine.api.datastore.Entity'&gt;</font>)</dt><dd><tt>Generate&nbsp;an&nbsp;XML&nbsp;representation&nbsp;of&nbsp;this&nbsp;model&nbsp;instance.<br>
+&nbsp;<br>
+atom&nbsp;and&nbsp;gd:namespace&nbsp;properties&nbsp;are&nbsp;converted&nbsp;to&nbsp;XML&nbsp;according&nbsp;to&nbsp;their<br>
+respective&nbsp;schemas.&nbsp;For&nbsp;more&nbsp;information,&nbsp;see:<br>
+&nbsp;<br>
+&nbsp;&nbsp;<a href="http://www.atomenabled.org/developers/syndication/">http://www.atomenabled.org/developers/syndication/</a><br>
+&nbsp;&nbsp;<a href="http://code.google.com/apis/gdata/common-elements.html">http://code.google.com/apis/gdata/common-elements.html</a></tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a>:<br>
+<dl><dt><a name="Organization-all"><strong>all</strong></a>(cls, **kwds)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Returns&nbsp;a&nbsp;query&nbsp;over&nbsp;all&nbsp;instances&nbsp;of&nbsp;this&nbsp;model&nbsp;from&nbsp;the&nbsp;datastore.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;Query&nbsp;that&nbsp;will&nbsp;retrieve&nbsp;all&nbsp;instances&nbsp;from&nbsp;entity&nbsp;collection.</tt></dd></dl>
+
+<dl><dt><a name="Organization-entity_type"><strong>entity_type</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Soon&nbsp;to&nbsp;be&nbsp;removed&nbsp;alias&nbsp;for&nbsp;kind.</tt></dd></dl>
+
+<dl><dt><a name="Organization-fields"><strong>fields</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Soon&nbsp;to&nbsp;be&nbsp;removed&nbsp;alias&nbsp;for&nbsp;properties.</tt></dd></dl>
+
+<dl><dt><a name="Organization-from_entity"><strong>from_entity</strong></a>(cls, entity)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Converts&nbsp;the&nbsp;entity&nbsp;representation&nbsp;of&nbsp;this&nbsp;model&nbsp;to&nbsp;an&nbsp;instance.<br>
+&nbsp;<br>
+Converts&nbsp;datastore.Entity&nbsp;instance&nbsp;to&nbsp;an&nbsp;instance&nbsp;of&nbsp;cls.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;entity:&nbsp;Entity&nbsp;loaded&nbsp;directly&nbsp;from&nbsp;datastore.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;KindError&nbsp;when&nbsp;cls&nbsp;is&nbsp;incorrect&nbsp;model&nbsp;for&nbsp;entity.</tt></dd></dl>
+
+<dl><dt><a name="Organization-get"><strong>get</strong></a>(cls, keys, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Fetch&nbsp;instance&nbsp;from&nbsp;the&nbsp;datastore&nbsp;of&nbsp;a&nbsp;specific&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;type&nbsp;using&nbsp;key.<br>
+&nbsp;<br>
+We&nbsp;support&nbsp;Key&nbsp;objects&nbsp;and&nbsp;string&nbsp;keys&nbsp;(we&nbsp;convert&nbsp;them&nbsp;to&nbsp;Key&nbsp;objects<br>
+automatically).<br>
+&nbsp;<br>
+Useful&nbsp;for&nbsp;ensuring&nbsp;that&nbsp;specific&nbsp;instance&nbsp;types&nbsp;are&nbsp;retrieved&nbsp;from&nbsp;the<br>
+datastore.&nbsp;&nbsp;It&nbsp;also&nbsp;helps&nbsp;that&nbsp;the&nbsp;source&nbsp;code&nbsp;clearly&nbsp;indicates&nbsp;what<br>
+kind&nbsp;of&nbsp;object&nbsp;is&nbsp;being&nbsp;retreived.&nbsp;&nbsp;Example:<br>
+&nbsp;<br>
+&nbsp;&nbsp;story&nbsp;=&nbsp;Story.<a href="#Organization-get">get</a>(story_key)<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;keys:&nbsp;Key&nbsp;within&nbsp;datastore&nbsp;entity&nbsp;collection&nbsp;to&nbsp;find;&nbsp;or&nbsp;string&nbsp;key;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;list&nbsp;of&nbsp;Keys&nbsp;or&nbsp;string&nbsp;keys.<br>
+&nbsp;&nbsp;config:&nbsp;datastore_rpc.Configuration&nbsp;to&nbsp;use&nbsp;for&nbsp;this&nbsp;request.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;If&nbsp;a&nbsp;single&nbsp;key&nbsp;was&nbsp;given:&nbsp;a&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;instance&nbsp;associated&nbsp;with&nbsp;key<br>
+&nbsp;&nbsp;for&nbsp;provided&nbsp;class&nbsp;if&nbsp;it&nbsp;exists&nbsp;in&nbsp;the&nbsp;datastore,&nbsp;otherwise<br>
+&nbsp;&nbsp;None;&nbsp;if&nbsp;a&nbsp;list&nbsp;of&nbsp;keys&nbsp;was&nbsp;given:&nbsp;a&nbsp;list&nbsp;whose&nbsp;items&nbsp;are&nbsp;either<br>
+&nbsp;&nbsp;a&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;instance&nbsp;or&nbsp;None.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;KindError&nbsp;if&nbsp;any&nbsp;of&nbsp;the&nbsp;retreived&nbsp;objects&nbsp;are&nbsp;not&nbsp;instances&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;type&nbsp;associated&nbsp;with&nbsp;call&nbsp;to&nbsp;'get'.</tt></dd></dl>
+
+<dl><dt><a name="Organization-get_by_id"><strong>get_by_id</strong></a>(cls, ids, parent<font color="#909090">=None</font>, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Get&nbsp;instance&nbsp;of&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;class&nbsp;by&nbsp;id.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;key_names:&nbsp;A&nbsp;single&nbsp;id&nbsp;or&nbsp;a&nbsp;list&nbsp;of&nbsp;ids.<br>
+&nbsp;&nbsp;parent:&nbsp;Parent&nbsp;of&nbsp;instances&nbsp;to&nbsp;get.&nbsp;&nbsp;Can&nbsp;be&nbsp;a&nbsp;model&nbsp;or&nbsp;key.<br>
+&nbsp;&nbsp;config:&nbsp;datastore_rpc.Configuration&nbsp;to&nbsp;use&nbsp;for&nbsp;this&nbsp;request.</tt></dd></dl>
+
+<dl><dt><a name="Organization-get_by_key_name"><strong>get_by_key_name</strong></a>(cls, key_names, parent<font color="#909090">=None</font>, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Get&nbsp;instance&nbsp;of&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;class&nbsp;by&nbsp;its&nbsp;key's&nbsp;name.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;key_names:&nbsp;A&nbsp;single&nbsp;key-name&nbsp;or&nbsp;a&nbsp;list&nbsp;of&nbsp;key-names.<br>
+&nbsp;&nbsp;parent:&nbsp;Parent&nbsp;of&nbsp;instances&nbsp;to&nbsp;get.&nbsp;&nbsp;Can&nbsp;be&nbsp;a&nbsp;model&nbsp;or&nbsp;key.<br>
+&nbsp;&nbsp;config:&nbsp;datastore_rpc.Configuration&nbsp;to&nbsp;use&nbsp;for&nbsp;this&nbsp;request.</tt></dd></dl>
+
+<dl><dt><a name="Organization-get_or_insert"><strong>get_or_insert</strong></a>(cls, key_name, **kwds)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Transactionally&nbsp;retrieve&nbsp;or&nbsp;create&nbsp;an&nbsp;instance&nbsp;of&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;class.<br>
+&nbsp;<br>
+This&nbsp;acts&nbsp;much&nbsp;like&nbsp;the&nbsp;Python&nbsp;dictionary&nbsp;setdefault()&nbsp;method,&nbsp;where&nbsp;we<br>
+first&nbsp;try&nbsp;to&nbsp;retrieve&nbsp;a&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;instance&nbsp;with&nbsp;the&nbsp;given&nbsp;key&nbsp;name&nbsp;and&nbsp;parent.<br>
+If&nbsp;it's&nbsp;not&nbsp;present,&nbsp;then&nbsp;we&nbsp;create&nbsp;a&nbsp;new&nbsp;instance&nbsp;(using&nbsp;the&nbsp;*kwds<br>
+supplied)&nbsp;and&nbsp;insert&nbsp;that&nbsp;with&nbsp;the&nbsp;supplied&nbsp;key&nbsp;name.<br>
+&nbsp;<br>
+Subsequent&nbsp;calls&nbsp;to&nbsp;this&nbsp;method&nbsp;with&nbsp;the&nbsp;same&nbsp;key_name&nbsp;and&nbsp;parent&nbsp;will<br>
+always&nbsp;yield&nbsp;the&nbsp;same&nbsp;entity&nbsp;(though&nbsp;not&nbsp;the&nbsp;same&nbsp;actual&nbsp;object&nbsp;instance),<br>
+regardless&nbsp;of&nbsp;the&nbsp;*kwds&nbsp;supplied.&nbsp;If&nbsp;the&nbsp;specified&nbsp;entity&nbsp;has&nbsp;somehow<br>
+been&nbsp;deleted&nbsp;separately,&nbsp;then&nbsp;the&nbsp;next&nbsp;call&nbsp;will&nbsp;create&nbsp;a&nbsp;new&nbsp;entity&nbsp;and<br>
+return&nbsp;it.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;'parent'&nbsp;keyword&nbsp;argument&nbsp;is&nbsp;supplied,&nbsp;it&nbsp;must&nbsp;be&nbsp;a&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;instance.<br>
+It&nbsp;will&nbsp;be&nbsp;used&nbsp;as&nbsp;the&nbsp;parent&nbsp;of&nbsp;the&nbsp;new&nbsp;instance&nbsp;of&nbsp;this&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;class&nbsp;if<br>
+one&nbsp;is&nbsp;created.<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;is&nbsp;especially&nbsp;useful&nbsp;for&nbsp;having&nbsp;just&nbsp;one&nbsp;unique&nbsp;entity&nbsp;for<br>
+a&nbsp;specific&nbsp;identifier.&nbsp;Insertion/retrieval&nbsp;is&nbsp;done&nbsp;transactionally,&nbsp;which<br>
+guarantees&nbsp;uniqueness.<br>
+&nbsp;<br>
+Example&nbsp;usage:<br>
+&nbsp;<br>
+&nbsp;&nbsp;class&nbsp;WikiTopic(db.<a href="google.appengine.ext.db.html#Model">Model</a>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;creation_date&nbsp;=&nbsp;db.DatetimeProperty(auto_now_add=True)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;body&nbsp;=&nbsp;db.TextProperty(required=True)<br>
+&nbsp;<br>
+&nbsp;&nbsp;#&nbsp;The&nbsp;first&nbsp;time&nbsp;through&nbsp;we'll&nbsp;create&nbsp;the&nbsp;new&nbsp;topic.<br>
+&nbsp;&nbsp;wiki_word&nbsp;=&nbsp;'CommonIdioms'<br>
+&nbsp;&nbsp;topic&nbsp;=&nbsp;WikiTopic.<a href="#Organization-get_or_insert">get_or_insert</a>(wiki_word,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body='This&nbsp;topic&nbsp;is&nbsp;totally&nbsp;new!')<br>
+&nbsp;&nbsp;assert&nbsp;topic.<a href="#Organization-key">key</a>().<a href="#Organization-name">name</a>()&nbsp;==&nbsp;'CommonIdioms'<br>
+&nbsp;&nbsp;assert&nbsp;topic.body&nbsp;==&nbsp;'This&nbsp;topic&nbsp;is&nbsp;totally&nbsp;new!'<br>
+&nbsp;<br>
+&nbsp;&nbsp;#&nbsp;The&nbsp;second&nbsp;time&nbsp;through&nbsp;will&nbsp;just&nbsp;retrieve&nbsp;the&nbsp;entity.<br>
+&nbsp;&nbsp;overwrite_topic&nbsp;=&nbsp;WikiTopic.<a href="#Organization-get_or_insert">get_or_insert</a>(wiki_word,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body='A&nbsp;totally&nbsp;different&nbsp;message!')<br>
+&nbsp;&nbsp;assert&nbsp;topic.<a href="#Organization-key">key</a>().<a href="#Organization-name">name</a>()&nbsp;==&nbsp;'CommonIdioms'<br>
+&nbsp;&nbsp;assert&nbsp;topic.body&nbsp;==&nbsp;'This&nbsp;topic&nbsp;is&nbsp;totally&nbsp;new!'<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;key_name:&nbsp;Key&nbsp;name&nbsp;to&nbsp;retrieve&nbsp;or&nbsp;create.<br>
+&nbsp;&nbsp;**kwds:&nbsp;Keyword&nbsp;arguments&nbsp;to&nbsp;pass&nbsp;to&nbsp;the&nbsp;constructor&nbsp;of&nbsp;the&nbsp;model&nbsp;class<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;an&nbsp;instance&nbsp;for&nbsp;the&nbsp;specified&nbsp;key&nbsp;name&nbsp;does&nbsp;not&nbsp;already&nbsp;exist.&nbsp;If<br>
+&nbsp;&nbsp;&nbsp;&nbsp;an&nbsp;instance&nbsp;with&nbsp;the&nbsp;supplied&nbsp;key_name&nbsp;and&nbsp;parent&nbsp;already&nbsp;exists,&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;rest&nbsp;of&nbsp;these&nbsp;arguments&nbsp;will&nbsp;be&nbsp;discarded.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;Existing&nbsp;instance&nbsp;of&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;class&nbsp;with&nbsp;the&nbsp;specified&nbsp;key_name&nbsp;and&nbsp;parent<br>
+&nbsp;&nbsp;or&nbsp;a&nbsp;new&nbsp;one&nbsp;that&nbsp;has&nbsp;just&nbsp;been&nbsp;created.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;TransactionFailedError&nbsp;if&nbsp;the&nbsp;specified&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;instance&nbsp;could&nbsp;not&nbsp;be<br>
+&nbsp;&nbsp;retrieved&nbsp;or&nbsp;created&nbsp;transactionally&nbsp;(due&nbsp;to&nbsp;high&nbsp;contention,&nbsp;etc).</tt></dd></dl>
+
+<dl><dt><a name="Organization-gql"><strong>gql</strong></a>(cls, query_string, *args, **kwds)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Returns&nbsp;a&nbsp;query&nbsp;using&nbsp;GQL&nbsp;query&nbsp;string.<br>
+&nbsp;<br>
+See&nbsp;appengine/ext/gql&nbsp;for&nbsp;more&nbsp;information&nbsp;about&nbsp;GQL.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;query_string:&nbsp;properly&nbsp;formatted&nbsp;GQL&nbsp;query&nbsp;string&nbsp;with&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'SELECT&nbsp;*&nbsp;FROM&nbsp;&lt;entity&gt;'&nbsp;part&nbsp;omitted<br>
+&nbsp;&nbsp;*args:&nbsp;rest&nbsp;of&nbsp;the&nbsp;positional&nbsp;arguments&nbsp;used&nbsp;to&nbsp;bind&nbsp;numeric&nbsp;references<br>
+&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;the&nbsp;query.<br>
+&nbsp;&nbsp;**kwds:&nbsp;dictionary-based&nbsp;arguments&nbsp;(for&nbsp;named&nbsp;parameters).</tt></dd></dl>
+
+<dl><dt><a name="Organization-kind"><strong>kind</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Returns&nbsp;the&nbsp;datastore&nbsp;kind&nbsp;we&nbsp;use&nbsp;for&nbsp;this&nbsp;model.<br>
+&nbsp;<br>
+We&nbsp;just&nbsp;use&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;model&nbsp;for&nbsp;now,&nbsp;ignoring&nbsp;potential&nbsp;collisions.</tt></dd></dl>
+
+<dl><dt><a name="Organization-properties"><strong>properties</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Returns&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;all&nbsp;the&nbsp;properties&nbsp;defined&nbsp;for&nbsp;this&nbsp;model.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a>:<br>
+<dl><dt><a name="Organization-__new__"><strong>__new__</strong></a>(*args, **unused_kwds)</dt><dd><tt>Allow&nbsp;subclasses&nbsp;to&nbsp;call&nbsp;<a href="#Organization-__new__">__new__</a>()&nbsp;with&nbsp;arguments.<br>
+&nbsp;<br>
+Do&nbsp;NOT&nbsp;list&nbsp;'cls'&nbsp;as&nbsp;the&nbsp;first&nbsp;argument,&nbsp;or&nbsp;in&nbsp;the&nbsp;case&nbsp;when<br>
+the&nbsp;'unused_kwds'&nbsp;dictionary&nbsp;contains&nbsp;the&nbsp;key&nbsp;'cls',&nbsp;the&nbsp;function<br>
+will&nbsp;complain&nbsp;about&nbsp;multiple&nbsp;argument&nbsp;values&nbsp;for&nbsp;'cls'.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;TypeError&nbsp;if&nbsp;there&nbsp;are&nbsp;no&nbsp;positional&nbsp;arguments.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a>:<br>
+<dl><dt><strong>__metaclass__</strong> = &lt;class 'google.appengine.ext.db.PropertiedClass'&gt;<dd><tt>Meta-class&nbsp;for&nbsp;initializing&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;classes&nbsp;properties.<br>
+&nbsp;<br>
+Used&nbsp;for&nbsp;initializing&nbsp;Properties&nbsp;defined&nbsp;in&nbsp;the&nbsp;context&nbsp;of&nbsp;a&nbsp;model.<br>
+By&nbsp;using&nbsp;a&nbsp;meta-class&nbsp;much&nbsp;of&nbsp;the&nbsp;configuration&nbsp;of&nbsp;a&nbsp;Property<br>
+descriptor&nbsp;becomes&nbsp;implicit.&nbsp;&nbsp;By&nbsp;using&nbsp;this&nbsp;meta-class,&nbsp;descriptors<br>
+that&nbsp;are&nbsp;of&nbsp;class&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;are&nbsp;notified&nbsp;about&nbsp;which&nbsp;class&nbsp;they<br>
+belong&nbsp;to&nbsp;and&nbsp;what&nbsp;attribute&nbsp;they&nbsp;are&nbsp;associated&nbsp;with&nbsp;and&nbsp;can<br>
+do&nbsp;appropriate&nbsp;initialization&nbsp;via&nbsp;__property_config__.<br>
+&nbsp;<br>
+Duplicate&nbsp;properties&nbsp;are&nbsp;not&nbsp;permitted.</tt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Person">class <strong>Person</strong></a>(<a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="WC1.html#Person">Person</a></dd>
+<dd><a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>external_links</strong></dt>
+<dd><tt>A&nbsp;property&nbsp;that&nbsp;stores&nbsp;a&nbsp;list&nbsp;of&nbsp;things.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;a&nbsp;parameterized&nbsp;property;&nbsp;the&nbsp;parameter&nbsp;must&nbsp;be&nbsp;a&nbsp;valid<br>
+non-list&nbsp;data&nbsp;type,&nbsp;and&nbsp;all&nbsp;items&nbsp;must&nbsp;conform&nbsp;to&nbsp;this&nbsp;type.</tt></dd>
+</dl>
+<dl><dt><strong>history</strong></dt>
+<dd><tt>A&nbsp;string&nbsp;that&nbsp;can&nbsp;be&nbsp;longer&nbsp;than&nbsp;500&nbsp;bytes.</tt></dd>
+</dl>
+<dl><dt><strong>images</strong></dt>
+<dd><tt>A&nbsp;property&nbsp;that&nbsp;stores&nbsp;a&nbsp;list&nbsp;of&nbsp;things.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;a&nbsp;parameterized&nbsp;property;&nbsp;the&nbsp;parameter&nbsp;must&nbsp;be&nbsp;a&nbsp;valid<br>
+non-list&nbsp;data&nbsp;type,&nbsp;and&nbsp;all&nbsp;items&nbsp;must&nbsp;conform&nbsp;to&nbsp;this&nbsp;type.</tt></dd>
+</dl>
+<dl><dt><strong>kind_</strong></dt>
+<dd><tt>A&nbsp;textual&nbsp;property,&nbsp;which&nbsp;can&nbsp;be&nbsp;multi-&nbsp;or&nbsp;single-line.</tt></dd>
+</dl>
+<dl><dt><strong>location</strong></dt>
+<dd><tt>A&nbsp;textual&nbsp;property,&nbsp;which&nbsp;can&nbsp;be&nbsp;multi-&nbsp;or&nbsp;single-line.</tt></dd>
+</dl>
+<dl><dt><strong>name</strong></dt>
+<dd><tt>A&nbsp;textual&nbsp;property,&nbsp;which&nbsp;can&nbsp;be&nbsp;multi-&nbsp;or&nbsp;single-line.</tt></dd>
+</dl>
+<dl><dt><strong>related_crises</strong></dt>
+<dd><tt>A&nbsp;property&nbsp;that&nbsp;stores&nbsp;a&nbsp;list&nbsp;of&nbsp;strings.<br>
+&nbsp;<br>
+A&nbsp;shorthand&nbsp;for&nbsp;the&nbsp;most&nbsp;common&nbsp;type&nbsp;of&nbsp;ListProperty.</tt></dd>
+</dl>
+<dl><dt><strong>related_orgs</strong></dt>
+<dd><tt>A&nbsp;property&nbsp;that&nbsp;stores&nbsp;a&nbsp;list&nbsp;of&nbsp;strings.<br>
+&nbsp;<br>
+A&nbsp;shorthand&nbsp;for&nbsp;the&nbsp;most&nbsp;common&nbsp;type&nbsp;of&nbsp;ListProperty.</tt></dd>
+</dl>
+<dl><dt><strong>social_networks</strong></dt>
+<dd><tt>A&nbsp;property&nbsp;that&nbsp;stores&nbsp;a&nbsp;list&nbsp;of&nbsp;things.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;a&nbsp;parameterized&nbsp;property;&nbsp;the&nbsp;parameter&nbsp;must&nbsp;be&nbsp;a&nbsp;valid<br>
+non-list&nbsp;data&nbsp;type,&nbsp;and&nbsp;all&nbsp;items&nbsp;must&nbsp;conform&nbsp;to&nbsp;this&nbsp;type.</tt></dd>
+</dl>
+<dl><dt><strong>videos</strong></dt>
+<dd><tt>A&nbsp;property&nbsp;that&nbsp;stores&nbsp;a&nbsp;list&nbsp;of&nbsp;things.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;a&nbsp;parameterized&nbsp;property;&nbsp;the&nbsp;parameter&nbsp;must&nbsp;be&nbsp;a&nbsp;valid<br>
+non-list&nbsp;data&nbsp;type,&nbsp;and&nbsp;all&nbsp;items&nbsp;must&nbsp;conform&nbsp;to&nbsp;this&nbsp;type.</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a>:<br>
+<dl><dt><a name="Person-__init__"><strong>__init__</strong></a>(self, parent<font color="#909090">=None</font>, key_name<font color="#909090">=None</font>, _app<font color="#909090">=None</font>, _from_entity<font color="#909090">=False</font>, **kwds)</dt><dd><tt>Creates&nbsp;a&nbsp;new&nbsp;instance&nbsp;of&nbsp;this&nbsp;model.<br>
+&nbsp;<br>
+To&nbsp;create&nbsp;a&nbsp;new&nbsp;entity,&nbsp;you&nbsp;instantiate&nbsp;a&nbsp;model&nbsp;and&nbsp;then&nbsp;call&nbsp;<a href="#Person-put">put</a>(),<br>
+which&nbsp;saves&nbsp;the&nbsp;entity&nbsp;to&nbsp;the&nbsp;datastore:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;person&nbsp;=&nbsp;<a href="#Person">Person</a>()<br>
+&nbsp;&nbsp;&nbsp;person.name&nbsp;=&nbsp;'Bret'<br>
+&nbsp;&nbsp;&nbsp;person.<a href="#Person-put">put</a>()<br>
+&nbsp;<br>
+You&nbsp;can&nbsp;initialize&nbsp;properties&nbsp;in&nbsp;the&nbsp;model&nbsp;in&nbsp;the&nbsp;constructor&nbsp;with&nbsp;keyword<br>
+arguments:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;person&nbsp;=&nbsp;<a href="#Person">Person</a>(name='Bret')<br>
+&nbsp;<br>
+We&nbsp;initialize&nbsp;all&nbsp;other&nbsp;properties&nbsp;to&nbsp;the&nbsp;default&nbsp;value&nbsp;(as&nbsp;defined&nbsp;by&nbsp;the<br>
+properties&nbsp;in&nbsp;the&nbsp;model&nbsp;definition)&nbsp;if&nbsp;they&nbsp;are&nbsp;not&nbsp;provided&nbsp;in&nbsp;the<br>
+constructor.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;parent:&nbsp;Parent&nbsp;instance&nbsp;for&nbsp;this&nbsp;instance&nbsp;or&nbsp;None,&nbsp;indicating&nbsp;a&nbsp;top-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;level&nbsp;instance.<br>
+&nbsp;&nbsp;key_name:&nbsp;Name&nbsp;for&nbsp;new&nbsp;model&nbsp;instance.<br>
+&nbsp;&nbsp;_from_entity:&nbsp;Intentionally&nbsp;undocumented.<br>
+&nbsp;&nbsp;kwds:&nbsp;Keyword&nbsp;arguments&nbsp;mapping&nbsp;to&nbsp;properties&nbsp;of&nbsp;model.&nbsp;&nbsp;Also:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;key:&nbsp;Key&nbsp;instance&nbsp;for&nbsp;this&nbsp;instance,&nbsp;if&nbsp;provided&nbsp;makes&nbsp;parent&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key_name&nbsp;redundant&nbsp;(they&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;set&nbsp;but&nbsp;if&nbsp;they&nbsp;are<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;they&nbsp;must&nbsp;match&nbsp;the&nbsp;key).</tt></dd></dl>
+
+<dl><dt><a name="Person-delete"><strong>delete</strong></a>(self, **kwargs)</dt><dd><tt>Deletes&nbsp;this&nbsp;entity&nbsp;from&nbsp;the&nbsp;datastore.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;config:&nbsp;datastore_rpc.Configuration&nbsp;to&nbsp;use&nbsp;for&nbsp;this&nbsp;request.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;TransactionFailedError&nbsp;if&nbsp;the&nbsp;data&nbsp;could&nbsp;not&nbsp;be&nbsp;committed.</tt></dd></dl>
+
+<dl><dt><a name="Person-dynamic_properties"><strong>dynamic_properties</strong></a>(self)</dt><dd><tt>Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;dynamic&nbsp;properties&nbsp;defined&nbsp;for&nbsp;instance.</tt></dd></dl>
+
+<dl><dt><a name="Person-has_key"><strong>has_key</strong></a>(self)</dt><dd><tt>Determine&nbsp;if&nbsp;this&nbsp;model&nbsp;instance&nbsp;has&nbsp;a&nbsp;complete&nbsp;key.<br>
+&nbsp;<br>
+When&nbsp;not&nbsp;using&nbsp;a&nbsp;fully&nbsp;self-assigned&nbsp;Key,&nbsp;ids&nbsp;are&nbsp;not&nbsp;assigned&nbsp;until&nbsp;the<br>
+data&nbsp;is&nbsp;saved&nbsp;to&nbsp;the&nbsp;Datastore,&nbsp;but&nbsp;instances&nbsp;with&nbsp;a&nbsp;key&nbsp;name&nbsp;always&nbsp;have<br>
+a&nbsp;full&nbsp;key.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;True&nbsp;if&nbsp;the&nbsp;object&nbsp;has&nbsp;been&nbsp;persisted&nbsp;to&nbsp;the&nbsp;datastore&nbsp;or&nbsp;has&nbsp;a&nbsp;key<br>
+&nbsp;&nbsp;or&nbsp;has&nbsp;a&nbsp;key_name,&nbsp;otherwise&nbsp;False.</tt></dd></dl>
+
+<dl><dt><a name="Person-instance_properties"><strong>instance_properties</strong></a>(self)</dt><dd><tt>Alias&nbsp;for&nbsp;dyanmic_properties.</tt></dd></dl>
+
+<dl><dt><a name="Person-is_saved"><strong>is_saved</strong></a>(self)</dt><dd><tt>Determine&nbsp;if&nbsp;entity&nbsp;is&nbsp;persisted&nbsp;in&nbsp;the&nbsp;datastore.<br>
+&nbsp;<br>
+New&nbsp;instances&nbsp;of&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;do&nbsp;not&nbsp;start&nbsp;out&nbsp;saved&nbsp;in&nbsp;the&nbsp;data.&nbsp;&nbsp;Objects&nbsp;which<br>
+are&nbsp;saved&nbsp;to&nbsp;or&nbsp;loaded&nbsp;from&nbsp;the&nbsp;Datastore&nbsp;will&nbsp;have&nbsp;a&nbsp;True&nbsp;saved&nbsp;state.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;True&nbsp;if&nbsp;object&nbsp;has&nbsp;been&nbsp;persisted&nbsp;to&nbsp;the&nbsp;datastore,&nbsp;otherwise&nbsp;False.</tt></dd></dl>
+
+<dl><dt><a name="Person-key"><strong>key</strong></a>(self)</dt><dd><tt>Unique&nbsp;key&nbsp;for&nbsp;this&nbsp;entity.<br>
+&nbsp;<br>
+This&nbsp;property&nbsp;is&nbsp;only&nbsp;available&nbsp;if&nbsp;this&nbsp;entity&nbsp;is&nbsp;already&nbsp;stored&nbsp;in&nbsp;the<br>
+datastore&nbsp;or&nbsp;if&nbsp;it&nbsp;has&nbsp;a&nbsp;full&nbsp;key,&nbsp;so&nbsp;it&nbsp;is&nbsp;available&nbsp;if&nbsp;this&nbsp;entity&nbsp;was<br>
+fetched&nbsp;returned&nbsp;from&nbsp;a&nbsp;query,&nbsp;or&nbsp;after&nbsp;<a href="#Person-put">put</a>()&nbsp;is&nbsp;called&nbsp;the&nbsp;first&nbsp;time<br>
+for&nbsp;new&nbsp;entities,&nbsp;or&nbsp;if&nbsp;a&nbsp;complete&nbsp;key&nbsp;was&nbsp;given&nbsp;when&nbsp;constructed.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;Datastore&nbsp;key&nbsp;of&nbsp;persisted&nbsp;entity.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;NotSavedError&nbsp;when&nbsp;entity&nbsp;is&nbsp;not&nbsp;persistent.</tt></dd></dl>
+
+<dl><dt><a name="Person-parent"><strong>parent</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;parent&nbsp;of&nbsp;the&nbsp;model&nbsp;instance.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;Parent&nbsp;of&nbsp;contained&nbsp;entity&nbsp;or&nbsp;parent&nbsp;provided&nbsp;in&nbsp;constructor,&nbsp;None&nbsp;if<br>
+&nbsp;&nbsp;instance&nbsp;has&nbsp;no&nbsp;parent.</tt></dd></dl>
+
+<dl><dt><a name="Person-parent_key"><strong>parent_key</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;parent's&nbsp;key.<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;is&nbsp;useful&nbsp;for&nbsp;avoiding&nbsp;a&nbsp;potential&nbsp;fetch&nbsp;from&nbsp;the&nbsp;datastore<br>
+but&nbsp;still&nbsp;get&nbsp;information&nbsp;about&nbsp;the&nbsp;instances&nbsp;parent.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;Parent&nbsp;key&nbsp;of&nbsp;entity,&nbsp;None&nbsp;if&nbsp;there&nbsp;is&nbsp;no&nbsp;parent.</tt></dd></dl>
+
+<dl><dt><a name="Person-put"><strong>put</strong></a>(self, **kwargs)</dt><dd><tt>Writes&nbsp;this&nbsp;model&nbsp;instance&nbsp;to&nbsp;the&nbsp;datastore.<br>
+&nbsp;<br>
+If&nbsp;this&nbsp;instance&nbsp;is&nbsp;new,&nbsp;we&nbsp;add&nbsp;an&nbsp;entity&nbsp;to&nbsp;the&nbsp;datastore.<br>
+Otherwise,&nbsp;we&nbsp;update&nbsp;this&nbsp;instance,&nbsp;and&nbsp;the&nbsp;key&nbsp;will&nbsp;remain&nbsp;the<br>
+same.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;config:&nbsp;datastore_rpc.Configuration&nbsp;to&nbsp;use&nbsp;for&nbsp;this&nbsp;request.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;The&nbsp;key&nbsp;of&nbsp;the&nbsp;instance&nbsp;(either&nbsp;the&nbsp;existing&nbsp;key&nbsp;or&nbsp;a&nbsp;new&nbsp;key).<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;TransactionFailedError&nbsp;if&nbsp;the&nbsp;data&nbsp;could&nbsp;not&nbsp;be&nbsp;committed.</tt></dd></dl>
+
+<dl><dt><a name="Person-save"><strong>save</strong></a> = put(self, **kwargs)</dt><dd><tt>Writes&nbsp;this&nbsp;model&nbsp;instance&nbsp;to&nbsp;the&nbsp;datastore.<br>
+&nbsp;<br>
+If&nbsp;this&nbsp;instance&nbsp;is&nbsp;new,&nbsp;we&nbsp;add&nbsp;an&nbsp;entity&nbsp;to&nbsp;the&nbsp;datastore.<br>
+Otherwise,&nbsp;we&nbsp;update&nbsp;this&nbsp;instance,&nbsp;and&nbsp;the&nbsp;key&nbsp;will&nbsp;remain&nbsp;the<br>
+same.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;config:&nbsp;datastore_rpc.Configuration&nbsp;to&nbsp;use&nbsp;for&nbsp;this&nbsp;request.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;The&nbsp;key&nbsp;of&nbsp;the&nbsp;instance&nbsp;(either&nbsp;the&nbsp;existing&nbsp;key&nbsp;or&nbsp;a&nbsp;new&nbsp;key).<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;TransactionFailedError&nbsp;if&nbsp;the&nbsp;data&nbsp;could&nbsp;not&nbsp;be&nbsp;committed.</tt></dd></dl>
+
+<dl><dt><a name="Person-to_xml"><strong>to_xml</strong></a>(self, _entity_class<font color="#909090">=&lt;class 'google.appengine.api.datastore.Entity'&gt;</font>)</dt><dd><tt>Generate&nbsp;an&nbsp;XML&nbsp;representation&nbsp;of&nbsp;this&nbsp;model&nbsp;instance.<br>
+&nbsp;<br>
+atom&nbsp;and&nbsp;gd:namespace&nbsp;properties&nbsp;are&nbsp;converted&nbsp;to&nbsp;XML&nbsp;according&nbsp;to&nbsp;their<br>
+respective&nbsp;schemas.&nbsp;For&nbsp;more&nbsp;information,&nbsp;see:<br>
+&nbsp;<br>
+&nbsp;&nbsp;<a href="http://www.atomenabled.org/developers/syndication/">http://www.atomenabled.org/developers/syndication/</a><br>
+&nbsp;&nbsp;<a href="http://code.google.com/apis/gdata/common-elements.html">http://code.google.com/apis/gdata/common-elements.html</a></tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a>:<br>
+<dl><dt><a name="Person-all"><strong>all</strong></a>(cls, **kwds)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Returns&nbsp;a&nbsp;query&nbsp;over&nbsp;all&nbsp;instances&nbsp;of&nbsp;this&nbsp;model&nbsp;from&nbsp;the&nbsp;datastore.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;Query&nbsp;that&nbsp;will&nbsp;retrieve&nbsp;all&nbsp;instances&nbsp;from&nbsp;entity&nbsp;collection.</tt></dd></dl>
+
+<dl><dt><a name="Person-entity_type"><strong>entity_type</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Soon&nbsp;to&nbsp;be&nbsp;removed&nbsp;alias&nbsp;for&nbsp;kind.</tt></dd></dl>
+
+<dl><dt><a name="Person-fields"><strong>fields</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Soon&nbsp;to&nbsp;be&nbsp;removed&nbsp;alias&nbsp;for&nbsp;properties.</tt></dd></dl>
+
+<dl><dt><a name="Person-from_entity"><strong>from_entity</strong></a>(cls, entity)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Converts&nbsp;the&nbsp;entity&nbsp;representation&nbsp;of&nbsp;this&nbsp;model&nbsp;to&nbsp;an&nbsp;instance.<br>
+&nbsp;<br>
+Converts&nbsp;datastore.Entity&nbsp;instance&nbsp;to&nbsp;an&nbsp;instance&nbsp;of&nbsp;cls.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;entity:&nbsp;Entity&nbsp;loaded&nbsp;directly&nbsp;from&nbsp;datastore.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;KindError&nbsp;when&nbsp;cls&nbsp;is&nbsp;incorrect&nbsp;model&nbsp;for&nbsp;entity.</tt></dd></dl>
+
+<dl><dt><a name="Person-get"><strong>get</strong></a>(cls, keys, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Fetch&nbsp;instance&nbsp;from&nbsp;the&nbsp;datastore&nbsp;of&nbsp;a&nbsp;specific&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;type&nbsp;using&nbsp;key.<br>
+&nbsp;<br>
+We&nbsp;support&nbsp;Key&nbsp;objects&nbsp;and&nbsp;string&nbsp;keys&nbsp;(we&nbsp;convert&nbsp;them&nbsp;to&nbsp;Key&nbsp;objects<br>
+automatically).<br>
+&nbsp;<br>
+Useful&nbsp;for&nbsp;ensuring&nbsp;that&nbsp;specific&nbsp;instance&nbsp;types&nbsp;are&nbsp;retrieved&nbsp;from&nbsp;the<br>
+datastore.&nbsp;&nbsp;It&nbsp;also&nbsp;helps&nbsp;that&nbsp;the&nbsp;source&nbsp;code&nbsp;clearly&nbsp;indicates&nbsp;what<br>
+kind&nbsp;of&nbsp;object&nbsp;is&nbsp;being&nbsp;retreived.&nbsp;&nbsp;Example:<br>
+&nbsp;<br>
+&nbsp;&nbsp;story&nbsp;=&nbsp;Story.<a href="#Person-get">get</a>(story_key)<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;keys:&nbsp;Key&nbsp;within&nbsp;datastore&nbsp;entity&nbsp;collection&nbsp;to&nbsp;find;&nbsp;or&nbsp;string&nbsp;key;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;list&nbsp;of&nbsp;Keys&nbsp;or&nbsp;string&nbsp;keys.<br>
+&nbsp;&nbsp;config:&nbsp;datastore_rpc.Configuration&nbsp;to&nbsp;use&nbsp;for&nbsp;this&nbsp;request.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;If&nbsp;a&nbsp;single&nbsp;key&nbsp;was&nbsp;given:&nbsp;a&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;instance&nbsp;associated&nbsp;with&nbsp;key<br>
+&nbsp;&nbsp;for&nbsp;provided&nbsp;class&nbsp;if&nbsp;it&nbsp;exists&nbsp;in&nbsp;the&nbsp;datastore,&nbsp;otherwise<br>
+&nbsp;&nbsp;None;&nbsp;if&nbsp;a&nbsp;list&nbsp;of&nbsp;keys&nbsp;was&nbsp;given:&nbsp;a&nbsp;list&nbsp;whose&nbsp;items&nbsp;are&nbsp;either<br>
+&nbsp;&nbsp;a&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;instance&nbsp;or&nbsp;None.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;KindError&nbsp;if&nbsp;any&nbsp;of&nbsp;the&nbsp;retreived&nbsp;objects&nbsp;are&nbsp;not&nbsp;instances&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;type&nbsp;associated&nbsp;with&nbsp;call&nbsp;to&nbsp;'get'.</tt></dd></dl>
+
+<dl><dt><a name="Person-get_by_id"><strong>get_by_id</strong></a>(cls, ids, parent<font color="#909090">=None</font>, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Get&nbsp;instance&nbsp;of&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;class&nbsp;by&nbsp;id.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;key_names:&nbsp;A&nbsp;single&nbsp;id&nbsp;or&nbsp;a&nbsp;list&nbsp;of&nbsp;ids.<br>
+&nbsp;&nbsp;parent:&nbsp;Parent&nbsp;of&nbsp;instances&nbsp;to&nbsp;get.&nbsp;&nbsp;Can&nbsp;be&nbsp;a&nbsp;model&nbsp;or&nbsp;key.<br>
+&nbsp;&nbsp;config:&nbsp;datastore_rpc.Configuration&nbsp;to&nbsp;use&nbsp;for&nbsp;this&nbsp;request.</tt></dd></dl>
+
+<dl><dt><a name="Person-get_by_key_name"><strong>get_by_key_name</strong></a>(cls, key_names, parent<font color="#909090">=None</font>, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Get&nbsp;instance&nbsp;of&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;class&nbsp;by&nbsp;its&nbsp;key's&nbsp;name.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;key_names:&nbsp;A&nbsp;single&nbsp;key-name&nbsp;or&nbsp;a&nbsp;list&nbsp;of&nbsp;key-names.<br>
+&nbsp;&nbsp;parent:&nbsp;Parent&nbsp;of&nbsp;instances&nbsp;to&nbsp;get.&nbsp;&nbsp;Can&nbsp;be&nbsp;a&nbsp;model&nbsp;or&nbsp;key.<br>
+&nbsp;&nbsp;config:&nbsp;datastore_rpc.Configuration&nbsp;to&nbsp;use&nbsp;for&nbsp;this&nbsp;request.</tt></dd></dl>
+
+<dl><dt><a name="Person-get_or_insert"><strong>get_or_insert</strong></a>(cls, key_name, **kwds)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Transactionally&nbsp;retrieve&nbsp;or&nbsp;create&nbsp;an&nbsp;instance&nbsp;of&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;class.<br>
+&nbsp;<br>
+This&nbsp;acts&nbsp;much&nbsp;like&nbsp;the&nbsp;Python&nbsp;dictionary&nbsp;setdefault()&nbsp;method,&nbsp;where&nbsp;we<br>
+first&nbsp;try&nbsp;to&nbsp;retrieve&nbsp;a&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;instance&nbsp;with&nbsp;the&nbsp;given&nbsp;key&nbsp;name&nbsp;and&nbsp;parent.<br>
+If&nbsp;it's&nbsp;not&nbsp;present,&nbsp;then&nbsp;we&nbsp;create&nbsp;a&nbsp;new&nbsp;instance&nbsp;(using&nbsp;the&nbsp;*kwds<br>
+supplied)&nbsp;and&nbsp;insert&nbsp;that&nbsp;with&nbsp;the&nbsp;supplied&nbsp;key&nbsp;name.<br>
+&nbsp;<br>
+Subsequent&nbsp;calls&nbsp;to&nbsp;this&nbsp;method&nbsp;with&nbsp;the&nbsp;same&nbsp;key_name&nbsp;and&nbsp;parent&nbsp;will<br>
+always&nbsp;yield&nbsp;the&nbsp;same&nbsp;entity&nbsp;(though&nbsp;not&nbsp;the&nbsp;same&nbsp;actual&nbsp;object&nbsp;instance),<br>
+regardless&nbsp;of&nbsp;the&nbsp;*kwds&nbsp;supplied.&nbsp;If&nbsp;the&nbsp;specified&nbsp;entity&nbsp;has&nbsp;somehow<br>
+been&nbsp;deleted&nbsp;separately,&nbsp;then&nbsp;the&nbsp;next&nbsp;call&nbsp;will&nbsp;create&nbsp;a&nbsp;new&nbsp;entity&nbsp;and<br>
+return&nbsp;it.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;'parent'&nbsp;keyword&nbsp;argument&nbsp;is&nbsp;supplied,&nbsp;it&nbsp;must&nbsp;be&nbsp;a&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;instance.<br>
+It&nbsp;will&nbsp;be&nbsp;used&nbsp;as&nbsp;the&nbsp;parent&nbsp;of&nbsp;the&nbsp;new&nbsp;instance&nbsp;of&nbsp;this&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;class&nbsp;if<br>
+one&nbsp;is&nbsp;created.<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;is&nbsp;especially&nbsp;useful&nbsp;for&nbsp;having&nbsp;just&nbsp;one&nbsp;unique&nbsp;entity&nbsp;for<br>
+a&nbsp;specific&nbsp;identifier.&nbsp;Insertion/retrieval&nbsp;is&nbsp;done&nbsp;transactionally,&nbsp;which<br>
+guarantees&nbsp;uniqueness.<br>
+&nbsp;<br>
+Example&nbsp;usage:<br>
+&nbsp;<br>
+&nbsp;&nbsp;class&nbsp;WikiTopic(db.<a href="google.appengine.ext.db.html#Model">Model</a>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;creation_date&nbsp;=&nbsp;db.DatetimeProperty(auto_now_add=True)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;body&nbsp;=&nbsp;db.TextProperty(required=True)<br>
+&nbsp;<br>
+&nbsp;&nbsp;#&nbsp;The&nbsp;first&nbsp;time&nbsp;through&nbsp;we'll&nbsp;create&nbsp;the&nbsp;new&nbsp;topic.<br>
+&nbsp;&nbsp;wiki_word&nbsp;=&nbsp;'CommonIdioms'<br>
+&nbsp;&nbsp;topic&nbsp;=&nbsp;WikiTopic.<a href="#Person-get_or_insert">get_or_insert</a>(wiki_word,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body='This&nbsp;topic&nbsp;is&nbsp;totally&nbsp;new!')<br>
+&nbsp;&nbsp;assert&nbsp;topic.<a href="#Person-key">key</a>().<a href="#Person-name">name</a>()&nbsp;==&nbsp;'CommonIdioms'<br>
+&nbsp;&nbsp;assert&nbsp;topic.body&nbsp;==&nbsp;'This&nbsp;topic&nbsp;is&nbsp;totally&nbsp;new!'<br>
+&nbsp;<br>
+&nbsp;&nbsp;#&nbsp;The&nbsp;second&nbsp;time&nbsp;through&nbsp;will&nbsp;just&nbsp;retrieve&nbsp;the&nbsp;entity.<br>
+&nbsp;&nbsp;overwrite_topic&nbsp;=&nbsp;WikiTopic.<a href="#Person-get_or_insert">get_or_insert</a>(wiki_word,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body='A&nbsp;totally&nbsp;different&nbsp;message!')<br>
+&nbsp;&nbsp;assert&nbsp;topic.<a href="#Person-key">key</a>().<a href="#Person-name">name</a>()&nbsp;==&nbsp;'CommonIdioms'<br>
+&nbsp;&nbsp;assert&nbsp;topic.body&nbsp;==&nbsp;'This&nbsp;topic&nbsp;is&nbsp;totally&nbsp;new!'<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;key_name:&nbsp;Key&nbsp;name&nbsp;to&nbsp;retrieve&nbsp;or&nbsp;create.<br>
+&nbsp;&nbsp;**kwds:&nbsp;Keyword&nbsp;arguments&nbsp;to&nbsp;pass&nbsp;to&nbsp;the&nbsp;constructor&nbsp;of&nbsp;the&nbsp;model&nbsp;class<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;an&nbsp;instance&nbsp;for&nbsp;the&nbsp;specified&nbsp;key&nbsp;name&nbsp;does&nbsp;not&nbsp;already&nbsp;exist.&nbsp;If<br>
+&nbsp;&nbsp;&nbsp;&nbsp;an&nbsp;instance&nbsp;with&nbsp;the&nbsp;supplied&nbsp;key_name&nbsp;and&nbsp;parent&nbsp;already&nbsp;exists,&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;rest&nbsp;of&nbsp;these&nbsp;arguments&nbsp;will&nbsp;be&nbsp;discarded.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;Existing&nbsp;instance&nbsp;of&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;class&nbsp;with&nbsp;the&nbsp;specified&nbsp;key_name&nbsp;and&nbsp;parent<br>
+&nbsp;&nbsp;or&nbsp;a&nbsp;new&nbsp;one&nbsp;that&nbsp;has&nbsp;just&nbsp;been&nbsp;created.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;TransactionFailedError&nbsp;if&nbsp;the&nbsp;specified&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;instance&nbsp;could&nbsp;not&nbsp;be<br>
+&nbsp;&nbsp;retrieved&nbsp;or&nbsp;created&nbsp;transactionally&nbsp;(due&nbsp;to&nbsp;high&nbsp;contention,&nbsp;etc).</tt></dd></dl>
+
+<dl><dt><a name="Person-gql"><strong>gql</strong></a>(cls, query_string, *args, **kwds)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Returns&nbsp;a&nbsp;query&nbsp;using&nbsp;GQL&nbsp;query&nbsp;string.<br>
+&nbsp;<br>
+See&nbsp;appengine/ext/gql&nbsp;for&nbsp;more&nbsp;information&nbsp;about&nbsp;GQL.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;query_string:&nbsp;properly&nbsp;formatted&nbsp;GQL&nbsp;query&nbsp;string&nbsp;with&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'SELECT&nbsp;*&nbsp;FROM&nbsp;&lt;entity&gt;'&nbsp;part&nbsp;omitted<br>
+&nbsp;&nbsp;*args:&nbsp;rest&nbsp;of&nbsp;the&nbsp;positional&nbsp;arguments&nbsp;used&nbsp;to&nbsp;bind&nbsp;numeric&nbsp;references<br>
+&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;the&nbsp;query.<br>
+&nbsp;&nbsp;**kwds:&nbsp;dictionary-based&nbsp;arguments&nbsp;(for&nbsp;named&nbsp;parameters).</tt></dd></dl>
+
+<dl><dt><a name="Person-kind"><strong>kind</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Returns&nbsp;the&nbsp;datastore&nbsp;kind&nbsp;we&nbsp;use&nbsp;for&nbsp;this&nbsp;model.<br>
+&nbsp;<br>
+We&nbsp;just&nbsp;use&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;model&nbsp;for&nbsp;now,&nbsp;ignoring&nbsp;potential&nbsp;collisions.</tt></dd></dl>
+
+<dl><dt><a name="Person-properties"><strong>properties</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="google.appengine.ext.db.html#PropertiedClass">google.appengine.ext.db.PropertiedClass</a></font></font></dt><dd><tt>Returns&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;all&nbsp;the&nbsp;properties&nbsp;defined&nbsp;for&nbsp;this&nbsp;model.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a>:<br>
+<dl><dt><a name="Person-__new__"><strong>__new__</strong></a>(*args, **unused_kwds)</dt><dd><tt>Allow&nbsp;subclasses&nbsp;to&nbsp;call&nbsp;<a href="#Person-__new__">__new__</a>()&nbsp;with&nbsp;arguments.<br>
+&nbsp;<br>
+Do&nbsp;NOT&nbsp;list&nbsp;'cls'&nbsp;as&nbsp;the&nbsp;first&nbsp;argument,&nbsp;or&nbsp;in&nbsp;the&nbsp;case&nbsp;when<br>
+the&nbsp;'unused_kwds'&nbsp;dictionary&nbsp;contains&nbsp;the&nbsp;key&nbsp;'cls',&nbsp;the&nbsp;function<br>
+will&nbsp;complain&nbsp;about&nbsp;multiple&nbsp;argument&nbsp;values&nbsp;for&nbsp;'cls'.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;TypeError&nbsp;if&nbsp;there&nbsp;are&nbsp;no&nbsp;positional&nbsp;arguments.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="google.appengine.ext.db.html#Model">google.appengine.ext.db.Model</a>:<br>
+<dl><dt><strong>__metaclass__</strong> = &lt;class 'google.appengine.ext.db.PropertiedClass'&gt;<dd><tt>Meta-class&nbsp;for&nbsp;initializing&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;classes&nbsp;properties.<br>
+&nbsp;<br>
+Used&nbsp;for&nbsp;initializing&nbsp;Properties&nbsp;defined&nbsp;in&nbsp;the&nbsp;context&nbsp;of&nbsp;a&nbsp;model.<br>
+By&nbsp;using&nbsp;a&nbsp;meta-class&nbsp;much&nbsp;of&nbsp;the&nbsp;configuration&nbsp;of&nbsp;a&nbsp;Property<br>
+descriptor&nbsp;becomes&nbsp;implicit.&nbsp;&nbsp;By&nbsp;using&nbsp;this&nbsp;meta-class,&nbsp;descriptors<br>
+that&nbsp;are&nbsp;of&nbsp;class&nbsp;<a href="google.appengine.ext.db.html#Model">Model</a>&nbsp;are&nbsp;notified&nbsp;about&nbsp;which&nbsp;class&nbsp;they<br>
+belong&nbsp;to&nbsp;and&nbsp;what&nbsp;attribute&nbsp;they&nbsp;are&nbsp;associated&nbsp;with&nbsp;and&nbsp;can<br>
+do&nbsp;appropriate&nbsp;initialization&nbsp;via&nbsp;__property_config__.<br>
+&nbsp;<br>
+Duplicate&nbsp;properties&nbsp;are&nbsp;not&nbsp;permitted.</tt></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-ExportXml"><strong>ExportXml</strong></a>(data)</dt><dd><tt>Exports&nbsp;the&nbsp;data&nbsp;to&nbsp;the&nbsp;screen&nbsp;in&nbsp;xml&nbsp;format<br>
+data&nbsp;is&nbsp;the&nbsp;data<br>
+return&nbsp;a&nbsp;string&nbsp;in&nbsp;xml&nbsp;format</tt></dd></dl>
+ <dl><dt><a name="-ImportXml"><strong>ImportXml</strong></a>(filename)</dt><dd><tt>Imports&nbsp;data&nbsp;from&nbsp;an&nbsp;xml&nbsp;instance&nbsp;and&nbsp;saves&nbsp;it&nbsp;in&nbsp;heap<br>
+Assumes&nbsp;valid&nbsp;xml&nbsp;instance<br>
+filename&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;.xml&nbsp;file<br>
+return&nbsp;the&nbsp;desired&nbsp;data&nbsp;in&nbsp;multi-dimensional&nbsp;dictionary</tt></dd></dl>
+ <dl><dt><a name="-debug"><strong>debug</strong></a>(msg)</dt><dd><tt>prints&nbsp;the&nbsp;debug&nbsp;message<br>
+msg&nbsp;the&nbsp;string&nbsp;you&nbsp;want&nbsp;to&nbsp;put&nbsp;on&nbsp;the&nbsp;debug&nbsp;screen</tt></dd></dl>
+ <dl><dt><a name="-fixAmp"><strong>fixAmp</strong></a>(line)</dt><dd><tt>Replaces&nbsp;every&nbsp;occurrence&nbsp;of&nbsp;an&nbsp;ampersand(&amp;)&nbsp;with&nbsp;"&amp;amp;"&nbsp;in&nbsp;a&nbsp;given&nbsp;string<br>
+line&nbsp;the&nbsp;original&nbsp;string<br>
+return&nbsp;the&nbsp;modified&nbsp;string</tt></dd></dl>
+ <dl><dt><a name="-import_file"><strong>import_file</strong></a>(xml_file)</dt></dl>
+ <dl><dt><a name="-main"><strong>main</strong></a>()</dt></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>data_models</strong> = {'crises': [], 'orgs': [], 'people': []}</td></tr></table>
+</body></html>
