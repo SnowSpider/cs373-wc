@@ -16,7 +16,7 @@ handlers:
   static_dir: htmlgoodies/content/images
 
 - url: /.*
-  script: WC1.py
+  script: WC2.py
 
 libraries:
 
