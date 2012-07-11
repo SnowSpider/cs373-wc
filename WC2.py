@@ -136,26 +136,27 @@ class MainHandler(webapp.RequestHandler):
         people = data_models['people']    
 
         template_values = {
-            'crises': crises,
-            'people': people,
-            'orgs': orgs,
+            'crises': crises.values(),
+            'people': people.values(),
+            'orgs': orgs.values(),
         }
 
         self.response.headers['Content-Type'] = 'text/html'
 
         if path.startswith("/crises/") :
             self.response.out.write("crisis page yet to be implemented")
-            self.response.out.write(crises.values())
+            self.response.out.write(crises)
         elif path.startswith("/orgs/") :
             self.response.out.write("org page yet to be implemented")
         elif path.startswith("/people/"):
             self.response.out.write("person page yet to be implemented")
+            self.response.out.write(orgs)
         else:
-            #self.response.out.write(template.render('djangogoodies/maintemplate.html', template_values))
-            inFile = open("htmlgoodies/mockup.html", 'r')
-            outstr = inFile.read() #"HELLO CAR RAMROD"
-            inFile.close()
-            self.response.out.write(outstr)
+            self.response.out.write(str(template.render('djangogoodies/maintemplate.html', template_values)))
+            #inFile = open("htmlgoodies/mockup.html", 'r')
+            #outstr = inFile.read() #"HELLO CAR RAMROD"
+            #inFile.close()
+            #self.response.out.write(outstr)
 
 class ExportHandler(webapp.RequestHandler):
     def get(self):
@@ -437,7 +438,7 @@ def import_file(xml_file):
         relatedPeople = org.findall("person")
         for relatedPerson in relatedPeople:
             currentOrg.relatedPeople.append(relatedPerson.attrib["idref"])
-        data["crises"][currentOrg.idref] = currentOrg
+        data["orgs"][currentOrg.idref] = currentOrg
         
     return data
 
