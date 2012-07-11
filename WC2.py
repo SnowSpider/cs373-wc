@@ -447,7 +447,7 @@ def ExportXml(data):
     myString = ["<worldCrises>\n"]
     
     for crisis in data["crises"]:
-        myString.append("\t<crisis id=\""+crisis.idref+"\"">\n")
+        myString.append("\t<crisis id=\"" + crisis.idref + "\">\n")
         myString.append("\t\t<name>" + crisis.name + "</name>\n")
         myString.append("\t\t<info>\n")
         myString.append("\t\t\t<history>" + crisis.info.history + "</history>\n")
@@ -519,14 +519,14 @@ def ExportXml(data):
         	myString.append("\t\t\t</ext>\n")
         myString.append("\t\t</ref>\n")
         myString.append("\t\t<misc>" + crisis.misc + "</misc>\n")
-        for orgs in crisis.relatedOrgs:
-        	myString.append("")
+        for org in crisis.relatedOrgs: 
+        	myString.append("<org idref=\"" + org.idref + "\"></org>")
         for person in crisis.relatedPeople:
-        	myString.append("")
+        	myString.append("<person idref=\"" + person.idref + "\"></org>")
         myString.append("\t<\crisis>\n")
         
     for org in data["orgs"]:
-        myString.append("\t<organization id=\""+org.idref+"\"">\n")
+        myString.append("\t<organization id=\""+org.idref+"\">\n")
         myString.append("\t\t<name>" + org.name + "</name>\n")
         myString.append("\t\t<info>\n")
         myString.append("\t\t\t<type>" + org.info.type_ + "</type>\n")
@@ -585,11 +585,14 @@ def ExportXml(data):
         	myString.append("\t\t\t</ext>\n")
         myString.append("\t\t</ref>\n")
         myString.append("\t\t<misc>" + org.misc + "</misc>\n")
-        #some stuff about the idrefs of related crisis and person
+        for crisis in org.relatedCrises: 
+        	myString.append("<crisis idref=\"" + crisis.idref + "\"></org>")
+        for person in org.relatedPeople:
+        	myString.append("<person idref=\"" + person.idref + "\"></org>")
         myString.append("\t<\organization>\n")
         
     for person in data["people"]:
-        myString.append("\t<person id=\""+person.idref+"\"">\n")
+        myString.append("\t<person id=\""+person.idref+"\">\n")
         myString.append("\t\t<name>" + person.name + "</name>\n")
         myString.append("\t\t<info>\n")
         myString.append("\t\t\t<type>" + person.info.type_ + "</type>\n")
@@ -639,9 +642,12 @@ def ExportXml(data):
         	myString.append("\t\t\t</ext>\n")
         myString.append("\t\t</ref>\n")
         myString.append("\t\t<misc>" + person.misc + "</misc>\n")
-        #some stuff about the idrefs of related crisis and person
+        for crisis in person.relatedCrises: 
+        	myString.append("<crisis idref=\"" + crisis.idref + "\"></org>")
+        for org in person.relatedOrgs: 
+        	myString.append("<org idref=\"" + org.idref + "\"></org>")
         myString.append("\t<\person>\n")
-    
+        
     myString.append("</worldCrises>")
     return "".join(myString)
 
