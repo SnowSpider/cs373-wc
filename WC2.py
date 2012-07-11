@@ -538,20 +538,20 @@ def ExportXml(data):
         myString.append("\t\t\t<contact>\n")
         myString.append("\t\t\t\t<phone>" + data["orgs"][org].info.contact.phone + "</phone>\n")
         myString.append("\t\t\t\t<email>" + data["orgs"][org].info.contact.email + "</email>\n")
-        myString.append("\t\t\t\t<mail>\n"
+        myString.append("\t\t\t\t<mail>\n")
         myString.append("\t\t\t\t\t<address>" + data["orgs"][org].info.contact.mail.address + "</address>\n")
-        myString.append("\t\t\t\t\t<city>" + data["orgs"][org].info.contact.mail.city + "</city>\n"
-        myString.append("\t\t\t\t\t<state>" + data["orgs"][org].info.contact.mail.state + "</state>\n"
-        myString.append("\t\t\t\t\t<country>" + data["orgs"][org].info.contact.mail.country + "</country>\n"
-        myString.append("\t\t\t\t\t<zip>" + data["orgs"][org].info.contact.mail.zip + "</zip>\n"
-        myString.append("\t\t\t\t</mail>\n"
-        myString.append("\t\t\t</contact>\n"
-        myString.append("\t\t\t<loc>\n"
+        myString.append("\t\t\t\t\t<city>" + data["orgs"][org].info.contact.mail.city + "</city>\n")
+        myString.append("\t\t\t\t\t<state>" + data["orgs"][org].info.contact.mail.state + "</state>\n")
+        myString.append("\t\t\t\t\t<country>" + data["orgs"][org].info.contact.mail.country + "</country>\n")
+        myString.append("\t\t\t\t\t<zip>" + data["orgs"][org].info.contact.mail.zip + "</zip>\n")
+        myString.append("\t\t\t\t</mail>\n")
+        myString.append("\t\t\t</contact>\n")
+        myString.append("\t\t\t<loc>\n")
         myString.append("\t\t\t\t<city>" + data["orgs"][org].info.loc.city + "</city>\n")
         myString.append("\t\t\t\t<region>" + data["orgs"][org].info.loc.region + "</region>\n")
         myString.append("\t\t\t\t<country>" + data["orgs"][org].info.loc.country + "</country>\n")
-        myString.append("\t\t\t</loc>\n"
-        myString.append("\t\t</info>\n"
+        myString.append("\t\t\t</loc>\n")
+        myString.append("\t\t</info>\n")
         myString.append("\t\t<ref>\n")
         myString.append("\t\t\t<primaryImage>\n")
         myString.append("\t\t\t\t<site>" + data["orgs"][org].ref.primaryImage.site + "</site>\n")

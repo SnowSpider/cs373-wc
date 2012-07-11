@@ -50,10 +50,11 @@ class TestWC2 (unittest.TestCase) :
         self.assert_(data["people"]["Mir Hossein Mousavi"].related_crises[0] == "Iranian_Green_Movement")
         self.assert_(data["people"]["Mir Hossein Mousavi"].related_orgs[0] == "International_Campaign_for_Human_Rights_in_Iran")
         """
-        self.assert_(data["people"]["Mir_Hossein_Mousavi"])
+        self.assert_(data["people"]["Mir_Hossein_Mousavi"].name == "Mir Hossein Mousavi")
         
         
-        #self.assert_(True)
+        
+        
     
     """
     def test_ExportXml_1 (self) :
