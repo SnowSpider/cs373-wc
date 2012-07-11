@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>Mustafa Abdul Jalil</title>
+<title>{{name}}</title>
 <head>
 <script language="javascript" src="fancybox/lib/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="fancybox/source/jquery.fancybox.pack.js"></script>
@@ -21,36 +21,18 @@
 		<tr>
 			<td>
 				<ul>
+				{ % for image in ref.images % }
 					<li class="center">
-						<a href="http://a.abcnews.go.com/images/International/42daef1774e44bd78ea83fd9878c269d.jpg" class="fancybox" rel="pix">
-							<img width="220" src="http://a.abcnews.go.com/images/International/42daef1774e44bd78ea83fd9878c269d.jpg"/>
+						<a href="{{image.url}}" class="fancybox" rel="pix">
+							<img width="220" src="{{image.url}}"/>
 						</a>
 					</li>
-					<li class="center">
-						<a href="http://1.bp.blogspot.com/-tHBHlck16yA/TqK7Lqeh2TI/AAAAAAAACd0/7OSD4-lQukw/s1600/head+bump.jpg" class="fancybox" rel="pix">
-							<img 
-							width="220" 
-							src="http://1.bp.blogspot.com/-tHBHlck16yA/TqK7Lqeh2TI/AAAAAAAACd0/7OSD4-lQukw/s1600/head+bump.jpg"/>
-						</a>
-					</li>
+				{ % endfor % }
+				{ % for video in ref.videos % }
 					<li>
-						<a href="http://en.rian.ru/images/16374/78/163747819.jpg" class="fancybox" rel="pix">
-							<img width="220" src="http://en.rian.ru/images/16374/78/163747819.jpg"/>
-						</a>
+						<iframe width="220" src="video.url" frameborder="0" allowfullscreen></iframe>
 					</li>
-					<li>
-						<a href="http://www.theblaze.com/wp-content/uploads/2011/10/LibyaSharia.jpg" class="fancybox" rel="pix">
-							<img width="220" src="http://www.theblaze.com/wp-content/uploads/2011/10/LibyaSharia.jpg"/>
-						</a>
-					</li>
-					<li>
-						<a href="http://old.enciclopedia.com.pt/images/img-article-lamen-libya-jalil_224629570254.jpg" class="fancybox" rel="pix">
-							<img width="220" src="http://old.enciclopedia.com.pt/images/img-article-lamen-libya-jalil_224629570254.jpg">
-						</a>
-					</li>
-					<li>
-						<iframe width="220" src="http://www.youtube.com/embed/eNLc_OuPVxQ" frameborder="0" allowfullscreen></iframe>
-					</li>
+				{ % endfor % }
 				</ul>
 			</td>
 		</tr>
@@ -61,11 +43,11 @@
 <img 
 	class="mainimg" 
 	width="300" 
-	src="http://media1.express.be/pictures/300@280/personalities/mustafa-abdel-jalil.jpg"
+	src="{{ref.primaryImage.url}}"
 />
-<h1><center>Mustafa Abdul Jalil</center></h1>
+<h1><center>{{name}}</center></h1>
 <hr width="30%"/>
-<p><font size="4">From 2007 to 2011, Abdul Jalil was Minister of Justice (officially, the Secretary of the General People's Committee of Justice) under Colonel Muammar Gaddafi. He has been noted in some news media for his stance against various human rights violations in Libya, although others express a different view and accuse him, for example, of intransigence during the appeal by the Bulgarian nurses (that sentence was later converted to life imprisonment and the nurses were eventually released). During the civil war, Abdul Jalil was identified as the Chairman of the National Transitional Council based in Benghazi, although this position was contested by others in the uprising due to his past direct participation in Gaddafi's government as Minister of Justice for four years until 2011.
+<p><font size="4">{{info}}
 <br><hr width="30%"/><br>
 	<ul>
 		<li><b>Occupation:</b>  Chairman of the National Transitional Council of Libya</li>
