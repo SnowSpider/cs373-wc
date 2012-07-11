@@ -154,7 +154,7 @@ a.topmenu:hover,a.topmenu:active { background-color:#7A991A; }
 						</ul>
 					<li><a href="#" onclick="toggleItem('OrganizationList')"><font size="5"><b>Organizations:</b></font></a></li>
 						<ul id="OrganizationList">
-							{% for organization in organizations %}
+							{% for organization in orgs %}
 							<li><a target="center_frame" href="organizations/{{organizations.id}}">{{organizations.name}}</a></li>
 							{% endfor %}
 						</ul>
