@@ -9,7 +9,7 @@ from google.appengine.ext import db
 from google.appengine.ext.db import polymodel
 import logging
 
-data_models = {"people":[], "crises":[], "orgs":[]}
+data_models = {"people":{}, "crises":{}, "orgs":{}}
 
 class Link(db.Model):
     site = db.StringProperty()
@@ -86,6 +86,7 @@ class Reference(db.Model):
     exts = []#db.ListProperty(Link)
     
 class Crisis(db.Model):
+    idref = db.StringProperty(required=True)
     name = db.StringProperty(required=True)
     info = CrisisInfo()
     ref = Reference()
@@ -94,6 +95,7 @@ class Crisis(db.Model):
     relatedPeople = []#db.ListProperty(db.ReferenceProperty(Person))
 
 class Organization(db.Model):
+    idref = db.StringProperty(required=True)
     name = db.StringProperty(required=True)
     info = OrgInfo()
     ref = Reference()
@@ -102,6 +104,7 @@ class Organization(db.Model):
     relatedPeople = []#db.ListProperty(db.ReferenceProperty(Person))
 
 class Person(db.Model):
+    idref = db.StringProperty(required=True)
     name = db.StringProperty(required=True)
     info = PersonInfo()
     ref = Reference()
@@ -179,7 +182,7 @@ def import_file(xml_file):
     
     crises = root.findall("crisis")
     for crisis in crises: 
-        currentCrisis = Crisis(name = crisis.find("name").text)
+        currentCrisis = Crisis(idref = crisis.attrib["id"], name = crisis.find("name").text)
         info = crisis.find("info")
         currentCrisis.info.history = info.find("history").text
         currentCrisis.info.help = info.find("help").text
@@ -257,15 +260,15 @@ def import_file(xml_file):
         currentCrisis. misc = crisis.find("misc").text
         relatedOrgs = crisis.findall("org")
         for relatedOrg in relatedOrgs:
-            currentCrisis.relatedOrgs.append(relatedOrg)
+            currentCrisis.relatedOrgs.append(relatedOrg.attrib["idref"])
         relatedPeople = crisis.findall("person")
         for relatedPerson in relatedPeople:
-            currentCrisis.relatedPeople.append(relatedPerson)
-        data["crises"][currentCrisis.name] = currentCrisis
+            currentCrisis.relatedPeople.append(relatedPerson.attrib["idref"])
+        data["crises"][currentCrisis.idref] = currentCrisis
     
     people = root.findall("person")
     for person in people: 
-        currentPerson = Person(name = person.find("name").text)
+        currentPerson = Person(idref = person.attrib["id"], name = person.find("name").text)
         info = person.find("info")
         currentPerson.info.type_ = info.find("type").text
         birthdate = info.find("birthdate")
@@ -329,15 +332,15 @@ def import_file(xml_file):
         misc = person.find("misc").text
         relatedCrises = person.findall("crisis")
         for relatedCrisis in relatedCrises:
-            currentPerson.relatedCrises.append(relatedCrisis)
+            currentPerson.relatedCrises.append(relatedCrisis.attrib["idref"])
         relatedOrgs = person.findall("org")
         for relatedOrg in relatedOrgs:
-            currentPerson.relatedOrgs.append(relatedOrg)
-        data["people"][currentPerson.name] = currentPerson
+            currentPerson.relatedOrgs.append(relatedOrg.attrib["idref"])
+        data["people"][currentPerson.idref] = currentPerson
         
     orgs = root.findall("org")
     for org in orgs: 
-        currentOrg = Organization(name = org.find("name").text)
+        currentOrg = Organization(idref = org.attrib["id"], name = org.find("name").text)
         info = org.find("info")
         currentOrg.info.type_ = info.find("type").text
         currentOrg.info.history = info.find("history").text
@@ -405,11 +408,11 @@ def import_file(xml_file):
         currentOrg.misc = org.find("misc").text
         relatedCrises = org.findall("crisis")
         for relatedCrisis in relatedCrises:
-            currentOrg.relatedCrises.append(relatedCrisis)
+            currentOrg.relatedCrises.append(relatedCrisis.attrib["idref"])
         relatedPeople = org.findall("person")
         for relatedPerson in relatedPeople:
-            currentOrg.relatedPeople.append(relatedPerson)
-        data["crises"][currentOrg.name] = currentOrg
+            currentOrg.relatedPeople.append(relatedPerson.attrib["idref"])
+        data["crises"][currentOrg.idref] = currentOrg
         
     return data
 
