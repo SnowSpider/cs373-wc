@@ -120,8 +120,24 @@ class MainHandler(webapp.RequestHandler):
         This method is called by the GAE when a user navigates to the root page.
         It draws the page.
         """
+        path = self.request.path
+
+        #crises = Crisis.all().fetch(50)
+        #orgs = Organization.all().fetch(50)
+        #people = Person.all().fetch(50)    
+   
+
+        people = []    
+
+        template_values = {
+            'crises': crises,
+            'people': people,
+            'orgs': orgs,
+        }
+
         self.response.headers['Content-Type'] = 'text/html'
 
+        if 
         inFile = open("htmlgoodies/mockup.html", 'r')
         outstr = inFile.read() #"HELLO CAR RAMROD"
         inFile.close()
