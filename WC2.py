@@ -22,7 +22,7 @@ class FullAddress(db.Model):
     city = db.StringProperty()
     state = db.StringProperty()
     country = db.StringProperty()
-    _zip = db.StringProperty()
+    zip_ = db.StringProperty()
     
 class ContactInfo(db.Model):
     phone = db.PhoneNumberProperty()
@@ -61,58 +61,58 @@ class CrisisInfo(db.Model):
     history = db.TextProperty()
     help = db.StringProperty()
     resources = db.StringProperty()
-    _type = db.StringProperty()
+    type_ = db.StringProperty()
     time = Date()
     loc = Location()
     impact = Impact()
     
 class OrgInfo(db.Model):
-    _type = db.StringProperty()
+    type_ = db.StringProperty()
     history = db.TextProperty()
     contact = ContactInfo()
     loc = Location()
 
 class PersonInfo(db.Model):
-    _type = db.StringProperty()
-    birthDate = Date()
+    type_ = db.StringProperty()
+    birthdate = Date()
     nationality = db.StringProperty()
     biography = db.TextProperty()
     
 class Reference(db.Model):
     primaryImage = Link()
-    images = db.ListProperty(Link)
-    videos = db.ListProperty(Link)
-    socials = db.ListProperty(Link)
-    exts = db.ListProperty(Link)
+    images = []#db.ListProperty(Link)
+    videos = []#db.ListProperty(Link)
+    socials = []#db.ListProperty(Link)
+    exts = []#db.ListProperty(Link)
     
 class Crisis(db.Model):
     name = db.StringProperty(required=True)
-    info = PersonInfo()
+    info = CrisisInfo()
     ref = Reference()
     misc = db.StringProperty()
-    relatedOrgs = db.ListProperty(db.ReferenceProperty(Organization))
-    relatedPeople = db.ListProperty(db.ReferenceProperty(Person))
-
-class WorldCrises(db.Model):
-    crises = db.ListProperty(Crisis);
-    orgs = db.ListProperty(Organization);
-    people = db.ListProperty(Person);
+    relatedOrgs = []#db.ListProperty(db.ReferenceProperty(Organization))
+    relatedPeople = []#db.ListProperty(db.ReferenceProperty(Person))
 
 class Organization(db.Model):
     name = db.StringProperty(required=True)
     info = OrgInfo()
     ref = Reference()
     misc = db.StringProperty()
-    relatedCrises = db.ListProperty(db.ReferenceProperty(Crisis))
-    relatedPeople = db.ListProperty(db.ReferenceProperty(Person))
+    relatedCrises = []#db.ListProperty(db.ReferenceProperty(Crisis))
+    relatedPeople = []#db.ListProperty(db.ReferenceProperty(Person))
 
 class Person(db.Model):
     name = db.StringProperty(required=True)
     info = PersonInfo()
     ref = Reference()
     misc = db.StringProperty()
-    relatedCrises = db.ListProperty(db.ReferenceProperty(Crisis))
-    relatedOrgs = db.ListProperty(db.ReferenceProperty(Organization))
+    relatedCrises = []#db.ListProperty(db.ReferenceProperty(Crisis))
+    relatedOrgs = []#db.ListProperty(db.ReferenceProperty(Organization))
+
+class WorldCrises(db.Model):
+    crises = []#db.ListProperty(Crisis)
+    orgs = []#db.ListProperty(Organization)
+    people = []#db.ListProperty(Person)
     
 class MainHandler(webapp.RequestHandler):
     def get(self):
@@ -175,7 +175,7 @@ def import_file(xml_file):
     tree = ET.ElementTree(file = xml_file)
     root = tree.getroot()
     
-    imported = {"people": {}, "crises": {}, "orgs": {}}
+    data = {"people": {}, "crises": {}, "orgs": {}}
     
     crises = root.findall("crisis")
     for crisis in crises: 
@@ -184,23 +184,23 @@ def import_file(xml_file):
         currentCrisis.info.history = info.find("history").text
         currentCrisis.info.help = info.find("help").text
         currentCrisis.info.resources = info.find("resources").text
-        currentCrisis.info._type = info.find("type").text
+        currentCrisis.info.type_ = info.find("type").text
         time = info.find("time")
-        currentCrisis.info.time = time.find("time").text
-        currentCrisis.info.day = time.find("day").text
-        currentCrisis.info.month = time.find("month").text
-        currentCrisis.info.year = time.find("year").text
-        currentCrisis.info.misc = time.find("misc").text
+        currentCrisis.info.time.time = time.find("time").text
+        currentCrisis.info.time.day = int(time.find("day").text)
+        currentCrisis.info.time.month = int(time.find("month").text)
+        currentCrisis.info.time.year = int(time.find("year").text)
+        currentCrisis.info.time.misc = time.find("misc").text
         loc = info.find("loc")
         currentCrisis.info.loc.city = loc.find("city").text
         currentCrisis.info.loc.region = loc.find("region").text
         currentCrisis.info.loc.country = loc.find("country").text
         impact = info.find("impact")
         human = impact.find("human")
-        currentCrisis.info.impact.human.deaths = human.find("deaths").text
-        currentCrisis.info.impact.human.displaced = human.find("displaced").text
-        currentCrisis.info.impact.human.injured = human.find("injured").text
-        currentCrisis.info.impact.human.missing = human.find("missing").text
+        currentCrisis.info.impact.human.deaths = int(human.find("deaths").text)
+        currentCrisis.info.impact.human.displaced = int(human.find("displaced").text)
+        currentCrisis.info.impact.human.injured = int(human.find("injured").text)
+        currentCrisis.info.impact.human.missing = int(human.find("missing").text)
         currentCrisis.info.impact.human.misc = human.find("misc").text
         economic = impact.find("economic")
         currentCrisis.info.impact.economic.amount = economic.find("amount").text
@@ -208,19 +208,52 @@ def import_file(xml_file):
         currentCrisis.info.impact.economic.misc = economic.find("misc").text
         ref = crisis.find("ref")
         primaryImage = ref.find("primaryImage")
-        currentCrisis.ref.append(Link(site = primaryImage.find("site"), title = primaryImage.find("title"), url = primaryImage.find("url"), description = primaryImage.find("description")))
+        #currentCrisis.ref.append(Link(site = primaryImage.find("site").text, title = primaryImage.find("title").text, url = primaryImage.find("url").text, description = primaryImage.find("description").text))
+        currentCrisis.ref.primaryImage = Link(site = primaryImage.find("site").text, title = primaryImage.find("title").text, url = primaryImage.find("url").text, description = primaryImage.find("description").text)
         images = ref.findall("image")
         for image in images:
-            currentCrisis.ref.append(Link(site = image.find("site"), title = image.find("title"), url = image.find("url"), description = image.find("description")))
+            s = image.find("site")
+            s = "" if s is None else s.text
+            t = image.find("title")
+            t = "" if t is None else t.text
+            u = image.find("url").text
+            d = image.find("description")
+            d = "" if d is None else d.text
+            currentCrisis.ref.images.append(Link(site = s, title = t, url = u, description = d))
+            #currentCrisis.ref.images.append(Link(site = image.find("site").text, title = image.find("title").text, url = image.find("url").text, description = image.find("description").text))
         videos = ref.findall("video")
         for video in videos:
-            currentCrisis.ref.append(Link(site = video.find("site"), title = video.find("title"), url = video.find("url"), description = video.find("description")))
+            s = video.find("site")
+            s = "" if s is None else s.text
+            t = video.find("title")
+            t = "" if t is None else t.text
+            u = video.find("url").text
+            d = video.find("description")
+            d = "" if d is None else d.text
+            currentCrisis.ref.videos.append(Link(site = s, title = t, url = u, description = d))
+            #currentCrisis.ref.videos.append(Link(site = video.find("site").text, title = video.find("title").text, url = video.find("url").text, description = video.find("description").text))
         socials = ref.findall("social") 
         for social in socials:
-        	currentCrisis.ref.append(Link(site = social.find("site"), title = social.find("title"), url = social.find("url"), description = social.find("description")))
+            s = social.find("site")
+            s = "" if s is None else s.text
+            t = social.find("title")
+            t = "" if t is None else t.text
+            u = social.find("url").text
+            d = social.find("description")
+            d = "" if d is None else d.text
+            currentCrisis.ref.socials.append(Link(site = s, title = t, url = u, description = d))
+            #currentCrisis.ref.socials.append(Link(site = social.find("site").text, title = social.find("title").text, url = social.find("url").text, description = social.find("description").text))
         exts = ref.findall("ext")
         for ext in exts:
-        	currentCrisis.ref.append(Link(site = ext.find("site"), title = ext.find("title"), url = ext.find("url"), description = ext.find("description")))
+            s = ext.find("site")
+            s = "" if s is None else s.text
+            t = ext.find("title")
+            t = "" if t is None else t.text
+            u = ext.find("url").text
+            d = ext.find("description")
+            d = "" if d is None else d.text
+            currentCrisis.ref.exts.append(Link(site = s, title = t, url = u, description = d))
+            #currentCrisis.ref.exts.append(Link(site = ext.find("site").text, title = ext.find("title").text, url = ext.find("url").text, description = ext.find("description").text))
         currentCrisis. misc = crisis.find("misc").text
         relatedOrgs = crisis.findall("org")
         for relatedOrg in relatedOrgs:
@@ -228,36 +261,71 @@ def import_file(xml_file):
         relatedPeople = crisis.findall("person")
         for relatedPerson in relatedPeople:
             currentCrisis.relatedPeople.append(relatedPerson)
-        data["crises"][currentCrisis.name] = currentCrisis;
+        data["crises"][currentCrisis.name] = currentCrisis
     
     people = root.findall("person")
     for person in people: 
         currentPerson = Person(name = person.find("name").text)
         info = person.find("info")
-        currentPerson.info._type = info.find("type").text
-        birthdate = info.find("birthdate").text
-        currentPerson.info.time = birthdate.find("time").text
-        currentPerson.info.day = birthdate.find("day").text
-        currentPerson.info.month = birthdate.find("month").text
-        currentPerson.info.year = bithdate.find("year").text
-        currentPerson.info.misc = bithdate.find("misc").text
+        currentPerson.info.type_ = info.find("type").text
+        birthdate = info.find("birthdate")
+        currentPerson.info.birthdate.time = birthdate.find("time").text
+        currentPerson.info.birthdate.day = int(birthdate.find("day").text)
+        currentPerson.info.birthdate.month = int(birthdate.find("month").text)
+        currentPerson.info.birthdate.year = int(birthdate.find("year").text)
+        currentPerson.info.birthdate.misc = birthdate.find("misc").text
         currentPerson.info.nationality = info.find("nationality").text
         currentPerson.info.biography = info.find("biography").text
         ref = person.find("ref")
         primaryImage = ref.find("primaryImage")
-        currentPerson.ref.append(Link(site = primaryImage.find("site"), title = primaryImage.find("title"), url = primaryImage.find("url"), description = primaryImage.find("description")))
+        #currentPerson.ref.append(Link(site = primaryImage.find("site").text, title = primaryImage.find("title").text, url = primaryImage.find("url").text, description = primaryImage.find("description").text))
+        currentPerson.ref.primaryImage = Link(site = primaryImage.find("site").text, title = primaryImage.find("title").text, url = primaryImage.find("url").text, description = primaryImage.find("description").text)
         images = ref.findall("image")
         for image in images:
-            currentPerson.ref.append(Link(site = image.find("site"), title = image.find("title"), url = image.find("url"), description = image.find("description")))
+            s = image.find("site")
+            s = "" if s is None else s.text
+            t = image.find("title")
+            t = "" if t is None else t.text
+            u = image.find("url").text
+            d = image.find("description")
+            d = "" if d is None else d.text
+            currentPerson.ref.images.append(Link(site = s, title = t, url = u, description = d))
+            #currentPerson.ref.images.append(Link(site = image.find("site").text, title = image.find("title").text, url = image.find("url").text, description = image.find("description").text))
         videos = ref.findall("video")
         for video in videos:
-            currentPerson.ref.append(Link(site = video.find("site"), title = video.find("title"), url = video.find("url"), description = video.find("description")))
-        socials = ref.find("social") 
+            s = video.find("site")
+            s = "" if s is None else s.text
+            t = video.find("title")
+            t = "" if t is None else t.text
+            u = video.find("url").text
+            d = video.find("description")
+            d = "" if d is None else d.text
+            currentPerson.ref.videos.append(Link(site = s, title = t, url = u, description = d))
+            #currentPerson.ref.videos.append(Link(site = video.find("site").text, title = video.find("title").text, url = video.find("url").text, description = video.find("description").text))
+        debug(currentPerson.name)
+        debug("FFFFFUUUUUUUU-")
+        socials = ref.findall("social") 
         for social in socials:
-        	currentPerson.ref.append(Link(site = social.find("site"), title = social.find("title"), url = social.find("url"), description = social.find("description")))
+            s = social.find("site")
+            s = "" if s is None else s.text
+            t = social.find("title")
+            t = "" if t is None else t.text
+            u = social.find("url").text
+            d = social.find("description")
+            d = "" if d is None else d.text
+            currentPerson.ref.socials.append(Link(site = s, title = t, url = u, description = d))
+            #currentPerson.ref.socials.append(Link(site = social.find("site").text, title = social.find("title").text, url = social.find("url").text, description = social.find("description").text))
         exts = ref.findall("ext")
         for ext in exts:
-        	currentPerson.ref.append(Link(site = ext.find("site"), title = ext.find("title"), url = ext.find("url"), description = ext.find("description")))
+            s = ext.find("site")
+            s = "" if s is None else s.text
+            t = ext.find("title")
+            t = "" if t is None else t.text
+            u = ext.find("url").text
+            d = ext.find("description")
+            d = "" if d is None else d.text
+            currentPerson.ref.exts.append(Link(site = s, title = t, url = u, description = d))
+            #currentPerson.ref.exts.append(Link(site = ext.find("site").text, title = ext.find("title").text, url = ext.find("url").text, description = ext.find("description").text))
         misc = person.find("misc").text
         relatedCrises = person.findall("crisis")
         for relatedCrisis in relatedCrises:
@@ -271,7 +339,7 @@ def import_file(xml_file):
     for org in orgs: 
         currentOrg = Organization(name = org.find("name").text)
         info = org.find("info")
-        currentOrg.info._type = info.find("type").text
+        currentOrg.info.type_ = info.find("type").text
         currentOrg.info.history = info.find("history").text
         contact = info.find("contact")
         currentOrg.info.phone = contact.find("phone").text
@@ -288,21 +356,52 @@ def import_file(xml_file):
         currentCrisis.info.loc.country = loc.find("country").text
         ref = org.find("ref")
         primaryImage = ref.find("primaryImage")
-        #currentOrg.ref.primaryImage = something
-        #currentOrg.ref.images.append(...)
-        currentOrg.ref.append(Link(site = primaryImage.find("site"), title = primaryImage.find("title"), url = primaryImage.find("url"), description = primaryImage.find("description")))
+        #currentOrg.ref.append(Link(site = primaryImage.find("site").text, title = primaryImage.find("title").text, url = primaryImage.find("url").text, description = primaryImage.find("description").text))
+        currentOrg.ref.primaryImage = Link(site = primaryImage.find("site").text, title = primaryImage.find("title").text, url = primaryImage.find("url").text, description = primaryImage.find("description").text)
         images = ref.findall("image")
         for image in images:
-            currentOrg.ref.append(Link(site = image.find("site"), title = image.find("title"), url = image.find("url"), description = image.find("description")))
+            s = image.find("site")
+            s = "" if s is None else s.text
+            t = image.find("title")
+            t = "" if t is None else t.text
+            u = image.find("url").text
+            d = image.find("description")
+            d = "" if d is None else d.text
+            currentOrg.ref.images.append(Link(site = s, title = t, url = u, description = d))
+            #currentOrg.ref.images.append(Link(site = image.find("site").text, title = image.find("title").text, url = image.find("url").text, description = image.find("description").text))
         videos = ref.findall("video")
         for video in videos:
-            currentOrg.ref.append(Link(site = video.find("site"), title = video.find("title"), url = video.find("url"), description = video.find("description")))
-        socials = ref.find("social") 
+            s = video.find("site")
+            s = "" if s is None else s.text
+            t = video.find("title")
+            t = "" if t is None else t.text
+            u = video.find("url").text
+            d = video.find("description")
+            d = "" if d is None else d.text
+            currentOrg.ref.videos.append(Link(site = s, title = t, url = u, description = d))
+            #currentOrg.ref.videos.append(Link(site = video.find("site").text, title = video.find("title").text, url = video.find("url").text, description = video.find("description").text))
+        socials = ref.findall("social") 
         for social in socials:
-        	currentOrg.ref.append(Link(site = social.find("site"), title = social.find("title"), url = social.find("url"), description = social.find("description")))
+            s = social.find("site")
+            s = "" if s is None else s.text
+            t = social.find("title")
+            t = "" if t is None else t.text
+            u = social.find("url").text
+            d = social.find("description")
+            d = "" if d is None else d.text
+            currentOrg.ref.socials.append(Link(site = s, title = t, url = u, description = d))
+            #currentOrg.ref.socials.append(Link(site = social.find("site").text, title = social.find("title").text, url = social.find("url").text, description = social.find("description").text))
         exts = ref.findall("ext")
         for ext in exts:
-        	currentOrg.ref.append(Link(site = ext.find("site"), title = ext.find("title"), url = ext.find("url"), description = ext.find("description")))
+            s = ext.find("site")
+            s = "" if s is None else s.text
+            t = ext.find("title")
+            t = "" if t is None else t.text
+            u = ext.find("url").text
+            d = ext.find("description")
+            d = "" if d is None else d.text
+            currentOrg.ref.exts.append(Link(site = s, title = t, url = u, description = d))
+            #currentOrg.ref.exts.append(Link(site = ext.find("site").text, title = ext.find("title").text, url = ext.find("url").text, description = ext.find("description").text))
         currentOrg.misc = org.find("misc").text
         relatedCrises = org.findall("crisis")
         for relatedCrisis in relatedCrises:
@@ -310,7 +409,7 @@ def import_file(xml_file):
         relatedPeople = org.findall("person")
         for relatedPerson in relatedPeople:
             currentOrg.relatedPeople.append(relatedPerson)
-        data["crises"][currentOrg.name] = currentOrg;
+        data["crises"][currentOrg.name] = currentOrg
         
     return data
 
@@ -348,81 +447,83 @@ def ExportXml(data):
         myString.append("\t<crisis>\n")
         myString.append("\t\t<name>" + data["crises"][crisis].name + "</name>\n")
         myString.append("\t\t<info>\n")
-        mystring.append("\t\t\t<history>" + data["crises"][crisis].info.history + "</history>\n")
-        mystring.append("\t\t\t<help>" + data["crises"][crisis].info.help + "</help>\n")
-        mystring.append("\t\t\t<resources>" + data["crises"][crisis].info.resources + "</resources>\n")
-        mystring.append("\t\t\t<type>" + data["crises"][crisis].info.type + "</type>\n")
-        mystring.append("\t\t\t<history>" + data["crises"][crisis].info.history + "</history>\n")
+        myString.append("\t\t\t<history>" + data["crises"][crisis].info.history + "</history>\n")
+        myString.append("\t\t\t<help>" + data["crises"][crisis].info.help + "</help>\n")
+        myString.append("\t\t\t<resources>" + data["crises"][crisis].info.resources + "</resources>\n")
+        myString.append("\t\t\t<type>" + data["crises"][crisis].info.type_ + "</type>\n")
+        myString.append("\t\t\t<history>" + data["crises"][crisis].info.history + "</history>\n")
         myString.append("\t\t\t<time>\n")
-        mystring.append("\t\t\t\t<time>" + data["crises"][crisis].info.time.time + "</time>\n")
-        mystring.append("\t\t\t\t<day>" + data["crises"][crisis].info.time.day + "</day>\n")
-        mystring.append("\t\t\t\t<month>" + data["crises"][crisis].info.time.month + "</month>\n")
-        mystring.append("\t\t\t\t<year>" + data["crises"][crisis].info.time.year + "</year>\n")
-        mystring.append("\t\t\t\t<misc>" + data["crises"][crisis].info.time.misc + "</misc>\n")
+        myString.append("\t\t\t\t<time>" + data["crises"][crisis].info.time.time + "</time>\n")
+        myString.append("\t\t\t\t<day>" + data["crises"][crisis].info.time.day + "</day>\n")
+        myString.append("\t\t\t\t<month>" + data["crises"][crisis].info.time.month + "</month>\n")
+        myString.append("\t\t\t\t<year>" + data["crises"][crisis].info.time.year + "</year>\n")
+        myString.append("\t\t\t\t<misc>" + data["crises"][crisis].info.time.misc + "</misc>\n")
         myString.append("\t\t\t</time>\n")
         myString.append("\t\t\t<loc>\n")
-        mystring.append("\t\t\t\t<city>" + data["crises"][crisis].info.loc.city + "</city>\n")
-        mystring.append("\t\t\t\t<region>" + data["crises"][crisis].info.loc.region + "</region>\n")
-        mystring.append("\t\t\t\t<country>" + data["crises"][crisis].info.loc.country + "</country>\n")
+        myString.append("\t\t\t\t<city>" + data["crises"][crisis].info.loc.city + "</city>\n")
+        myString.append("\t\t\t\t<region>" + data["crises"][crisis].info.loc.region + "</region>\n")
+        myString.append("\t\t\t\t<country>" + data["crises"][crisis].info.loc.country + "</country>\n")
         myString.append("\t\t\t</loc>\n")
         myString.append("\t\t\t<impact>\n")
         myString.append("\t\t\t\t<human>\n")
-        mystring.append("\t\t\t\t\t<deaths>" + data["crises"][crisis].info.impact.human.deaths + "</deaths>\n")
-        mystring.append("\t\t\t\t\t<displaced>" + data["crises"][crisis].info.impact.human.displaced + "</displaced>\n")
-        mystring.append("\t\t\t\t\t<injured>" + data["crises"][crisis].info.impact.human.injured + "</injured>\n")
-        mystring.append("\t\t\t\t\t<missing>" + data["crises"][crisis].info.impact.human.missing + "</missing>\n")
-        mystring.append("\t\t\t\t\t<misc>" + data["crises"][crisis].info.impact.human.misc + "</misc>\n")
+        myString.append("\t\t\t\t\t<deaths>" + data["crises"][crisis].info.impact.human.deaths + "</deaths>\n")
+        myString.append("\t\t\t\t\t<displaced>" + data["crises"][crisis].info.impact.human.displaced + "</displaced>\n")
+        myString.append("\t\t\t\t\t<injured>" + data["crises"][crisis].info.impact.human.injured + "</injured>\n")
+        myString.append("\t\t\t\t\t<missing>" + data["crises"][crisis].info.impact.human.missing + "</missing>\n")
+        myString.append("\t\t\t\t\t<misc>" + data["crises"][crisis].info.impact.human.misc + "</misc>\n")
         myString.append("\t\t\t\t</human>\n")
         myString.append("\t\t\t\t<economic>\n")
-        mystring.append("\t\t\t\t\t<amount>" + data["crises"][crisis].info.impact.economic.amount + "</amount>\n")
-        mystring.append("\t\t\t\t\t<currency>" + data["crises"][crisis].info.impact.economic.currency + "</currency>\n")
-        mystring.append("\t\t\t\t\t<misc>" + data["crises"][crisis].info.impact.economic.misc + "</misc>\n")
+        myString.append("\t\t\t\t\t<amount>" + data["crises"][crisis].info.impact.economic.amount + "</amount>\n")
+        myString.append("\t\t\t\t\t<currency>" + data["crises"][crisis].info.impact.economic.currency + "</currency>\n")
+        myString.append("\t\t\t\t\t<misc>" + data["crises"][crisis].info.impact.economic.misc + "</misc>\n")
         myString.append("\t\t\t\t</economic>\n")
         myString.append("\t\t\t</impact>\n")
         myString.append("\t\t</info>\n")
         myString.append("\t\t<ref>\n")
         myString.append("\t\t\t<primaryImage>\n")
-        mystring.append("\t\t\t\t<site>" + data["crises"][crisis].ref.primaryImage.site + "</site>\n")
-        mystring.append("\t\t\t\t<title>" + data["crises"][crisis].ref.primaryImage.title + "</title>\n")
-        mystring.append("\t\t\t\t<url>" + data["crises"][crisis].ref.primaryImage.url + "</url>\n")
-        mystring.append("\t\t\t\t<description>" + data["crises"][crisis].ref.primaryImage.description + "</description>\n")
+        myString.append("\t\t\t\t<site>" + data["crises"][crisis].ref.primaryImage.site + "</site>\n")
+        myString.append("\t\t\t\t<title>" + data["crises"][crisis].ref.primaryImage.title + "</title>\n")
+        myString.append("\t\t\t\t<url>" + data["crises"][crisis].ref.primaryImage.url + "</url>\n")
+        myString.append("\t\t\t\t<description>" + data["crises"][crisis].ref.primaryImage.description + "</description>\n")
         myString.append("\t\t\t</primaryImage>\n")
-        for image in data["crises"][crisis].ref.images
+        for image in data["crises"][crisis].ref.images:
         	myString.append("\t\t\t<image>\n")
-        	mystring.append("\t\t\t\t<site>" + data["crises"][crisis].ref.image.site + "</site>\n")
-        	mystring.append("\t\t\t\t<title>" + data["crises"][crisis].ref.image.title + "</title>\n")
-        	mystring.append("\t\t\t\t<url>" + data["crises"][crisis].ref.image.url + "</url>\n")
-        	mystring.append("\t\t\t\t<description>" + data["crises"][crisis].ref.image.description + "</description>\n")
+        	myString.append("\t\t\t\t<site>" + data["crises"][crisis].ref.image.site + "</site>\n")
+        	myString.append("\t\t\t\t<title>" + data["crises"][crisis].ref.image.title + "</title>\n")
+        	myString.append("\t\t\t\t<url>" + data["crises"][crisis].ref.image.url + "</url>\n")
+        	myString.append("\t\t\t\t<description>" + data["crises"][crisis].ref.image.description + "</description>\n")
         	myString.append("\t\t\t</image>\n")
-        for video in data["crises"][crisis].ref.videos
+        for video in data["crises"][crisis].ref.videos:
         	myString.append("\t\t\t<video>\n")
-        	mystring.append("\t\t\t\t<site>" + data["crises"][crisis].ref.video.site + "</site>\n")
-        	mystring.append("\t\t\t\t<title>" + data["crises"][crisis].ref.video.title + "</title>\n")
-        	mystring.append("\t\t\t\t<url>" + data["crises"][crisis].ref.video.url + "</url>\n")
-        	mystring.append("\t\t\t\t<description>" + data["crises"][crisis].ref.video.description + "</description>\n")
+        	myString.append("\t\t\t\t<site>" + data["crises"][crisis].ref.video.site + "</site>\n")
+        	myString.append("\t\t\t\t<title>" + data["crises"][crisis].ref.video.title + "</title>\n")
+        	myString.append("\t\t\t\t<url>" + data["crises"][crisis].ref.video.url + "</url>\n")
+        	myString.append("\t\t\t\t<description>" + data["crises"][crisis].ref.video.description + "</description>\n")
         	myString.append("\t\t\t</video>\n")
-        for social in data["crises"][crisis].ref.socials
+        for social in data["crises"][crisis].ref.socials:
         	myString.append("\t\t\t<social>\n")
-        	mystring.append("\t\t\t\t<site>" + data["crises"][crisis].ref.social.site + "</site>\n")
-        	mystring.append("\t\t\t\t<title>" + data["crises"][crisis].ref.social.title + "</title>\n")
-        	mystring.append("\t\t\t\t<url>" + data["crises"][crisis].ref.social.url + "</url>\n")
-        	mystring.append("\t\t\t\t<description>" + data["crises"][crisis].ref.social.description + "</description>\n")
+        	myString.append("\t\t\t\t<site>" + data["crises"][crisis].ref.social.site + "</site>\n")
+        	myString.append("\t\t\t\t<title>" + data["crises"][crisis].ref.social.title + "</title>\n")
+        	myString.append("\t\t\t\t<url>" + data["crises"][crisis].ref.social.url + "</url>\n")
+        	myString.append("\t\t\t\t<description>" + data["crises"][crisis].ref.social.description + "</description>\n")
         	myString.append("\t\t\t</social>\n")
-        for ext in data["crises"][crisis].ref.exts
+        for ext in data["crises"][crisis].ref.exts:
         	myString.append("\t\t\t<ext>\n")
-        	mystring.append("\t\t\t\t<site>" + data["crises"][crisis].ref.ext.site + "</site>\n")
-        	mystring.append("\t\t\t\t<title>" + data["crises"][crisis].ref.ext.title + "</title>\n")
-        	mystring.append("\t\t\t\t<url>" + data["crises"][crisis].ref.ext.url + "</url>\n")
-        	mystring.append("\t\t\t\t<description>" + data["crises"][crisis].ext.social.description + "</description>\n")
+        	myString.append("\t\t\t\t<site>" + data["crises"][crisis].ref.ext.site + "</site>\n")
+        	myString.append("\t\t\t\t<title>" + data["crises"][crisis].ref.ext.title + "</title>\n")
+        	myString.append("\t\t\t\t<url>" + data["crises"][crisis].ref.ext.url + "</url>\n")
+        	myString.append("\t\t\t\t<description>" + data["crises"][crisis].ext.social.description + "</description>\n")
         	myString.append("\t\t\t</ext>\n")
         myString.append("\t\t</ref>\n")
-        mystring.append("\t\t<misc>" + data["crises"][crisis].misc + "</misc>\n")
-        for orgs in data["crises"][crisis].org
+        myString.append("\t\t<misc>" + data["crises"][crisis].misc + "</misc>\n")
+        
+        """
+        for orgs in data["crises"][crisis].org:
         	myString.append("\t\t<org " #...
         	#..
-        for person in data["crises"][crisis]
+        for person in data["crises"][crisis]:
         	myString.append(...)
-        
+        """
         myString += "\t<\crisis>\n"
         
     for org in data["orgs"]:
