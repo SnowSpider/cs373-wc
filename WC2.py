@@ -4,9 +4,11 @@ import wsgiref.handlers
 import xml.etree.cElementTree as ET
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import blobstore_handlers
+from google.appengine.ext.webapp import template
 from google.appengine.ext import blobstore
 from google.appengine.ext import db
 from google.appengine.ext.db import polymodel
+
 import logging
 
 data_models = {"people":{}, "crises":{}, "orgs":{}}
@@ -129,9 +131,9 @@ class MainHandler(webapp.RequestHandler):
         #orgs = Organization.all().fetch(50)
         #people = Person.all().fetch(50)    
    
-        crises = []
-        orgs = []
-        people = []    
+        crises = data_models['crises']
+        orgs = data_models['orgs']
+        people = data_models['people']    
 
         template_values = {
             'crises': crises,
@@ -143,17 +145,16 @@ class MainHandler(webapp.RequestHandler):
 
         if path.startswith("/crises/") :
             self.response.out.write("crisis page yet to be implemented")
+            self.response.out.write(crises.values())
         elif path.startswith("/orgs/") :
             self.response.out.write("org page yet to be implemented")
         elif path.startswith("/people/"):
             self.response.out.write("person page yet to be implemented")
         else:
-
+            #self.response.out.write(template.render('djangogoodies/maintemplate.html', template_values))
             inFile = open("htmlgoodies/mockup.html", 'r')
             outstr = inFile.read() #"HELLO CAR RAMROD"
             inFile.close()
-            imported = ImportXml("WC1.xml")
-            debug("IMPORTED: " + str(imported))
             self.response.out.write(outstr)
 
 class ExportHandler(webapp.RequestHandler):
