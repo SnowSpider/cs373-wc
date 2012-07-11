@@ -646,8 +646,8 @@ def ExportXml(data):
         #some stuff about the idrefs of related crisis and person
         myString += "\t<\person>\n"
     
-    myString += "</worldCrises>"
-    return myString
+    myString.append("</worldCrises>")
+    return "".join(myString)
 
 # -----
 # Debug
