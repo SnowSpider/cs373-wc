@@ -205,7 +205,7 @@ def import_file(xml_file):
     root = tree.getroot()
     
     data = {"people": {}, "crises": {}, "orgs": {}}
-    
+
     crises = root.findall("crisis")
     for crisis in crises: 
         currentCrisis = Crisis(idref = crisis.attrib["id"], name = crisis.find("name").text)
@@ -364,8 +364,8 @@ def import_file(xml_file):
             currentPerson.relatedOrgs.append(relatedOrg.attrib["idref"])
         data["people"][currentPerson.idref] = currentPerson
         
-    orgs = root.findall("org")
-    for org in orgs: 
+    orgs = root.findall("organization")
+    for org in orgs:
         currentOrg = Organization(idref = org.attrib["id"], name = org.find("name").text)
         info = org.find("info")
         currentOrg.info.type_ = info.find("type").text
@@ -439,7 +439,7 @@ def import_file(xml_file):
         for relatedPerson in relatedPeople:
             currentOrg.relatedPeople.append(relatedPerson.attrib["idref"])
         data["orgs"][currentOrg.idref] = currentOrg
-        
+
     return data
 
 # ------
