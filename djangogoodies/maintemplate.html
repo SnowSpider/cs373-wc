@@ -142,21 +142,36 @@ a.topmenu:hover,a.topmenu:active { background-color:#7A991A; }
 				<ul>
 					<li><a href="#" onclick="toggleItem('PeopleList')"><font size="5"><b>People:</b></font></a></li>
 						<ul id="PeopleList">
+						        {% if people %}
 							{% for person in people %}
 							<li><a target="center_frame" href="people/{{person.idref}}">{{person.name}}</a></li>
 							{% endfor %}
+							{% else %}
+							<li><a
+	target="center_frame" href="import">Import something</a></li>
+							{% endif %}
                         </ul>
 					<li><a href="#" onclick="toggleItem('CrisisList')"><font size="5"><b>Crises:</b></font></a></li>
 						<ul id="CrisisList">
+						        {% if crises %}
 							{% for crisis in crises %}
 							<li><a target="center_frame" href="crises/{{crises.idref}}">{{crisis.name}}</a></li>
 							{% endfor %}
+							{% else %}
+							<li><a
+	target="center_frame" href="import">Import something</a></li>
+							{% endif %}
 						</ul>
 					<li><a href="#" onclick="toggleItem('OrganizationList')"><font size="5"><b>Organizations:</b></font></a></li>
 						<ul id="OrganizationList">
-							{% for org in orgs %}
+						        {% if orgs %}
+						        {% for org in orgs %}
 							<li><a target="center_frame" href="organizations/{{org.idref}}">{{org.name}}</a></li>
 							{% endfor %}
+							{% else %}
+							<li><a
+	target="center_frame" href="import">Import something</a></li>
+							{% endif %}
 						</ul>
 				</ul>
 			</div>
