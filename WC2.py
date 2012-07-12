@@ -145,12 +145,10 @@ class MainHandler(webapp.RequestHandler):
 
         if path.startswith("/crises/") :
             self.response.out.write("crisis page yet to be implemented")
-            self.response.out.write(crises)
-        elif path.startswith("/orgs/") :
+        elif path.startswith("/organizations/") :
             self.response.out.write("org page yet to be implemented")
         elif path.startswith("/people/"):
             self.response.out.write("person page yet to be implemented")
-            self.response.out.write(orgs)
         else:
             self.response.out.write(str(template.render('djangogoodies/maintemplate.html', template_values)))
             #inFile = open("htmlgoodies/mockup.html", 'r')
