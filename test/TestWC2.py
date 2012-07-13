@@ -61,6 +61,22 @@ class TestWC2 (unittest.TestCase) :
         debug("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU")
         
         self.assert_(data[0].name == "Libyan Civil War")
+        self.assert_(data[0].info.type_ == "Civil War")
+        self.assert_(data[0].info.time.day == 15)
+        self.assert_(data[0].info.time.month == 2)
+        self.assert_(data[0].info.time.year == 2011)
+        self.assert_(data[0].info.loc.country == "Libya")
+        self.assert_(data[0].info.impact.human.deaths == 30000)
+        self.assert_(data[0].info.impact.human.missing == 4000)
+        self.assert_(data[1].name == "Syrian Uprising")
+        self.assert_(data[1].info.type_ == "violent internal conflict in Syria")
+        self.assert_(data[1].info.resources == "medicine, fuel, food")
+        self.assert_(data[2].name == "Iranian Green Movement")
+        self.assert_(data[2].info.help == "World support")
+        
+        
+        
+        
         
         
         
