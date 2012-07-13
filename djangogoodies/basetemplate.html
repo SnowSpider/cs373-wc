@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>{% block title %}{{name}}{ % endblock %}</title>
+<title>{% block title %}{{name}}{% endblock %}</title>
 <head>
 <script language="javascript" src="fancybox/lib/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="fancybox/source/jquery.fancybox.pack.js"></script>
@@ -21,20 +21,20 @@
 		<tr>
 			<td>
 				<ul>
-					{ % block imagesandmovies % }
-					{ % for image in ref.images %}
+					{% block imagesandmovies %}
+					{% for image in ref.images %}
 						<li class="center">
 							<a href="{{image.url}}" class="fancybox" rel="pix">
 								<img width="220" src="{{image.url}}">
 							</a>
 						</li>
-					{ % endfor % }
-					{ % for video in ref.videos %}
+					{% endfor %}
+					{% for video in ref.videos %}
 						<li>
 							<iframe width="220" src="{{video.url}}" frameborder="0" allowfullscreen></iframe>
 						</li>
-					{ % endfor % }
-					{ % endblock % }
+					{% endfor %}
+					{% endblock %}
 				</ul>
 			</td>
 		</tr>
@@ -42,7 +42,7 @@
 </div>
 <!-- content -->
 <div style="overflow-x: hidden; overflow-y: scroll; height:650px; margin: 0px;">
-{ % block mainchunk % }
+{% block mainchunk %}
 <!--
 <img class="mainimg" width="300" src="images/bashar_main.png"/>
 <h1><center>Bashar al-Assad</center></h1>
@@ -75,7 +75,7 @@
 	<li class="indented"><a target="_blank" href="http://sana.sy/eng/article/5.htm"><b>SANA</b></a></li>
 </ul>
 -->
-{ % endblock % }
+{% endblock %}
 </div>
 </body>
 </html>

@@ -179,7 +179,13 @@ class MainHandler(webapp.RequestHandler):
         elif path.startswith("/organizations/") :
             self.response.out.write("org page yet to be implemented")
         elif path.startswith("/people/"):
-            self.response.out.write("person page yet to be implemented")
+            person = Person.gql("WHERE idref = :1", path[8:]).fetch(1)
+            if person: 
+                template_values['person'] = person[0]
+                self.response.out.write(str(template.render('djangogoodies/persontemplate.html', template_values)))
+            else:
+                self.response.out.write("No such person!")
+
         else:
             self.response.out.write(str(template.render('djangogoodies/maintemplate.html', template_values)))
             #inFile = open("htmlgoodies/mockup.html", 'r')
