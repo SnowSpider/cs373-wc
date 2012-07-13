@@ -50,16 +50,16 @@ class TestWC2 (unittest.TestCase) :
         self.assert_(data["people"]["Mir Hossein Mousavi"].related_crises[0] == "Iranian_Green_Movement")
         self.assert_(data["people"]["Mir Hossein Mousavi"].related_orgs[0] == "International_Campaign_for_Human_Rights_in_Iran")
         """
-        
+       
         debug("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF")
-        
+       
         for thing in data:
             debug(thing.idref + "\n\t" + thing.name + "\n\t" + thing.info.type_)
             #debug(thing.ref.primaryImage.url)
-            
-        
+           
+       
         debug("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU")
-        
+       
         self.assert_(data[0].name == "Libyan Civil War")
         self.assert_(data[0].info.type_ == "Civil War")
         self.assert_(data[0].info.time.day == 15)
@@ -73,15 +73,15 @@ class TestWC2 (unittest.TestCase) :
         self.assert_(data[1].info.resources == "medicine, fuel, food")
         self.assert_(data[2].name == "Iranian Green Movement")
         self.assert_(data[2].info.help == "World support")
-        
-        
-        
-        
-        
-        
-        
-        
-        
+       
+       
+       
+       
+       
+       
+       
+       
+       
     """
     def test_ExportXml_1 (self) :
         data = ImportXml("WC2.xml")
@@ -93,15 +93,15 @@ class TestWC2 (unittest.TestCase) :
         line = ""
         result = fixAmp(line)
         self.assert_(result == "")
-    
+   
     def test_fixAmp_2 (self) :
         line = "&"
         result = fixAmp(line)
         self.assert_(result == "&amp;")
-    
+   
     def test_fixAmp_2 (self) :
         line = "&&"
         result = fixAmp(line)
         self.assert_(result == "&amp;&amp;")
-        
+       
         
