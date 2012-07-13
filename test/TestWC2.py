@@ -50,12 +50,22 @@ class TestWC2 (unittest.TestCase) :
         self.assert_(data["people"]["Mir Hossein Mousavi"].related_crises[0] == "Iranian_Green_Movement")
         self.assert_(data["people"]["Mir Hossein Mousavi"].related_orgs[0] == "International_Campaign_for_Human_Rights_in_Iran")
         """
+        
+        debug("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF")
+        
+        debug("1. " + data[0].idref)
+        debug("2. " + data[1].idref)
+        debug("3. " + data[2].idref)
+        debug("4. " + data[3].idref)
+        
+        debug("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU")
+        
         self.assert_(data["people"]["Mir_Hossein_Mousavi"].name == "Mir Hossein Mousavi")
         
         
         
         
-    
+        
     """
     def test_ExportXml_1 (self) :
         data = ImportXml("WC2.xml")

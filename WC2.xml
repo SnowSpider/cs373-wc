@@ -94,8 +94,8 @@
       </ext>
     </ref>
     <misc></misc>
-    <org idref="International_Criminal_Court"></org>
-    <person idref="Mustafa_Abdul_Jalil"></person>
+    <org idref="International_Criminal_Court"/>
+    <person idref="Mustafa_Abdul_Jalil"/>
   </crisis>
 
 <!--..................................... Syrian Uprising .....................................-->
@@ -167,8 +167,8 @@
       </ext>
     </ref>
     <misc></misc>
-    <org idref="Amnesty_International"></org>
-    <person idref="Bashar_al-Assad"></person>
+    <org idref="Amnesty_International"/>
+    <person idref="Bashar_al-Assad"/>
   </crisis>
 
 <!--..................................... Iranian Green Movement .....................................-->
@@ -240,8 +240,8 @@
       </ext>
     </ref>
     <misc></misc>
-    <org idref="International_Campaign_for_Human_Rights_in_Iran"></org>
-    <person idref="Mir_Hossein_Mousavi"></person>
+    <org idref="International_Campaign_for_Human_Rights_in_Iran"/>
+    <person idref="Mir_Hossein_Mousavi"/>
   </crisis>
 
 <!--..................................... Xinjiang Riots .....................................-->
@@ -403,8 +403,8 @@
       </ext>
     </ref>
     <misc></misc>
-    <org idref="World_Uyghur_Congress"></org>
-    <person idref="Rebiya_Kadeer"></person>
+    <org idref="World_Uyghur_Congress"/>
+    <person idref="Rebiya_Kadeer"/>
   </crisis>
 
 <!--..................................... World Uyghur Congress .....................................-->
@@ -476,8 +476,8 @@
       </ext>
     </ref>
     <misc></misc>
-    <crisis idref="Xinjiang_Riots"></crisis>
-    <person idref="Rebiya_Kadeer"></person>
+    <crisis idref="Xinjiang_Riots"/>
+    <person idref="Rebiya_Kadeer"/>
   </organization>
 
 <!--..................................... International Criminal Court .....................................-->
@@ -545,8 +545,8 @@ On 17 July 1998, the international community reached an historic milestone when 
       </ext>
     </ref>
     <misc></misc>
-    <crisis idref="Libyan_Civil_War"></crisis>
-    <person idref="Mustafa_Abdul_Jalil"></person>
+    <crisis idref="Libyan_Civil_War"/>
+    <person idref="Mustafa_Abdul_Jalil"/>
   </organization>
 
 <!--..................................... Amnesty International .....................................-->
@@ -612,14 +612,14 @@ On 17 July 1998, the international community reached an historic milestone when 
       </ext>
     </ref>
     <misc></misc>
-    <crisis idref="Iranian_Green_Movement"></crisis>
-    <crisis idref="Syrian_Uprising"></crisis>
-    <crisis idref="Xinjiang_Riots"></crisis>
-    <crisis idref="Libyan_Civil_War"></crisis>
-    <person idref="Rebiya_Kadeer"></person>
-    <person idref="Mustafa_Abdul_Jalil"></person>
-    <person idref="Bashar_al-Assad"></person>
-    <person idref="Mir_Hossein_Mousavi"></person>
+    <crisis idref="Iranian_Green_Movement"/>
+    <crisis idref="Syrian_Uprising"/>
+    <crisis idref="Xinjiang_Riots"/>
+    <crisis idref="Libyan_Civil_War"/>
+    <person idref="Rebiya_Kadeer"/>
+    <person idref="Mustafa_Abdul_Jalil"/>
+    <person idref="Bashar_al-Assad"/>
+    <person idref="Mir_Hossein_Mousavi"/>
   </organization>
 
 <!--..................................... International Campaign for Human Rights in Iran .....................................-->
@@ -680,8 +680,8 @@ Father Says Months-long Torture Caused Kidney Failure</description>
       </ext>
     </ref>
     <misc></misc>
-    <crisis idref="Iranian_Green_Movement"></crisis>
-    <person idref="Mir_Hossein_Mousavi"></person>
+    <crisis idref="Iranian_Green_Movement"/>
+    <person idref="Mir_Hossein_Mousavi"/>
   </organization>
 
 
@@ -734,8 +734,8 @@ Father Says Months-long Torture Caused Kidney Failure</description>
       </ext>
     </ref>
     <misc></misc>
-    <crisis idref="Iranian_Green_Movement"></crisis>
-    <org idref="International_Campaign_for_Human_Rights_in_Iran"></org>
+    <crisis idref="Iranian_Green_Movement"/>
+    <org idref="International_Campaign_for_Human_Rights_in_Iran"/>
   </person>
 
 <!--..................................... Rebiya Kadeer .....................................-->
@@ -811,8 +811,8 @@ Father Says Months-long Torture Caused Kidney Failure</description>
       </ext>
     </ref>
     <misc></misc>
-    <crisis idref="Xinjiang_Riots"></crisis>
-    <org idref="World_Uyghur_Congress"></org>
+    <crisis idref="Xinjiang_Riots"/>
+    <org idref="World_Uyghur_Congress"/>
   </person>
 
 <!--..................................... Bashar al-Assad .....................................-->
@@ -870,8 +870,8 @@ Father Says Months-long Torture Caused Kidney Failure</description>
       </ext>
     </ref>
     <misc></misc>
-    <crisis idref="Syrian_Uprising"></crisis>
-    <org idref="Amnesty_International"></org>
+    <crisis idref="Syrian_Uprising"/>
+    <org idref="Amnesty_International"/>
   </person>
 
 <!--..................................... Mustafa Abdul Jalil .....................................-->
@@ -929,8 +929,8 @@ Father Says Months-long Torture Caused Kidney Failure</description>
       </ext>
     </ref>
     <misc></misc>
-    <crisis idref="Libyan_Civil_War"></crisis>
-    <org idref="International_Criminal_Court"></org>
+    <crisis idref="Libyan_Civil_War"/>
+    <org idref="International_Criminal_Court"/>
   </person>
   
 </worldCrises>
