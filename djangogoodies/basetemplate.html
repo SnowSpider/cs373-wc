@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<title>{% block title %}{{name}}{ % endblock %}</title>
+<head>
+<script language="javascript" src="fancybox/lib/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="fancybox/source/jquery.fancybox.pack.js"></script>
+<link rel="stylesheet" href="fancybox/source/jquery.fancybox.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="fancybox/source/helpers/jquery.fancybox-buttons.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="content.css" type="text/css">
+<script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-buttons.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".fancybox").fancybox();
+	});
+</script>
+</head>
+<body>
+<!-- images -->
+<div style="float: right; overflow-x: hidden; overflow-y: scroll; height:650px; width: 250px; margin: 0px;">
+	<table align="center" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<td>
+				<ul>
+					{ % block imagesandmovies % }
+					{ % for image in ref.images %}
+						<li class="center">
+							<a href="{{image.url}}" class="fancybox" rel="pix">
+								<img width="220" src="{{image.url}}">
+							</a>
+						</li>
+					{ % endfor % }
+					{ % for video in ref.videos %}
+						<li>
+							<iframe width="220" src="{{video.url}}" frameborder="0" allowfullscreen></iframe>
+						</li>
+					{ % endfor % }
+					{ % endblock % }
+				</ul>
+			</td>
+		</tr>
+	</table>
+</div>
+<!-- content -->
+<div style="overflow-x: hidden; overflow-y: scroll; height:650px; margin: 0px;">
+{ % block mainchunk % }
+<!--
+<img class="mainimg" width="300" src="images/bashar_main.png"/>
+<h1><center>Bashar al-Assad</center></h1>
+<hr width="30%"/>
+<p><font size="4">Bashar Hafez al-Assad ; born 11 September 1965) is the current President of Syria and Regional Secretary of the Syrian-led branch of the Arab Socialist Ba'ath Party. His father Hafez al-Assad ruled Syria for 29 years until his death in 2000.
+<p>Al-Assad graduated from the medical school of the University of Damascus in 1988, and started to work as a doctor in the army. Four years later, he attended postgraduate studies at the Western Eye Hospital, in London, specializing in ophthalmology. In 1994, Al-Assad entered the military academy and in 1998, Al-Assad took charge of the Syrian occupation of Lebanon. In December 2000, Assad married Asma Assad, Akhras. Al-Assad was elected as President of Syria in 2000 and 2007, unopposed each time. During the Syrian uprising, activists and protesters have called for President al-Assad's resignation.
+<br><hr width="30%"/><br>
+	<ul>
+		<li><b>Occupation:</b>  Current President of Syria</li>
+		<li><b>Location:</b>  Damascus, Syria</li>
+	</ul>
+<br>
+<hr width="80%"/>
+<h3>Related Oganizations:</h3>
+	<ul>
+		<li class="indented">
+			<a href="amnesty_international.html"><b>Amnesty International</b></a>
+		</li>
+	</ul>
+<br>
+<hr width="80%"/>
+<h3>Related Crises:</h3>
+	<ul>
+		<li class="indented"><a href="syrian_uprising.html"><b>Syrian Uprising</b></a></li>
+	</ul>
+<br>
+<hr width="80%"/>
+<h3>External Links:</h3>
+<ul>
+	<li class="indented"><a target="_blank" href="http://sana.sy/eng/article/5.htm"><b>SANA</b></a></li>
+</ul>
+-->
+{ % endblock % }
+</div>
+</body>
+</html>
