@@ -201,6 +201,26 @@ def ImportXml(filename):
     """
     return import_file(open(filename, "r"))
 
+# ----
+# pick
+# ----
+
+def pick(e):
+    """
+    Replaces an empty(None) element with an empty string
+    """
+    return "" if e is None else e.text
+
+# -----
+# pickn
+# -----
+
+def pickn(e):
+    """
+    Replaces an empty(None) element with a zero
+    """
+    return 0 if e is None else int(e.text)
+    
 # -----------
 # import_file
 # -----------
@@ -212,26 +232,50 @@ def import_file(xml_file):
     
     crises = root.findall("crisis")
     for crisis in crises: 
-        crisis_model = Crisis(key_name = crisis.attrib["id"], idref = crisis.attrib["id"], name = crisis.find("name").text)
+        crisis_model = Crisis(key_name = crisis.attrib["id"], 
+                              idref = crisis.attrib["id"], 
+                              name = crisis.find("name").text)
+                              
         info = crisis.find("info")
-        info_model = CrisisInfo(history = info.find("history").text, help = info.find("help").text, resources = info.find("resources").text, type_ = info.find("type").text)
+        info_model = CrisisInfo(history = pick(info.find("history")), 
+                                help = pick(info.find("help")), 
+                                resources = pick(info.find("resources")), 
+                                type_ = pick(info.find("type")))
+                                
         time = info.find("time")
-        time_model = Date(time = time.find("time").text, day = int(time.find("day").text), month = int(time.find("month").text), year = int(time.find("year").text), misc = time.find("misc").text)
+        time_model = Date(time = pick(time.find("time")), 
+                          day = pickn(time.find("day")), 
+                          month = pickn(time.find("month")), 
+                          year = pickn(time.find("year")), 
+                          misc = pick(time.find("misc")))
         time_model.put()
         info_model.time = time_model.key()
+        
         loc = info.find("loc")
-        loc_model = Location(city = loc.find("city").text, region = loc.find("region").text, country = loc.find("country").text)
+        loc_model = Location(city = pick(loc.find("city")), 
+                             region = pick(loc.find("region")), 
+                             country = pick(loc.find("country")))
         loc_model.put()
+        
         info_model.loc = loc_model.key()
         impact = info.find("impact")
+        
         human = impact.find("human")
-        human_model = HumanImpact(deaths = int(human.find("deaths").text), displaced = int(human.find("displaced").text), injured = int(human.find("injured").text), missing = int(human.find("missing").text), misc = human.find("misc").text)
+        human_model = HumanImpact(deaths = pickn(human.find("deaths")), 
+                                  displaced = pickn(human.find("displaced")), 
+                                  injured = pickn(human.find("injured")), 
+                                  missing = pickn(human.find("missing")), 
+                                  misc = pick(human.find("misc")))
         human_model.put() #saves the model
+        
         economic = impact.find("economic")
-        economic_model = EconomicImpact(amount = int(economic.find("amount").text), currency = economic.find("currency").text, misc = economic.find("misc").text)
+        economic_model = EconomicImpact(amount = pickn(human.find("amount")), 
+                                        currency = pick(human.find("currency")), 
+                                        misc = pick(human.find("misc")))
         economic_model.put()
         impact_model = Impact(human = human_model.key(), economic = economic_model.key())
         impact_model.put()
+        
         info_model.impact = impact_model.key()
         info_model.put()
         crisis_model.info = info_model.key()
@@ -239,64 +283,48 @@ def import_file(xml_file):
         ref = crisis.find("ref")
         primaryImage = ref.find("primaryImage")
         ref_model = Reference()
-        pimage_model = Link(site = primaryImage.find("site").text, title = primaryImage.find("title").text, url = primaryImage.find("url").text, description = primaryImage.find("description").text)
+        pimage_model = Link(site = pick(primaryImage.find("site")), 
+                            title = pick(primaryImage.find("title")), 
+                            url = pick(primaryImage.find("url")), 
+                            description = pick(primaryImage.find("description")))
         pimage_model.put()
         ref_model.primaryImage = pimage_model.key()
         images = ref.findall("image")
         for image in images:
-            s = image.find("site")
-            s = "" if s is None else s.text
-            t = image.find("title")
-            t = "" if t is None else t.text
-            u = image.find("url").text
-            d = image.find("description")
-            d = "" if d is None else d.text
-            link_model = Link(site = s, title = t, url = u, description = d)
+            link_model = Link(site = pick(image.find("site")), 
+                              title = pick(image.find("title")), 
+                              url = pick(image.find("url")), 
+                              description = pick(image.find("description")))
             link_model.put()
             ref_model.images.append(link_model.key())
         videos = ref.findall("video")
         for video in videos:
-            s = video.find("site")
-            s = "" if s is None else s.text
-            t = video.find("title")
-            t = "" if t is None else t.text
-            u = video.find("url").text
-            d = video.find("description")
-            d = "" if d is None else d.text
-            link_model = Link(site = s, title = t, url = u, description = d)
+            link_model = Link(site = pick(video.find("site")), 
+                              title = pick(video.find("title")), 
+                              url = pick(video.find("url")), 
+                              description = pick(video.find("description")))
             link_model.put()
             ref_model.videos.append(link_model.key())
         socials = ref.findall("social") 
         for social in socials:
-            s = social.find("site")
-            s = "" if s is None else s.text
-            t = social.find("title")
-            t = "" if t is None else t.text
-            u = social.find("url").text
-            d = social.find("description")
-            d = "" if d is None else d.text
-            link_model = Link(site = s, title = t, url = u, description = d)
+            link_model = Link(site = pick(social.find("site")), 
+                              title = pick(social.find("title")), 
+                              url = pick(social.find("url")), 
+                              description = pick(social.find("description")))
             link_model.put()
             ref_model.socials.append(link_model.key())
         exts = ref.findall("ext")
         for ext in exts:
-            s = ext.find("site")
-            s = "" if s is None else s.text
-            t = ext.find("title")
-            t = "" if t is None else t.text
-            u = ext.find("url").text
-            d = ext.find("description")
-            d = "" if d is None else d.text
-            link_model = Link(site = s, title = t, url = u, description = d)
+            link_model = Link(site = pick(ext.find("site")), 
+                              title = pick(ext.find("title")), 
+                              url = pick(ext.find("url")), 
+                              description = pick(ext.find("description")))
             link_model.put()
             ref_model.exts.append(link_model.key())
         ref_model.put()
         crisis_model.ref = ref_model.key()
         
-        misc = crisis.find("misc").text
-        if misc == None:
-            misc = ""
-        crisis_model.misc = misc
+        crisis_model.misc = pick(crisis.find("misc"))
         #debug(crisis_model.misc)
         """
         #the keys don't exist at this point
@@ -311,21 +339,31 @@ def import_file(xml_file):
         crisis_model.put()
         data.append(crisis_model)
     
-    orgs = root.findall("org")
+    orgs = root.findall("organization")
     for org in orgs: 
         org_model = Organization(key_name = org.attrib["id"], idref = org.attrib["id"], name = org.find("name").text)
         
         info = org.find("info")
-        info_model = OrgInfo(type_ = info.find("type").text, history = info.find("history").text)
+        info_model = OrgInfo(type_ = pick(info.find("type")), 
+                             history = pick(info.find("history")))
         contact = info.find("contact")
-        contact_model = ContactInfo(phone = contact.find("phone").text, email = contact.find("email").text)
-        mail_model = FullAddress(addr = mail.find("address").text, city = mail.find("city").text, state = mail.find("state").text, country = mail.find("country").text, zip_ = mail.find("zip").text)
+        contact_model = ContactInfo(phone = pick(contact.find("phone")), 
+                                    email = pick(contact.find("email")))
+        mail = contact.find("mail")
+        mail_model = FullAddress(addr = pick(mail.find("address")), 
+                                 city = pick(mail.find("city")), 
+                                 state = pick(mail.find("state")), 
+                                 country = pick(mail.find("country")), 
+                                 zip_ = pick(mail.find("zip")))
         mail_model.put()
         contact_model.mail = mail_model.key()
         contact_model.put()
         info_model.contact = contact_model
+        
         loc = info.find("loc")
-        loc_model = Location(city = loc.find("city").text, region = loc.find("region").text, country = loc.find("country").text)
+        loc_model = Location(city = pick(loc.find("city")), 
+                             region = pick(loc.find("region")), 
+                             country = pick(loc.find("country")))
         loc_model.put()
         info_model.loc = loc_model.key()
         info_model.put()
@@ -334,64 +372,48 @@ def import_file(xml_file):
         ref = org.find("ref")
         primaryImage = ref.find("primaryImage")
         ref_model = Reference()
-        pimage_model = Link(site = primaryImage.find("site").text, title = primaryImage.find("title").text, url = primaryImage.find("url").text, description = primaryImage.find("description").text)
+        pimage_model = Link(site = pick(primaryImage.find("site")), 
+                            title = pick(primaryImage.find("title")), 
+                            url = pick(primaryImage.find("url")), 
+                            description = pick(primaryImage.find("description")))
         pimage_model.put()
         ref_model.primaryImage = pimage_model.key()
         images = ref.findall("image")
         for image in images:
-            s = image.find("site")
-            s = "" if s is None else s.text
-            t = image.find("title")
-            t = "" if t is None else t.text
-            u = image.find("url").text
-            d = image.find("description")
-            d = "" if d is None else d.text
-            link_model = Link(site = s, title = t, url = u, description = d)
+            link_model = Link(site = pick(image.find("site")), 
+                              title = pick(image.find("title")), 
+                              url = pick(image.find("url")), 
+                              description = pick(image.find("description")))
             link_model.put()
             ref_model.images.append(link_model.key())
         videos = ref.findall("video")
         for video in videos:
-            s = video.find("site")
-            s = "" if s is None else s.text
-            t = video.find("title")
-            t = "" if t is None else t.text
-            u = video.find("url").text
-            d = video.find("description")
-            d = "" if d is None else d.text
-            link_model = Link(site = s, title = t, url = u, description = d)
+            link_model = Link(site = pick(video.find("site")), 
+                              title = pick(video.find("title")), 
+                              url = pick(video.find("url")), 
+                              description = pick(video.find("description")))
             link_model.put()
             ref_model.videos.append(link_model.key())
         socials = ref.findall("social") 
         for social in socials:
-            s = social.find("site")
-            s = "" if s is None else s.text
-            t = social.find("title")
-            t = "" if t is None else t.text
-            u = social.find("url").text
-            d = social.find("description")
-            d = "" if d is None else d.text
-            link_model = Link(site = s, title = t, url = u, description = d)
+            link_model = Link(site = pick(social.find("site")), 
+                              title = pick(social.find("title")), 
+                              url = pick(social.find("url")), 
+                              description = pick(social.find("description")))
             link_model.put()
             ref_model.socials.append(link_model.key())
         exts = ref.findall("ext")
         for ext in exts:
-            s = ext.find("site")
-            s = "" if s is None else s.text
-            t = ext.find("title")
-            t = "" if t is None else t.text
-            u = ext.find("url").text
-            d = ext.find("description")
-            d = "" if d is None else d.text
-            link_model = Link(site = s, title = t, url = u, description = d)
+            link_model = Link(site = pick(ext.find("site")), 
+                              title = pick(ext.find("title")), 
+                              url = pick(ext.find("url")), 
+                              description = pick(ext.find("description")))
             link_model.put()
             ref_model.exts.append(link_model.key())
         ref_model.put()
         org_model.ref = ref_model.key()
         
-        misc = org.find("misc").text
-        if misc == None:
-            misc = ""
-        org_model.misc = misc
+        org_model.misc = pick(org.find("misc"))
         """
         relatedCrises = org.findall("crisis")
         for relatedCrisis in relatedCrises:
@@ -410,75 +432,67 @@ def import_file(xml_file):
         info = person.find("info")
         
         info = person.find("info")
-        info_model = PersonInfo(type_ = info.find("type").text, nationality = info.find("nationality").text, biography = info.find("biography").text)
+        info_model = PersonInfo(type_ = pick(info.find("type")), 
+                                nationality = pick(info.find("nationality")), 
+                                biography = pick(info.find("biography")))
+        
         birthdate = info.find("birthdate")
-        date_model = Date(time = birthdate.find("time").text, day = int(birthdate.find("day").text), month = int(birthdate.find("month").text), year = int(birthdate.find("year").text), misc = birthdate.find("misc").text)
-        date_model.put()
-        info_model.birthdate = date_model
+        birthdate_model = Date(time = pick(birthdate.find("time")), 
+                               day = pickn(birthdate.find("day")), 
+                               month = pickn(birthdate.find("month")), 
+                               year = pickn(birthdate.find("year")), 
+                               misc = pick(birthdate.find("misc")))
+        birthdate_model.put()
+        info_model.birthdate = birthdate_model
+        
         info_model.put()
         person_model.info = info_model.key()
         
         ref = person.find("ref")
         primaryImage = ref.find("primaryImage")
         ref_model = Reference()
-        pimage_model = Link(site = primaryImage.find("site").text, title = primaryImage.find("title").text, url = primaryImage.find("url").text, description = primaryImage.find("description").text)
+        pimage_model = Link(site = pick(primaryImage.find("site")), 
+                            title = pick(primaryImage.find("title")), 
+                            url = pick(primaryImage.find("url")), 
+                            description = pick(primaryImage.find("description")))
         pimage_model.put()
         ref_model.primaryImage = pimage_model.key()
         images = ref.findall("image")
         for image in images:
-            s = image.find("site")
-            s = "" if s is None else s.text
-            t = image.find("title")
-            t = "" if t is None else t.text
-            u = image.find("url").text
-            d = image.find("description")
-            d = "" if d is None else d.text
-            link_model = Link(site = s, title = t, url = u, description = d)
+            link_model = Link(site = pick(image.find("site")), 
+                              title = pick(image.find("title")), 
+                              url = pick(image.find("url")), 
+                              description = pick(image.find("description")))
             link_model.put()
             ref_model.images.append(link_model.key())
         videos = ref.findall("video")
         for video in videos:
-            s = video.find("site")
-            s = "" if s is None else s.text
-            t = video.find("title")
-            t = "" if t is None else t.text
-            u = video.find("url").text
-            d = video.find("description")
-            d = "" if d is None else d.text
-            link_model = Link(site = s, title = t, url = u, description = d)
+            link_model = Link(site = pick(video.find("site")), 
+                              title = pick(video.find("title")), 
+                              url = pick(video.find("url")), 
+                              description = pick(video.find("description")))
             link_model.put()
             ref_model.videos.append(link_model.key())
         socials = ref.findall("social") 
         for social in socials:
-            s = social.find("site")
-            s = "" if s is None else s.text
-            t = social.find("title")
-            t = "" if t is None else t.text
-            u = social.find("url").text
-            d = social.find("description")
-            d = "" if d is None else d.text
-            link_model = Link(site = s, title = t, url = u, description = d)
+            link_model = Link(site = pick(social.find("site")), 
+                              title = pick(social.find("title")), 
+                              url = pick(social.find("url")), 
+                              description = pick(social.find("description")))
             link_model.put()
             ref_model.socials.append(link_model.key())
         exts = ref.findall("ext")
         for ext in exts:
-            s = ext.find("site")
-            s = "" if s is None else s.text
-            t = ext.find("title")
-            t = "" if t is None else t.text
-            u = ext.find("url").text
-            d = ext.find("description")
-            d = "" if d is None else d.text
-            link_model = Link(site = s, title = t, url = u, description = d)
+            link_model = Link(site = pick(ext.find("site")), 
+                              title = pick(ext.find("title")), 
+                              url = pick(ext.find("url")), 
+                              description = pick(ext.find("description")))
             link_model.put()
             ref_model.exts.append(link_model.key())
         ref_model.put()
         person_model.ref = ref_model.key()        
         
-        misc = person.find("misc").text
-        if misc == None:
-            misc = ""
-        person_model.misc = misc
+        person_model.misc = pick(person.find("misc"))
         """
         relatedCrises = person.findall("crisis")
         for relatedCrisis in relatedCrises:
@@ -490,16 +504,14 @@ def import_file(xml_file):
         
         person_model.put()
         data.append(person_model)
-    
+    """
     for crisis in crises:
         relatedOrgs = crisis.findall("org")
         for relatedOrg in relatedOrgs:
             
             
-            debug("A. " + Crisis.get_by_key_name(crisis.attrib["id"]).name)
-            debug("B. " + Crisis.get_by_key_name(crisis.attrib["id"]).info)
-            debug("C. " + Crisis.get_by_key_name(crisis.attrib["id"]).ref)
-            debug("D. " + Crisis.get_by_key_name(crisis.attrib["id"]).misc)
+            #debug("A. " + Crisis.get_by_key_name(crisis.attrib["id"]).name)
+            #debug("B. " + Crisis.get_by_key_name(crisis.attrib["id"]).misc)
             
             Crisis.get_by_key_name(crisis.attrib["id"]).relatedOrgs.append(Organization.get_by_key_name(relatedOrg.attrib["idref"]).key())
             
@@ -520,7 +532,7 @@ def import_file(xml_file):
         relatedOrgs = person.findall("org")
         for relatedOrg in relatedOrgs:
             Person.get_by_key_name(person.attrib["id"]).relatedOrgs.append(Organization.get_by_key_name(relatedOrg.attrib["idref"]).key())
-    
+    """
     return data
 
 # ------

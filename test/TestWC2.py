@@ -28,7 +28,7 @@ import unittest
 import logging
 
 
-from WC2 import ImportXml, ExportXml, fixAmp, debug
+from WC2 import Crisis, ImportXml, ExportXml, fixAmp, debug
 
 # -------
 # TestPFD
@@ -53,14 +53,14 @@ class TestWC2 (unittest.TestCase) :
         
         debug("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF")
         
-        debug("1. " + data[0].idref)
-        debug("2. " + data[1].idref)
-        debug("3. " + data[2].idref)
-        debug("4. " + data[3].idref)
+        for thing in data:
+            debug(thing.idref + "\n\t" + thing.name + "\n\t" + thing.info.type_)
+            #debug(thing.ref.primaryImage.url)
+            
         
         debug("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU")
         
-        self.assert_(data["people"]["Mir_Hossein_Mousavi"].name == "Mir Hossein Mousavi")
+        self.assert_(data[0].name == "Libyan Civil War")
         
         
         
