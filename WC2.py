@@ -216,6 +216,10 @@ class ImportUploadHandler(blobstore_handlers.BlobstoreUploadHandler):
             data_models = import_file(xml_file)
             debug("DATA_MODELS: " + str(data_models))
             self.response.out.write("Data was successfully imported")
+            self.response.out.write("<script type=\"text/javascript\">")
+            self.response.out.write("function RefreshParent(){parent.location.reload();}")
+            self.response.out.write("</script>")
+            self.response.out.write("<body onload=\"RefreshParent();\">")
         except:
             self.response.out.write("Please provide a valid XML file")
             
