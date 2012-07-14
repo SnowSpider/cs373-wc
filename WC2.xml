@@ -14,7 +14,7 @@
     <info>
       <history>The Libyan civil war also referred to as the Libyan Revolution, was an armed conflict in the North African state of Libya, fought between forces loyal to Colonel Muammar Gaddafi and those seeking to oust his government. The war was preceded by protests in Benghazi beginning on Tuesday, 15 February 2011, which led to clashes with security forces that fired on the crowd. The protests escalated into a rebellion that spread across the country, with the forces opposing Gaddafi establishing an interim governing body, the National Transitional Council.</history>
       <help></help>
-      <resources>Medicine, Fuel, Food</resources>
+      <resources>medicine, fuel, food</resources>
       <type>Civil War</type>
       <time>
         <time></time>
@@ -31,13 +31,13 @@
       <impact>
         <human>
           <deaths>30000</deaths>
-          <displaced></displaced>
+          <displaced>0</displaced>
           <injured>50000</injured>
           <missing>4000</missing>
           <misc></misc>
         </human>
         <economic>
-          <amount></amount>
+          <amount>0</amount>
           <currency></currency>
           <misc></misc>
         </economic>
@@ -105,8 +105,8 @@
     <info>
       <history>The Syrian uprising, is an ongoing, violent internal conflict in Syria. It began on 26 January 2011 with public demonstrations as part of the wider Arab Spring and developed into a nationwide uprising. Protesters demanded the end to nearly five decades of Ba'ath Party rule, which was then and currently headed by President Bashar al-Assad.</history>
       <help></help>
-      <resources>Nedicine, Fuel, Food</resources>
-      <type>Violent internal conflict in Syria</type>
+      <resources>medicine, fuel, food</resources>
+      <type>violent internal conflict in Syria</type>
       <time>
         <time></time>
         <day>15</day>
@@ -128,7 +128,7 @@
           <misc></misc>
         </human>
         <economic>
-          <amount></amount>
+          <amount>0</amount>
           <currency></currency>
           <misc></misc>
         </economic>
@@ -178,7 +178,7 @@
     <info>
       <history>Protests following the 2009 Iranian presidential election against the disputed victory of Iranian President Mahmoud Ahmadinejad and in support of opposition candidates Mir-Hossein Mousavi and Mehdi Karroubi occurred in major cities in Iran and around the world starting 13 June 2009. The protests were given several titles by their proponents including Green Revolution, Green Wave or Sea of Green, reflecting presidential candidate Mousavi's campaign color, and also Persian Awakening. The creation of the Iranian Green Movement was developed during these protests. The events have also been nicknamed the "Twitter Revolution" because of the protesters' reliance on Twitter and other social-networking Internet sites to communicate with each other. Islamic politician Ata'ollah Mohajerani blasted the election as "the end of the Islamic Republic". In response to the protests, other groups rallied in Tehran to support Ahmadinejad. Widespread editorial analyses assert that the 2009 election marks the official end of the Islamic Republic and the beginning of the Islamic emirate or an imamate regime. All three opposition candidates claimed that the votes were manipulated and the election was rigged, and candidates Mohsen Rezaee and Mousavi have lodged official complaints. Mousavi announced that he "won't surrender to this manipulation" before lodging an official appeal against the result to the Guardian Council on 14 June. Ayatollah Ali Khamenei declared the unprecedented voter turnout and coinciding religious holidays as a "divine assessment" and urged the nation to unite, but later ostensibly ordered an investigation into the claims of voting fraud and irregularities as per the request of the Green movement leaders. Mousavi is not optimistic about his appeal, saying that many of the group's members "during the election were not impartial". Ahmadinejad called the election "completely free" and the outcome "a great victory" for Iran, dismissing the protests as little more than "passions after a soccer match". Police and the Basij (a paramilitary group) suppressed both peaceful demonstrating and rioting by using batons, pepper spray, sticks and, in some cases, firearms. The Iranian government has confirmed the deaths of 36 people during the protests, while unconfirmed reports by supporters of Mousavi allege that there have been 72 deaths (twice as many) in the three months following the disputed election. Iranian authorities have closed universities in Tehran, blocked web sites, blocked cell phone transmissions and text messaging, and banned rallies.</history>
       <help>World support</help>
-      <resources>Medicine, Fuel, Food</resources>
+      <resources>medicine, fuel, food</resources>
       <type>Uprising</type>
       <time>
         <time></time>
@@ -194,14 +194,14 @@
       </loc>
       <impact>
         <human>
-          <deaths></deaths>
-          <displaced></displaced>
-          <injured></injured>
-          <missing></missing>
+          <deaths>0</deaths>
+          <displaced>0</displaced>
+          <injured>0</injured>
+          <missing>0</missing>
           <misc></misc>
         </human>
         <economic>
-          <amount></amount>
+          <amount>0</amount>
           <currency></currency>
           <misc></misc>
         </economic>
@@ -251,8 +251,8 @@
     <info>
       <history>The July 2009 Xinjiang riots were a series of violent riots over several days that broke out on 5 July 2009 in Urumqi, the capital city of the Xinjiang Uyghur Autonomous Region (XUAR), in northwestern People's Republic of China (PRC). The first day's rioting, which involved at least 1,000 Uyghurs, began as a protest but escalated into violent attacks that mainly targeted Han ("ethnic Chinese") people. People's Armed Police were deployed, and two days later hundreds of Han people clashed with both police and Uyghurs. PRC officials said that a total of 197 people died, with 1,721 others injured and many vehicles and buildings destroyed; on the other hand, Uyghur exile groups say the death toll is higher. Many men disappeared during wide-scale police sweeps in the days following the riots; Human Rights Watch (HRW) documented 43 cases and said figures for real disappearances were likely to be much higher.</history>
       <help>World support</help>
-      <resources>Medicine, Fuel, Food</resources>
-      <type>Anti-government/ethnic protest</type>
+      <resources>medicine, fuel, food</resources>
+      <type>anti-government/ethnic protest</type>
       <time>
         <time></time>
         <day>5</day>
@@ -268,13 +268,13 @@
       <impact>
         <human>
           <deaths>197</deaths>
-          <displaced></displaced>
+          <displaced>0</displaced>
           <injured>1721</injured>
-          <missing></missing>
+          <missing>0</missing>
           <misc></misc>
         </human>
         <economic>
-          <amount></amount>
+          <amount>0</amount>
           <currency></currency>
           <misc></misc>
         </economic>
@@ -743,7 +743,7 @@ Father Says Months-long Torture Caused Kidney Failure</description>
   <person id="Rebiya_Kadeer">
     <name>Rebiya Kadeer</name>
     <info>
-      <type>Human rights activist and president of World Uyghur Congress</type>
+      <type>human rights activist, president of WUC</type>
       <birthdate>
         <time></time>
         <day>15</day>
@@ -882,8 +882,8 @@ Father Says Months-long Torture Caused Kidney Failure</description>
       <type>Chairman of the National Transitional Council of Libya</type>
       <birthdate>
         <time></time>
-        <day></day>
-        <month></month>
+        <day>0</day>
+        <month>0</month>
         <year>1952</year>
         <misc></misc>
       </birthdate>

@@ -472,7 +472,7 @@ def ExportXml(data):
     
     myString = fixAmp(myString)
     
-    debug(myString)
+    #debug(myString)
     return myString
 
 # -----
