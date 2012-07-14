@@ -1,52 +1,40 @@
 {% extends "basetemplate.html" %}
 
-{% block mainchunk %}
-<h1><center>{{org.name}}</center></h1>
-<hr width="70%"/>
-<img class="mainimg" width="300" src="{{org.ref.primaryImage.url}}"/>
-<p><font size="4">{{org.info.history}}
-<br><hr width="30%"/><br>
-	<ul>
-		<li><b>Significance:</b> {{org.info.type_}}</li>
-		<li><b>Location:</b>  {{org.info.loc.region}} {{org.info.loc.city}}, {{org.info.loc.country}}</li>
-		<li><b>Phone Number:</b> {{org.info.contact.phone}}</li>
-		<li><b>E-mail Address:</b> {{org.info.contact.email}}</li>
-		<li><b>Address:</b>
-			<p>{{org.info.contact.mail.city}}, {{org.info.contact.mail.state}} {{org.info.contact.mail.country}}
-			<p>{{org.info.contact.mail.address}}
-			<p>{{org.info.contact.mail.zip_}}
-			</li>
-		<li><b>Miscelanious Details:</b> {{org.misc}}</li>
-	</ul>
-<br>
-<hr width="80%"/>
+{% block history %}{{me.info.history}}{% endblock %}
+
+{% block info %}
+<ul>
+	<li><b>Significance:</b> {{me.info.type_}}</li>
+	<li><b>Location:</b>  {{me.info.loc.region}} {{me.info.loc.city}}, {{me.info.loc.country}}</li>
+	<li><b>Phone Number:</b> {{me.info.contact.phone}}</li>
+	<li><b>E-mail Address:</b> {{me.info.contact.email}}</li>
+	<li><b>Address:</b>
+		<p>{{me.info.contact.mail.city}}, {{me.info.contact.mail.state}} {{me.info.contact.mail.country}}
+		<p>{{me.info.contact.mail.address}}
+		<p>{{me.info.contact.mail.zip_}}
+		</li>
+	<li><b>Miscelanious Details:</b> {{me.misc}}</li>
+</ul>
+{% endblock %}
+
+{% block related %}
 <h3>Related People:</h3>
 	<ul>
-	{% for person in org.relatedPeople %}
+	{% for person in relatedpeople %}
 		<li class="indented">
-			<a href="orgs/{{person.idref}}"><b>{{person.name}}</b></a>
+			<a href="orgs/{{person.0.idref}}"><b>{{person.0.name}}</b></a>
 		</li>
 	{% endfor %}
 	</ul>
 <br>
 <hr width="80%"/>
 <h3>Related Crises:</h3>
-	{% for crisis in org.relatedCrises %}
+	{% for crisis in relatedcrises %}
 	<ul>
 		<li class="indented">
-			<a href="orgs/{{crisis.idref}}"><b>{{crisis.name}}</b></a>
+			<a href="orgs/{{crisis.0.idref}}"><b>{{crisis.0.name}}</b></a>
 		</li>
 	</ul>
 	{% endfor %}
 <br>
-<hr width="80%"/>
-<h3>External Links:</h3>
-<ul>
-	{% for social in org.ref.socials %}
-	<li class="indented"><a target="_blank" href="{{social.url}}"><b>{{social.title}}</b></a></li>
-	{% endfor %}
-	{% for ext in org.ref.exts %}
-	<li class="indented"><a target="_blank" href="{{ext.url}}"><b>{{ext.url}}</b></a></li>
-	{% endfor %}
-</ul>
 {% endblock %}

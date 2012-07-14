@@ -1,152 +1,48 @@
 {% extends "basetemplate.html" %}
 
-{% block mainchunk %}
-<h1><center>{{crisis.name}}</center></h1>
-<hr width="70%"/>
-<img class="mainimg" width="300" src="{{crisis.ref.primaryImage.url}}"/>
-<p><font size="4">{{crisis.info.history}}
-<br><hr width="30%"/><br>
-	<ul>
-		<li><b>Nature:</b> {{crisis.info.type_}}</li>
-		<li><b>Location:</b>  {{crisis.info.loc.region}} {{crisis.info.loc.city}}, {{crisis.info.loc.country}}</li>
-		<li><b>Date:</b>  {{crisis.info.birthday.date.month}} {{crisis.info.birthday.date.day}}, {{crisis.info.birthday.date.year}}</li>
-		<li><b>Phone Number:</b> {{crisis.info.contact.phone}}</li>
-		<li><b>E-mail Address:</b> {{crisis.info.contact.email}}</li>
-		<li><b>Human Impact:</b>
-			<p><b>Killed:</b> {{crisis.info.impact.human.deaths}}
-			<p><b>Injured:</b> {{crisis.info.impact.human.injured}}
-			<p><b>Missing:</b> {{crisis.info.impact.human.missing}}
-			<p><b>Displaced:</b> {{crisis.info.impact.human.displaced}}
-			<p><b>Other:</b> {{crisis.info.impact.human.misc}}
-			</li>
-		<li><b>Economic Impact:</b>
-			<p><b>Cost:</b> {{crisis.info.impact.economic.currency}}
-			<p><b>Volume:</b> {{crisis.info.impact.economic.ammount}}
-			<p><b>Other:</b> {{crisis.info.impact.economic.misc}}
-			</li>
-		<li><b>Miscelanious Details:</b> {{crisis.misc}}</li>
-	</ul>
-<br>
-<hr width="80%"/>
+{% block history %}{{me.info.history}}{% endblock %}
+
+{% block info %}
+<ul>
+	<li><b>Nature:</b> {{me.info.type_}}</li>
+	<li><b>Location:</b>  {{me.info.loc.region}} {{me.info.loc.city}}, {{me.info.loc.country}}</li>
+	<li><b>Date:</b>  {{me.info.birthday.date.month}} {{me.info.birthday.date.day}}, {{me.info.birthday.date.year}}</li>
+	<li><b>Phone Number:</b> {{me.info.contact.phone}}</li>
+	<li><b>E-mail Address:</b> {{me.info.contact.email}}</li>
+	<li><b>Human Impact:</b>
+		<p><b>Killed:</b> {{me.info.impact.human.deaths}}
+		<p><b>Injured:</b> {{me.info.impact.human.injured}}
+		<p><b>Missing:</b> {{me.info.impact.human.missing}}
+		<p><b>Displaced:</b> {{me.info.impact.human.displaced}}
+		<p><b>Other:</b> {{me.info.impact.human.misc}}
+		</li>
+	<li><b>Economic Impact:</b>
+		<p><b>Cost:</b> {{me.info.impact.economic.currency}}
+		<p><b>Volume:</b> {{me.info.impact.economic.ammount}}
+		<p><b>Other:</b> {{me.info.impact.economic.misc}}
+		</li>
+	<li><b>Miscelanious Details:</b> {{me.misc}}</li>
+</ul>
+{% endblock %}
+
+{% block related %}
 <h3>Related People:</h3>
 	<ul>
-	{% for person in crisis.relatedPeople %}
+	{% for person in relatedpeople %}
 		<li class="indented">
-			<a href="orgs/{{person.idref}}"><b>{{person.name}}</b></a>
+			<a href="orgs/{{person.0.idref}}"><b>{{person.0.name}}</b></a>
 		</li>
 	{% endfor %}
 	</ul>
 <br>
 <hr width="80%"/>
 <h3>Related Organizations:</h3>
-	{% for org in crisis.relatedOrgs %}
+	{% for org in relatedorgs %}
 	<ul>
 		<li class="indented">
-			<a href="orgs/{{orgidref}}"><b>{{org.name}}</b></a>
+			<a href="orgs/{{org.0.idref}}"><b>{{org.0.name}}</b></a>
 		</li>
 	</ul>
 	{% endfor %}
 <br>
-<hr width="80%"/>
-<h3>External Links:</h3>
-<ul>
-	{% for social in crisis.ref.socials %}
-	<li class="indented"><a target="_blank" href="{{social.url}}"><b>{{social.title}}</b></a></li>
-	{% endfor %}
-	{% for ext in crisis.ref.exts %}
-	<li class="indented"><a target="_blank" href="{{ext.url}}"><b>{{ext.url}}</b></a></li>
-	{% endfor %}
-</ul>
 {% endblock %}
-
-<!--
-<!DOCTYPE html>
-<html>
-<title>Libyan Civil War</title>
-<head>
-<script language="javascript" src="fancybox/lib/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="fancybox/source/jquery.fancybox.pack.js"></script>
-<link rel="stylesheet" href="fancybox/source/jquery.fancybox.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="fancybox/source/helpers/jquery.fancybox-buttons.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="content.css" type="text/css">
-<script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-buttons.js"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$(".fancybox").fancybox();
-	});
-</script>
-</head>
-<body>
-<div style="float: right; overflow-x: hidden; overflow-y: scroll; height:650px; width: 250px; margin: 0px;">
-	<table align="center" border="0" cellpadding="0" cellspacing="0">
-		<tr>
-			<td>
-				<ul>
-					<li class="center">
-						<a href="http://www.socialistparty.net/images/stories/libyan%20revolt.jpg" class="fancybox" rel="pix">
-							<img width="220" src="http://www.socialistparty.net/images/stories/libyan%20revolt.jpg">
-						</a>
-					</li>
-					<li class="center">
-						<a href="http://fifp.files.wordpress.com/2011/04/2011_middle_east_revolutions_-_libyans_protesting_on_tank.jpg" class="fancybox" rel="pix">
-							<img width="220" src="http://fifp.files.wordpress.com/2011/04/2011_middle_east_revolutions_-_libyans_protesting_on_tank.jpg">
-						</a>
-					</li>
-					<li>
-						<iframe width="220" src="http://www.youtube.com/embed/Bm6UEGbqofM" frameborder="0" allowfullscreen></iframe>
-					</li>
-					<li class="center">
-						<a href="http://www.flixya.com/files-photo/r/i/m/rimawi-1965850.jpg" class="fancybox" rel="pix">
-							<img width="220" src="http://www.flixya.com/files-photo/r/i/m/rimawi-1965850.jpg">
-						</a>
-					</li>
-					<li class="center">
-						<a href="http://nimg.sulekha.com/others/original700/libya-2011-2-26-12-20-0.jpg" class="fancybox" rel="pix">
-							<img width="220" src="http://nimg.sulekha.com/others/original700/libya-2011-2-26-12-20-0.jpg">
-						</a>
-					</li>
-					<li>
-						<iframe width="220" src="http://www.youtube.com/embed/8OzwkCGJlAI" frameborder="0" allowfullscreen></iframe>
-					</li>
-				</ul>
-			</td>
-		</tr>
-	</table>
-</div>
-<div style="overflow-x: hidden; overflow-y: scroll; height:650px; margin: 0px;">
-<img class="mainimg" width="300" src="images/lybian_civil_war_main.png"/>
-<h1><center>Libyan Civil War</center></h1>
-<hr width="30%"/>
-<p><font size="4">The Libyan civil war also referred to as the Libyan Revolution, was an armed conflict in the North African state of Libya, fought between forces loyal to Colonel Muammar Gaddafi and those seeking to oust his government. The war was preceded by protests in Benghazi beginning on Tuesday, 15 February 2011, which led to clashes with security forces that fired on the crowd. The protests escalated into a rebellion that spread across the country, with the forces opposing Gaddafi establishing an interim governing body, the National Transitional Council.
-<br><hr width="30%"/><br>
-	<ul>
-		<li><b>Location:</b>  Libya</li>
-		<li><b>Date and Time:</b> Feb 15, 2011</li>
-		<li><b>Impact:</b> Over 13,000 deaths, 50,000 refugees. In need of Medicine, Fuel, Food</li>
-	</ul>
-<br>
-<hr width="80%"/>
-<h3>Related Oganizations:</h3>
-	<ul>
-		<li class="indented">
-			<a href="international_criminal_court.html"><b>International Criminal Court</b></a>
-		</li>
-	</ul>
-<br>
-<hr width="80%"/>
-<h3>Related People:</h3>
-	<ul>
-		<li class="indented"><a href="mustafa_abdul_jalil.html"><b>Mustafa Abdul Jalil</b></a></li>
-	</ul>
-<br>
-<hr width="80%"/>
-<h3>External Links:</h3>
-<ul>
-	<li class="indented"><a target="_blank" href="http://www.facebook.com/Liibyan.Revolution"><b>Facebook Group 1</b></a></li>
-	<li class="indented"><a target="_blank" href="http://www.facebook.com/Libyan4Life"><b>Facebook Group 2</b></a></li>
-	<li class="indented"><a target="_blank" href="http://www.ntc.gov.ly/"><b>NTC.gov</b></a></li>
-</ul>
-</div>
-</body>
-</html>
--->

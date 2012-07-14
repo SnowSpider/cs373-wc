@@ -149,21 +149,23 @@ class MainHandler(webapp.RequestHandler):
         if path.startswith("/crises/") :
             crisis = Crisis.gql("WHERE idref = :1", path[8:]).fetch(1)
             if crisis: 
-                template_values['crisis'] = crisis[0]
+                template_values['me'] = crisis[0]
                 self.response.out.write(str(template.render('djangogoodies/crisistemplate.html', template_values)))
             else:
                 self.response.out.write("No such crisis!")
         elif path.startswith("/organizations/") :
             org = Organization.gql("WHERE idref = :1", path[15:]).fetch(1)
             if org: 
-                template_values['org'] = org[0]
+                template_values['me'] = org[0]
                 self.response.out.write(str(template.render('djangogoodies/organizationtemplate.html', template_values)))
             else:
                 self.response.out.write("No such organization!")
         elif path.startswith("/people/"):
             person = Person.gql("WHERE idref = :1", path[8:]).fetch(1)
             if person: 
-                template_values['person'] = person[0]
+                template_values['me'] = person[0]
+                template_values['relatedcrises'] = list(map((lambda x: Crisis.gql("WHERE ID = :1", x).fetch(1)), person[0].relatedCrises))
+                template_values['relatedorgs'] = list(map((lambda x: Organization.gql("WHERE ID = :1", x).fetch(1)), person[0].relatedOrgs))
                 self.response.out.write(str(template.render('djangogoodies/persontemplate.html', template_values)))
             else:
                 self.response.out.write("No such person!")
