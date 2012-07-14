@@ -1,22 +1,5 @@
 {% extends "basetemplate.html" %}
 
-{% block title %}{{org.name}}{% endblock %}
-
-{% block imagesandmovies %}
-{% for image in org.ref.images %}
-	<li class="center">
-		<a href="{{image.url}}" class="fancybox" rel="pix">
-			<img width="220" src="{{image.url}}">
-		</a>
-	</li>
-{% endfor %}
-{% for video in org.ref.videos %}
-	<li>
-		<iframe width="220" src="{{video.url}}" frameborder="0" allowfullscreen></iframe>
-	</li>
-{% endfor %}
-{% endblock %}
-
 {% block mainchunk %}
 <h1><center>{{org.name}}</center></h1>
 <hr width="70%"/>
