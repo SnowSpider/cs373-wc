@@ -57,13 +57,16 @@
 {% block related %}
 {% endblock %}
 <hr width="80%"/>
-<h3>External Links:</h3>
+<h3>Social Networks:</h3>
 <ul>
 	{% for social in socials %} 
-	<li class="indented"><a target="_blank" href="{{social.url}}"><b>{{social.title}}</b></a></li>
+	<li class="indented"><a target="_blank" href="{{social.url}}"><b>{% if social.site != "" %}[{{social.site}}] {% endif %}{{social.title}}</b></a>{{social.description}}</li>
 	{% endfor %}
+</ul>
+<h3>External Links:</h3>
+<ul>
 	{% for ext in exts %}
-	<li class="indented"><a target="_blank" href="{{ext.url}}"><b>{{ext.url}}</b></a></li>
+	<li class="indented"><a target="_blank" href="{{ext.url}}"><b>{% if ext.site != "" %}[{{ext.site}}] {% endif %}{{ext.title}}</b></a>{{ext.description}}</li>
 	{% endfor %}
 </ul>
 </div>
