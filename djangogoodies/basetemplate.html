@@ -31,7 +31,8 @@
 					{% endfor %}
 					{% for video in videos %}
 						<li>
-							<iframe width="220" src="{{video.url}}" frameborder="0" allowfullscreen></iframe>
+							<object style="width: 220px"><param name="movie" value="{{video.url}}"><param name="allowFullScreen" value="true"><param name="allowScriptAccess" value="always"><embed src="{{video.url}}" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="220"></object>
+                            <iframe width="220" src="{{video.url}}" frameborder="0" allowfullscreen></iframe>
 						</li>
 					{% endfor %}
 					{% endblock %}
@@ -42,6 +43,7 @@
 </div>
 <!-- content -->
 <div style="overflow-x: hidden; overflow-y: scroll; height:650px; margin: 0px;">
+<!--{{me.ref.images}}{{me.ref.videos}}-->
 <h1><center>{{me.name}}</center></h1>
 <h2><center>{{me.info.type_}}</center></h2>
 <hr width="70%"/>
