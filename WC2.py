@@ -147,9 +147,19 @@ class MainHandler(webapp.RequestHandler):
         self.response.headers['Content-Type'] = 'text/html'
 
         if path.startswith("/crises/") :
-            self.response.out.write("crisis page yet to be implemented")
+            crisis = Crisis.gql("WHERE idref = :1", path[8:]).fetch(1)
+            if crisis: 
+                template_values['crisis'] = crisis[0]
+                self.response.out.write(str(template.render('djangogoodies/crisistemplate.html', template_values)))
+            else:
+                self.response.out.write("No such crisis!")
         elif path.startswith("/organizations/") :
-            self.response.out.write("org page yet to be implemented")
+            org = Organization.gql("WHERE idref = :1", path[15:]).fetch(1)
+            if org: 
+                template_values['org'] = org[0]
+                self.response.out.write(str(template.render('djangogoodies/organizationtemplate.html', template_values)))
+            else:
+                self.response.out.write("No such organization!")
         elif path.startswith("/people/"):
             person = Person.gql("WHERE idref = :1", path[8:]).fetch(1)
             if person: 
@@ -157,7 +167,6 @@ class MainHandler(webapp.RequestHandler):
                 self.response.out.write(str(template.render('djangogoodies/persontemplate.html', template_values)))
             else:
                 self.response.out.write("No such person!")
-
         else:
             self.response.out.write(str(template.render('djangogoodies/maintemplate.html', template_values)))
             #inFile = open("htmlgoodies/mockup.html", 'r')
@@ -189,9 +198,8 @@ class ImportUploadHandler(blobstore_handlers.BlobstoreUploadHandler):
             debug("DATA_MODELS: " + str(data_models))
             self.response.out.write("Data was successfully imported")
             self.response.out.write("<script type=\"text/javascript\">")
-            self.response.out.write("function RefreshParent(){parent.location.reload();}")
+            self.response.out.write("parent.location.reload();")
             self.response.out.write("</script>")
-            self.response.out.write("<body onload=\"RefreshParent();\">")
         except:
             self.response.out.write("Please provide a valid XML file")
             
