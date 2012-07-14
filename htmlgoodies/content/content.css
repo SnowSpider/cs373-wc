@@ -9,6 +9,10 @@ img.mainimg
 	//border-width: 5px;
 	//border-color: #004040;
 	box-shadow: 5px 3px 1px #888;
+	max-width: 300px;
+	max-height: 300px;
+	width: expression(this.width > 300 ? "300px" : true);
+    height: expression(this.height > 300 ? "300px" : true);
 }
 
 img.thumb
