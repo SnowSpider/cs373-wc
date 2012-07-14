@@ -4,15 +4,33 @@
 
 {% block info %}
 <ul>
-	<li><b>Location:</b>  {{me.info.loc.region}} {{me.info.loc.city}}, {{me.info.loc.country}}</li>
+	<li><b>Location:</b> {{me.info.loc.country}} 
+	{% if me.info.loc.city != "" and me.info.loc.city != None %} {{me.info.contact.loc.city}} {% endif %}
+	{% if me.info.loc.state != "" and me.info.loc.state != None %} {{me.info.contact.loc.state}} {% endif %}
+	{% if me.info.loc.region != "" and me.info.loc.region != None %} {{me.info.contact.loc.region}} {% endif %}
+	</li>
+	{% if me.info.contact.phone != "" and me.info.contact.phone != None %}
 	<li><b>Phone Number:</b> {{me.info.contact.phone}}</li>
+	{% endif %}
+	{% if me.info.contact.email != "" and me.info.contact.email != None %}
 	<li><b>E-mail Address:</b> {{me.info.contact.email}}</li>
+	{% endif %}
+	{% if me.info.contact.mail.city != None or me.info.contact.mail.state != None or me.info.contact.mail.country != None or me.info.contact.mail.address != None or me.info.contact.mail.zip_ != None %}
 	<li><b>Address:</b>
-		<p>{{me.info.contact.mail.city}}, {{me.info.contact.mail.state}} {{me.info.contact.mail.country}}
+		<p>{% if me.info.contact.mail.city != "" and me.info.contact.mail.city != None %}{{me.info.contact.mail.city}},{% endif %}
+		{% if me.info.contact.mail.state != "" and me.info.contact.mail.state != None %}{{me.info.contact.mail.state}} {% endif %}
+		{% if me.info.contact.mail.country != "" and me.info.contact.mail.country != None %}{{me.info.contact.mail.country}}{% endif %}
+		{% if me.info.contact.mail.address != "" and me.info.contact.mail.address != None %}
 		<p>{{me.info.contact.mail.address}}
+		{% endif %}
+		{% if me.info.contact.mail.zip_ != "" and me.info.contact.mail.zip_ != None %}
 		<p>{{me.info.contact.mail.zip_}}
+		{% endif %}
 		</li>
+	{% endif %}
+	{% if me.misc != "" and me.misc != None %}
 	<li><b>Miscelanious Details:</b> {{me.misc}}</li>
+	{% endif %}
 </ul>
 {% endblock %}
 

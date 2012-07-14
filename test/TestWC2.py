@@ -164,6 +164,8 @@ class TestWC2 (unittest.TestCase) :
         line = "&&"
         result = fixAmp(line)
         self.assert_(result == "&amp;&amp;")
+    
+        
     """
     def test_xstr_1 (self) : 
     def test_xstr_2 (self) : 
