@@ -1,7 +1,41 @@
 Template, paste your work against your name.
 
 Sogol:
+﻿Import/Export
+Solution
+The import part of the project is handled  by the function import_file along with some helper functions. The significance of importing is that data needs to be imported from a valid xml instance and be stored in a data store and therefore it has to import in the GAE models. import_file is called in ImportXml. ImportXml takes a .xml file as an argument, reads it and calls the import_file. So import_file takes the .xml file as its argument. As a requirement for this project we used ElementTree which is a container object that stores hierarchical data in the memory. The data read from the xml file in the function import_file is stored in a list (called data) consecutively in the order that they appear in the xml file (as objects). ElementTree is used to go over the xml file and parse it. As an example:
+root.findall(“crisis”)
+finds matching sub-elements of the xml file with the tag “crisis” and puts them in a list and returns the list. Using ElementTree for the purpose of parsing xml files is significant since it has a tree like structure which makes it really easy to search or iterate through. 
+We go through the list which contains all the elements with a specific tag (person, organization or crisis). For each element, an object is built using the GAE models and constructors. The objects are built in a hierarchical order as the xml file is read. The elements are found and the objects along with the sub-elements form the objects based on the respective GAE model. These models are then put in the data store. All the elements and the sub-elements form a single object (crisis, person or organization) with its attributes based on the xml file. The object is then appended to the list (as well as the database). This process is repeated for crisis, person and organization and their respective objects are built and this is how the list gets populated. Note that the list is used only for testing purposes. It does not have anything to do with the database or the actual app. 
+Design Decision 
+We originally used a dictionary as our container instead of a list. The elements in that dictionary were accessed by their name which was also the key to the dictionary. The values to the keys were the objects’ attributes. We thought that this dictionary was complicated to populate and to test. So instead we decided to use a list as our container and store all the actual objects in it consecutively. 
+Export
+Solution
+The export needs to export from the GAE models and create an xml file. The function ExportXml takes care of that. All the GAE models are stored in the list (data) in the import phase. So the function ExportXml takes the list “data” and returns a string in xml format. It does this by iterating through the list and checking the type of the object (thing) in the list, all inside a for loop. The attributes of the objects are derived from the object and are each appended to a list which is converted to a string later.  The order in which we append to the list should be consistent with the xml instance. 
+Design Decision
+We originally used a string and concatenated all the attributes to that string. However, this appeared to be really expensive. So we decided to append to a list which is an amortized constant action. After the list is populated completely, we convert it to a string using the join operator. 
 
+Evaluation
+Our solution is tested with unit tests for each function. The main functions to unit test are import and export functions since most of the magic happens in those functions. 
+Import
+As an example, import is tested by the function test_ImportXml_1 which takes the xml file as an argument like import does. The test then populates the list “data" by calling the ImportXml function. For testing purposes we assert that the list in a particular index contains the right element with the right attributes. As an example:
+﻿self.assert_(data[0].name == "Libyan Civil War")
+self.assert_(data[0].info.type_ == "Civil War")
+asserts that the name attribute of the first element of the list is "Libyan Civil War" and the "type_" of the "info" attribute of that element is "Civil War".
+Export
+Testing the export facility is easy. In ﻿test_ExportXml_1, first we call import to form the data list and then we call the export with the data list as its argument. As explained earlier, Export returns a string. We assert that the string contains the right things and is identical to our xml instance.
+The rest of the unit tests are for helper functions and their operations are trivial. 
+Note that the reason that we switched to a list instead of dictionary was for unit-test purposes. It was hard to access the data in the dictionary and assert that the dictionary contains the right values. 
+
+Performance Tests:
+
+
+﻿
+
+
+
+
+  
 
 
 Wonjun:
