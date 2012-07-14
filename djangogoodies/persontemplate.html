@@ -15,7 +15,7 @@
 	<ul>
 	{% for org in relatedorgs %}
 		<li class="indented">
-			<a href="orgs/{{org.0.idref}}"><b>{{org.0.name}}</b></a>
+			<a href="/organizations/{{org.0.idref}}"><b>{{org.0.name}}</b></a>
 		</li>
 	{% endfor %}
 	</ul>
@@ -25,7 +25,7 @@
 	{% for crisis in relatedcrises %}
 	<ul>
 		<li class="indented">
-			<a href="crises/{{crisis.0.idref}}"><b>{{crisis.0.name}}</b></a>
+			<a href="/crises/{{crisis.0.idref}}"><b>{{crisis.0.name}}</b></a>
 		</li>
 	</ul>
 	{% endfor %}

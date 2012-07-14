@@ -22,7 +22,7 @@
 	<ul>
 	{% for person in relatedpeople %}
 		<li class="indented">
-			<a href="orgs/{{person.0.idref}}"><b>{{person.0.name}}</b></a>
+			<a href="/people/{{person.0.idref}}"><b>{{person.0.name}}</b></a>
 		</li>
 	{% endfor %}
 	</ul>
@@ -32,7 +32,7 @@
 	{% for crisis in relatedcrises %}
 	<ul>
 		<li class="indented">
-			<a href="orgs/{{crisis.0.idref}}"><b>{{crisis.0.name}}</b></a>
+			<a href="/crises/{{crisis.0.idref}}"><b>{{crisis.0.name}}</b></a>
 		</li>
 	</ul>
 	{% endfor %}

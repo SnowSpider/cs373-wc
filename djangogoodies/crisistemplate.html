@@ -30,7 +30,7 @@
 	<ul>
 	{% for person in relatedpeople %}
 		<li class="indented">
-			<a href="orgs/{{person.0.idref}}"><b>{{person.0.name}}</b></a>
+			<a href="/people/{{person.0.idref}}"><b>{{person.0.name}}</b></a>
 		</li>
 	{% endfor %}
 	</ul>
@@ -40,7 +40,7 @@
 	{% for org in relatedorgs %}
 	<ul>
 		<li class="indented">
-			<a href="orgs/{{org.0.idref}}"><b>{{org.0.name}}</b></a>
+			<a href="/organizations/{{org.0.idref}}"><b>{{org.0.name}}</b></a>
 		</li>
 	</ul>
 	{% endfor %}

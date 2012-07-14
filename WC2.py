@@ -150,6 +150,8 @@ class MainHandler(webapp.RequestHandler):
             crisis = Crisis.gql("WHERE idref = :1", path[8:]).fetch(1)
             if crisis: 
                 template_values['me'] = crisis[0]
+                template_values['relatedpeople'] = list(map((lambda x: Person.gql("WHERE idref = :1", x).fetch(1)), crisis[0].relatedPeople))
+                template_values['relatedorgs'] = list(map((lambda x: Organization.gql("WHERE idref = :1", x).fetch(1)), crisis[0].relatedOrgs))
                 self.response.out.write(str(template.render('djangogoodies/crisistemplate.html', template_values)))
             else:
                 self.response.out.write("No such crisis!")
@@ -157,6 +159,8 @@ class MainHandler(webapp.RequestHandler):
             org = Organization.gql("WHERE idref = :1", path[15:]).fetch(1)
             if org: 
                 template_values['me'] = org[0]
+                template_values['relatedcrises'] = list(map((lambda x: Crisis.gql("WHERE idref = :1", x).fetch(1)), org[0].relatedCrises))
+                template_values['relatedpeople'] = list(map((lambda x: Person.gql("WHERE idref = :1", x).fetch(1)), org[0].relatedPeople))
                 self.response.out.write(str(template.render('djangogoodies/organizationtemplate.html', template_values)))
             else:
                 self.response.out.write("No such organization!")
@@ -164,8 +168,8 @@ class MainHandler(webapp.RequestHandler):
             person = Person.gql("WHERE idref = :1", path[8:]).fetch(1)
             if person: 
                 template_values['me'] = person[0]
-                template_values['relatedcrises'] = list(map((lambda x: Crisis.gql("WHERE ID = :1", x).fetch(1)), person[0].relatedCrises))
-                template_values['relatedorgs'] = list(map((lambda x: Organization.gql("WHERE ID = :1", x).fetch(1)), person[0].relatedOrgs))
+                template_values['relatedcrises'] = list(map((lambda x: Crisis.gql("WHERE idref = :1", x).fetch(1)), person[0].relatedCrises))
+                template_values['relatedorgs'] = list(map((lambda x: Organization.gql("WHERE idref = :1", x).fetch(1)), person[0].relatedOrgs))
                 self.response.out.write(str(template.render('djangogoodies/persontemplate.html', template_values)))
             else:
                 self.response.out.write("No such person!")
