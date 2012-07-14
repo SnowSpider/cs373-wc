@@ -31,13 +31,13 @@
       <impact>
         <human>
           <deaths>30000</deaths>
-          <displaced>0</displaced>
+          <displaced></displaced>
           <injured>50000</injured>
           <missing>4000</missing>
           <misc></misc>
         </human>
         <economic>
-          <amount>0</amount>
+          <amount></amount>
           <currency></currency>
           <misc></misc>
         </economic>
@@ -70,7 +70,7 @@
       </image>
       <video>
         <site></site>
-        <title>Revolution Ripples: Libya &amp; Co. chaos mapped out </title>
+        <title>Revolution Ripples: Libya &amp; Co. chaos mapped out</title>
         <url>http://youtu.be/8OzwkCGJlAI</url>
         <description>The Libyan crisis is showing no signs of dying down and is now being felt far beyond its borders. Thousands of immigrants have already fleed to neighbouring countries, while the unrest has seen the price of oil skyrocket. RT's Irina Galushko maps out the situation.</description>
       </video>
@@ -128,7 +128,7 @@
           <misc></misc>
         </human>
         <economic>
-          <amount>0</amount>
+          <amount></amount>
           <currency></currency>
           <misc></misc>
         </economic>
@@ -194,14 +194,14 @@
       </loc>
       <impact>
         <human>
-          <deaths>0</deaths>
-          <displaced>0</displaced>
-          <injured>0</injured>
-          <missing>0</missing>
+          <deaths></deaths>
+          <displaced></displaced>
+          <injured></injured>
+          <missing></missing>
           <misc></misc>
         </human>
         <economic>
-          <amount>0</amount>
+          <amount></amount>
           <currency></currency>
           <misc></misc>
         </economic>
@@ -268,13 +268,13 @@
       <impact>
         <human>
           <deaths>197</deaths>
-          <displaced>0</displaced>
+          <displaced></displaced>
           <injured>1721</injured>
-          <missing>0</missing>
+          <missing></missing>
           <misc></misc>
         </human>
         <economic>
-          <amount>0</amount>
+          <amount></amount>
           <currency></currency>
           <misc></misc>
         </economic>
@@ -472,7 +472,7 @@
         <site></site>
         <title>Statement by The World Uyghur Congress</title>
         <url>http://tibettruth.com/2009/07/07/statement-by-the-world-uyghur-congress</url>
-        <description>World Uyghur Congress’ Statement on July 5th Urumqi Incident</description>
+        <description>World Uyghur Congress' Statement on July 5th Urumqi Incident</description>
       </ext>
     </ref>
     <misc></misc>
@@ -655,7 +655,7 @@ On 17 July 1998, the international community reached an historic milestone when 
       </primaryImage>
       <image>
         <site></site>
-        <title>Deprivation of Medical Care Jeopardizes Political Prisoner’s Life</title>
+        <title>Deprivation of Medical Care Jeopardizes Political Prisoner's Life</title>
         <url>http://www.iranhumanrights.org/wp-content/uploads/Ronaghi21-300x2171.jpg</url>
         <description>Hossein Ronaghi Maleki in Dire Condition Serving 15-Year Prison Term
 Father Says Months-long Torture Caused Kidney Failure</description>
@@ -882,8 +882,8 @@ Father Says Months-long Torture Caused Kidney Failure</description>
       <type>Chairman of the National Transitional Council of Libya</type>
       <birthdate>
         <time></time>
-        <day>0</day>
-        <month>0</month>
+        <day></day>
+        <month></month>
         <year>1952</year>
         <misc></misc>
       </birthdate>
