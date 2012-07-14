@@ -7,22 +7,32 @@
 	<li><b>Location:</b>  {% if me.info.loc.region != None and me.info.loc.region != "" %}{{me.info.loc.region}} {% endif %} 
 	{% if me.info.loc.city != None and me.info.loc.city != "" %}{{me.info.loc.city}}, {% endif %} 
 	{% if me.info.loc.country != None and me.info.loc.country != "" %}{{me.info.loc.country}}{% endif %} </li>
+	{% if me.info.birthday.date.month != None or me.info.birthday.date.day != None or me.info.birthday.date.year != None %}
 	<li><b>Date:</b>  {{me.info.birthday.date.month}} {{me.info.birthday.date.day}}, {{me.info.birthday.date.year}}</li>
+	{% endif %}
+	{% if me.info.contact.phone != None %}
 	<li><b>Phone Number:</b> {{me.info.contact.phone}}</li>
+	{% endif %}
+	{% if me.info.contact.email != None %}
 	<li><b>E-mail Address:</b> {{me.info.contact.email}}</li>
+	{% endif %}
 	<li><b>Human Impact:</b>
 		<p><b>Killed:</b> {{me.info.impact.human.deaths}}
 		<p><b>Injured:</b> {{me.info.impact.human.injured}}
 		<p><b>Missing:</b> {{me.info.impact.human.missing}}
 		<p><b>Displaced:</b> {{me.info.impact.human.displaced}}
+		{% if me.info.impact.human.misc != None %}
 		<p><b>Other:</b> {{me.info.impact.human.misc}}
+		{% endif %}
 		</li>
 	<li><b>Economic Impact:</b>
 		{% if me.info.impact.economic.currency != None %}
 		<p><b>Cost:</b> {{me.info.impact.economic.currency}}
 		{% endif %}
 		<p><b>Volume:</b> {{me.info.impact.economic.amount}}
+		{% if me.info.impact.economic.misc != None %}
 		<p><b>Other:</b> {{me.info.impact.economic.misc}}
+		{% endif %}
 		</li>
 	{% if me.misc != None and me.misc != "" %}
 	<li><b>Miscelanious Details:</b> {{me.misc}}</li>
