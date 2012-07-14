@@ -4,9 +4,17 @@
 
 {% block info %}
 <ul>
+	{% if me.info.nationality != "" and me.info.nationality != None %}
 	<li><b>Nationality:</b> {{me.info.nationality}}</li>
+	{% endif %}
+	
+	{% if me.info.birthday.date.month != "" and me.info.birthday.date.day != "" and me.info.birthday.date.year != "" and me.info.birthday.date.month != None and me.info.birthday.date.day != None and me.info.birthday.date.year != None %}
 	<li><b>Birthday:</b>  {{me.info.birthday.date.month}} {{me.info.birthday.date.day}}, {{me.info.birthday.date.year}}</li>
+	{% endif %}
+	
+	{% if me.info.misc != "" and me.info.misc != None %}
 	<li><b>Miscelanious Details:</b>  {{me.misc}}</li>
+	{% endif %}
 </ul>
 {% endblock %}
 
