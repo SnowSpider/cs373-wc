@@ -1,63 +1,63 @@
 {% extends "basetemplate.html" %}
 
-{ % block mainchunk % }
-<h1><center>{{name}}</center></h1>
+{% block mainchunk %}
+<h1><center>{{crisis.name}}</center></h1>
 <hr width="70%"/>
-<img class="mainimg" width="300" src="{{ref.primaryImage.url}}"/>
-<p><font size="4">{{info.history}}
+<img class="mainimg" width="300" src="{{crisis.ref.primaryImage.url}}"/>
+<p><font size="4">{{crisis.info.history}}
 <br><hr width="30%"/><br>
 	<ul>
-		<li><b>Nature:</b> {{info.type_}}</li>
-		<li><b>Location:</b>  {{info.loc.region}} {{info.loc.city}}, {{info.loc.country}}</li>
-		<li><b>Date:</b>  {{info.birthday.date.month}} {{info.birthday.date.day}}, {{info.birthday.date.year}}</li>
-		<li><b>Phone Number:</b> {{info.contact.phone}}</li>
-		<li><b>E-mail Address:</b> {{info.contact.email}}</li>
+		<li><b>Nature:</b> {{crisis.info.type_}}</li>
+		<li><b>Location:</b>  {{crisis.info.loc.region}} {{crisis.info.loc.city}}, {{crisis.info.loc.country}}</li>
+		<li><b>Date:</b>  {{crisis.info.birthday.date.month}} {{crisis.info.birthday.date.day}}, {{crisis.info.birthday.date.year}}</li>
+		<li><b>Phone Number:</b> {{crisis.info.contact.phone}}</li>
+		<li><b>E-mail Address:</b> {{crisis.info.contact.email}}</li>
 		<li><b>Human Impact:</b>
-			<p><b>Killed:</b> {{info.impact.human.deaths}}
-			<p><b>Injured:</b> {{info.impact.human.injured}}
-			<p><b>Missing:</b> {{info.impact.human.missing}}
-			<p><b>Displaced:</b> {{info.impact.human.displaced}}
-			<p><b>Other:</b> {{info.impact.human.misc}}
+			<p><b>Killed:</b> {{crisis.info.impact.human.deaths}}
+			<p><b>Injured:</b> {{crisis.info.impact.human.injured}}
+			<p><b>Missing:</b> {{crisis.info.impact.human.missing}}
+			<p><b>Displaced:</b> {{crisis.info.impact.human.displaced}}
+			<p><b>Other:</b> {{crisis.info.impact.human.misc}}
 			</li>
 		<li><b>Economic Impact:</b>
-			<p><b>Cost:</b> {{info.impact.economic.currency}}
-			<p><b>Volume:</b> {{info.impact.economic.ammount}}
-			<p><b>Other:</b> {{info.impact.economic.misc}}
+			<p><b>Cost:</b> {{crisis.info.impact.economic.currency}}
+			<p><b>Volume:</b> {{crisis.info.impact.economic.ammount}}
+			<p><b>Other:</b> {{crisis.info.impact.economic.misc}}
 			</li>
-		<li><b>Miscelanious Details:</b> {{misc}}</li>
+		<li><b>Miscelanious Details:</b> {{crisis.misc}}</li>
 	</ul>
 <br>
 <hr width="80%"/>
 <h3>Related People:</h3>
 	<ul>
-	{ % for person in relatedPeople %}
+	{% for person in crisis.relatedPeople %}
 		<li class="indented">
-			<a href="orgs/{{person.idref}}"><b>{{person.name}}/b></a>
+			<a href="orgs/{{person.idref}}"><b>{{person.name}}</b></a>
 		</li>
-	{ % endfor %}
+	{% endfor %}
 	</ul>
 <br>
 <hr width="80%"/>
 <h3>Related Organizations:</h3>
-	{ % for org in relatedOrgs %}
+	{% for org in crisis.relatedOrgs %}
 	<ul>
 		<li class="indented">
-			<a href="orgs/{{orgidref}}"><b>{{org.name}}/b></a>
+			<a href="orgs/{{orgidref}}"><b>{{org.name}}</b></a>
 		</li>
 	</ul>
-	{ % endfor %}
+	{% endfor %}
 <br>
 <hr width="80%"/>
 <h3>External Links:</h3>
 <ul>
-	{ % for social in ref.socials %}
+	{% for social in crisis.ref.socials %}
 	<li class="indented"><a target="_blank" href="{{social.url}}"><b>{{social.title}}</b></a></li>
-	{ % endfor}
-	{ % for ext in ref.exts %}
+	{% endfor %}
+	{% for ext in crisis.ref.exts %}
 	<li class="indented"><a target="_blank" href="{{ext.url}}"><b>{{ext.url}}</b></a></li>
-	{ % endfor %}
+	{% endfor %}
 </ul>
-{ % endblock % }
+{% endblock %}
 
 <!--
 <!DOCTYPE html>
