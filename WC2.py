@@ -10,6 +10,7 @@ from google.appengine.ext import db
 from google.appengine.ext.db import polymodel
 
 import logging
+import re
 
 # Third party package django was enabled in app.yaml but not found on import. You may have to download and install it.
 
@@ -260,7 +261,11 @@ def xint(e):
     return 0 if e was None, int otherwise
     """
     temp = xstr(e)
-    return 0 if temp is None else int(temp)
+    if temp is None:
+        return 0 # must return 0. If None is returned, the exported instance will fail to validate.
+    else:
+        assert re.sub("\d", "", temp) == "" # non-digits must be rejected
+        return int(temp)
 
 # ------
 # fixAmp
@@ -302,6 +307,8 @@ def import_file(xml_file):
     
     crises = root.findall("crisis")
     for crisis in crises: 
+        assert(crisis.attrib["id"] is not None)
+        assert(crisis.find("name") is not None)
         crisis_model = Crisis(key_name = crisis.attrib["id"], 
                               idref = crisis.attrib["id"], 
                               name = crisis.find("name").text)
@@ -409,6 +416,8 @@ def import_file(xml_file):
     
     orgs = root.findall("organization")
     for org in orgs: 
+        assert(org.attrib["id"] is not None)
+        assert(org.find("name") is not None)
         org_model = Organization(key_name = org.attrib["id"], idref = org.attrib["id"], name = org.find("name").text)
         
         info = org.find("info")
@@ -500,6 +509,8 @@ def import_file(xml_file):
         
     people = root.findall("person")
     for person in people: 
+        assert(person.attrib["id"] is not None)
+        assert(person.find("name") is not None)
         person_model = Person(key_name = person.attrib["id"], idref = person.attrib["id"], name = person.find("name").text)
         info = person.find("info")
         
@@ -747,6 +758,7 @@ def ExportXml(data):
             myString.append("\t\t\t<birthdate>\n")
             myString.append("\t\t\t\t<time>" + trim(thing.info.birthdate.time) + "</time>\n")
             myString.append("\t\t\t\t<day>" + trim(thing.info.birthdate.day) + "</day>\n")
+            myString.append("\t\t\t\t<month>" + trim(thing.info.birthdate.month) + "</month>\n")
             myString.append("\t\t\t\t<year>" + trim(thing.info.birthdate.year) + "</year>\n")
             myString.append("\t\t\t\t<misc>" + trim(thing.info.birthdate.misc) + "</misc>\n")
             myString.append("\t\t\t</birthdate>\n")
@@ -798,7 +810,7 @@ def ExportXml(data):
         
     myString.append("</worldCrises>")
     
-    #debug("".join(myString))
+    debug("".join(myString))
     
     return "".join(myString)
 
