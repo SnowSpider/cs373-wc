@@ -221,7 +221,7 @@ class ImportUploadHandler(blobstore_handlers.BlobstoreUploadHandler):
             global data_models
             xml_file = self.get_uploads('file')[0].open()
             debug("XML_FILE: "+ str(xml_file))
-            import_file(xml_file)
+            data_models = import_file(xml_file)
             self.response.out.write("Data was successfully imported")
             self.response.out.write("<script type=\"text/javascript\">")
             self.response.out.write("parent.location.reload();")
