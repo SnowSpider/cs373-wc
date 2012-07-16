@@ -31,7 +31,6 @@
 					{% endfor %}
 					{% for video in videos %}
 						<li>
-							<object style="width: 220px"><param name="movie" value="{{video.url}}"><param name="allowFullScreen" value="true"><param name="allowScriptAccess" value="always"><embed src="{{video.url}}" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="220"></object>
                             <iframe width="220" src="{{video.url}}" frameborder="0" allowfullscreen></iframe>
 						</li>
 					{% endfor %}
