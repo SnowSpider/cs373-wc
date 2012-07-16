@@ -76,18 +76,18 @@
       </video>
       <social>
         <site>Facebook</site>
-        <title></title>
+        <title>Liibyan.Revolution - Facebook Page</title>
         <url>http://www.facebook.com/Liibyan.Revolution</url>
         <description></description>
       </social>
       <social>
         <site>Facebook</site>
-        <title></title>
+        <title>Libyan4Life - Facebook Page</title>
         <url>http://www.facebook.com/Libyan4Life</url>
         <description></description>
       </social>
       <ext>
-        <site></site>
+        <site>National Transitional Council</site>
         <title>National Transitional Council</title>
         <url>http://www.ntc.gov.ly</url>
         <description></description>
@@ -838,11 +838,29 @@ Father Says Months-long Torture Caused Kidney Failure</description>
         <url>http://upload.wikimedia.org/wikipedia/commons/7/7d/Bashar_al-Assad_%28cropped%29.jpg</url>
         <description>Brasilia - The president of the Syrian Arab Republic, Bashar Al-Assad during a visit to Congress</description>
       </primaryImage>
-      <image>
+	  <image>
         <site></site>
         <title>Bashar al-Assad</title>
-        <url>http://upload.wikimedia.org/wikipedia/commons/7/7d/Bashar_al-Assad_%28cropped%29.jpg</url>
-        <description>Brasilia - The president of the Syrian Arab Republic, Bashar Al-Assad during a visit to Congress</description>
+        <url>http://comicsagogo.files.wordpress.com/2012/03/bashar-and-beker-al-assad.jpg</url>
+        <description>The president</description>
+      </image>
+	  <image>
+        <site></site>
+        <title>Bashar al-Assad</title>
+        <url>http://www.rt.com/files/news/assad-strong-us-intelligence-273/bashar-al-assad-353.n.jpg</url>
+        <description>The president</description>
+      </image>
+	  <image>
+        <site></site>
+        <title>Bashar al-Assad</title>
+        <url>http://i.telegraph.co.uk/multimedia/archive/01925/Bashar-al-Assad-su_1925765b.jpg</url>
+        <description>The president</description>
+      </image>
+	  <image>
+        <site></site>
+        <title>Bashar al-Assad</title>
+        <url>http://www.mcculloughsite.net/stingray/photos/assad_bashar.jpg</url>
+        <description>The president</description>
       </image>
       <video>
         <site></site>
@@ -858,13 +876,13 @@ Father Says Months-long Torture Caused Kidney Failure</description>
       </video>
       <social>
         <site></site>
-        <title>The president</title>
+        <title>Filler article</title>
         <url>http://sana.sy/eng/article/5.htm</url>
         <description></description>
       </social>
       <ext>
-        <site></site>
-        <title>The president</title>
+        <site>sana.sy</site>
+        <title>sana.sy article on the president</title>
         <url>http://sana.sy/eng/article/5.htm</url>
         <description></description>
       </ext>
@@ -882,12 +900,12 @@ Father Says Months-long Torture Caused Kidney Failure</description>
       <type>Chairman of the National Transitional Council of Libya</type>
       <birthdate>
         <time></time>
-        <day>0</day>
-        <month>0</month>
+        <day>25</day>
+        <month>5</month>
         <year>1952</year>
         <misc></misc>
       </birthdate>
-      <nationality>Libya</nationality>
+      <nationality>Libyan</nationality>
       <biography>From 2007 to 2011, Abdul Jalil was Minister of Justice (officially, the Secretary of the General People's Committee of Justice) under Colonel Muammar Gaddafi. He has been noted in some news media for his stance against various human rights violations in Libya, although others express a different view and accuse him, for example, of intransigence during the appeal by the Bulgarian nurses (that sentence was later converted to life imprisonment and the nurses were eventually released). During the civil war, Abdul Jalil was identified as the Chairman of the National Transitional Council based in Benghazi, although this position was contested by others in the uprising due to his past direct participation in Gaddafi's government as Minister of Justice for four years until 2011.</biography>
     </info>
     <ref>
@@ -905,18 +923,18 @@ Father Says Months-long Torture Caused Kidney Failure</description>
       </image>
       <video>
         <site></site>
-        <title>FRANCE 24 The Interview : France 24 Interview with Mustapha Abdel Jalil </title>
+        <title>FRANCE 24 The Interview : France 24 Interview with Mustapha Abdel Jalil</title>
         <url>http://youtu.be/eNLc_OuPVxQ</url>
         <description>An interview with a French or international personality from the world of economics, politics, culture or diplomacy</description>
       </video>
       <social>
         <site>Facebook</site>
-        <title></title>
+        <title>Facebook</title>
         <url>http://www.facebook.com/pages/%D9%85%D8%B5%D8%B7%D9%81%D9%89-%D8%B9%D8%A8%D8%AF-%D8%A7%D9%84%D8%AC%D9%84%D9%8A%D9%84/134535143287038?rf=135221043216666</url>
         <description></description>
       </social>
       <social>
-        <site></site>
+        <site>Twitter</site>
         <title>Twitter</title>
         <url>http://twitter.com/#!/mustafaajalil</url>
         <description></description>

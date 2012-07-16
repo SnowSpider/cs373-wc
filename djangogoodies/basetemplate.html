@@ -60,13 +60,17 @@
 <h3>Social Networks:</h3>
 <ul>
 	{% for social in socials %} 
-	<li class="indented"><a target="_blank" href="{{social.url}}"><b>{% if social.site != "" %}[{{social.site}}] {% endif %}{{social.title}}</b></a>{{social.description}}</li>
+	<li class="indented"><a target="_blank" href="{{social.url}}"><b>
+	{% if social.site != None and social.title == None %}[{{social.site}}] {% endif %}
+	{% if social.title != None %}{{social.title}}{% endif %}</b></a></li>
 	{% endfor %}
 </ul>
 <h3>External Links:</h3>
 <ul>
 	{% for ext in exts %}
-	<li class="indented"><a target="_blank" href="{{ext.url}}"><b>{% if ext.site != "" %}[{{ext.site}}] {% endif %}{{ext.title}}</b></a>{{ext.description}}</li>
+	<li class="indented"><a target="_blank" href="{{ext.url}}" alt="{{ext.description}}"><b>
+	{% if ext.site != None and ext.title == None%}[{{ext.site}}] {% endif %}
+	{% if ext.title != None %}{{ext.title}}{% endif %}</b></a></li>
 	{% endfor %}
 </ul>
 </div>
