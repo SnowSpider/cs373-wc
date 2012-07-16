@@ -13,6 +13,8 @@ GitHub ID:              SnowSpider
 GitHub Repository Name: cs373-wc
 Google App Engine URL:  wlee-cs373-wc.appspot.com
 
+<repeat for each group member>
+
 Group Member First Name: Daniel
 Group Member Last Name:  Moreno
 Group Member EID:        drm2472

@@ -76,6 +76,9 @@ class TestWC2 (unittest.TestCase) :
         self.assert_(data[0].relatedOrgs[0] == "International_Criminal_Court")
         self.assert_(data[0].relatedPeople[0] == "Mustafa_Abdul_Jalil")
         
+        #for thing in data:
+        #    db.delete(thing)
+        
     def test_ImportXml_2 (self) :
     
         data = ImportXml("WC2.xml")
@@ -109,6 +112,9 @@ class TestWC2 (unittest.TestCase) :
         self.assert_(data[4].relatedCrises[0] == "Xinjiang_Riots")
         self.assert_(data[4].relatedPeople[0] == "Rebiya_Kadeer")
         
+        #for thing in data:
+        #    db.delete(thing)
+        
     def test_ImportXml_3 (self) :
         
         data = ImportXml("WC2.xml")
@@ -134,10 +140,16 @@ class TestWC2 (unittest.TestCase) :
         self.assert_(data[8].relatedCrises[0] == "Iranian_Green_Movement")
         self.assert_(data[8].relatedOrgs[0] == "International_Campaign_for_Human_Rights_in_Iran")
         
+        #for thing in data:
+        #    db.delete(thing)
+        
     def test_ExportXml_1 (self) :
         data = ImportXml("test.xml")
         result = ExportXml(data)
         self.assert_(result == "<worldCrises>\n</worldCrises>")
+        
+        #for thing in data:
+        #    db.delete(thing)
         
     def test_ExportXml_2 (self) :
         dataA = ImportXml("WC2.xml")
@@ -145,6 +157,11 @@ class TestWC2 (unittest.TestCase) :
         dataB = ImportXml("TestWC2_out.xml")
         resultB = ExportXml(dataB)
         self.assert_(resultA == resultB)
+        
+        #for thing in dataA:
+        #    db.delete(thing)
+        #for thing in dataB:
+        #    db.delete(thing)
     
     def test_ExportXml_3 (self) :
         dataA = ImportXml("WC2.xml")
@@ -152,6 +169,11 @@ class TestWC2 (unittest.TestCase) :
         dataB = ImportXml("WC2.xml")
         resultB = ExportXml(dataB)
         self.assert_(resultA == resultB)
+        
+        #for thing in dataA:
+        #    db.delete(thing)
+        #for thing in dataB:
+        #    db.delete(thing)
         
     def test_fixAmp_1 (self) :
         line = ""

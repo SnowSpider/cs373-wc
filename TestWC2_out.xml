@@ -1,14 +1,4 @@
-<!-- xml_template -->
-
-
-<!-- All videos have links to the site they are on. There are a few comments left in file -->
-<!-- Need to add external links -->
-<!-- Should people have contact info? At the moment they don't -->
-
 <worldCrises>
-
-<!--..................................... Libyan Civil War .....................................-->
-
   <crisis id="Libyan_Civil_War">
     <name>Libyan Civil War</name>
     <info>
@@ -97,9 +87,6 @@
     <org idref="International_Criminal_Court"/>
     <person idref="Mustafa_Abdul_Jalil"/>
   </crisis>
-
-<!--..................................... Syrian Uprising .....................................-->
-
   <crisis id="Syrian_Uprising">
     <name>Syrian Uprising</name>
     <info>
@@ -200,9 +187,6 @@
     <org idref="Amnesty_International"/>
     <person idref="Bashar_al-Assad"/>
   </crisis>
-
-<!--..................................... Iranian Green Movement .....................................-->
-
   <crisis id="Iranian_Green_Movement">
     <name>Iranian Green Movement</name>
     <info>
@@ -303,9 +287,6 @@
     <org idref="International_Campaign_for_Human_Rights_in_Iran"/>
     <person idref="Mir_Hossein_Mousavi"/>
   </crisis>
-
-<!--..................................... Xinjiang Riots .....................................-->
-
   <crisis id="Xinjiang_Riots">
     <name>Xinjiang Riots</name>
     <info>
@@ -466,9 +447,6 @@
     <org idref="World_Uyghur_Congress"/>
     <person idref="Rebiya_Kadeer"/>
   </crisis>
-
-<!--..................................... World Uyghur Congress .....................................-->
-
   <organization id="World_Uyghur_Congress">
     <name>World Uyghur Congress</name>
     <info>
@@ -557,9 +535,6 @@
     <crisis idref="Xinjiang_Riots"/>
     <person idref="Rebiya_Kadeer"/>
   </organization>
-
-<!--..................................... International Criminal Court .....................................-->
-
   <organization id="International_Criminal_Court">
     <name>International Criminal Court</name>
     <info>
@@ -657,9 +632,6 @@ The Rome Statute entered into force on 1 July 2002 after ratification by 60 coun
     <crisis idref="Libyan_Civil_War"/>
     <person idref="Mustafa_Abdul_Jalil"/>
   </organization>
-
-<!--..................................... Amnesty International .....................................-->
-
   <organization id="Amnesty_International">
     <name>Amnesty International</name>
     <info>
@@ -755,9 +727,6 @@ Amnesty International was founded in London in 1961, following the publication o
     <person idref="Bashar_al-Assad"/>
     <person idref="Mir_Hossein_Mousavi"/>
   </organization>
-
-<!--..................................... International Campaign for Human Rights in Iran .....................................-->
-
   <organization id="International_Campaign_for_Human_Rights_in_Iran">
     <name>International Campaign for Human Rights in Iran</name>
     <info>
@@ -771,7 +740,7 @@ Amnesty International was founded in London in 1961, following the publication o
           <city></city>
           <state></state>
           <country></country>
-          <zip></zip>    
+          <zip></zip>
         </mail>
       </contact>
       <loc>
@@ -840,10 +809,6 @@ Amnesty International was founded in London in 1961, following the publication o
     <crisis idref="Iranian_Green_Movement"/>
     <person idref="Mir_Hossein_Mousavi"/>
   </organization>
-
-
-<!--..................................... Mir Hossein Mousavi .....................................-->
-
   <person id="Mir_Hossein_Mousavi">
     <name>Mir Hossein Mousavi</name>
     <info>
@@ -918,9 +883,6 @@ Amnesty International was founded in London in 1961, following the publication o
     <crisis idref="Iranian_Green_Movement"/>
     <org idref="International_Campaign_for_Human_Rights_in_Iran"/>
   </person>
-
-<!--..................................... Rebiya Kadeer .....................................-->
-
   <person id="Rebiya_Kadeer">
     <name>Rebiya Kadeer</name>
     <info>
@@ -1013,9 +975,6 @@ Amnesty International was founded in London in 1961, following the publication o
     <crisis idref="Xinjiang_Riots"/>
     <org idref="World_Uyghur_Congress"/>
   </person>
-
-<!--..................................... Bashar al-Assad .....................................-->
-
   <person id="Bashar_al-Assad">
     <name>Bashar al-Assad</name>
     <info>
@@ -1090,9 +1049,6 @@ Amnesty International was founded in London in 1961, following the publication o
     <crisis idref="Syrian_Uprising"/>
     <org idref="Amnesty_International"/>
   </person>
-
-<!--..................................... Mustafa Abdul Jalil .....................................-->
-
   <person id="Mustafa_Abdul_Jalil">
     <name>Mustafa Abdul Jalil</name>
     <info>
@@ -1179,5 +1135,4 @@ Amnesty International was founded in London in 1961, following the publication o
     <crisis idref="Libyan_Civil_War"/>
     <org idref="International_Criminal_Court"/>
   </person>
-  
 </worldCrises>
