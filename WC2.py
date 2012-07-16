@@ -8,6 +8,7 @@ from google.appengine.ext.webapp import template
 from google.appengine.ext import blobstore
 from google.appengine.ext import db
 from google.appengine.ext.db import polymodel
+#from minixsv import pyxsval 
 
 import logging
 import re
@@ -199,7 +200,11 @@ class MainHandler(webapp.RequestHandler):
 class ExportHandler(webapp.RequestHandler):
     def get(self):
         self.response.headers['Content-Type'] = 'text/xml'
-        self.response.out.write(ExportXml(data_models))
+        data = []
+        data += Crisis.all().fetch(50)
+        data += Organization.all().fetch(50)
+        data += Person.all().fetch(50)
+        self.response.out.write(ExportXml(data))
 
 class ImportFormHandler(webapp.RequestHandler):
     def get(self):
@@ -216,8 +221,7 @@ class ImportUploadHandler(blobstore_handlers.BlobstoreUploadHandler):
             global data_models
             xml_file = self.get_uploads('file')[0].open()
             debug("XML_FILE: "+ str(xml_file))
-            data_models = import_file(xml_file)
-            debug("DATA_MODELS: " + str(data_models))
+            import_file(xml_file)
             self.response.out.write("Data was successfully imported")
             self.response.out.write("<script type=\"text/javascript\">")
             self.response.out.write("parent.location.reload();")
