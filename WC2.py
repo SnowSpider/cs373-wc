@@ -810,7 +810,8 @@ def ExportXml(data):
         
     myString.append("</worldCrises>")
     
-    debug("".join(myString))
+    #debug(myString)
+    #debug("".join(myString))
     
     return "".join(myString)
 
