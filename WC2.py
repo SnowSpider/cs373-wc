@@ -217,7 +217,7 @@ class ImportFormHandler(webapp.RequestHandler):
 
 class ImportUploadHandler(blobstore_handlers.BlobstoreUploadHandler):
     def post(self):
-        try:
+        #try:
             global data_models
             xml_file = self.get_uploads('file')[0].open()
             debug("XML_FILE: "+ str(xml_file))
@@ -226,8 +226,9 @@ class ImportUploadHandler(blobstore_handlers.BlobstoreUploadHandler):
             self.response.out.write("<script type=\"text/javascript\">")
             self.response.out.write("parent.location.reload();")
             self.response.out.write("</script>")
-        except:
-            self.response.out.write("Please provide a valid XML file")
+        #except:
+            #debug(str(sys.exc_info()[0]))
+            #self.response.out.write("Please provide a valid XML file")
             
             
 # ---------
@@ -366,7 +367,7 @@ def import_file(xml_file):
         ref_model = Reference()
         pimage_model = Link(site = xstr(primaryImage.find("site")), 
                             title = xstr(primaryImage.find("title")), 
-                            url = xstr(primaryImage.find("url")), 
+                            url = xstr(primaryImage.find("url")).strip(), 
                             description = xstr(primaryImage.find("description")))
         pimage_model.put()
         ref_model.primaryImage = pimage_model
@@ -374,7 +375,7 @@ def import_file(xml_file):
         for image in images:
             link_model = Link(site = xstr(image.find("site")), 
                               title = xstr(image.find("title")), 
-                              url = xstr(image.find("url")), 
+                              url = xstr(image.find("url")).strip(), 
                               description = xstr(image.find("description")))
             link_model.put()
             ref_model.images.append(link_model.key())
@@ -382,7 +383,8 @@ def import_file(xml_file):
         for video in videos:
             link_model = Link(site = xstr(video.find("site")), 
                               title = xstr(video.find("title")), 
-                              url = xstr(video.find("url")), 
+                              url = xstr(video.find("url")).strip(), 
+
                               description = xstr(video.find("description")))
             link_model.put()
             ref_model.videos.append(link_model.key())
@@ -390,7 +392,7 @@ def import_file(xml_file):
         for social in socials:
             link_model = Link(site = xstr(social.find("site")), 
                               title = xstr(social.find("title")), 
-                              url = xstr(social.find("url")), 
+                              url = xstr(social.find("url")).strip(), 
                               description = xstr(social.find("description")))
             link_model.put()
             ref_model.socials.append(link_model.key())
@@ -398,7 +400,7 @@ def import_file(xml_file):
         for ext in exts:
             link_model = Link(site = xstr(ext.find("site")), 
                               title = xstr(ext.find("title")), 
-                              url = xstr(ext.find("url")), 
+                              url = xstr(ext.find("url")).strip(), 
                               description = xstr(ext.find("description")))
             link_model.put()
             ref_model.exts.append(link_model.key())
@@ -459,7 +461,7 @@ def import_file(xml_file):
         ref_model = Reference()
         pimage_model = Link(site = xstr(primaryImage.find("site")), 
                             title = xstr(primaryImage.find("title")), 
-                            url = xstr(primaryImage.find("url")), 
+                            url = xstr(primaryImage.find("url")).strip(), 
                             description = xstr(primaryImage.find("description")))
         pimage_model.put()
         ref_model.primaryImage = pimage_model
@@ -467,7 +469,7 @@ def import_file(xml_file):
         for image in images:
             link_model = Link(site = xstr(image.find("site")), 
                               title = xstr(image.find("title")), 
-                              url = xstr(image.find("url")), 
+                              url = xstr(image.find("url")).strip(), 
                               description = xstr(image.find("description")))
             link_model.put()
             ref_model.images.append(link_model.key())
@@ -475,7 +477,7 @@ def import_file(xml_file):
         for video in videos:
             link_model = Link(site = xstr(video.find("site")), 
                               title = xstr(video.find("title")), 
-                              url = xstr(video.find("url")), 
+                              url = xstr(video.find("url")).strip(), 
                               description = xstr(video.find("description")))
             link_model.put()
             ref_model.videos.append(link_model.key())
@@ -483,7 +485,7 @@ def import_file(xml_file):
         for social in socials:
             link_model = Link(site = xstr(social.find("site")), 
                               title = xstr(social.find("title")), 
-                              url = xstr(social.find("url")), 
+                              url = xstr(social.find("url")).strip(), 
                               description = xstr(social.find("description")))
             link_model.put()
             ref_model.socials.append(link_model.key())
@@ -491,7 +493,7 @@ def import_file(xml_file):
         for ext in exts:
             link_model = Link(site = xstr(ext.find("site")), 
                               title = xstr(ext.find("title")), 
-                              url = xstr(ext.find("url")), 
+                              url = xstr(ext.find("url")).strip(), 
                               description = xstr(ext.find("description")))
             link_model.put()
             ref_model.exts.append(link_model.key())
@@ -521,7 +523,7 @@ def import_file(xml_file):
         info = person.find("info")
         info_model = PersonInfo(type_ = xstr(info.find("type")), 
                                 nationality = xstr(info.find("nationality")), 
-                                biography = xstr(info.find("biography")))
+                                biography = xstr(info.find("biography")).encode('ascii', 'ignore'))
         
         birthdate = info.find("birthdate")
         birthdate_model = Date(time = xstr(birthdate.find("time")), 
@@ -540,7 +542,7 @@ def import_file(xml_file):
         ref_model = Reference()
         pimage_model = Link(site = xstr(primaryImage.find("site")), 
                             title = xstr(primaryImage.find("title")), 
-                            url = xstr(primaryImage.find("url")), 
+                            url = xstr(primaryImage.find("url")).strip(), 
                             description = xstr(primaryImage.find("description")))
         pimage_model.put()
         ref_model.primaryImage = pimage_model
@@ -548,7 +550,7 @@ def import_file(xml_file):
         for image in images:
             link_model = Link(site = xstr(image.find("site")), 
                               title = xstr(image.find("title")), 
-                              url = xstr(image.find("url")), 
+                              url = xstr(image.find("url")).strip(), 
                               description = xstr(image.find("description")))
             link_model.put()
             ref_model.images.append(link_model.key())
@@ -556,7 +558,7 @@ def import_file(xml_file):
         for video in videos:
             link_model = Link(site = xstr(video.find("site")), 
                               title = xstr(video.find("title")), 
-                              url = xstr(video.find("url")), 
+                              url = xstr(video.find("url")).strip(), 
                               description = xstr(video.find("description")))
             link_model.put()
             ref_model.videos.append(link_model.key())
@@ -564,7 +566,7 @@ def import_file(xml_file):
         for social in socials:
             link_model = Link(site = xstr(social.find("site")), 
                               title = xstr(social.find("title")), 
-                              url = xstr(social.find("url")), 
+                              url = xstr(social.find("url")).strip(), 
                               description = xstr(social.find("description")))
             link_model.put()
             ref_model.socials.append(link_model.key())
@@ -572,7 +574,7 @@ def import_file(xml_file):
         for ext in exts:
             link_model = Link(site = xstr(ext.find("site")), 
                               title = xstr(ext.find("title")), 
-                              url = xstr(ext.find("url")), 
+                              url = xstr(ext.find("url")).strip(), 
                               description = xstr(ext.find("description")))
             link_model.put()
             ref_model.exts.append(link_model.key())
