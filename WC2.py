@@ -229,6 +229,11 @@ class ImportUploadHandler(blobstore_handlers.BlobstoreUploadHandler):
         #except:
             #debug(str(sys.exc_info()[0]))
             #self.response.out.write("Please provide a valid XML file")
+
+class SearchHandler(webapp.RequestHandler):
+    def post(self):
+        query = self.request.get("query", default_value='')
+        self.response.out.write("You entered a search for: " + query)
             
             
 # ---------
@@ -837,6 +842,7 @@ def main():
                                             ('/import', ImportFormHandler), 
                                             ('/import_upload', ImportUploadHandler),
                                             ('/export', ExportHandler),
+                                            ('/search', SearchHandler),
                                             ('/.*', MainHandler)
                                          ], debug=True)
     wsgiref.handlers.CGIHandler().run(application)
