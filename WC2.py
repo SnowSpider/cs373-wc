@@ -233,8 +233,11 @@ class ImportUploadHandler(blobstore_handlers.BlobstoreUploadHandler):
 class SearchHandler(webapp.RequestHandler):
     def post(self):
         query = self.request.get("query", default_value='')
-        self.response.out.write("You entered a search for: " + query)
-            
+        template_values = {
+            'query' : query
+        }
+        self.response.out.write(str(template.render('djangogoodies/searchtemplate.html', template_values)))
+
             
 # ---------
 # ImportXml
