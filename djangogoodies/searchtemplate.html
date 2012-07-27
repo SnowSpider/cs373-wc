@@ -28,7 +28,7 @@
 <h4>Crises</h4>
 {% for result in crises_results %}
 <div class="search_result">
-  <a href="people/{{result.0.idref}}">{{result.0.name}}</a><br>
+  <a href="crises/{{result.0.idref}}">{{result.0.name}}</a><br>
   <ul>
     {% for context in result.1 %}
     <li><span class="context_type">{{context.0}}</span>{{context.1|safe}}</li>
@@ -43,7 +43,7 @@
 <h4>Organizations</h4>
 {% for result in org_results %}
 <div class="search_result">
-  <a href="people/{{result.0.idref}}">{{result.0.name}}</a><br>
+  <a href="organizations/{{result.0.idref}}">{{result.0.name}}</a><br>
   <ul>
     {% for context in result.1 %}
     <li><span class="context_type">{{context.0}}</span>{{context.1|safe}}</li>
