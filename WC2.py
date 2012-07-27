@@ -62,6 +62,12 @@ class Date(db.Model):
     month = db.IntegerProperty()
     year = db.IntegerProperty()
     misc = db.StringProperty()
+
+    def score(self, keywords):
+        return 0 # do not search dates
+
+    def context(self, keywords):
+        return [] # do not search dates
     
 class CrisisInfo(db.Model):
     history = db.TextProperty()
@@ -83,6 +89,18 @@ class PersonInfo(db.Model):
     birthdate = db.ReferenceProperty(Date)
     nationality = db.StringProperty()
     biography = db.TextProperty()
+
+    def score(self, keywords):
+        return 0
+    
+    # returns list of pairs (attribute name (string), value display (string))
+    def context(self, keywords):
+        result = []
+        result.append(("Type", context_of_string(self.type_, keywords)))
+        result.extend(self.birthdate.context(keywords))
+        result.append(("Nationality", context_of_string(self.nationality, keywords)))
+        result.append(("Biography", context_of_text(self.biography, keywords)))
+        return result
     
 class Reference(db.Model):
     primaryImage = db.ReferenceProperty(Link)
@@ -90,6 +108,12 @@ class Reference(db.Model):
     videos = db.ListProperty(db.Key)
     socials = db.ListProperty(db.Key)
     exts = db.ListProperty(db.Key)
+
+    def score(self, keywords):
+        return 0 # do not search links
+
+    def context(self, keywords):
+        return [] # do not search links
     
 class Crisis(db.Model):
     idref = db.StringProperty(required=True)
@@ -117,12 +141,49 @@ class Person(db.Model):
     misc = db.StringProperty()
     relatedCrises = db.StringListProperty()
     relatedOrgs = db.StringListProperty()
-
-class WorldCrises(db.Model):
-    crises = db.ListProperty(db.Key)
-    orgs = db.ListProperty(db.Key)
-    people = db.ListProperty(db.Key)
     
+    def score(self, keywords):
+        result = 0
+        result += score_of_string(self.name, keywords)
+        result += self.info.score(keywords)
+        result += self.ref.score(keywords)
+        result += score_of_string(self.misc, keywords)
+        # TO-DO search related
+        return result
+
+    # returns list of pairs (attribute name (string), value display (string))
+    # Example: ("Birthdate", "11/12/<b>1934</b>")
+    def context(self, keywords):
+        result = []
+        result.append(("Name", context_of_string(self.name, keywords)))
+        result.extend(self.info.context(keywords))
+        result.append(("Misc.", context_of_string(self.misc, keywords)))
+        result.extend(self.ref.context(keywords))
+        # TO-DO search related
+        return result
+
+def score_of_string(string, keywords):
+    return 0 # TO-DO
+
+def score_of_text(text, keywords):
+    return 0 # TO-DO
+
+CONTEXT_SIZE = 50
+
+# returns the value display (string)
+def context_of_string(string, keywords):
+    return highlight_keywords(string, keywords)
+
+# returns the value display (string)
+def context_of_text(text, keywords):
+    context_pattern = r'[^.?!]{0,' + str(CONTEXT_SIZE / 2) + r'}'
+    pattern = "|".join(map(lambda kw: r'\b' + context_pattern + r'\b' + kw + r'\b' + context_pattern + r'\b', keywords))
+    result = "...".join(re.findall(pattern, text, flags=re.IGNORECASE))
+    return highlight_keywords(result, keywords)
+
+def highlight_keywords(string, keywords):
+    pattern = "|".join(map(lambda kw: r'\b' + kw + r'\b', keywords)) # Match any of the words in keywords
+    return re.sub(pattern, r'<b>\g<0></b>', str(string), flags=re.IGNORECASE)
     
 class MainHandler(webapp.RequestHandler):
     def get(self):
@@ -233,11 +294,14 @@ class ImportUploadHandler(blobstore_handlers.BlobstoreUploadHandler):
 class SearchHandler(webapp.RequestHandler):
     def post(self):
         query = self.request.get("query", default_value='')
+
+        people_results = map(lambda x: x.context(query.split()), Person.all().fetch(50))
+        
         template_values = {
             'query' : query
         }
-        self.response.out.write(str(template.render('djangogoodies/searchtemplate.html', template_values)))
-
+        #self.response.out.write(str(template.render('djangogoodies/searchtemplate.html', template_values)))
+        self.response.out.write(str(people_results))
             
 # ---------
 # ImportXml
