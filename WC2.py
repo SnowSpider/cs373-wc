@@ -16,6 +16,7 @@ import re
 # Third party package django was enabled in app.yaml but not found on import. You may have to download and install it.
 
 data_models = []
+CONTEXT_SIZE = 100
 
 class Link(db.Model):
     site = db.StringProperty()
@@ -91,7 +92,7 @@ class PersonInfo(db.Model):
     biography = db.TextProperty()
 
     def score(self, keywords):
-        return 0
+        return score_of_string(self.type_, keywords) + self.birthdate.score(keywords) + score_of_string(self.nationality, keywords) + score_of_string(self.biography, keywords)
     
     # returns list of pairs (attribute name (string), value display (string))
     def context(self, keywords):
@@ -99,7 +100,7 @@ class PersonInfo(db.Model):
         result.append(("Type", context_of_string(self.type_, keywords)))
         result.extend(self.birthdate.context(keywords))
         result.append(("Nationality", context_of_string(self.nationality, keywords)))
-        result.append(("Biography", context_of_text(self.biography, keywords)))
+        result.append(("Biography", context_of_string(self.biography, keywords)))
         return result
     
 class Reference(db.Model):
@@ -160,30 +161,27 @@ class Person(db.Model):
         result.append(("Misc.", context_of_string(self.misc, keywords)))
         result.extend(self.ref.context(keywords))
         # TO-DO search related
-        return result
+        return [x for x in result if x[1] != ""] # only return those that are non-empty
 
-def score_of_string(string, keywords):
-    return 0 # TO-DO
-
-def score_of_text(text, keywords):
-    return 0 # TO-DO
-
-CONTEXT_SIZE = 50
+def score_of_string(text, keywords):
+    pattern = "|".join(map(lambda kw: r'\b' + kw + r'\b', keywords))
+    found = map(lambda x: x.upper(), re.findall(pattern, str(text), flags=re.IGNORECASE))
+    debug("found for " + str(text) + ": " + str(found))
+    return len(found) * len(set(found)) # Score = num of matches * num of unique keywords matched
 
 # returns the value display (string)
-def context_of_string(string, keywords):
-    return highlight_keywords(string, keywords)
-
-# returns the value display (string)
-def context_of_text(text, keywords):
+# returns "" if no keywords are found
+def context_of_string(text, keywords):
     context_pattern = r'[^.?!]{0,' + str(CONTEXT_SIZE / 2) + r'}'
     pattern = "|".join(map(lambda kw: r'\b' + context_pattern + r'\b' + kw + r'\b' + context_pattern + r'\b', keywords))
-    result = "...".join(re.findall(pattern, text, flags=re.IGNORECASE))
+    result = "...".join(re.findall(pattern, str(text), flags=re.IGNORECASE))
+    if result != "" and len(result) < len(str(text)):
+        result = "..." + result + "..."
     return highlight_keywords(result, keywords)
 
 def highlight_keywords(string, keywords):
     pattern = "|".join(map(lambda kw: r'\b' + kw + r'\b', keywords)) # Match any of the words in keywords
-    return re.sub(pattern, r'<b>\g<0></b>', str(string), flags=re.IGNORECASE)
+    return re.sub(pattern, r'<span class="context_highlight">\g<0></span>', str(string), flags=re.IGNORECASE)
     
 class MainHandler(webapp.RequestHandler):
     def get(self):
@@ -295,13 +293,17 @@ class SearchHandler(webapp.RequestHandler):
     def post(self):
         query = self.request.get("query", default_value='')
 
-        people_results = map(lambda x: x.context(query.split()), Person.all().fetch(50))
+        # Each element of *_results is a tuple (model, context, score)
+        people_results = map(lambda x: (x, x.context(query.split()), x.score(query.split())), Person.all().fetch(50))
+        people_results = sorted(people_results, key=lambda x: x[2], reverse=True) # sort by descending score
+        people_results = [ x for x in people_results if x[2] > 0 ] # remove those with no matches
         
         template_values = {
-            'query' : query
+            'query' : query,
+            'people_results' : people_results
         }
-        #self.response.out.write(str(template.render('djangogoodies/searchtemplate.html', template_values)))
-        self.response.out.write(str(people_results))
+        self.response.out.write(str(template.render('djangogoodies/searchtemplate.html', template_values)))
+        #self.response.out.write(str(people_results))
             
 # ---------
 # ImportXml
