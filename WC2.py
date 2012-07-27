@@ -70,6 +70,12 @@ class EconomicImpact(db.Model):
 class Impact(db.Model):
     human = db.ReferenceProperty(HumanImpact)
     economic = db.ReferenceProperty(EconomicImpact)
+
+    def score(self, keywords):
+        return 0 # do not search impact
+
+    def context(self, keywords):
+        return [] # do not search impact
     
 class Location(db.Model):
     city = db.StringProperty()
@@ -106,6 +112,20 @@ class CrisisInfo(db.Model):
     time = db.ReferenceProperty(Date)
     loc = db.ReferenceProperty(Location)
     impact = db.ReferenceProperty(Impact)
+
+    def score(self, keywords):
+        return score_of_string(self.history, keywords) + score_of_string(self.help, keywords) + score_of_string(self.resources, keywords) + score_of_string(self.type_, keywords) + self.time.score(keywords) + self.loc.score(keywords) + self.impact.score(keywords)
+
+    def context(self, keywords):
+        result = []
+        result.append(("Type", context_of_string(self.type_, keywords)))
+        result.append(("History", context_of_string(self.history, keywords)))
+        result.append(("Ways to Help", context_of_string(self.help, keywords)))
+        result.append(("Resources Needed", context_of_string(self.resources, keywords)))
+        result.extend(self.time.context(keywords))
+        result.extend(self.loc.context(keywords))
+        result.extend(self.impact.context(keywords))
+        return result
     
 class OrgInfo(db.Model):
     type_ = db.StringProperty()
@@ -165,6 +185,26 @@ class Crisis(db.Model):
     misc = db.StringProperty()
     relatedOrgs = db.StringListProperty()
     relatedPeople = db.StringListProperty()
+
+    def score(self, keywords):
+        result = 0
+        result += score_of_string(self.name, keywords)
+        result += self.info.score(keywords)
+        result += self.ref.score(keywords)
+        result += score_of_string(self.misc, keywords)
+        # TO-DO search related
+        return result
+
+    # returns list of pairs (attribute name (string), value display (string))
+    # Example: ("Birthdate", "11/12/<b>1934</b>")
+    def context(self, keywords):
+        result = []
+        result.append(("Name", context_of_string(self.name, keywords)))
+        result.extend(self.info.context(keywords))
+        result.append(("Misc.", context_of_string(self.misc, keywords)))
+        result.extend(self.ref.context(keywords))
+        # TO-DO search related
+        return [x for x in result if x[1] != ""] # only return those that are non-empty
     
 class Organization(db.Model):
     idref = db.StringProperty(required=True)
@@ -227,7 +267,6 @@ class Person(db.Model):
 def score_of_string(text, keywords):
     pattern = "|".join(map(lambda kw: r'\b' + kw + r'\b', keywords))
     found = map(lambda x: x.upper(), re.findall(pattern, str(text), flags=re.IGNORECASE))
-    debug("found for " + str(text) + ": " + str(found))
     return len(found) * len(set(found)) # Score = num of matches * num of unique keywords matched
 
 # returns the value display (string)
@@ -355,6 +394,9 @@ class SearchHandler(webapp.RequestHandler):
         query = self.request.get("query", default_value='')
 
         # Each element of *_results is a tuple (model, context, score)
+        crises_results = map(lambda x: (x, x.context(query.split()), x.score(query.split())), Crisis.all().fetch(50))
+        crises_results = sorted(crises_results, key=lambda x: x[2], reverse=True) # sort by descending score
+        crises_results = [ x for x in crises_results if x[2] > 0 ] # remove those with no matches
         people_results = map(lambda x: (x, x.context(query.split()), x.score(query.split())), Person.all().fetch(50))
         people_results = sorted(people_results, key=lambda x: x[2], reverse=True) # sort by descending score
         people_results = [ x for x in people_results if x[2] > 0 ] # remove those with no matches
@@ -365,6 +407,7 @@ class SearchHandler(webapp.RequestHandler):
         template_values = {
             'query' : query,
             'people_results' : people_results,
+            'crises_results' : crises_results,
             'org_results' : org_results
         }
         self.response.out.write(str(template.render('djangogoodies/searchtemplate.html', template_values)))
