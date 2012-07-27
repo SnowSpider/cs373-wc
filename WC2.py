@@ -30,11 +30,30 @@ class FullAddress(db.Model):
     state = db.StringProperty()
     country = db.StringProperty()
     zip_ = db.StringProperty()
+
+    def score(self, keywords):
+        return score_of_string(self.address, keywords) + score_of_string(self.city, keywords) + score_of_string(self.state, keywords) + score_of_string(self.country, keywords) + score_of_string(self.zip_, keywords)
+
+    def context(self, keywords):
+        addrs = [str(self.address), str(self.city), str(self.state), str(self.zip_), str(self.country)]
+        addrs = [x for x in addrs if x != ""] # remove the empty fields
+        addr_string = ", ".join(addrs)
+        return [("Address", context_of_string(addr_string, keywords))]
     
 class ContactInfo(db.Model):
     phone = db.PhoneNumberProperty()
     email = db.EmailProperty()
     mail = db.ReferenceProperty(FullAddress)
+
+    def score(self, keywords):
+        return score_of_string(self.phone, keywords) + score_of_string(self.email, keywords) + self.mail.score(keywords)
+
+    def context(self, keywords):
+        result = []
+        result.append(("Phone", context_of_string(self.phone, keywords)))
+        result.append(("Email", context_of_string(self.email, keywords)))
+        result.extend(self.mail.context(keywords))
+        return result
     
 class HumanImpact(db.Model):
     deaths = db.IntegerProperty()
@@ -56,6 +75,15 @@ class Location(db.Model):
     city = db.StringProperty()
     region = db.StringProperty()
     country = db.StringProperty()
+
+    def score(self, keywords):
+        return score_of_string(self.city, keywords) + score_of_string(self.region, keywords) + score_of_string(self.country, keywords)
+
+    def context(self, keywords):
+        locs = [str(self.city), str(self.region), str(self.country)]
+        locs = [x for x in locs if x != ""] # remove the empty fields
+        loc_string = ", ".join(locs)
+        return [("Location", context_of_string(loc_string, keywords))]
 
 class Date(db.Model):
     time = db.StringProperty()
@@ -84,6 +112,19 @@ class OrgInfo(db.Model):
     history = db.TextProperty()
     contact = db.ReferenceProperty(ContactInfo)
     loc = db.ReferenceProperty(Location)
+    
+    def score(self, keywords):
+        return score_of_string(self.type_, keywords) + score_of_string(self.history, keywords) + self.contact.score(keywords) + self.loc.score(keywords)
+    
+    # returns list of pairs (attribute name (string), value display (string))
+    def context(self, keywords):
+        result = []
+        result.append(("Type", context_of_string(self.type_, keywords)))
+        result.append(("History", context_of_string(self.history, keywords)))
+        result.extend(self.contact.context(keywords))
+        result.extend(self.loc.context(keywords))
+        return result
+    
 
 class PersonInfo(db.Model):
     type_ = db.StringProperty()
@@ -133,6 +174,26 @@ class Organization(db.Model):
     misc = db.StringProperty()
     relatedCrises = db.StringListProperty()
     relatedPeople = db.StringListProperty()
+
+    def score(self, keywords):
+        result = 0
+        result += score_of_string(self.name, keywords)
+        result += self.info.score(keywords)
+        result += self.ref.score(keywords)
+        result += score_of_string(self.misc, keywords)
+        # TO-DO search related
+        return result
+
+    # returns list of pairs (attribute name (string), value display (string))
+    # Example: ("Birthdate", "11/12/<b>1934</b>")
+    def context(self, keywords):
+        result = []
+        result.append(("Name", context_of_string(self.name, keywords)))
+        result.extend(self.info.context(keywords))
+        result.append(("Misc.", context_of_string(self.misc, keywords)))
+        result.extend(self.ref.context(keywords))
+        # TO-DO search related
+        return [x for x in result if x[1] != ""] # only return those that are non-empty
     
 class Person(db.Model):
     idref = db.StringProperty(required=True)
@@ -297,10 +358,14 @@ class SearchHandler(webapp.RequestHandler):
         people_results = map(lambda x: (x, x.context(query.split()), x.score(query.split())), Person.all().fetch(50))
         people_results = sorted(people_results, key=lambda x: x[2], reverse=True) # sort by descending score
         people_results = [ x for x in people_results if x[2] > 0 ] # remove those with no matches
+        org_results = map(lambda x: (x, x.context(query.split()), x.score(query.split())), Organization.all().fetch(50))
+        org_results = sorted(org_results, key=lambda x: x[2], reverse=True) # sort by descending score
+        org_results = [ x for x in org_results if x[2] > 0 ] # remove those with no matches
         
         template_values = {
             'query' : query,
-            'people_results' : people_results
+            'people_results' : people_results,
+            'org_results' : org_results
         }
         self.response.out.write(str(template.render('djangogoodies/searchtemplate.html', template_values)))
         #self.response.out.write(str(people_results))
