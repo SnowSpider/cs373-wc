@@ -637,6 +637,7 @@ def merge(entity, xml_newEntityNode):
         if(entity.info.contact.mail.address is None):
             entity.info.contact.mail.address = xstr(mail.find("email"))
         if(entity.info.contact.mail.city is None):
+        
             entity.info.contact.mail.city = xstr(mail.find("city"))
         if(entity.info.contact.mail.state is None):
             entity.info.contact.mail.state = xstr(mail.find("state"))

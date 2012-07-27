@@ -6,3 +6,4 @@ pydoc -w WC1
 http://localhost:8080/
 
 google_appengine/dev_appserver.py --debug --clear_datastore cs373-wc/
+
