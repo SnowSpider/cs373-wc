@@ -266,7 +266,7 @@ class Person(db.Model):
 
 def score_of_string(text, keywords):
     pattern = "|".join(map(lambda kw: r'\b' + kw + r'\b', keywords))
-    found = map(lambda x: x.upper(), re.findall(pattern, str(text), flags=re.IGNORECASE))
+    found = map(lambda x: x.upper(), re.findall(pattern, str(text if text is None else text.encode('ascii', 'ignore')), flags=re.IGNORECASE))
     return len(found) * len(set(found)) # Score = num of matches * num of unique keywords matched
 
 # returns the value display (string)
@@ -274,8 +274,8 @@ def score_of_string(text, keywords):
 def context_of_string(text, keywords):
     context_pattern = r'[^.?!]{0,' + str(CONTEXT_SIZE / 2) + r'}'
     pattern = "|".join(map(lambda kw: r'\b' + context_pattern + r'\b' + kw + r'\b' + context_pattern + r'\b', keywords))
-    result = "...".join(re.findall(pattern, str(text), flags=re.IGNORECASE))
-    if result != "" and len(result) < len(str(text)):
+    result = ("...".join(re.findall(pattern, str(text if text is None else text.encode('ascii', 'ignore')), flags=re.IGNORECASE)))
+    if result != "" and len(result) < len(str(text if text is None else text.encode('ascii', 'ignore'))):
         result = "..." + result + "..."
     return highlight_keywords(result, keywords)
 
@@ -451,7 +451,7 @@ def xint(e):
     if temp is None:
         return 0 # must return 0. If None is returned, the exported instance will fail to validate.
     else:
-        assert re.sub("\d", "", temp) == "" # non-digits must be rejected
+        #assert re.sub("\d", "", temp) == "" # non-digits must be rejected
         return int(temp)
 
 # ------
@@ -495,13 +495,18 @@ def exists(n):
     entity = Crisis.get_by_key_name(n)
     if entity is not None:
         return entity
-    entity = Org.get_by_key_name(n)
+    entity = Organization.get_by_key_name(n)
     if entity is not None:
         return entity
     entity = Person.get_by_key_name(n)
     if entity is not None:
         return entity
     return False
+
+def nonestrip(checked):
+    if checked is None:
+        return checked
+    return checked.strip()
 
 def merge(entity, xml_newEntityNode):
     if(xml_newEntityNode.tag == "crisis"):
@@ -554,7 +559,7 @@ def merge(entity, xml_newEntityNode):
         ref = xml_newEntityNode.find("ref")
         images = ref.findall("image")
         for image in images:
-            newImage =  xstr(image.find("url")).strip()
+            newImage =  nonestrip(xstr(image.find("url")))
             dup = False
             for oldImage in entity.ref.images:
                 if newImage == Link.get(oldImage).url:
@@ -568,7 +573,7 @@ def merge(entity, xml_newEntityNode):
                 entity.ref.images.append(link_model.key())
         videos = ref.findall("video")
         for video in videos:
-            newVideo =  xstr(video.find("url")).strip()
+            newVideo =  nonestrip(xstr(video.find("url")))
             dup = False
             for oldVideo in entity.ref.videos:
                 if newVideo == Link.get(oldVideo).url:
@@ -582,7 +587,7 @@ def merge(entity, xml_newEntityNode):
                 entity.ref.videos.append(link_model.key())
         socials = ref.findall("social")
         for social in socials:
-            newSocial =  xstr(social.find("url")).strip()
+            newSocial =  nonestrip(xstr(social.find("url")))
             dup = False
             for oldSocial in entity.ref.socials:
                 if newSocial == Link.get(oldSocial).url:
@@ -596,7 +601,7 @@ def merge(entity, xml_newEntityNode):
                 entity.ref.socials.append(link_model.key())
         exts = ref.findall("ext")
         for ext in exts:
-            newExt =  xstr(ext.find("url")).strip()
+            newExt =  nonestrip(xstr(ext.find("url")))
             dup = False
             for oldExt in entity.ref.exts:
                 if newExt == Link.get(oldExt).url:
@@ -660,7 +665,7 @@ def merge(entity, xml_newEntityNode):
         ref = xml_newEntityNode.find("ref")
         images = ref.findall("image")
         for image in images:
-            newImage =  xstr(image.find("url")).strip()
+            newImage =  nonestrip(xstr(image.find("url")))
             dup = False
             for oldImage in entity.ref.images:
                 if newImage == Link.get(oldImage).url:
@@ -674,7 +679,7 @@ def merge(entity, xml_newEntityNode):
                 entity.ref.images.append(link_model.key())
         videos = ref.findall("video")
         for video in videos:
-            newVideo =  xstr(video.find("url")).strip()
+            newVideo =  nonestrip(xstr(video.find("url")))
             dup = False
             for oldVideo in entity.ref.videos:
                 if newVideo == Link.get(oldVideo).url:
@@ -688,7 +693,7 @@ def merge(entity, xml_newEntityNode):
                 entity.ref.videos.append(link_model.key())
         socials = ref.findall("social")
         for social in socials:
-            newSocial =  xstr(social.find("url")).strip()
+            newSocial =  nonestrip(xstr(social.find("url")))
             dup = False
             for oldSocial in entity.ref.socials:
                 if newSocial == Link.get(oldSocial).url:
@@ -702,7 +707,7 @@ def merge(entity, xml_newEntityNode):
                 entity.ref.socials.append(link_model.key())
         exts = ref.findall("ext")
         for ext in exts:
-            newExt =  xstr(ext.find("url")).strip()
+            newExt =  nonestrip(xstr(ext.find("url")))
             dup = False
             for oldExt in entity.ref.exts:
                 if newExt == Link.get(oldExt).url:
@@ -756,7 +761,7 @@ def merge(entity, xml_newEntityNode):
         ref = xml_newEntityNode.find("ref")
         images = ref.findall("image")
         for image in images:
-            newImage =  xstr(image.find("url")).strip()
+            newImage =  nonestrip(xstr(image.find("url")))
             dup = False
             for oldImage in entity.ref.images:
                 if newImage == Link.get(oldImage).url:
@@ -770,7 +775,7 @@ def merge(entity, xml_newEntityNode):
                 entity.ref.images.append(link_model.key())
         videos = ref.findall("video")
         for video in videos:
-            newVideo =  xstr(video.find("url")).strip()
+            newVideo =  nonestrip(xstr(video.find("url")))
             dup = False
             for oldVideo in entity.ref.videos:
                 if newVideo == Link.get(oldVideo).url:
@@ -784,7 +789,7 @@ def merge(entity, xml_newEntityNode):
                 entity.ref.videos.append(link_model.key())
         socials = ref.findall("social")
         for social in socials:
-            newSocial =  xstr(social.find("url")).strip()
+            newSocial =  nonestrip(xstr(social.find("url")))
             dup = False
             for oldSocial in entity.ref.socials:
                 if newSocial == Link.get(oldSocial).url:
@@ -798,7 +803,7 @@ def merge(entity, xml_newEntityNode):
                 entity.ref.socials.append(link_model.key())
         exts = ref.findall("ext")
         for ext in exts:
-            newExt =  xstr(ext.find("url")).strip()
+            newExt =  nonestrip(xstr(ext.find("url")))
             dup = False
             for oldExt in entity.ref.exts:
                 if newExt == Link.get(oldExt).url:
@@ -903,7 +908,7 @@ def import_file(xml_file):
             ref_model = Reference()
             pimage_model = Link(site = xstr(primaryImage.find("site")), 
                                 title = xstr(primaryImage.find("title")), 
-                                url = xstr(primaryImage.find("url")).strip(), 
+                                url = nonestrip(xstr(primaryImage.find("url"))), 
                                 description = xstr(primaryImage.find("description")))
             pimage_model.put()
             ref_model.primaryImage = pimage_model
@@ -911,7 +916,7 @@ def import_file(xml_file):
             for image in images:
                 link_model = Link(site = xstr(image.find("site")), 
                                   title = xstr(image.find("title")), 
-                                  url = xstr(image.find("url")).strip(), 
+                                  url = nonestrip(xstr(image.find("url"))), 
                                   description = xstr(image.find("description")))
                 link_model.put()
                 ref_model.images.append(link_model.key())
@@ -919,7 +924,7 @@ def import_file(xml_file):
             for video in videos:
                 link_model = Link(site = xstr(video.find("site")), 
                                   title = xstr(video.find("title")), 
-                                  url = xstr(video.find("url")).strip(), 
+                                  url = nonestrip(xstr(video.find("url"))), 
 
                                   description = xstr(video.find("description")))
                 link_model.put()
@@ -928,7 +933,7 @@ def import_file(xml_file):
             for social in socials:
                 link_model = Link(site = xstr(social.find("site")), 
                                   title = xstr(social.find("title")), 
-                                  url = xstr(social.find("url")).strip(), 
+                                  url = nonestrip(xstr(social.find("url"))), 
                                   description = xstr(social.find("description")))
                 link_model.put()
                 ref_model.socials.append(link_model.key())
@@ -936,7 +941,7 @@ def import_file(xml_file):
             for ext in exts:
                 link_model = Link(site = xstr(ext.find("site")), 
                                   title = xstr(ext.find("title")), 
-                                  url = xstr(ext.find("url")).strip(), 
+                                  url = nonestrip(xstr(ext.find("url"))), 
                                   description = xstr(ext.find("description")))
                 link_model.put()
                 ref_model.exts.append(link_model.key())
@@ -1002,7 +1007,7 @@ def import_file(xml_file):
             ref_model = Reference()
             pimage_model = Link(site = xstr(primaryImage.find("site")), 
                                 title = xstr(primaryImage.find("title")), 
-                                url = xstr(primaryImage.find("url")).strip(), 
+                                url = nonestrip(xstr(primaryImage.find("url"))), 
                                 description = xstr(primaryImage.find("description")))
             pimage_model.put()
             ref_model.primaryImage = pimage_model
@@ -1010,7 +1015,7 @@ def import_file(xml_file):
             for image in images:
                 link_model = Link(site = xstr(image.find("site")), 
                                   title = xstr(image.find("title")), 
-                                  url = xstr(image.find("url")).strip(), 
+                                  url = nonestrip(xstr(image.find("url"))), 
                                   description = xstr(image.find("description")))
                 link_model.put()
                 ref_model.images.append(link_model.key())
@@ -1018,7 +1023,7 @@ def import_file(xml_file):
             for video in videos:
                 link_model = Link(site = xstr(video.find("site")), 
                                   title = xstr(video.find("title")), 
-                                  url = xstr(video.find("url")).strip(), 
+                                  url = nonestrip(xstr(video.find("url"))), 
                                   description = xstr(video.find("description")))
                 link_model.put()
                 ref_model.videos.append(link_model.key())
@@ -1026,7 +1031,7 @@ def import_file(xml_file):
             for social in socials:
                 link_model = Link(site = xstr(social.find("site")), 
                                   title = xstr(social.find("title")), 
-                                  url = xstr(social.find("url")).strip(), 
+                                  url = nonestrip(xstr(social.find("url"))), 
                                   description = xstr(social.find("description")))
                 link_model.put()
                 ref_model.socials.append(link_model.key())
@@ -1034,7 +1039,7 @@ def import_file(xml_file):
             for ext in exts:
                 link_model = Link(site = xstr(ext.find("site")), 
                                   title = xstr(ext.find("title")), 
-                                  url = xstr(ext.find("url")).strip(), 
+                                  url = nonestrip(xstr(ext.find("url"))), 
                                   description = xstr(ext.find("description")))
                 link_model.put()
                 ref_model.exts.append(link_model.key())
@@ -1088,7 +1093,7 @@ def import_file(xml_file):
             ref_model = Reference()
             pimage_model = Link(site = xstr(primaryImage.find("site")), 
                                 title = xstr(primaryImage.find("title")), 
-                                url = xstr(primaryImage.find("url")).strip(), 
+                                url = nonestrip(xstr(primaryImage.find("url"))), 
                                 description = xstr(primaryImage.find("description")))
             pimage_model.put()
             ref_model.primaryImage = pimage_model
@@ -1096,7 +1101,7 @@ def import_file(xml_file):
             for image in images:
                 link_model = Link(site = xstr(image.find("site")), 
                                   title = xstr(image.find("title")), 
-                                  url = xstr(image.find("url")).strip(), 
+                                  url = nonestrip(xstr(image.find("url"))), 
                                   description = xstr(image.find("description")))
                 link_model.put()
                 ref_model.images.append(link_model.key())
@@ -1104,7 +1109,7 @@ def import_file(xml_file):
             for video in videos:
                 link_model = Link(site = xstr(video.find("site")), 
                                   title = xstr(video.find("title")), 
-                                  url = xstr(video.find("url")).strip(), 
+                                  url = nonestrip(xstr(video.find("url"))), 
                                   description = xstr(video.find("description")))
                 link_model.put()
                 ref_model.videos.append(link_model.key())
@@ -1112,7 +1117,7 @@ def import_file(xml_file):
             for social in socials:
                 link_model = Link(site = xstr(social.find("site")), 
                                   title = xstr(social.find("title")), 
-                                  url = xstr(social.find("url")).strip(), 
+                                  url = nonestrip(xstr(social.find("url"))), 
                                   description = xstr(social.find("description")))
                 link_model.put()
                 ref_model.socials.append(link_model.key())
@@ -1120,7 +1125,7 @@ def import_file(xml_file):
             for ext in exts:
                 link_model = Link(site = xstr(ext.find("site")), 
                                   title = xstr(ext.find("title")), 
-                                  url = xstr(ext.find("url")).strip(), 
+                                  url = nonestrip(xstr(ext.find("url"))), 
                                   description = xstr(ext.find("description")))
                 link_model.put()
                 ref_model.exts.append(link_model.key())
