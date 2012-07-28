@@ -19,7 +19,7 @@ handlers:
   static_dir: stylesheets
   
 - url: /.*
-  script: WC2.py
+  script: WC3.py
 
 libraries:
 
