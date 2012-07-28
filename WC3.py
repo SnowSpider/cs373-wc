@@ -492,10 +492,16 @@ def exists(n):
     n the name
     return the old entity with the same name
     """
-    entity = Model.get_by_key_name(n)
-    if entity is None:
-        return False
-    return entity
+    entity = Crisis.get_by_key_name(n)
+    if entity is not None:
+        return entity
+    entity = Org.get_by_key_name(n)
+    if entity is not None:
+        return entity
+    entity = Person.get_by_key_name(n)
+    if entity is not None:
+        return entity
+    return False
 
 def merge(entity, xml_newEntityNode):
     if(entity.tag == "crisis"):
