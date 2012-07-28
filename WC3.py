@@ -509,7 +509,7 @@ def nonestrip(checked):
     return checked.strip()
 
 def merge(entity, xml_newEntityNode):
-    if(entity.tag == "crisis"):
+    if(xml_newEntityNode.tag == "crisis"):
         info = xml_newEntityNode.find("info")
         if(entity.info.history is None):
             entity.info.history = xstr(info.find("history"))
@@ -633,7 +633,7 @@ def merge(entity, xml_newEntityNode):
                     dup = True
             if dup is False:
                 entity.relatedPeople.append(newPerson)
-    elif(entity.tag == "organization"):
+    elif(xml_newEntityNode.tag == "organization"):
         info = xml_newEntityNode.find("info")
         if(entity.info.type_ is None):
             entity.info.type_ = xstr(info.find("type"))
@@ -739,7 +739,7 @@ def merge(entity, xml_newEntityNode):
                     dup = True
             if dup is False:
                 entity.relatedPeople.append(newPerson)
-    elif(entity.tag == "person"):
+    elif(xml_newEntityNode.tag == "person"):
         info = xml_newEntityNode.find("info")
         if(entity.info.type_ is None):
             entity.info.type_ = xstr(info.find("type"))
