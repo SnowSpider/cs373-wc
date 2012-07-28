@@ -492,7 +492,7 @@ def exists(n):
     n the name
     return the old entity with the same name
     """
-    entity = SELECT * FROM Crisis WHERE name == n
+    entity = Model.get_by_key_name(n)
     if entity is None:
         return False
     return entity
@@ -549,7 +549,7 @@ def merge(entity, xml_newEntityNode):
         images = ref.findall("image")
         for image in images:
             newImage =  xstr(image.find("url")).strip()
-            bool dup = False
+            dup = False
             for oldImage in entity.ref.images:
                 if newImage == oldImage.url:
                     dup = True    
@@ -563,7 +563,7 @@ def merge(entity, xml_newEntityNode):
         videos = ref.findall("video")
         for video in videos:
             newVideo =  xstr(video.find("url")).strip()
-            bool dup = False
+            dup = False
             for oldVideo in entity.ref.videos:
                 if newVideo == oldVideo.url:
                     dup = True
@@ -577,7 +577,7 @@ def merge(entity, xml_newEntityNode):
         socials = ref.findall("social")
         for social in socials:
             newSocial =  xstr(social.find("url")).strip()
-            bool dup = False
+            dup = False
             for oldSocial in entity.ref.socials:
                 if newSocial == oldSocial.url:
                     dup = True
@@ -591,7 +591,7 @@ def merge(entity, xml_newEntityNode):
         exts = ref.findall("ext")
         for ext in exts:
             newExt =  xstr(ext.find("url")).strip()
-            bool dup = False
+            dup = False
             for oldExt in entity.ref.exts:
                 if newExt == oldExt.url:
                     dup = True
@@ -607,7 +607,7 @@ def merge(entity, xml_newEntityNode):
         relatedOrgs = xml_newEntityNode.findall("org")
         for relatedOrg in relatedOrgs:
             newOrg = relatedOrg.attrib["idref"]
-            bool dup = False
+            dup = False
             for oldOrg in entity.relatedOrgs:
                 if newOrg == oldOrg:
                     dup = True
@@ -616,7 +616,7 @@ def merge(entity, xml_newEntityNode):
         relatedPeople = xml_newEntityNode.findall("person")
         for relatedPerson in relatedPeople:
             newPerson = relatedPerson.attrib["idref"]
-            bool dup = False
+            dup = False
             for oldPerson in entity.relatedPeople:
                 if newPerson == oldPerson:
                     dup = True
@@ -637,7 +637,6 @@ def merge(entity, xml_newEntityNode):
         if(entity.info.contact.mail.address is None):
             entity.info.contact.mail.address = xstr(mail.find("email"))
         if(entity.info.contact.mail.city is None):
-        
             entity.info.contact.mail.city = xstr(mail.find("city"))
         if(entity.info.contact.mail.state is None):
             entity.info.contact.mail.state = xstr(mail.find("state"))
@@ -656,7 +655,7 @@ def merge(entity, xml_newEntityNode):
         images = ref.findall("image")
         for image in images:
             newImage =  xstr(image.find("url")).strip()
-            bool dup = False
+            dup = False
             for oldImage in entity.ref.images:
                 if newImage == oldImage.url:
                     dup = True    
@@ -670,7 +669,7 @@ def merge(entity, xml_newEntityNode):
         videos = ref.findall("video")
         for video in videos:
             newVideo =  xstr(video.find("url")).strip()
-            bool dup = False
+            dup = False
             for oldVideo in entity.ref.videos:
                 if newVideo == oldVideo.url:
                     dup = True
@@ -684,7 +683,7 @@ def merge(entity, xml_newEntityNode):
         socials = ref.findall("social")
         for social in socials:
             newSocial =  xstr(social.find("url")).strip()
-            bool dup = False
+            dup = False
             for oldSocial in entity.ref.socials:
                 if newSocial == oldSocial.url:
                     dup = True
@@ -698,7 +697,7 @@ def merge(entity, xml_newEntityNode):
         exts = ref.findall("ext")
         for ext in exts:
             newExt =  xstr(ext.find("url")).strip()
-            bool dup = False
+            dup = False
             for oldExt in entity.ref.exts:
                 if newExt == oldExt.url:
                     dup = True
@@ -714,7 +713,7 @@ def merge(entity, xml_newEntityNode):
         relatedCrises = xml_newEntityNode.findall("crisis")
         for relatedCrisis in relatedCrises:
             newCrisis = relatedCrisis.attrib["idref"]
-            bool dup = False
+            dup = False
             for oldCrisis in entity.relatedCrises:
                 if newCrisis == oldCrisis:
                     dup = True
@@ -723,7 +722,7 @@ def merge(entity, xml_newEntityNode):
         relatedPeople = xml_newEntityNode.findall("person")
         for relatedPerson in relatedPeople:
             newPerson = relatedPerson.attrib["idref"]
-            bool dup = False
+            dup = False
             for oldPerson in entity.relatedPeople:
                 if newPerson == oldPerson:
                     dup = True
@@ -752,7 +751,7 @@ def merge(entity, xml_newEntityNode):
         images = ref.findall("image")
         for image in images:
             newImage =  xstr(image.find("url")).strip()
-            bool dup = False
+            dup = False
             for oldImage in entity.ref.images:
                 if newImage == oldImage.url:
                     dup = True    
@@ -766,7 +765,7 @@ def merge(entity, xml_newEntityNode):
         videos = ref.findall("video")
         for video in videos:
             newVideo =  xstr(video.find("url")).strip()
-            bool dup = False
+            dup = False
             for oldVideo in entity.ref.videos:
                 if newVideo == oldVideo.url:
                     dup = True
@@ -780,7 +779,7 @@ def merge(entity, xml_newEntityNode):
         socials = ref.findall("social")
         for social in socials:
             newSocial =  xstr(social.find("url")).strip()
-            bool dup = False
+            dup = False
             for oldSocial in entity.ref.socials:
                 if newSocial == oldSocial.url:
                     dup = True
@@ -794,7 +793,7 @@ def merge(entity, xml_newEntityNode):
         exts = ref.findall("ext")
         for ext in exts:
             newExt =  xstr(ext.find("url")).strip()
-            bool dup = False
+            dup = False
             for oldExt in entity.ref.exts:
                 if newExt == oldExt.url:
                     dup = True
@@ -810,7 +809,7 @@ def merge(entity, xml_newEntityNode):
         relatedCrises = xml_newEntityNode.findall("crisis")
         for relatedCrisis in relatedCrises:
             newCrisis = relatedCrisis.attrib["idref"]
-            bool dup = False
+            dup = False
             for oldCrisis in entity.relatedCrises:
                 if newCrisis == oldCrisis:
                     dup = True
@@ -819,13 +818,13 @@ def merge(entity, xml_newEntityNode):
         relatedOrgs = xml_newEntityNode.findall("org")
         for relatedOrg in relatedOrgs:
             newOrg = relatedOrg.attrib["idref"]
-            bool dup = False
+            dup = False
             for oldOrg in entity.relatedOrgs:
                 if newOrg == oldOrg:
                     dup = True
             if dup is False:
                 entity.relatedOrgs.append(newOrg)
-    degug("Merge complete!")
+    debug("Merge complete!")
 
 # -----------
 # import_file
@@ -843,7 +842,7 @@ def import_file(xml_file):
         
         entity = exists(crisis.find("name").text)
         if entity:
-            merge(entity, crisis):
+            merge(entity, crisis)
         else:
             crisis_model = Crisis(key_name = crisis.attrib["id"], 
                                   idref = crisis.attrib["id"], 
@@ -956,9 +955,9 @@ def import_file(xml_file):
         assert(org.attrib["id"] is not None)
         assert(org.find("name") is not None)
         
-        entity = exists(crisis.find("name").text)
+        entity = exists(org.find("name").text)
         if entity:
-            merge(entity, crisis):
+            merge(entity, org)
         else:
             org_model = Organization(key_name = org.attrib["id"], idref = org.attrib["id"], name = org.find("name").text)
             
@@ -1054,9 +1053,9 @@ def import_file(xml_file):
         assert(person.attrib["id"] is not None)
         assert(person.find("name") is not None)
         
-        entity = exists(crisis.find("name").text)
+        entity = exists(person.find("name").text)
         if entity:
-            merge(entity, crisis):
+            merge(entity, person)
         else:
             person_model = Person(key_name = person.attrib["id"], idref = person.attrib["id"], name = person.find("name").text)
             info = person.find("info")
