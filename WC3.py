@@ -266,7 +266,7 @@ class Person(db.Model):
 
 def score_of_string(text, keywords):
     pattern = "|".join(map(lambda kw: r'\b' + kw + r'\b', keywords))
-    found = map(lambda x: x.upper(), re.findall(pattern, str(text), flags=re.IGNORECASE))
+    found = map(lambda x: x.upper(), re.findall(pattern, str(text if text is None else text.encode('ascii', 'ignore')), flags=re.IGNORECASE))
     return len(found) * len(set(found)) # Score = num of matches * num of unique keywords matched
 
 # returns the value display (string)
@@ -274,8 +274,8 @@ def score_of_string(text, keywords):
 def context_of_string(text, keywords):
     context_pattern = r'[^.?!]{0,' + str(CONTEXT_SIZE / 2) + r'}'
     pattern = "|".join(map(lambda kw: r'\b' + context_pattern + r'\b' + kw + r'\b' + context_pattern + r'\b', keywords))
-    result = "...".join(re.findall(pattern, str(text), flags=re.IGNORECASE))
-    if result != "" and len(result) < len(str(text)):
+    result = ("...".join(re.findall(pattern, str(text if text is None else text.encode('ascii', 'ignore')), flags=re.IGNORECASE)))
+    if result != "" and len(result) < len(str(text if text is None else text.encode('ascii', 'ignore'))):
         result = "..." + result + "..."
     return highlight_keywords(result, keywords)
 
