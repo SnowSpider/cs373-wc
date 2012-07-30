@@ -500,7 +500,13 @@ def exists(n):
     return the old entity with the same name
     """
     if n == "Bashar al-Assad":
-        entity = Person.gql("WHERE name = :1", "Basshar Al-assad")
+        entity = Person.gql("WHERE name = :1", "Basshar Al-assad").get()
+        if entity is not None:
+            return entity
+    if n == "Basshar Al-assad":
+        entity = Person.gql("WHERE name = :1", "Bashar al-Assad").get()
+        if entity is not None:
+            return entity
     
     #entity = Crisis.get_by_key_name(n)
     entity = Crisis.gql("WHERE name = :1", n).get()
@@ -655,6 +661,31 @@ def merge(entity, xml_newEntityNode):
                     dup = True
             if dup is False:
                 entity.relatedPeople.append(newPerson)
+        db.delete(entity)
+        entity.put()
+        
+        newId = xml_newEntityNode.attrib["id"]
+        oldId = entity.idref
+        
+        myOrgs = Organization.gql("WHERE idref != :1", None).run()
+        for myOrg in myOrgs:
+            relatedPeople = myOrg.relatedPeople
+            for relatedPerson in relatedPeople:
+                if(relatedPerson == newId):
+                    myOrg.relatedCrises.remove(newId)
+                    myOrg.relatedCrises.append(oldId)
+                db.delete(myOrg)
+                myOrg.put()
+        myPeople = People.gql("WHERE idref != :1", None).run()
+        for myPerson in myPeople:
+            relatedOrgs = myOrg.relatedOrgs
+            for relatedOrg in relatedOrgs:
+                if(relatedOrg == newId):
+                    myOrg.relatedOrgs.remove(newId)
+                    myOrg.relatedOrgs.append(oldId)
+                db.delete(myPerson)
+                myPerson.put()
+                
     elif(xml_newEntityNode.tag == "organization"):
         info = xml_newEntityNode.find("info")
         if(entity.info.type_ is None):
@@ -761,6 +792,31 @@ def merge(entity, xml_newEntityNode):
                     dup = True
             if dup is False:
                 entity.relatedPeople.append(newPerson)
+        db.delete(entity)
+        entity.put()
+        
+        newId = xml_newEntityNode.attrib["id"]
+        oldId = entity.idref
+        
+        myCrises = Crisis.gql("WHERE idref != :1", None).run()
+        for myCrisis in myCrises:
+            relatedOrgs = myCrisis.relatedOrgs
+            for relatedOrg in relatedOrgs:
+                if(relatedOrg == newId):
+                    myCrisis.relatedOrgs.remove(newId)
+                    myCrisis.relatedOrgs.append(oldId)
+                db.delete(myCrisis)
+                myCrisis.put()
+        myPeople = People.gql("WHERE idref != :1", None).run()
+        for myPerson in myPeople:
+            relatedOrgs = myOrg.relatedOrgs
+            for relatedOrg in relatedOrgs:
+                if(relatedOrg == newId):
+                    myOrg.relatedOrgs.remove(newId)
+                    myOrg.relatedOrgs.append(oldId)
+                db.delete(myPerson)
+                myPerson.put()
+                
     elif(xml_newEntityNode.tag == "person"):
         info = xml_newEntityNode.find("info")
         if(entity.info.type_ is None):
@@ -857,6 +913,30 @@ def merge(entity, xml_newEntityNode):
                     dup = True
             if dup is False:
                 entity.relatedOrgs.append(newOrg)
+        db.delete(entity)
+        entity.put()
+        newId = xml_newEntityNode.attrib["id"]
+        oldId = entity.idref
+        
+        myCrises = Crisis.gql("WHERE idref != :1", None).run()
+        for myCrisis in myCrises:
+            relatedPeople = myCrisis.relatedPeople
+            for relatedPerson in relatedPeople:
+                if(relatedPerson == newId):
+                    myCrisis.relatedPeople.remove(newId)
+                    myCrisis.relatedPeople.append(oldId)
+                db.delete(myCrisis)
+                myCrisis.put()
+        myOrgs = Organization.gql("WHERE idref != :1", None).run()
+        for myOrg in myOrgs:
+            relatedPeople = myOrg.relatedPeople
+            for relatedPerson in relatedPeople:
+                if(relatedPerson == newId):
+                    myOrg.relatedPeople.remove(newId)
+                    myOrg.relatedPeople.append(oldId)
+                db.delete(myOrg)
+                myOrg.put()
+        
     debug("Merge complete!")
 
 # -----------
