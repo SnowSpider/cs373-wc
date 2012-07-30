@@ -468,7 +468,7 @@ def fixAmp(line):
         if c == '&':
             result += "&amp;"
         else:
-            result += c
+            result += c.encode('ascii', 'ignore')
     return result
 
 # ----
@@ -480,6 +480,10 @@ def trim(s):
     s the string to be trimmed
     return the trimmed string
     """
+    if isinstance(s, long):
+        s = str(s)
+    if s != None:
+        s = s.encode('ascii', 'ignore')
     return "" if s is None else fixAmp(str(s))
 
 
