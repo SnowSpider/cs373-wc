@@ -410,7 +410,7 @@ class SearchHandler(webapp.RequestHandler):
             'crises_results' : crises_results,
             'org_results' : org_results
         }
-        self.response.out.write(str(template.render('djangogoodies/searchtemplate.html', template_values)))
+        self.response.out.write(str(template.render('djangogoodies/searchtemplate.html', template_values).encode('ascii', 'ignore')))
         #self.response.out.write(str(people_results))
             
 # ---------
