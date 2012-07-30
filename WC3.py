@@ -566,7 +566,7 @@ def merge(entity, xml_newEntityNode):
             newImage =  nonestrip(xstr(image.find("url")))
             dup = False
             for oldImage in entity.ref.images:
-                if newImage == Link.get(oldImage).url:
+                if newImage == db.get(oldImage).url:
                     dup = True    
             if dup is False:
                 link_model = Link(site = xstr(image.find("site")), 
@@ -580,7 +580,7 @@ def merge(entity, xml_newEntityNode):
             newVideo =  nonestrip(xstr(video.find("url")))
             dup = False
             for oldVideo in entity.ref.videos:
-                if newVideo == Link.get(oldVideo).url:
+                if newVideo == db.get(oldVideo).url:
                     dup = True
             if dup is False:
                 link_model = Link(site = xstr(video.find("site")), 
@@ -594,7 +594,7 @@ def merge(entity, xml_newEntityNode):
             newSocial =  nonestrip(xstr(social.find("url")))
             dup = False
             for oldSocial in entity.ref.socials:
-                if newSocial == Link.get(oldSocial).url:
+                if newSocial == db.get(oldSocial).url:
                     dup = True
             if dup is False:
                 link_model = Link(site = xstr(social.find("site")), 
@@ -608,7 +608,7 @@ def merge(entity, xml_newEntityNode):
             newExt =  nonestrip(xstr(ext.find("url")))
             dup = False
             for oldExt in entity.ref.exts:
-                if newExt == Link.get(oldExt).url:
+                if newExt == db.get(oldExt).url:
                     dup = True
             if dup is False:
                 link_model = Link(site = xstr(ext.find("site")), 
@@ -672,7 +672,7 @@ def merge(entity, xml_newEntityNode):
             newImage =  nonestrip(xstr(image.find("url")))
             dup = False
             for oldImage in entity.ref.images:
-                if newImage == Link.get(oldImage).url:
+                if newImage == db.get(oldImage).url:
                     dup = True    
             if dup is False:
                 link_model = Link(site = xstr(image.find("site")), 
@@ -686,7 +686,7 @@ def merge(entity, xml_newEntityNode):
             newVideo =  nonestrip(xstr(video.find("url")))
             dup = False
             for oldVideo in entity.ref.videos:
-                if newVideo == Link.get(oldVideo).url:
+                if newVideo == db.get(oldVideo).url:
                     dup = True
             if dup is False:
                 link_model = Link(site = xstr(video.find("site")), 
@@ -700,7 +700,7 @@ def merge(entity, xml_newEntityNode):
             newSocial =  nonestrip(xstr(social.find("url")))
             dup = False
             for oldSocial in entity.ref.socials:
-                if newSocial == Link.get(oldSocial).url:
+                if newSocial == db.get(oldSocial).url:
                     dup = True
             if dup is False:
                 link_model = Link(site = xstr(social.find("site")), 
@@ -714,7 +714,7 @@ def merge(entity, xml_newEntityNode):
             newExt =  nonestrip(xstr(ext.find("url")))
             dup = False
             for oldExt in entity.ref.exts:
-                if newExt == Link.get(oldExt).url:
+                if newExt == db.get(oldExt).url:
                     dup = True
             if dup is False:
                 link_model = Link(site = xstr(ext.find("site")), 
@@ -768,7 +768,7 @@ def merge(entity, xml_newEntityNode):
             newImage =  nonestrip(xstr(image.find("url")))
             dup = False
             for oldImage in entity.ref.images:
-                if newImage == Link.get(oldImage).url:
+                if newImage == db.get(oldImage).url:
                     dup = True    
             if dup is False:
                 link_model = Link(site = xstr(image.find("site")), 
@@ -782,7 +782,7 @@ def merge(entity, xml_newEntityNode):
             newVideo =  nonestrip(xstr(video.find("url")))
             dup = False
             for oldVideo in entity.ref.videos:
-                if newVideo == Link.get(oldVideo).url:
+                if newVideo == db.get(oldVideo).url:
                     dup = True
             if dup is False:
                 link_model = Link(site = xstr(video.find("site")), 
@@ -796,7 +796,7 @@ def merge(entity, xml_newEntityNode):
             newSocial =  nonestrip(xstr(social.find("url")))
             dup = False
             for oldSocial in entity.ref.socials:
-                if newSocial == Link.get(oldSocial).url:
+                if newSocial == db.get(oldSocial).url:
                     dup = True
             if dup is False:
                 link_model = Link(site = xstr(social.find("site")), 
@@ -810,7 +810,7 @@ def merge(entity, xml_newEntityNode):
             newExt =  nonestrip(xstr(ext.find("url")))
             dup = False
             for oldExt in entity.ref.exts:
-                if newExt == Link.get(oldExt).url:
+                if newExt == db.get(oldExt).url:
                     dup = True
             if dup is False:
                 link_model = Link(site = xstr(ext.find("site")), 
