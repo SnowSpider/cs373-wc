@@ -496,8 +496,8 @@ def exists(n):
     n the name
     return the old entity with the same name
     """
-    if n == "Basshar Al-assad":
-        entity = Person.gql("WHERE name = :1", "Bashar al-Assad")
+    if n == "Bashar al-Assad":
+        entity = Person.gql("WHERE name = :1", "Basshar Al-assad")
     
     #entity = Crisis.get_by_key_name(n)
     entity = Crisis.gql("WHERE name = :1", n).get()
