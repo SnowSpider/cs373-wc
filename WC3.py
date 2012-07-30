@@ -265,7 +265,7 @@ class Person(db.Model):
         return [x for x in result if x[1] != ""] # only return those that are non-empty
 
 def score_of_string(text, keywords):
-    pattern = "|".join(map(lambda kw: r'\b' + kw + r'\b', keywords))
+    pattern = "|".join(map(lambda kw: r'\b' + re.escape(kw) + r'\b', keywords))
     found = map(lambda x: x.upper(), re.findall(pattern, str(text if text is None else text.encode('ascii', 'ignore')), flags=re.IGNORECASE))
     return len(found) * len(set(found)) # Score = num of matches * num of unique keywords matched
 
@@ -273,14 +273,14 @@ def score_of_string(text, keywords):
 # returns "" if no keywords are found
 def context_of_string(text, keywords):
     context_pattern = r'[^.?!]{0,' + str(CONTEXT_SIZE / 2) + r'}'
-    pattern = "|".join(map(lambda kw: r'\b' + context_pattern + r'\b' + kw + r'\b' + context_pattern + r'\b', keywords))
+    pattern = "|".join(map(lambda kw: r'\b' + context_pattern + r'\b' + re.escape(kw) + r'\b' + context_pattern + r'\b', keywords))
     result = ("...".join(re.findall(pattern, str(text if text is None else text.encode('ascii', 'ignore')), flags=re.IGNORECASE)))
     if result != "" and len(result) < len(str(text if text is None else text.encode('ascii', 'ignore'))):
         result = "..." + result + "..."
     return highlight_keywords(result, keywords)
 
 def highlight_keywords(string, keywords):
-    pattern = "|".join(map(lambda kw: r'\b' + kw + r'\b', keywords)) # Match any of the words in keywords
+    pattern = "|".join(map(lambda kw: r'\b' + re.escape(kw) + r'\b', keywords)) # Match any of the words in keywords
     return re.sub(pattern, r'<span class="context_highlight">\g<0></span>', str(string), flags=re.IGNORECASE)
     
 class MainHandler(webapp.RequestHandler):
