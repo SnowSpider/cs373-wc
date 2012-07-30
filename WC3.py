@@ -265,7 +265,7 @@ class Person(db.Model):
         return [x for x in result if x[1] != ""] # only return those that are non-empty
 
 def score_of_string(text, keywords):
-    pattern = "|".join(map(lambda kw: r'\b' + kw + r'\b', keywords))
+    pattern = "|".join(map(lambda kw: r'\b' + re.escape(kw) + r'\b', keywords))
     found = map(lambda x: x.upper(), re.findall(pattern, str(text if text is None else text.encode('ascii', 'ignore')), flags=re.IGNORECASE))
     return len(found) * len(set(found)) # Score = num of matches * num of unique keywords matched
 
@@ -273,14 +273,14 @@ def score_of_string(text, keywords):
 # returns "" if no keywords are found
 def context_of_string(text, keywords):
     context_pattern = r'[^.?!]{0,' + str(CONTEXT_SIZE / 2) + r'}'
-    pattern = "|".join(map(lambda kw: r'\b' + context_pattern + r'\b' + kw + r'\b' + context_pattern + r'\b', keywords))
+    pattern = "|".join(map(lambda kw: r'\b' + context_pattern + r'\b' + re.escape(kw) + r'\b' + context_pattern + r'\b', keywords))
     result = ("...".join(re.findall(pattern, str(text if text is None else text.encode('ascii', 'ignore')), flags=re.IGNORECASE)))
     if result != "" and len(result) < len(str(text if text is None else text.encode('ascii', 'ignore'))):
         result = "..." + result + "..."
     return highlight_keywords(result, keywords)
 
 def highlight_keywords(string, keywords):
-    pattern = "|".join(map(lambda kw: r'\b' + kw + r'\b', keywords)) # Match any of the words in keywords
+    pattern = "|".join(map(lambda kw: r'\b' + re.escape(kw) + r'\b', keywords)) # Match any of the words in keywords
     return re.sub(pattern, r'<span class="context_highlight">\g<0></span>', str(string), flags=re.IGNORECASE)
     
 class MainHandler(webapp.RequestHandler):
@@ -300,9 +300,9 @@ class MainHandler(webapp.RequestHandler):
         #people = data_models['people'].values() 
 
         template_values = {
-            'crises': crises,
-            'people': people,
-            'orgs': orgs,
+            'crises': sorted(crises, key=(lambda x: x.name)),
+            'people': sorted(people, key=(lambda x: x.name)),
+            'orgs': sorted(orgs, key=(lambda x: x.name)),
         }
 
         self.response.headers['Content-Type'] = 'text/html'
@@ -392,26 +392,29 @@ class ImportUploadHandler(blobstore_handlers.BlobstoreUploadHandler):
 class SearchHandler(webapp.RequestHandler):
     def post(self):
         query = self.request.get("query", default_value='')
+        if query == "":
+            self.response.out.write("Please enter a word or phrase to search on.")
+        else:
 
-        # Each element of *_results is a tuple (model, context, score)
-        crises_results = map(lambda x: (x, x.context(query.split()), x.score(query.split())), Crisis.all().fetch(50))
-        crises_results = sorted(crises_results, key=lambda x: x[2], reverse=True) # sort by descending score
-        crises_results = [ x for x in crises_results if x[2] > 0 ] # remove those with no matches
-        people_results = map(lambda x: (x, x.context(query.split()), x.score(query.split())), Person.all().fetch(50))
-        people_results = sorted(people_results, key=lambda x: x[2], reverse=True) # sort by descending score
-        people_results = [ x for x in people_results if x[2] > 0 ] # remove those with no matches
-        org_results = map(lambda x: (x, x.context(query.split()), x.score(query.split())), Organization.all().fetch(50))
-        org_results = sorted(org_results, key=lambda x: x[2], reverse=True) # sort by descending score
-        org_results = [ x for x in org_results if x[2] > 0 ] # remove those with no matches
-        
-        template_values = {
-            'query' : query,
-            'people_results' : people_results,
-            'crises_results' : crises_results,
-            'org_results' : org_results
-        }
-        self.response.out.write(str(template.render('djangogoodies/searchtemplate.html', template_values)))
-        #self.response.out.write(str(people_results))
+            # Each element of *_results is a tuple (model, context, score)
+            crises_results = map(lambda x: (x, x.context(query.split()), x.score(query.split())), Crisis.all().fetch(50))
+            crises_results = sorted(crises_results, key=lambda x: x[2], reverse=True) # sort by descending score
+            crises_results = [ x for x in crises_results if x[2] > 0 ] # remove those with no matches
+            people_results = map(lambda x: (x, x.context(query.split()), x.score(query.split())), Person.all().fetch(50))
+            people_results = sorted(people_results, key=lambda x: x[2], reverse=True) # sort by descending score
+            people_results = [ x for x in people_results if x[2] > 0 ] # remove those with no matches
+            org_results = map(lambda x: (x, x.context(query.split()), x.score(query.split())), Organization.all().fetch(50))
+            org_results = sorted(org_results, key=lambda x: x[2], reverse=True) # sort by descending score
+            org_results = [ x for x in org_results if x[2] > 0 ] # remove those with no matches
+
+            template_values = {
+                'query' : query,
+                'people_results' : people_results,
+                'crises_results' : crises_results,
+                'org_results' : org_results
+                }
+            self.response.out.write(str(template.render('djangogoodies/searchtemplate.html', template_values).encode('ascii', 'ignore')))
+            #self.response.out.write(str(people_results))
             
 # ---------
 # ImportXml
