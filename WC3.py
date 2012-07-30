@@ -317,7 +317,7 @@ class MainHandler(webapp.RequestHandler):
                 template_values['exts'] = map((lambda x: db.get(x)), crisis[0].ref.exts)
                 template_values['relatedpeople'] = list(map((lambda x: Person.gql("WHERE idref = :1", x).fetch(1)), crisis[0].relatedPeople))
                 template_values['relatedorgs'] = list(map((lambda x: Organization.gql("WHERE idref = :1", x).fetch(1)), crisis[0].relatedOrgs))
-                self.response.out.write(str(template.render('djangogoodies/crisistemplate.html', template_values)))
+                self.response.out.write(str(template.render('djangogoodies/crisistemplate.html', template_values).encode('ascii', 'ignore')))
             else:
                 self.response.out.write("No such crisis!")
 
@@ -331,7 +331,7 @@ class MainHandler(webapp.RequestHandler):
                 template_values['exts'] = map((lambda x: db.get(x)), org[0].ref.exts)
                 template_values['relatedcrises'] = list(map((lambda x: Crisis.gql("WHERE idref = :1", x).fetch(1)), org[0].relatedCrises))
                 template_values['relatedpeople'] = list(map((lambda x: Person.gql("WHERE idref = :1", x).fetch(1)), org[0].relatedPeople))
-                self.response.out.write(str(template.render('djangogoodies/organizationtemplate.html', template_values)))
+                self.response.out.write(str(template.render('djangogoodies/organizationtemplate.html', template_values).encode('ascii', 'ignore')))
             else:
                 self.response.out.write("No such organization!")
 
@@ -345,12 +345,12 @@ class MainHandler(webapp.RequestHandler):
                 template_values['exts'] = map((lambda x: db.get(x)), person[0].ref.exts)
                 template_values['relatedcrises'] = list(map((lambda x: Crisis.gql("WHERE idref = :1", x).fetch(1)), person[0].relatedCrises))
                 template_values['relatedorgs'] = list(map((lambda x: Organization.gql("WHERE idref = :1", x).fetch(1)), person[0].relatedOrgs))
-                self.response.out.write(str(template.render('djangogoodies/persontemplate.html', template_values)))
+                self.response.out.write(str(template.render('djangogoodies/persontemplate.html', template_values).encode('ascii', 'ignore')))
             else:
                 self.response.out.write("No such person!")
 
         else:
-            self.response.out.write(str(template.render('djangogoodies/maintemplate.html', template_values)))
+            self.response.out.write(str(template.render('djangogoodies/maintemplate.html', template_values).encode('ascii', 'ignore')))
             #inFile = open("htmlgoodies/mockup.html", 'r')
             #outstr = inFile.read() #"HELLO CAR RAMROD"
             #inFile.close()
@@ -884,17 +884,23 @@ def import_file(xml_file):
             impact = info.find("impact")
             
             human = impact.find("human")
+            misctemp = xstr(human.find("misc"))
+            if misctemp != None and len(misctemp) > 500:
+                misctemp = misctemp[:500]
             human_model = HumanImpact(deaths = xint(human.find("deaths")), 
                                       displaced = xint(human.find("displaced")), 
                                       injured = xint(human.find("injured")), 
                                       missing = xint(human.find("missing")), 
-                                      misc = xstr(human.find("misc")))
+                                      misc = misctemp)
             human_model.put() #saves the model
             
             economic = impact.find("economic")
+            misctemp = xstr(human.find("misc"))
+            if misctemp != None and len(misctemp) > 500:
+                misctemp = misctemp[:500]
             economic_model = EconomicImpact(amount = xint(human.find("amount")), 
                                             currency = xstr(human.find("currency")), 
-                                            misc = xstr(human.find("misc")))
+                                            misc = misctemp)
             economic_model.put()
             impact_model = Impact(human = human_model, economic = economic_model)
             impact_model.put()
@@ -1037,9 +1043,12 @@ def import_file(xml_file):
                 ref_model.socials.append(link_model.key())
             exts = ref.findall("ext")
             for ext in exts:
+                tempurl = nonestrip(xstr(ext.find("url")))
+                if tempurl != None and tempurl[:3] == "www":
+                    tempurl = "http://" + tempurl
                 link_model = Link(site = xstr(ext.find("site")), 
                                   title = xstr(ext.find("title")), 
-                                  url = nonestrip(xstr(ext.find("url"))), 
+                                  url = tempurl, 
                                   description = xstr(ext.find("description")))
                 link_model.put()
                 ref_model.exts.append(link_model.key())
