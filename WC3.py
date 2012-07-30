@@ -477,7 +477,7 @@ def fixAmp(line):
 def trim(s):
     """
     Takes a string, eliminates None and calls fixAmp
-    s the string to be trimmed
+    s the string to be trimmedentity = db.gql("SELECT * WHERE name = :1", n)
     return the trimmed string
     """
     if isinstance(s, long):
@@ -496,15 +496,25 @@ def exists(n):
     n the name
     return the old entity with the same name
     """
-    entity = Crisis.get_by_key_name(n)
+    if n == "Bashar Al-Assad":
+        entity = Person.gql("WHERE name = :1", "Bashar al-Assad")
+    
+    #entity = Crisis.get_by_key_name(n)
+    entity = Crisis.gql("WHERE name = :1", n).get()
+    #debug(entity.name)
+        
     if entity is not None:
         return entity
-    entity = Organization.get_by_key_name(n)
+    
+    #entity = Organization.get_by_key_name(n)
+    entity = Organization.gql("WHERE name = :1", n).get()
     if entity is not None:
         return entity
-    entity = Person.get_by_key_name(n)
+    #entity = Person.get_by_key_name(n)
+    entity = Person.gql("WHERE name = :1", n).get()
     if entity is not None:
         return entity
+    
     return False
 
 def nonestrip(checked):
