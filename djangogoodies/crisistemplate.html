@@ -17,10 +17,10 @@
 	<li><b>E-mail Address:</b> {{me.info.contact.email}}</li>
 	{% endif %}
 	<li><b>Human Impact:</b>
-		<p><b>Killed:</b> {{me.info.impact.human.deaths}}
-		<p><b>Injured:</b> {{me.info.impact.human.injured}}
-		<p><b>Missing:</b> {{me.info.impact.human.missing}}
-		<p><b>Displaced:</b> {{me.info.impact.human.displaced}}
+		<p><b>Killed:</b> {% if me.info.impact.human.deaths > 0 %}{{me.info.impact.human.deaths}}{% else %}No Data{% endif %}
+		<p><b>Injured:</b> {% if me.info.impact.human.injured > 0 %}{{me.info.impact.human.injured}}{% else %}No Data{% endif %}
+		<p><b>Missing:</b> {% if me.info.impact.human.missing > 0 %}{{me.info.impact.human.missing}}{% else %}No Data{% endif %}
+		<p><b>Displaced:</b> {% if me.info.impact.human.displaced > 0 %}{{me.info.impact.human.displaced}}{% else %}No Data{% endif %}
 		{% if me.info.impact.human.misc != None %}
 		<p><b>Other:</b> {{me.info.impact.human.misc}}
 		{% endif %}
