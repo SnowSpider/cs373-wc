@@ -192,6 +192,8 @@ class Crisis(db.Model):
         result += self.info.score(keywords)
         result += self.ref.score(keywords)
         result += score_of_string(self.misc, keywords)
+        if(score_of_string(self.name, keywords) > 0):
+            result *= 100
         # TO-DO search related
         return result
 
@@ -221,6 +223,8 @@ class Organization(db.Model):
         result += self.info.score(keywords)
         result += self.ref.score(keywords)
         result += score_of_string(self.misc, keywords)
+        if(score_of_string(self.name, keywords) > 0):
+            result *= 100
         # TO-DO search related
         return result
 
@@ -250,6 +254,8 @@ class Person(db.Model):
         result += self.info.score(keywords)
         result += self.ref.score(keywords)
         result += score_of_string(self.misc, keywords)
+        if(score_of_string(self.name, keywords) > 0):
+            result *= 100
         # TO-DO search related
         return result
 

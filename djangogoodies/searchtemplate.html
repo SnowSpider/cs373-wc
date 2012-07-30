@@ -6,10 +6,16 @@
 
 <body>
 <div style="overflow-x: hidden; overflow-y: scroll; height:650px; margin: 0px;">
-<h3>Returned search results for: {{query}}</h3>
+
+{% if people_results or crises_results or org_results %}
+  <h3>Returned search results for: {{query}}</h3>
+{% else %}
+  <h3>No results found for: {{query}}</h3>
+{% endif %}
 
 {% if people_results %}
-<h4>People</h4>
+<br><b>People</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;({{people_results|length}}
+  result{% if people_results|length > 1 %}s{% endif %})<br><br>
 {% for result in people_results %}
 <div class="search_result">
   <a href="people/{{result.0.idref}}">{{result.0.name}}</a><br>
@@ -17,7 +23,6 @@
     {% for context in result.1 %}
     <li><span class="context_type">{{context.0}}</span>{{context.1|safe}}</li>
     {% endfor %}
-    <li>SCORE: {{result.2}}</li>
   </ul>
 </div>
 {% endfor %}
@@ -25,7 +30,7 @@
 
   
 {% if crises_results %}
-<h4>Crises</h4>
+<br><b>Crises</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;({{crises_results|length}} result{% if crises_results|length > 1 %}s{% endif %})<br><br>
 {% for result in crises_results %}
 <div class="search_result">
   <a href="crises/{{result.0.idref}}">{{result.0.name}}</a><br>
@@ -33,14 +38,13 @@
     {% for context in result.1 %}
     <li><span class="context_type">{{context.0}}</span>{{context.1|safe}}</li>
     {% endfor %}
-    <li>SCORE: {{result.2}}</li>
   </ul>
 </div>
 {% endfor %}
 {% endif %}
 
 {% if org_results %}
-<h4>Organizations</h4>
+<br><b>Organizations</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;({{org_results|length}} result{% if org_results|length > 1 %}s{% endif %})<br><br>
 {% for result in org_results %}
 <div class="search_result">
   <a href="organizations/{{result.0.idref}}">{{result.0.name}}</a><br>
@@ -48,7 +52,6 @@
     {% for context in result.1 %}
     <li><span class="context_type">{{context.0}}</span>{{context.1|safe}}</li>
     {% endfor %}
-    <li>SCORE: {{result.2}}</li>
   </ul>
 </div>
 {% endfor %}
