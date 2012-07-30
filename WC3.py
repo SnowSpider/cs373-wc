@@ -300,9 +300,9 @@ class MainHandler(webapp.RequestHandler):
         #people = data_models['people'].values() 
 
         template_values = {
-            'crises': crises,
-            'people': people,
-            'orgs': orgs,
+            'crises': sorted(crises, key=(lambda x: x.name)),
+            'people': sorted(people, key=(lambda x: x.name)),
+            'orgs': sorted(orgs, key=(lambda x: x.name)),
         }
 
         self.response.headers['Content-Type'] = 'text/html'
