@@ -300,9 +300,9 @@ class MainHandler(webapp.RequestHandler):
         #people = data_models['people'].values() 
 
         template_values = {
-            'crises': crises,
-            'people': people,
-            'orgs': orgs,
+            'crises': sorted(crises, key=(lambda x: x.name)),
+            'people': sorted(people, key=(lambda x: x.name)),
+            'orgs': sorted(orgs, key=(lambda x: x.name)),
         }
 
         self.response.headers['Content-Type'] = 'text/html'
@@ -317,7 +317,7 @@ class MainHandler(webapp.RequestHandler):
                 template_values['exts'] = map((lambda x: db.get(x)), crisis[0].ref.exts)
                 template_values['relatedpeople'] = list(map((lambda x: Person.gql("WHERE idref = :1", x).fetch(1)), crisis[0].relatedPeople))
                 template_values['relatedorgs'] = list(map((lambda x: Organization.gql("WHERE idref = :1", x).fetch(1)), crisis[0].relatedOrgs))
-                self.response.out.write(str(template.render('djangogoodies/crisistemplate.html', template_values)))
+                self.response.out.write(str(template.render('djangogoodies/crisistemplate.html', template_values).encode('ascii', 'ignore')))
             else:
                 self.response.out.write("No such crisis!")
 
@@ -331,7 +331,7 @@ class MainHandler(webapp.RequestHandler):
                 template_values['exts'] = map((lambda x: db.get(x)), org[0].ref.exts)
                 template_values['relatedcrises'] = list(map((lambda x: Crisis.gql("WHERE idref = :1", x).fetch(1)), org[0].relatedCrises))
                 template_values['relatedpeople'] = list(map((lambda x: Person.gql("WHERE idref = :1", x).fetch(1)), org[0].relatedPeople))
-                self.response.out.write(str(template.render('djangogoodies/organizationtemplate.html', template_values)))
+                self.response.out.write(str(template.render('djangogoodies/organizationtemplate.html', template_values).encode('ascii', 'ignore')))
             else:
                 self.response.out.write("No such organization!")
 
@@ -345,12 +345,12 @@ class MainHandler(webapp.RequestHandler):
                 template_values['exts'] = map((lambda x: db.get(x)), person[0].ref.exts)
                 template_values['relatedcrises'] = list(map((lambda x: Crisis.gql("WHERE idref = :1", x).fetch(1)), person[0].relatedCrises))
                 template_values['relatedorgs'] = list(map((lambda x: Organization.gql("WHERE idref = :1", x).fetch(1)), person[0].relatedOrgs))
-                self.response.out.write(str(template.render('djangogoodies/persontemplate.html', template_values)))
+                self.response.out.write(str(template.render('djangogoodies/persontemplate.html', template_values).encode('ascii', 'ignore')))
             else:
                 self.response.out.write("No such person!")
 
         else:
-            self.response.out.write(str(template.render('djangogoodies/maintemplate.html', template_values)))
+            self.response.out.write(str(template.render('djangogoodies/maintemplate.html', template_values).encode('ascii', 'ignore')))
             #inFile = open("htmlgoodies/mockup.html", 'r')
             #outstr = inFile.read() #"HELLO CAR RAMROD"
             #inFile.close()
@@ -477,9 +477,13 @@ def fixAmp(line):
 def trim(s):
     """
     Takes a string, eliminates None and calls fixAmp
-    s the string to be trimmed
+    s the string to be trimmedentity = db.gql("SELECT * WHERE name = :1", n)
     return the trimmed string
     """
+    if isinstance(s, long):
+        s = str(s)
+    if s != None:
+        s = s.encode('ascii', 'ignore')
     return "" if s is None else fixAmp(str(s))
 
 
@@ -492,15 +496,25 @@ def exists(n):
     n the name
     return the old entity with the same name
     """
-    entity = Crisis.get_by_key_name(n)
+    if n == "Bashar al-Assad":
+        entity = Person.gql("WHERE name = :1", "Basshar Al-assad")
+    
+    #entity = Crisis.get_by_key_name(n)
+    entity = Crisis.gql("WHERE name = :1", n).get()
+    #debug(entity.name)
+        
     if entity is not None:
         return entity
-    entity = Organization.get_by_key_name(n)
+    
+    #entity = Organization.get_by_key_name(n)
+    entity = Organization.gql("WHERE name = :1", n).get()
     if entity is not None:
         return entity
-    entity = Person.get_by_key_name(n)
+    #entity = Person.get_by_key_name(n)
+    entity = Person.gql("WHERE name = :1", n).get()
     if entity is not None:
         return entity
+    
     return False
 
 def nonestrip(checked):
@@ -509,6 +523,11 @@ def nonestrip(checked):
     return checked.strip()
 
 def merge(entity, xml_newEntityNode):
+    """
+    Merges a new xml node into the existing entity of the same name
+    entity the old entity
+    xml_newEntityNode the new data
+    """
     if(xml_newEntityNode.tag == "crisis"):
         info = xml_newEntityNode.find("info")
         if(entity.info.history is None):
@@ -562,7 +581,7 @@ def merge(entity, xml_newEntityNode):
             newImage =  nonestrip(xstr(image.find("url")))
             dup = False
             for oldImage in entity.ref.images:
-                if newImage == Link.get(oldImage).url:
+                if newImage == db.get(oldImage).url:
                     dup = True    
             if dup is False:
                 link_model = Link(site = xstr(image.find("site")), 
@@ -576,7 +595,7 @@ def merge(entity, xml_newEntityNode):
             newVideo =  nonestrip(xstr(video.find("url")))
             dup = False
             for oldVideo in entity.ref.videos:
-                if newVideo == Link.get(oldVideo).url:
+                if newVideo == db.get(oldVideo).url:
                     dup = True
             if dup is False:
                 link_model = Link(site = xstr(video.find("site")), 
@@ -590,7 +609,7 @@ def merge(entity, xml_newEntityNode):
             newSocial =  nonestrip(xstr(social.find("url")))
             dup = False
             for oldSocial in entity.ref.socials:
-                if newSocial == Link.get(oldSocial).url:
+                if newSocial == db.get(oldSocial).url:
                     dup = True
             if dup is False:
                 link_model = Link(site = xstr(social.find("site")), 
@@ -604,7 +623,7 @@ def merge(entity, xml_newEntityNode):
             newExt =  nonestrip(xstr(ext.find("url")))
             dup = False
             for oldExt in entity.ref.exts:
-                if newExt == Link.get(oldExt).url:
+                if newExt == db.get(oldExt).url:
                     dup = True
             if dup is False:
                 link_model = Link(site = xstr(ext.find("site")), 
@@ -668,7 +687,7 @@ def merge(entity, xml_newEntityNode):
             newImage =  nonestrip(xstr(image.find("url")))
             dup = False
             for oldImage in entity.ref.images:
-                if newImage == Link.get(oldImage).url:
+                if newImage == db.get(oldImage).url:
                     dup = True    
             if dup is False:
                 link_model = Link(site = xstr(image.find("site")), 
@@ -682,7 +701,7 @@ def merge(entity, xml_newEntityNode):
             newVideo =  nonestrip(xstr(video.find("url")))
             dup = False
             for oldVideo in entity.ref.videos:
-                if newVideo == Link.get(oldVideo).url:
+                if newVideo == db.get(oldVideo).url:
                     dup = True
             if dup is False:
                 link_model = Link(site = xstr(video.find("site")), 
@@ -696,7 +715,7 @@ def merge(entity, xml_newEntityNode):
             newSocial =  nonestrip(xstr(social.find("url")))
             dup = False
             for oldSocial in entity.ref.socials:
-                if newSocial == Link.get(oldSocial).url:
+                if newSocial == db.get(oldSocial).url:
                     dup = True
             if dup is False:
                 link_model = Link(site = xstr(social.find("site")), 
@@ -710,7 +729,7 @@ def merge(entity, xml_newEntityNode):
             newExt =  nonestrip(xstr(ext.find("url")))
             dup = False
             for oldExt in entity.ref.exts:
-                if newExt == Link.get(oldExt).url:
+                if newExt == db.get(oldExt).url:
                     dup = True
             if dup is False:
                 link_model = Link(site = xstr(ext.find("site")), 
@@ -764,7 +783,7 @@ def merge(entity, xml_newEntityNode):
             newImage =  nonestrip(xstr(image.find("url")))
             dup = False
             for oldImage in entity.ref.images:
-                if newImage == Link.get(oldImage).url:
+                if newImage == db.get(oldImage).url:
                     dup = True    
             if dup is False:
                 link_model = Link(site = xstr(image.find("site")), 
@@ -778,7 +797,7 @@ def merge(entity, xml_newEntityNode):
             newVideo =  nonestrip(xstr(video.find("url")))
             dup = False
             for oldVideo in entity.ref.videos:
-                if newVideo == Link.get(oldVideo).url:
+                if newVideo == db.get(oldVideo).url:
                     dup = True
             if dup is False:
                 link_model = Link(site = xstr(video.find("site")), 
@@ -792,7 +811,7 @@ def merge(entity, xml_newEntityNode):
             newSocial =  nonestrip(xstr(social.find("url")))
             dup = False
             for oldSocial in entity.ref.socials:
-                if newSocial == Link.get(oldSocial).url:
+                if newSocial == db.get(oldSocial).url:
                     dup = True
             if dup is False:
                 link_model = Link(site = xstr(social.find("site")), 
@@ -806,7 +825,7 @@ def merge(entity, xml_newEntityNode):
             newExt =  nonestrip(xstr(ext.find("url")))
             dup = False
             for oldExt in entity.ref.exts:
-                if newExt == Link.get(oldExt).url:
+                if newExt == db.get(oldExt).url:
                     dup = True
             if dup is False:
                 link_model = Link(site = xstr(ext.find("site")), 
@@ -884,17 +903,23 @@ def import_file(xml_file):
             impact = info.find("impact")
             
             human = impact.find("human")
+            misctemp = xstr(human.find("misc"))
+            if misctemp != None and len(misctemp) > 500:
+                misctemp = misctemp[:500]
             human_model = HumanImpact(deaths = xint(human.find("deaths")), 
                                       displaced = xint(human.find("displaced")), 
                                       injured = xint(human.find("injured")), 
                                       missing = xint(human.find("missing")), 
-                                      misc = xstr(human.find("misc")))
+                                      misc = misctemp)
             human_model.put() #saves the model
             
             economic = impact.find("economic")
+            misctemp = xstr(human.find("misc"))
+            if misctemp != None and len(misctemp) > 500:
+                misctemp = misctemp[:500]
             economic_model = EconomicImpact(amount = xint(human.find("amount")), 
                                             currency = xstr(human.find("currency")), 
-                                            misc = xstr(human.find("misc")))
+                                            misc = misctemp)
             economic_model.put()
             impact_model = Impact(human = human_model, economic = economic_model)
             impact_model.put()
@@ -914,7 +939,7 @@ def import_file(xml_file):
             ref_model.primaryImage = pimage_model
             images = ref.findall("image")
             for image in images:
-                link_model = Link(site = xstr(image.find("site")), 
+                link_model = Link(site = xstr(image.find("sit. Its seat is at The Hague in the Netherlands. Although the Court's expenses are funded primarily by States Parties, it also receives voluntary contributions from governments, international organisations, individuals, corporations and other entities. The international community has long aspired to the creation of a permanent internationae")), 
                                   title = xstr(image.find("title")), 
                                   url = nonestrip(xstr(image.find("url"))), 
                                   description = xstr(image.find("description")))
@@ -1037,9 +1062,12 @@ def import_file(xml_file):
                 ref_model.socials.append(link_model.key())
             exts = ref.findall("ext")
             for ext in exts:
+                tempurl = nonestrip(xstr(ext.find("url")))
+                if tempurl != None and tempurl[:3] == "www":
+                    tempurl = "http://" + tempurl
                 link_model = Link(site = xstr(ext.find("site")), 
                                   title = xstr(ext.find("title")), 
-                                  url = nonestrip(xstr(ext.find("url"))), 
+                                  url = tempurl, 
                                   description = xstr(ext.find("description")))
                 link_model.put()
                 ref_model.exts.append(link_model.key())
