@@ -496,7 +496,7 @@ def exists(n):
     n the name
     return the old entity with the same name
     """
-    if n == "Bashar Al-Assad":
+    if n == "Basshar Al-assad":
         entity = Person.gql("WHERE name = :1", "Bashar al-Assad")
     
     #entity = Crisis.get_by_key_name(n)
@@ -523,6 +523,11 @@ def nonestrip(checked):
     return checked.strip()
 
 def merge(entity, xml_newEntityNode):
+    """
+    Merges a new xml node into the existing entity of the same name
+    entity the old entity
+    xml_newEntityNode the new data
+    """
     if(xml_newEntityNode.tag == "crisis"):
         info = xml_newEntityNode.find("info")
         if(entity.info.history is None):
@@ -934,7 +939,7 @@ def import_file(xml_file):
             ref_model.primaryImage = pimage_model
             images = ref.findall("image")
             for image in images:
-                link_model = Link(site = xstr(image.find("site")), 
+                link_model = Link(site = xstr(image.find("sit. Its seat is at The Hague in the Netherlands. Although the Court's expenses are funded primarily by States Parties, it also receives voluntary contributions from governments, international organisations, individuals, corporations and other entities. The international community has long aspired to the creation of a permanent internationae")), 
                                   title = xstr(image.find("title")), 
                                   url = nonestrip(xstr(image.find("url"))), 
                                   description = xstr(image.find("description")))

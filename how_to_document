@@ -7,3 +7,7 @@ http://localhost:8080/
 
 google_appengine/dev_appserver.py --debug --clear_datastore cs373-wc/
 google_appengine/dev_appserver.py --debug --clear_datastore --datastore_path="~" cs373-wc/
+
+google_appengine/dev_appserver.py --debug --clear_datastore --datastore=clear --port=8082 cs373-wc
+
+google_appengine/appcfg.py update cs373-wc/
