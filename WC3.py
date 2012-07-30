@@ -564,7 +564,7 @@ def merge(entity, xml_newEntityNode):
             newTime.month = xint(time.find("month"))
         if(newTime.year == 0):
             newTime.year = xint(time.find("year"))
-        if(enewTime.misc is None):
+        if(newTime.misc is None):
             newTime.misc = xstr(time.find("misc"))
         newTime.put()
         newInfo.time = newTime
@@ -702,7 +702,7 @@ def merge(entity, xml_newEntityNode):
                     myOrg.relatedCrises.append(oldId)
                 db.delete(myOrg)
                 myOrg.put()
-        myPeople = People.gql("WHERE idref != :1", None).run()
+        myPeople = Person.gql("WHERE idref != :1", None).run()
         for myPerson in myPeople:
             relatedOrgs = myOrg.relatedOrgs
             for relatedOrg in relatedOrgs:
@@ -847,7 +847,7 @@ def merge(entity, xml_newEntityNode):
                     myCrisis.relatedOrgs.append(oldId)
                 db.delete(myCrisis)
                 myCrisis.put()
-        myPeople = People.gql("WHERE idref != :1", None).run()
+        myPeople = Person.gql("WHERE idref != :1", None).run()
         for myPerson in myPeople:
             relatedOrgs = myOrg.relatedOrgs
             for relatedOrg in relatedOrgs:
@@ -987,7 +987,7 @@ def merge(entity, xml_newEntityNode):
                 db.delete(myOrg)
                 myOrg.put()
         
-    debug("Merge complete!")
+    #debug("Merge complete!")
 
 # -----------
 # import_file
