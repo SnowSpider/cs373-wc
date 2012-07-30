@@ -9,10 +9,11 @@
 	{% endif %}
 	
 	{% if me.info.birthdate.day != None and me.info.birthdate.month != None and me.info.birthdate.year != None %}
-	{% if me.info.birthdate.day < 1 %}
-	<li><b>Birthday:</b> Unknown
-	{% endif %}
+	{% if me.info.birthdate.day <= 0 %}
+	<li><b>Birthday:</b> Unknown</li>
+	{% else %}
 	<li><b>Birthday:</b>  {{me.info.birthdate.month}}/{{me.info.birthdate.day}}/{{me.info.birthdate.year}}</li>
+	{% endif %}
 	{% endif %}
 	
 	{% if me.info.birthdate.day == None and me.info.birthdate.month != None and me.info.birthdate.year != None %}

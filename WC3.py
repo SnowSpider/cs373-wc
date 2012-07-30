@@ -192,6 +192,8 @@ class Crisis(db.Model):
         result += self.info.score(keywords)
         result += self.ref.score(keywords)
         result += score_of_string(self.misc, keywords)
+        if(score_of_string(self.name, keywords) > 0):
+            result *= 100
         # TO-DO search related
         return result
 
@@ -221,6 +223,8 @@ class Organization(db.Model):
         result += self.info.score(keywords)
         result += self.ref.score(keywords)
         result += score_of_string(self.misc, keywords)
+        if(score_of_string(self.name, keywords) > 0):
+            result *= 100
         # TO-DO search related
         return result
 
@@ -250,6 +254,8 @@ class Person(db.Model):
         result += self.info.score(keywords)
         result += self.ref.score(keywords)
         result += score_of_string(self.misc, keywords)
+        if(score_of_string(self.name, keywords) > 0):
+            result *= 100
         # TO-DO search related
         return result
 
@@ -539,52 +545,69 @@ def merge(entity, xml_newEntityNode):
     """
     if(xml_newEntityNode.tag == "crisis"):
         info = xml_newEntityNode.find("info")
-        if(entity.info.history is None):
-            entity.info.history = xstr(info.find("history"))
-        if(entity.info.help is None):
-            entity.info.help = xstr(info.find("help"))
-        if(entity.info.resources is None):
-            entity.info.resources = xstr(info.find("resources"))
-        if(entity.info.type_ is None):
-            entity.info.type_ = xstr(info.find("type"))
+        newInfo = entity.info
+        if(newInfo.history is None):
+            newInfo.history = xstr(info.find("history"))
+        if(newInfo.help is None):
+            newInfo.help = xstr(info.find("help"))
+        if(newInfo.resources is None):
+            newInfo.resources = xstr(info.find("resources"))
+        if(newInfo.type_ is None):
+            newInfo.type_ = xstr(info.find("type"))
         time = info.find("time")
-        if(entity.info.time.time is None):
-            entity.info.time.time = xstr(time.find("time"))
-        if(entity.info.time.day == 0):
-            entity.info.time.day = xint(time.find("day"))
-        if(entity.info.time.month == 0):
-            entity.info.time.month = xint(time.find("month"))
-        if(entity.info.time.year == 0):
-            entity.info.time.year = xint(time.find("year"))
-        if(entity.info.time.misc is None):
-            entity.info.time.misc = xstr(time.find("misc"))
+        newTime = entity.info.time
+        if(newTime.time is None):
+            newTime.time = xstr(time.find("time"))
+        if(newTime.day == 0):
+            newTime.day = xint(time.find("day"))
+        if(newTime.month == 0):
+            newTime.month = xint(time.find("month"))
+        if(newTime.year == 0):
+            newTime.year = xint(time.find("year"))
+        if(enewTime.misc is None):
+            newTime.misc = xstr(time.find("misc"))
+        newTime.put()
+        newInfo.time = newTime
         loc = info.find("loc")
-        if(entity.info.loc.city is None):
-            entity.info.loc.city = xstr(loc.find("city"))
-        if(entity.info.loc.region is None):
-            entity.info.loc.region = xstr(loc.find("region"))
-        if(entity.info.loc.country is None):
-            entity.info.loc.country = xstr(loc.find("country"))
+        newLoc = entity.info.loc
+        if(newLoc.city is None):
+            newLoc.city = xstr(loc.find("city"))
+        if(newLoc.region is None):
+            newLoc.region = xstr(loc.find("region"))
+        if(newLoc.country is None):
+            newLoc.country = xstr(loc.find("country"))
+        newLoc.put()
+        newInfo.loc = newLoc
         impact = info.find("impact")
         human = impact.find("human")
         economic = impact.find("economic")
-        if(entity.info.impact.human.deaths == 0):
-            entity.info.impact.human.deaths = xint(human.find("deaths"))
-        if(entity.info.impact.human.displaced == 0):
-            entity.info.impact.human.displaced = xint(human.find("displaced"))
-        if(entity.info.impact.human.injured == 0):
-            entity.info.impact.human.injured = xint(human.find("injured"))
-        if(entity.info.impact.human.missing == 0):
-            entity.info.impact.human.missing = xint(human.find("missing"))
-        if(entity.info.impact.human.misc is None):
-            entity.info.impact.human.misc = xstr(human.find("misc"))
-        if(entity.info.impact.economic.amount == 0):
-            entity.info.impact.economic.amount = xint(economic.find("amount"))
-        if(entity.info.impact.economic.currency == 0):
-            entity.info.impact.economic.currency = xstr(economic.find("currency"))
-        if(entity.info.impact.economic.misc is None):
-            entity.info.impact.economic.misc = xstr(economic.find("misc"))
+        newImpact = entity.info.impact
+        newHuman = entity.info.impact.human
+        newEconomic = entity.info.impact.economic
+        if(newHuman.deaths == 0):
+            newHuman.deaths = xint(human.find("deaths"))
+        if(newHuman.displaced == 0):
+            newHuman.displaced = xint(human.find("displaced"))
+        if(newHuman.injured == 0):
+            newHuman.injured = xint(human.find("injured"))
+        if(newHuman.missing == 0):
+            newHuman.missing = xint(human.find("missing"))
+        if(newHuman.misc is None):
+            newHuman.misc = xstr(human.find("misc"))
+        if(newEconomic.amount == 0):
+            newEconomic.amount = xint(economic.find("amount"))
+        if(newEconomic.currency == 0):
+            newEconomic.currency = xstr(economic.find("currency"))
+        if(newEconomic.misc is None):
+            newEconomic.misc = xstr(economic.find("misc"))
+        newHuman.put()
+        newEconomic.put()
+        newImpact.human = newHuman
+        newImpact.economic = newEconomic
+        newImpact.put()
+        newInfo.impact = newImpact
         ref = xml_newEntityNode.find("ref")
+        newRef = entity.ref
         images = ref.findall("image")
         for image in images:
             newImage =  nonestrip(xstr(image.find("url")))
@@ -598,7 +621,7 @@ def merge(entity, xml_newEntityNode):
                                   url = newImage, 
                                   description = xstr(image.find("description")))
                 link_model.put()
-                entity.ref.images.append(link_model.key())
+                newRef.images.append(link_model.key())
         videos = ref.findall("video")
         for video in videos:
             newVideo =  nonestrip(xstr(video.find("url")))
@@ -612,7 +635,7 @@ def merge(entity, xml_newEntityNode):
                                   url = newVideo, 
                                   description = xstr(video.find("description")))
                 link_model.put()
-                entity.ref.videos.append(link_model.key())
+                newRef.videos.append(link_model.key())
         socials = ref.findall("social")
         for social in socials:
             newSocial =  nonestrip(xstr(social.find("url")))
@@ -626,7 +649,7 @@ def merge(entity, xml_newEntityNode):
                                   url = newSocial, 
                                   description = xstr(social.find("description")))
                 link_model.put()
-                entity.ref.socials.append(link_model.key())
+                newRef.socials.append(link_model.key())
         exts = ref.findall("ext")
         for ext in exts:
             newExt =  nonestrip(xstr(ext.find("url")))
@@ -640,7 +663,10 @@ def merge(entity, xml_newEntityNode):
                                   url = newExt, 
                                   description = xstr(ext.find("description")))
                 link_model.put()
-                entity.ref.exts.append(link_model.key())
+                newRef.exts.append(link_model.key())
+        newRef.put()
+        entity.ref = newRef
+        
         if(entity.misc == None):
             entity.misc = xstr(xml_newEntityNode.find("misc"))
         relatedOrgs = xml_newEntityNode.findall("org")
@@ -688,34 +714,45 @@ def merge(entity, xml_newEntityNode):
                 
     elif(xml_newEntityNode.tag == "organization"):
         info = xml_newEntityNode.find("info")
-        if(entity.info.type_ is None):
-            entity.info.type_ = xstr(info.find("type"))
-        if(entity.info.history is None):
-            entity.info.history = xstr(info.find("history"))
+        newInfo = entity.info
+        if(newInfo.type_ is None):
+            newInfo.type_ = xstr(info.find("type"))
+        if(newInfo.history is None):
+            newInfo.history = xstr(info.find("history"))
         contact = info.find("contact")
-        if(entity.info.contact.phone is None):
-            entity.info.contact.phone = xstr(contact.find("phone"))
-        if(entity.info.contact.email is None):
-            entity.info.contact.email = xstr(contact.find("email"))
+        newContact = entity.info.contact
+        if(newContact.phone is None):
+            newContact.phone = xstr(contact.find("phone"))
+        if(newContact.email is None):
+            newContact.email = xstr(contact.find("email"))
         mail = contact.find("mail")
-        if(entity.info.contact.mail.address is None):
-            entity.info.contact.mail.address = xstr(mail.find("email"))
-        if(entity.info.contact.mail.city is None):
-            entity.info.contact.mail.city = xstr(mail.find("city"))
-        if(entity.info.contact.mail.state is None):
-            entity.info.contact.mail.state = xstr(mail.find("state"))
-        if(entity.info.contact.mail.country is None):
-            entity.info.contact.mail.country = xstr(mail.find("country"))
-        if(entity.info.contact.mail.zip_ is None):
-            entity.info.contact.mail.zip_ = xstr(mail.find("zip"))
+        newMail = entity.info.contact.mail
+        if(newMail.address is None):
+            newMail.address = xstr(mail.find("email"))
+        if(newMail.city is None):
+            newMail.city = xstr(mail.find("city"))
+        if(newMail.state is None):
+            newMail.state = xstr(mail.find("state"))
+        if(newMail.country is None):
+            newMail.country = xstr(mail.find("country"))
+        if(newMail.zip_ is None):
+            newMail.zip_ = xstr(mail.find("zip"))
+        newMail.put()
+        newContact.mail = newMail
         loc = info.find("loc")
-        if(entity.info.loc.city is None):
-            entity.info.loc.city = xstr(loc.find("city"))
-        if(entity.info.loc.region is None):
-            entity.info.loc.region = xstr(loc.find("region"))
-        if(entity.info.loc.country is None):
-            entity.info.loc.country = xstr(loc.find("country"))
+        newLoc = entity.info.loc
+        if(newLoc.city is None):
+            newLoc.city = xstr(loc.find("city"))
+        if(newLoc.region is None):
+            newLoc.region = xstr(loc.find("region"))
+        if(newLoc.country is None):
+            newLoc.country = xstr(loc.find("country"))
+        newLoc.put()
+        newContact.loc = newLoc
+        newContact.put()
+        entity.contact = newContact
         ref = xml_newEntityNode.find("ref")
+        newRef = entity.ref
         images = ref.findall("image")
         for image in images:
             newImage =  nonestrip(xstr(image.find("url")))
@@ -729,7 +766,7 @@ def merge(entity, xml_newEntityNode):
                                   url = newImage, 
                                   description = xstr(image.find("description")))
                 link_model.put()
-                entity.ref.images.append(link_model.key())
+                newRef.images.append(link_model.key())
         videos = ref.findall("video")
         for video in videos:
             newVideo =  nonestrip(xstr(video.find("url")))
@@ -743,7 +780,7 @@ def merge(entity, xml_newEntityNode):
                                   url = newVideo, 
                                   description = xstr(video.find("description")))
                 link_model.put()
-                entity.ref.videos.append(link_model.key())
+                newRef.videos.append(link_model.key())
         socials = ref.findall("social")
         for social in socials:
             newSocial =  nonestrip(xstr(social.find("url")))
@@ -757,7 +794,7 @@ def merge(entity, xml_newEntityNode):
                                   url = newSocial, 
                                   description = xstr(social.find("description")))
                 link_model.put()
-                entity.ref.socials.append(link_model.key())
+                newRef.socials.append(link_model.key())
         exts = ref.findall("ext")
         for ext in exts:
             newExt =  nonestrip(xstr(ext.find("url")))
@@ -771,7 +808,10 @@ def merge(entity, xml_newEntityNode):
                                   url = newExt, 
                                   description = xstr(ext.find("description")))
                 link_model.put()
-                entity.ref.exts.append(link_model.key())
+                newRef.exts.append(link_model.key())
+        newRef.put()
+        entity.ref = newRef
+        
         if(entity.misc == None):
             entity.misc = xstr(xml_newEntityNode.find("misc"))
         relatedCrises = xml_newEntityNode.findall("crisis")
@@ -819,24 +859,31 @@ def merge(entity, xml_newEntityNode):
                 
     elif(xml_newEntityNode.tag == "person"):
         info = xml_newEntityNode.find("info")
-        if(entity.info.type_ is None):
-            entity.info.type_ = xstr(info.find("type"))
+        newInfo = entity.info
+        if(newInfo.type_ is None):
+            newInfo.type_ = xstr(info.find("type"))
         birthdate = info.find("birthdate")
-        if(entity.info.birthdate.time is None):
-            entity.info.birthdate.time = xstr(birthdate.find("time"))
-        if(entity.info.birthdate.day == 0):
-            entity.info.birthdate.day = xint(birthdate.find("day"))
-        if(entity.info.birthdate.month == 0):
-            entity.info.birthdate.month = xint(birthdate.find("month"))
-        if(entity.info.birthdate.year == 0):
-            entity.info.birthdate.year = xint(birthdate.find("year"))
-        if(entity.info.birthdate.misc is None):
-            entity.info.birthdate.misc = xstr(birthdate.find("misc"))
-        if(entity.info.nationality is None):
-            entity.info.nationality = xstr(info.find("nationality"))
-        if(entity.info.biography is None):
-            entity.info.biography = xstr(info.find("biography"))
+        newBirthdate = entity.info.birthdate
+        if(newBirthdate.time is None):
+            newBirthdate.time = xstr(birthdate.find("time"))
+        if(newBirthdate.day == 0):
+            newBirthdate.day = xint(birthdate.find("day"))
+        if(newBirthdate.month == 0):
+            newBirthdate.month = xint(birthdate.find("month"))
+        if(newBirthdate.year == 0):
+            newBirthdate.year = xint(birthdate.find("year"))
+        if(newBirthdate.misc is None):
+            newBirthdate.misc = xstr(birthdate.find("misc"))
+        newBirthdate.put()
+        entity.birthdate = newBirthdate
+        if(newInfo.nationality is None):
+            newInfo.nationality = xstr(info.find("nationality"))
+        if(newInfo.biography is None):
+            newInfo.biography = xstr(info.find("biography"))
+        newInfo.put()
+        entity.info = newInfo
         ref = xml_newEntityNode.find("ref")
+        newRef = entity.ref
         images = ref.findall("image")
         for image in images:
             newImage =  nonestrip(xstr(image.find("url")))
@@ -850,7 +897,7 @@ def merge(entity, xml_newEntityNode):
                                   url = newImage, 
                                   description = xstr(image.find("description")))
                 link_model.put()
-                entity.ref.images.append(link_model.key())
+                newRef.images.append(link_model.key())
         videos = ref.findall("video")
         for video in videos:
             newVideo =  nonestrip(xstr(video.find("url")))
@@ -864,7 +911,7 @@ def merge(entity, xml_newEntityNode):
                                   url = newVideo, 
                                   description = xstr(video.find("description")))
                 link_model.put()
-                entity.ref.videos.append(link_model.key())
+                newRef.videos.append(link_model.key())
         socials = ref.findall("social")
         for social in socials:
             newSocial =  nonestrip(xstr(social.find("url")))
@@ -878,7 +925,7 @@ def merge(entity, xml_newEntityNode):
                                   url = newSocial, 
                                   description = xstr(social.find("description")))
                 link_model.put()
-                entity.ref.socials.append(link_model.key())
+                newRef.socials.append(link_model.key())
         exts = ref.findall("ext")
         for ext in exts:
             newExt =  nonestrip(xstr(ext.find("url")))
@@ -892,7 +939,10 @@ def merge(entity, xml_newEntityNode):
                                   url = newExt, 
                                   description = xstr(ext.find("description")))
                 link_model.put()
-                entity.ref.exts.append(link_model.key())
+                newRef.exts.append(link_model.key())
+        newRef.put()
+        entity.ref = newRef
+        
         if(entity.misc == None):
             entity.misc = xstr(xml_newEntityNode.find("misc"))
         relatedCrises = xml_newEntityNode.findall("crisis")
