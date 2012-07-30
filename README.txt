@@ -8,7 +8,7 @@ E-mail: SnowSpider221@gmail.com
 Estimated number of hours: 40
 Actual    number of hours: 20
 
-Turnin CS Username:     wlee
+Turnin CS Username:     drmoreno
 GitHub ID:              SnowSpider
 GitHub Repository Name: cs373-wc
 Google App Engine URL:  wlee-cs373-wc.appspot.com
