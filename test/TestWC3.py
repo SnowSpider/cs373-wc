@@ -28,14 +28,14 @@ import unittest
 import logging
 
 
-from WC3 import ImportXml, ExportXml, fixAmp, debug, trim, xstr, xint, merge, Date, HumanImpact, Location, EconomicImpact, Impact, Link, Reference, Crisis, CrisisInfo, FullAddress, ContactInfo, OrgInfo, Organization, PersonInfo, Person
+from WC3 import ImportXml, ExportXml, fixAmp, debug, trim, xstr, xint, merge, Date, HumanImpact, Location, EconomicImpact, Impact, Link, Reference, Crisis, CrisisInfo, FullAddress, ContactInfo, OrgInfo, Organization, PersonInfo, Person, exists
 
 # -------
 # TestWC3
 # -------
 
 class TestWC3 (unittest.TestCase) :
-    def test_ImportXml_1 (self) :
+    def test_merge_1 (self) :
         
         myTime = Date(time = None,
                       day = 0,
@@ -113,7 +113,7 @@ class TestWC3 (unittest.TestCase) :
         
         
         
-    def test_ImportXml_2 (self) :
+    def test_merge_2 (self) :
     	
         myMail = FullAddress(address = None,
         				     city = None,
@@ -188,7 +188,7 @@ class TestWC3 (unittest.TestCase) :
         
         
         
-    def test_ImportXml_3 (self) :
+    def test_merge_3 (self) :
         					
         
 
@@ -249,6 +249,23 @@ class TestWC3 (unittest.TestCase) :
         self.assert_(entity.info.nationality == "Iran")
         
         
+        
+    
+    def test_exists_1 (self) :
+        db1 = ImportXml("WC2.xml")
+        entity = exists("boo")
+        self.assert_(entity == False)
+        
+        
+    def test_exists_2 (self) :
+        db1 = ImportXml("WC2.xml")
+        entity = exists("Mir Hossein Mousavi")
+        self.assert_(entity != False)
+    
+    def test_exists_3 (self) :
+        db1 = ImportXml("WC2.xml")
+        entity = exists("Libyan Civil War")
+        self.assert_(entity != False)
         
         
         
