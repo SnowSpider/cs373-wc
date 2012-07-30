@@ -392,26 +392,29 @@ class ImportUploadHandler(blobstore_handlers.BlobstoreUploadHandler):
 class SearchHandler(webapp.RequestHandler):
     def post(self):
         query = self.request.get("query", default_value='')
+        if query == "":
+            self.response.out.write("Please enter a word or phrase to search on.")
+        else:
 
-        # Each element of *_results is a tuple (model, context, score)
-        crises_results = map(lambda x: (x, x.context(query.split()), x.score(query.split())), Crisis.all().fetch(50))
-        crises_results = sorted(crises_results, key=lambda x: x[2], reverse=True) # sort by descending score
-        crises_results = [ x for x in crises_results if x[2] > 0 ] # remove those with no matches
-        people_results = map(lambda x: (x, x.context(query.split()), x.score(query.split())), Person.all().fetch(50))
-        people_results = sorted(people_results, key=lambda x: x[2], reverse=True) # sort by descending score
-        people_results = [ x for x in people_results if x[2] > 0 ] # remove those with no matches
-        org_results = map(lambda x: (x, x.context(query.split()), x.score(query.split())), Organization.all().fetch(50))
-        org_results = sorted(org_results, key=lambda x: x[2], reverse=True) # sort by descending score
-        org_results = [ x for x in org_results if x[2] > 0 ] # remove those with no matches
-        
-        template_values = {
-            'query' : query,
-            'people_results' : people_results,
-            'crises_results' : crises_results,
-            'org_results' : org_results
-        }
-        self.response.out.write(str(template.render('djangogoodies/searchtemplate.html', template_values).encode('ascii', 'ignore')))
-        #self.response.out.write(str(people_results))
+            # Each element of *_results is a tuple (model, context, score)
+            crises_results = map(lambda x: (x, x.context(query.split()), x.score(query.split())), Crisis.all().fetch(50))
+            crises_results = sorted(crises_results, key=lambda x: x[2], reverse=True) # sort by descending score
+            crises_results = [ x for x in crises_results if x[2] > 0 ] # remove those with no matches
+            people_results = map(lambda x: (x, x.context(query.split()), x.score(query.split())), Person.all().fetch(50))
+            people_results = sorted(people_results, key=lambda x: x[2], reverse=True) # sort by descending score
+            people_results = [ x for x in people_results if x[2] > 0 ] # remove those with no matches
+            org_results = map(lambda x: (x, x.context(query.split()), x.score(query.split())), Organization.all().fetch(50))
+            org_results = sorted(org_results, key=lambda x: x[2], reverse=True) # sort by descending score
+            org_results = [ x for x in org_results if x[2] > 0 ] # remove those with no matches
+
+            template_values = {
+                'query' : query,
+                'people_results' : people_results,
+                'crises_results' : crises_results,
+                'org_results' : org_results
+                }
+            self.response.out.write(str(template.render('djangogoodies/searchtemplate.html', template_values).encode('ascii', 'ignore')))
+            #self.response.out.write(str(people_results))
             
 # ---------
 # ImportXml
@@ -497,7 +500,13 @@ def exists(n):
     return the old entity with the same name
     """
     if n == "Bashar al-Assad":
-        entity = Person.gql("WHERE name = :1", "Basshar Al-assad")
+        entity = Person.gql("WHERE name = :1", "Basshar Al-assad").get()
+        if entity is not None:
+            return entity
+    if n == "Basshar Al-assad":
+        entity = Person.gql("WHERE name = :1", "Bashar al-Assad").get()
+        if entity is not None:
+            return entity
     
     #entity = Crisis.get_by_key_name(n)
     entity = Crisis.gql("WHERE name = :1", n).get()
@@ -652,6 +661,31 @@ def merge(entity, xml_newEntityNode):
                     dup = True
             if dup is False:
                 entity.relatedPeople.append(newPerson)
+        db.delete(entity)
+        entity.put()
+        
+        newId = xml_newEntityNode.attrib["id"]
+        oldId = entity.idref
+        
+        myOrgs = Organization.gql("WHERE idref != :1", None).run()
+        for myOrg in myOrgs:
+            relatedPeople = myOrg.relatedPeople
+            for relatedPerson in relatedPeople:
+                if(relatedPerson == newId):
+                    myOrg.relatedCrises.remove(newId)
+                    myOrg.relatedCrises.append(oldId)
+                db.delete(myOrg)
+                myOrg.put()
+        myPeople = People.gql("WHERE idref != :1", None).run()
+        for myPerson in myPeople:
+            relatedOrgs = myOrg.relatedOrgs
+            for relatedOrg in relatedOrgs:
+                if(relatedOrg == newId):
+                    myOrg.relatedOrgs.remove(newId)
+                    myOrg.relatedOrgs.append(oldId)
+                db.delete(myPerson)
+                myPerson.put()
+                
     elif(xml_newEntityNode.tag == "organization"):
         info = xml_newEntityNode.find("info")
         if(entity.info.type_ is None):
@@ -758,6 +792,31 @@ def merge(entity, xml_newEntityNode):
                     dup = True
             if dup is False:
                 entity.relatedPeople.append(newPerson)
+        db.delete(entity)
+        entity.put()
+        
+        newId = xml_newEntityNode.attrib["id"]
+        oldId = entity.idref
+        
+        myCrises = Crisis.gql("WHERE idref != :1", None).run()
+        for myCrisis in myCrises:
+            relatedOrgs = myCrisis.relatedOrgs
+            for relatedOrg in relatedOrgs:
+                if(relatedOrg == newId):
+                    myCrisis.relatedOrgs.remove(newId)
+                    myCrisis.relatedOrgs.append(oldId)
+                db.delete(myCrisis)
+                myCrisis.put()
+        myPeople = People.gql("WHERE idref != :1", None).run()
+        for myPerson in myPeople:
+            relatedOrgs = myOrg.relatedOrgs
+            for relatedOrg in relatedOrgs:
+                if(relatedOrg == newId):
+                    myOrg.relatedOrgs.remove(newId)
+                    myOrg.relatedOrgs.append(oldId)
+                db.delete(myPerson)
+                myPerson.put()
+                
     elif(xml_newEntityNode.tag == "person"):
         info = xml_newEntityNode.find("info")
         if(entity.info.type_ is None):
@@ -854,6 +913,30 @@ def merge(entity, xml_newEntityNode):
                     dup = True
             if dup is False:
                 entity.relatedOrgs.append(newOrg)
+        db.delete(entity)
+        entity.put()
+        newId = xml_newEntityNode.attrib["id"]
+        oldId = entity.idref
+        
+        myCrises = Crisis.gql("WHERE idref != :1", None).run()
+        for myCrisis in myCrises:
+            relatedPeople = myCrisis.relatedPeople
+            for relatedPerson in relatedPeople:
+                if(relatedPerson == newId):
+                    myCrisis.relatedPeople.remove(newId)
+                    myCrisis.relatedPeople.append(oldId)
+                db.delete(myCrisis)
+                myCrisis.put()
+        myOrgs = Organization.gql("WHERE idref != :1", None).run()
+        for myOrg in myOrgs:
+            relatedPeople = myOrg.relatedPeople
+            for relatedPerson in relatedPeople:
+                if(relatedPerson == newId):
+                    myOrg.relatedPeople.remove(newId)
+                    myOrg.relatedPeople.append(oldId)
+                db.delete(myOrg)
+                myOrg.put()
+        
     debug("Merge complete!")
 
 # -----------
