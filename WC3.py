@@ -376,7 +376,7 @@ class ImportFormHandler(webapp.RequestHandler):
 
 class ImportUploadHandler(blobstore_handlers.BlobstoreUploadHandler):
     def post(self):
-        try:
+        #try:
             global data_models
             xml_file = self.get_uploads('file')[0].open()
             debug("XML_FILE: "+ str(xml_file))
@@ -385,9 +385,9 @@ class ImportUploadHandler(blobstore_handlers.BlobstoreUploadHandler):
             self.response.out.write("<script type=\"text/javascript\">")
             self.response.out.write("parent.location.reload();")
             self.response.out.write("</script>")
-        except:
-            debug(str(sys.exc_info()[0]))
-            self.response.out.write("Please provide a valid XML file")
+        #except:
+            #debug(str(sys.exc_info()[0]))
+            #self.response.out.write("Please provide a valid XML file")
 
 class SearchHandler(webapp.RequestHandler):
     def post(self):

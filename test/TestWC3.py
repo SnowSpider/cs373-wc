@@ -100,10 +100,6 @@ class TestWC3 (unittest.TestCase) :
                         relatedOrgs = [],
                         relatedPeople = []
                         )
-                        
-        
-                      
-        
         
         tree = ET.ElementTree(file = open("WC2.xml", "r"))
         root = tree.getroot()
